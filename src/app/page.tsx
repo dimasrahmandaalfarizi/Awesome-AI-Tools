@@ -23,8 +23,8 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative overflow-hidden pt-24 pb-32">
-          {/* Background Gradients */}
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(79,70,229,0.15),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(79,70,229,0.15),rgba(9,9,11,1))]" />
+          {/* Clean Background */}
+          <div className="absolute inset-0 -z-10 bg-[var(--background)]" />
           
           <div className="container mx-auto px-4 text-center">
             <motion.div
@@ -39,7 +39,7 @@ export default function Home() {
               </Badge>
               <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-balance">
                 Discover the best <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent)]">
+                <span className="text-[var(--primary)]">
                   AI Developer Tools
                 </span>
               </h1>
@@ -48,23 +48,24 @@ export default function Home() {
               </p>
 
               {/* Search Bar */}
-              <div className="relative max-w-2xl mx-auto mt-12 group">
+              <form action="/search" className="relative max-w-2xl mx-auto mt-12 group">
                 <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
                   <Search className="h-6 w-6 text-[var(--muted)] group-focus-within:text-[var(--primary)] transition-colors" />
                 </div>
                 <Input
                   type="text"
+                  name="q"
                   placeholder="Search for tools, categories, or keywords (e.g. 'coding assistant', 'cursor')..."
-                  className="h-16 pl-14 pr-32 rounded-full text-lg shadow-lg border-[var(--border)] bg-[var(--surface)] focus-visible:ring-[var(--primary)]"
+                  className="h-16 pl-14 pr-32 rounded-full text-lg shadow-md border-[var(--border)] bg-[var(--surface)] focus-visible:ring-[var(--primary)] transition-all"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 <div className="absolute inset-y-2 right-2 flex items-center">
-                  <Button className="rounded-full px-6 h-full font-semibold">
+                  <Button type="submit" className="rounded-full px-6 h-full font-semibold">
                     Search
                   </Button>
                 </div>
-              </div>
+              </form>
             </motion.div>
           </div>
         </section>

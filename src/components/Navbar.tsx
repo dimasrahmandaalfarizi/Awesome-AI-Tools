@@ -19,14 +19,15 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="hidden md:flex relative group">
+          <form className="hidden md:flex relative group" action="/search">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--muted)]" />
             <input
               type="text"
+              name="q"
               placeholder="Search tools..."
               className="h-9 w-64 rounded-full border border-[var(--border)] bg-[var(--surface)] pl-9 pr-4 text-sm outline-none focus:border-[var(--primary)] transition-colors"
             />
-          </div>
+          </form>
           <Button variant="ghost" size="icon" className="hidden sm:inline-flex">
             <Code className="h-5 w-5" />
           </Button>

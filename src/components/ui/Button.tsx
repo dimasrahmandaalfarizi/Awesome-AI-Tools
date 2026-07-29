@@ -9,14 +9,14 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[var(--primary)] text-white shadow hover:bg-[var(--primary)]/90",
+          "bg-[var(--primary)] text-white shadow-sm hover:bg-[var(--primary)]/90 hover:shadow-md transition-all",
         destructive:
-          "bg-[var(--danger)] text-white shadow-sm hover:bg-[var(--danger)]/90",
+          "bg-[var(--danger)] text-white shadow-sm hover:bg-[var(--danger)]/90 hover:shadow-md transition-all",
         outline:
-          "border border-[var(--border)] bg-transparent shadow-sm hover:bg-[var(--surface)] hover:text-white",
+          "border border-[var(--border)] bg-transparent shadow-sm hover:bg-[var(--surface)] hover:text-white transition-all",
         secondary:
-          "bg-[var(--surface)] text-[var(--foreground)] shadow-sm hover:bg-[var(--surface)]/80",
-        ghost: "hover:bg-[var(--surface)] hover:text-white",
+          "bg-[var(--surface)] text-[var(--foreground)] shadow-sm hover:bg-[var(--surface)]/80 hover:shadow-md border border-[var(--border)] transition-all",
+        ghost: "hover:bg-[var(--surface)] hover:text-white transition-all",
         link: "text-[var(--primary)] underline-offset-4 hover:underline",
       },
       size: {
