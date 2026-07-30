@@ -1,0 +1,74 @@
+interface Category {
+    id: string;
+    name: string;
+    slug: string;
+    icon?: string;
+    description: string;
+    createdAt: string;
+}
+interface Tag {
+    id: string;
+    name: string;
+    slug: string;
+}
+interface Tool {
+    id: string;
+    name: string;
+    slug: string;
+    description: string;
+    logo?: string;
+    website: string;
+    github?: string;
+    pricing: "Free" | "Freemium" | "Paid" | "Contact for Pricing";
+    isOpenSource: boolean;
+    platform: string[];
+    categoryId: string;
+    tags: string[];
+    lastUpdated: string;
+    featured: boolean;
+    createdAt: string;
+    problem?: string;
+    solution?: string;
+    challenge?: string;
+    techChoices?: string[];
+    targetUser?: string;
+    keyFeatures?: string[];
+    impact?: string;
+    screenshotUrl?: string;
+    guide?: {
+        step: number;
+        title: string;
+        description: string;
+    }[];
+}
+interface Collection {
+    id: string;
+    title: string;
+    slug: string;
+    description: string;
+    toolIds: string[];
+}
+interface AiSkill {
+    id: string;
+    name: string;
+    slug: string;
+    description: string;
+    frameworks: string[];
+    content: string;
+    author?: string;
+    createdAt: string;
+}
+
+declare const CATEGORIES: Category[];
+declare const TAGS: Tag[];
+declare const TOOLS: Tool[];
+declare const COLLECTIONS: Collection[];
+declare const AI_SKILLS: AiSkill[];
+
+declare function getAllSkills(): AiSkill[];
+declare function getSkillBySlug(slug: string): AiSkill | undefined;
+declare function getAllTools(): Tool[];
+declare function getToolBySlug(slug: string): Tool | undefined;
+declare function getAllCategories(): Category[];
+
+export { AI_SKILLS, type AiSkill, CATEGORIES, COLLECTIONS, type Category, type Collection, TAGS, TOOLS, type Tag, type Tool, getAllCategories, getAllSkills, getAllTools, getSkillBySlug, getToolBySlug };

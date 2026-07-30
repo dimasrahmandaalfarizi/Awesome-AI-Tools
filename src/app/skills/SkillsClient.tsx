@@ -37,8 +37,8 @@ export function SkillsClient({ skills }: SkillsClientProps) {
   return (
     <div className="space-y-8">
       {/* Search and Filters */}
-      <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center bg-[var(--surface)] p-4 rounded-xl border border-[var(--border)]">
-        <div className="w-full md:max-w-sm">
+      <div className="flex flex-col gap-4 bg-[var(--surface)] p-4 rounded-xl border border-[var(--border)]">
+        <div className="w-full max-w-md">
           <Input 
             type="search" 
             placeholder="Search AI skills..." 
@@ -48,16 +48,16 @@ export function SkillsClient({ skills }: SkillsClientProps) {
           />
         </div>
         
-        <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
-          <span className="text-sm text-[var(--muted)] whitespace-nowrap hidden lg:inline-block mr-2">
+        <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4 w-full">
+          <span className="text-sm text-[var(--muted)] whitespace-nowrap sm:mt-1.5 font-medium">
             Filter by Tool:
           </span>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             {allFrameworks.map(fw => (
               <button
                 key={fw}
                 onClick={() => setSelectedFramework(fw)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${
+                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                   selectedFramework === fw 
                     ? "bg-[var(--primary)] text-[var(--background)]" 
                     : "bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--primary)] hover:text-[var(--primary)]"
