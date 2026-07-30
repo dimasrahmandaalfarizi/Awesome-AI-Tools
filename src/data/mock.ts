@@ -36,6 +36,8 @@ export const TAGS: Tag[] = [
   { id: "tag-10", name: "Serverless", slug: "serverless" },
 ]
 
+const getScreenshot = (url: string) => `https://image.thum.io/get/width/1200/crop/800/${url}`
+
 export const TOOLS: Tool[] = [
   {
     id: "tool-1",
@@ -47,11 +49,24 @@ export const TOOLS: Tool[] = [
     pricing: "Freemium",
     isOpenSource: false,
     platform: ["macOS", "Windows", "Linux"],
-    categoryId: "cat-1", // AI IDE
+    categoryId: "cat-1",
     tags: ["editor", "copilot"],
     lastUpdated: new Date().toISOString(),
     featured: true,
     createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://cursor.com"),
+    problem: "Developers spend too much time writing boilerplate code, navigating large codebases to find context, and switching between their editor and browser to search for solutions.",
+    solution: "Cursor integrates advanced AI models directly into a familiar VS Code-forked environment, enabling real-time code generation, intelligent codebase-aware Q&A, and autonomous multi-file editing via Composer.",
+    challenge: "Integrating AI deeply enough that it feels like a native part of the editor without causing massive disruption to established developer workflows or compromising on latency.",
+    techChoices: ["Electron", "TypeScript", "React", "Rust", "OpenAI APIs"],
+    targetUser: "Software Engineers, Full Stack Developers, and Technical Founders.",
+    keyFeatures: ["Composer for multi-file generation", "Codebase-aware chat", "Familiar VS Code interface", "Privacy mode for enterprise"],
+    impact: "Dramatically reduces time-to-market for software teams, allowing developers to focus on architecture and logic rather than syntax and boilerplate.",
+    guide: [
+      { step: 1, title: "Download & Install", description: "Visit cursor.com and download the installer for your OS. Run it and migrate your existing VS Code extensions." },
+      { step: 2, title: "Open a Project", description: "Open any existing codebase. Press Ctrl+K (or Cmd+K) to open the inline generation prompt." },
+      { step: 3, title: "Use Composer", description: "Press Ctrl+I (or Cmd+I) to open Composer. Type a complex request like 'Add a user profile page' and let it generate multiple files automatically." }
+    ]
   },
   {
     id: "tool-2",
@@ -62,11 +77,24 @@ export const TOOLS: Tool[] = [
     pricing: "Paid",
     isOpenSource: false,
     platform: ["VS Code", "JetBrains", "Neovim"],
-    categoryId: "cat-2", // Coding Assistant
+    categoryId: "cat-2",
     tags: ["copilot"],
     lastUpdated: new Date().toISOString(),
     featured: true,
     createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://github.com/features/copilot"),
+    problem: "Context switching and looking up documentation interrupts the developer flow state, leading to decreased productivity.",
+    solution: "A deeply integrated AI extension that provides real-time, context-aware code completions and suggestions directly in the editor as you type.",
+    challenge: "Serving low-latency inference at massive scale while ensuring the suggestions are syntactically correct and relevant to the user's specific context.",
+    techChoices: ["OpenAI Codex", "Azure AI Infrastructure", "TypeScript Extension"],
+    targetUser: "Individual Developers, Enterprise Engineering Teams.",
+    keyFeatures: ["Inline code suggestions", "Copilot Chat for Q&A", "Pull request summaries", "Enterprise grade security"],
+    impact: "Adopted by millions of developers globally, increasing coding speed by up to 55% for repetitive tasks.",
+    guide: [
+      { step: 1, title: "Install the Extension", description: "Search for 'GitHub Copilot' in your IDE's extension marketplace and install it." },
+      { step: 2, title: "Sign In", description: "Authenticate with your GitHub account that has an active Copilot subscription." },
+      { step: 3, title: "Start Typing", description: "Write a comment describing the function you want, or just start writing the function signature. Press 'Tab' to accept the ghost-text suggestion." }
+    ]
   },
   {
     id: "tool-3",
@@ -78,11 +106,24 @@ export const TOOLS: Tool[] = [
     pricing: "Free",
     isOpenSource: true,
     platform: ["Python", "TypeScript"],
-    categoryId: "cat-4", // Agent Framework
+    categoryId: "cat-4",
     tags: ["python", "typescript", "rag"],
     lastUpdated: new Date().toISOString(),
     featured: true,
     createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://langchain.com"),
+    problem: "Building complex applications with Large Language Models requires orchestrating multiple calls, managing state, and integrating with external data sources, which is tedious and repetitive.",
+    solution: "A comprehensive open-source framework providing standardized abstractions for chains, agents, memory, and data retrieval (RAG).",
+    challenge: "Maintaining a stable API surface while the underlying LLM ecosystem evolves at a breakneck pace with new models and paradigms weekly.",
+    techChoices: ["Python", "TypeScript", "Pydantic", "FastAPI"],
+    targetUser: "AI Engineers, Data Scientists, and Backend Developers building generative AI apps.",
+    keyFeatures: ["Modular components", "Pre-built chains", "Vector store integrations", "Agent orchestration"],
+    impact: "Became the industry standard framework for building LLM applications, powering thousands of production AI systems.",
+    guide: [
+      { step: 1, title: "Install", description: "Run 'pip install langchain' or 'npm install langchain' in your terminal." },
+      { step: 2, title: "Set API Keys", description: "Export your LLM provider API keys (e.g., OPENAI_API_KEY) in your environment variables." },
+      { step: 3, title: "Build a Chain", description: "Import a PromptTemplate and an LLM, create a standard LCEL (LangChain Expression Language) pipeline, and invoke it with your inputs." }
+    ]
   },
   {
     id: "tool-4",
@@ -94,11 +135,24 @@ export const TOOLS: Tool[] = [
     pricing: "Free",
     isOpenSource: true,
     platform: ["macOS", "Windows", "Linux"],
-    categoryId: "cat-3", // LLM
+    categoryId: "cat-3",
     tags: ["local", "terminal"],
     lastUpdated: new Date().toISOString(),
     featured: true,
     createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://ollama.com"),
+    problem: "Running advanced LLMs locally is highly technical, requiring complex environment setups, dependency management, and hardware configuration.",
+    solution: "A streamlined CLI and background service that packages models, weights, and dependencies into a single, easily runnable container-like format.",
+    challenge: "Optimizing inference performance across diverse consumer hardware (Apple Silicon, Nvidia GPUs, AMD) while keeping the UX incredibly simple.",
+    techChoices: ["Go", "C++", "llama.cpp"],
+    targetUser: "Developers, Researchers, and Privacy-conscious users.",
+    keyFeatures: ["One-command model execution", "REST API", "Modelfiles for customization", "Cross-platform hardware acceleration"],
+    impact: "Democratized access to open-weight models, allowing anyone with a modern laptop to experiment with AI without cloud costs or privacy risks.",
+    guide: [
+      { step: 1, title: "Download", description: "Download the executable for your OS from ollama.com and install it." },
+      { step: 2, title: "Run a Model", description: "Open your terminal and type 'ollama run llama3'. It will automatically download the weights and start an interactive chat." },
+      { step: 3, title: "Use the API", description: "Send a POST request to 'http://localhost:11434/api/generate' to integrate the local model into your own applications." }
+    ]
   },
   {
     id: "tool-5",
@@ -109,11 +163,24 @@ export const TOOLS: Tool[] = [
     pricing: "Freemium",
     isOpenSource: false,
     platform: ["Web", "API"],
-    categoryId: "cat-12", // Vector Database
+    categoryId: "cat-12",
     tags: ["serverless", "rag"],
     lastUpdated: new Date().toISOString(),
     featured: false,
     createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://pinecone.io"),
+    problem: "Traditional databases are not optimized for similarity search on high-dimensional vector embeddings, a core requirement for Retrieval-Augmented Generation (RAG).",
+    solution: "A fully managed, purpose-built vector database designed for lightning-fast similarity search at massive scale with zero infrastructure overhead.",
+    challenge: "Ensuring low-latency search across billions of vectors while providing strong consistency and a seamless serverless developer experience.",
+    techChoices: ["Rust", "Kubernetes", "AWS/GCP/Azure Infrastructure"],
+    targetUser: "AI Application Developers and Machine Learning Engineers.",
+    keyFeatures: ["Serverless architecture", "Ultra-low latency", "Hybrid search (sparse + dense)", "Live index updates"],
+    impact: "Powered the generative AI boom by providing the reliable memory layer required for enterprise-grade RAG applications.",
+    guide: [
+      { step: 1, title: "Create an Index", description: "Sign up at pinecone.io and create a new serverless index. Specify the dimension size that matches your embedding model (e.g., 1536 for OpenAI)." },
+      { step: 2, title: "Upsert Vectors", description: "Use the Pinecone SDK to upload your text embeddings along with relevant metadata." },
+      { step: 3, title: "Query", description: "Send a query vector to the index to retrieve the top-K most similar documents for your RAG pipeline." }
+    ]
   },
   {
     id: "tool-6",
@@ -124,11 +191,24 @@ export const TOOLS: Tool[] = [
     pricing: "Free",
     isOpenSource: true,
     platform: ["API"],
-    categoryId: "cat-5", // MCP Server
+    categoryId: "cat-5",
     tags: ["typescript"],
     lastUpdated: new Date().toISOString(),
     featured: false,
     createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://modelcontextprotocol.io"),
+    problem: "AI agents struggle to accurately generate UI components that strictly adhere to a company's specific, proprietary design system.",
+    solution: "An MCP server that exposes design tokens, component libraries, and style guidelines directly to LLMs during the generation process.",
+    challenge: "Standardizing complex, varied design systems into a structured format that an LLM can parse and reliably utilize in zero-shot generation.",
+    techChoices: ["TypeScript", "Model Context Protocol", "Node.js"],
+    targetUser: "Frontend Developers and UI/UX Designers building AI-integrated apps.",
+    keyFeatures: ["Design token injection", "Component schema validation", "Real-time style syncing", "Open MCP standard"],
+    impact: "Bridges the gap between raw AI generation and production-ready, brand-compliant user interfaces.",
+    guide: [
+      { step: 1, title: "Install Server", description: "Clone the StitchMCP repository and run 'npm install' then 'npm run build'." },
+      { step: 2, title: "Configure Client", description: "Add the server to your Claude Desktop config file or your custom agent's MCP connections list." },
+      { step: 3, title: "Prompt the Agent", description: "Ask your AI to 'Generate a login form using the current design system'. The agent will query StitchMCP for the exact tokens." }
+    ]
   },
   {
     id: "tool-7",
@@ -139,11 +219,24 @@ export const TOOLS: Tool[] = [
     pricing: "Paid",
     isOpenSource: false,
     platform: ["Discord", "Web"],
-    categoryId: "cat-6", // Image Generation
+    categoryId: "cat-6",
     tags: [],
     lastUpdated: new Date().toISOString(),
     featured: true,
     createdAt: new Date().toISOString(),
+    screenshotUrl: "/midjourney.png",
+    problem: "Creating high-quality, artistic, and photorealistic digital imagery traditionally requires immense technical skill, software, and time.",
+    solution: "A cutting-edge generative AI model accessible via Discord and Web that translates natural language prompts into stunning visual art in seconds.",
+    challenge: "Balancing artistic stylization with photorealism while managing a massive compute cluster to serve millions of simultaneous users.",
+    techChoices: ["Custom Diffusion Models", "Discord API", "Proprietary GPU Clusters"],
+    targetUser: "Artists, Designers, Marketers, and Creative Professionals.",
+    keyFeatures: ["V6 photorealism", "Style tuning", "Inpainting/Outpainting", "Consistent character generation"],
+    impact: "Revolutionized the creative industry, enabling rapid concept art, marketing material generation, and entirely new forms of digital expression.",
+    guide: [
+      { step: 1, title: "Join the Discord", description: "Sign up for a Midjourney subscription and join their official Discord server." },
+      { step: 2, title: "Use /imagine", description: "Type '/imagine prompt:' followed by a detailed description of the image you want to generate." },
+      { step: 3, title: "Upscale and Vary", description: "Use the U1-U4 buttons to upscale your favorite result, or V1-V4 to create variations of a specific grid image." }
+    ]
   },
   {
     id: "tool-8",
@@ -154,11 +247,24 @@ export const TOOLS: Tool[] = [
     pricing: "Freemium",
     isOpenSource: false,
     platform: ["Web"],
-    categoryId: "cat-7", // Video Generation
+    categoryId: "cat-7",
     tags: [],
     lastUpdated: new Date().toISOString(),
     featured: false,
     createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://runwayml.com"),
+    problem: "Video production and VFX are incredibly resource-intensive, requiring expensive equipment, studios, and specialized editing skills.",
+    solution: "A web-based creative suite featuring advanced Gen-2 and Gen-3 models that can generate video from text, images, or existing video, alongside automated editing tools.",
+    challenge: "Achieving temporal consistency in AI-generated video (preventing flickering and morphing) while keeping rendering times reasonable.",
+    techChoices: ["WebGL", "Custom Video Diffusion Models", "React"],
+    targetUser: "Filmmakers, Video Editors, and Content Creators.",
+    keyFeatures: ["Text-to-Video", "Image-to-Video", "Motion Brush", "AI Magic Tools (rotoscoping, inpainting)"],
+    impact: "Pioneered generative video, empowering independent creators to produce cinematic content that previously required Hollywood budgets.",
+    guide: [
+      { step: 1, title: "Sign Up", description: "Create a free account on the Runway web app." },
+      { step: 2, title: "Select a Model", description: "Choose Gen-3 Alpha for the highest quality text-to-video or image-to-video generation." },
+      { step: 3, title: "Prompt and Generate", description: "Upload a starting image or write a descriptive prompt (e.g., 'A cinematic pan over a futuristic city'). Click generate and wait for the video." }
+    ]
   },
   {
     id: "tool-9",
@@ -169,11 +275,24 @@ export const TOOLS: Tool[] = [
     pricing: "Freemium",
     isOpenSource: false,
     platform: ["Web", "API"],
-    categoryId: "cat-8", // Audio AI
+    categoryId: "cat-8",
     tags: [],
     lastUpdated: new Date().toISOString(),
     featured: false,
     createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://elevenlabs.io"),
+    problem: "Traditional Text-to-Speech (TTS) voices sound robotic, lack emotional nuance, and cannot dynamically adjust intonation based on context.",
+    solution: "A deep learning model capable of generating highly realistic, emotionally expressive, and context-aware human speech from text.",
+    challenge: "Capturing the subtle nuances of human emotion, breathing, and pacing without requiring manual pitch and speed adjustments from the user.",
+    techChoices: ["Proprietary Audio Deep Learning Models", "Python", "FastAPI"],
+    targetUser: "Game Developers, Audiobook Creators, and Video Producers.",
+    keyFeatures: ["Voice cloning", "Emotional range control", "Multi-lingual generation", "Low-latency streaming API"],
+    impact: "Transformed digital audio, making high-quality voiceovers instantly accessible for gaming, accessibility, and content creation.",
+    guide: [
+      { step: 1, title: "Pick a Voice", description: "Log in to the dashboard and browse the Voice Library to find a voice that matches your use case." },
+      { step: 2, title: "Input Text", description: "Paste your script into the Speech Synthesis text box. Adjust the 'Stability' and 'Similarity' sliders if needed." },
+      { step: 3, title: "Generate and Download", description: "Click generate to hear the audio. If it sounds good, click the download button to get the MP3 file." }
+    ]
   },
   {
     id: "tool-10",
@@ -185,11 +304,308 @@ export const TOOLS: Tool[] = [
     pricing: "Free",
     isOpenSource: true,
     platform: ["TypeScript", "React"],
-    categoryId: "cat-10", // Deployment
+    categoryId: "cat-10",
     tags: ["react", "typescript"],
     lastUpdated: new Date().toISOString(),
     featured: true,
     createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://sdk.vercel.ai"),
+    problem: "Streaming AI responses to the frontend while managing UI state, loading states, and tool-calling is complex and prone to boilerplate.",
+    solution: "A unified, framework-agnostic SDK that abstracts away the complexities of streaming UI, function calling, and provider switching.",
+    challenge: "Providing a unified API that seamlessly supports multiple model providers (OpenAI, Anthropic, Google) while integrating deeply with React Server Components.",
+    techChoices: ["TypeScript", "React Server Components", "Web Streams API"],
+    targetUser: "Frontend and Full Stack Developers.",
+    keyFeatures: ["useChat and useCompletion hooks", "Generative UI support", "Unified provider API", "Edge-compatible streaming"],
+    impact: "Dramatically accelerated the development of web-based AI interfaces by providing standard abstractions for streaming and state management.",
+    guide: [
+      { step: 1, title: "Install", description: "Run 'npm install ai @ai-sdk/openai' in your Next.js project." },
+      { step: 2, title: "Create API Route", description: "Create an App Router API endpoint that imports 'streamText' and returns its response using the provider." },
+      { step: 3, title: "Connect Frontend", description: "Use the 'useChat' hook in your client component to automatically handle message state, input bindings, and streaming updates." }
+    ]
+  },
+  {
+    id: "tool-11",
+    name: "ChatGPT",
+    slug: "chatgpt",
+    description: "The most widely used conversational AI. Fast, versatile, and continually updated with the latest GPT models.",
+    website: "https://chat.openai.com",
+    pricing: "Freemium",
+    isOpenSource: false,
+    platform: ["Web", "iOS", "Android"],
+    categoryId: "cat-3",
+    tags: ["python", "typescript"],
+    lastUpdated: new Date().toISOString(),
+    featured: true,
+    createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://openai.com/chatgpt"),
+    problem: "People and developers need an accessible, general-purpose intelligence interface for brainstorming, writing, coding, and problem-solving without writing API code.",
+    solution: "A highly optimized conversational interface built on top of state-of-the-art GPT models, offering multimodal capabilities (vision, audio, data analysis) out of the box.",
+    challenge: "Scaling to hundreds of millions of daily active users while maintaining low latency, preventing harmful outputs, and managing massive GPU clusters.",
+    techChoices: ["GPT-4", "React", "Next.js", "Python", "Kubernetes"],
+    targetUser: "Everyone (Developers, Writers, Students, Professionals).",
+    keyFeatures: ["Advanced Data Analysis", "Custom GPTs", "Voice Mode", "Web Browsing"],
+    impact: "Kickstarted the generative AI revolution in late 2022, becoming the fastest-growing consumer application in history.",
+    guide: [
+      { step: 1, title: "Create an Account", description: "Go to chatgpt.com and sign up." },
+      { step: 2, title: "Start Prompting", description: "Type a question or instruction in the chat box. Be specific about the format and tone you want." },
+      { step: 3, title: "Use Advanced Features", description: "Click the attachment icon to upload documents for analysis, or use the mobile app to try the real-time Voice Mode." }
+    ]
+  },
+  {
+    id: "tool-12",
+    name: "Claude",
+    slug: "claude",
+    description: "A next-generation AI assistant built for work and trained to be safe, accurate, and secure.",
+    website: "https://claude.ai",
+    pricing: "Freemium",
+    isOpenSource: false,
+    platform: ["Web", "iOS", "Android"],
+    categoryId: "cat-3",
+    tags: ["python", "typescript"],
+    lastUpdated: new Date().toISOString(),
+    featured: true,
+    createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://anthropic.com/claude"),
+    problem: "Enterprise users need AI models that suffer from fewer hallucinations, can process massive documents in a single prompt, and are highly steerable.",
+    solution: "An AI assistant powered by the Claude 3 model family, featuring a massive context window (200K+ tokens) and built using Constitutional AI for safer outputs.",
+    challenge: "Developing a training methodology (Constitutional AI) that allows the model to self-correct its behavior without relying solely on expensive human reinforcement learning.",
+    techChoices: ["Constitutional AI", "Claude 3.5 Sonnet", "React", "AWS Bedrock"],
+    targetUser: "Knowledge Workers, Researchers, and Developers.",
+    keyFeatures: ["Artifacts UI", "Massive context window", "Advanced reasoning", "High safety standards"],
+    impact: "Established a strong alternative to OpenAI, particularly favored by developers for coding tasks (via Sonnet 3.5) and document analysis.",
+    guide: [
+      { step: 1, title: "Log In", description: "Access claude.ai via your browser." },
+      { step: 2, title: "Upload Context", description: "Drag and drop massive PDFs, codebases, or datasets into the chat box to take advantage of the 200K token window." },
+      { step: 3, title: "Use Artifacts", description: "Ask Claude to 'build a React dashboard'. It will open a dedicated side-panel (Artifact) displaying the interactive generated code." }
+    ]
+  },
+  {
+    id: "tool-13",
+    name: "Windsurf",
+    slug: "windsurf",
+    description: "The first agentic IDE, designed to keep you in the flow. Powered by Codeium, it acts as a proactive pair programmer.",
+    website: "https://codeium.com/windsurf",
+    pricing: "Freemium",
+    isOpenSource: false,
+    platform: ["macOS", "Windows", "Linux"],
+    categoryId: "cat-1",
+    tags: ["editor", "copilot"],
+    lastUpdated: new Date().toISOString(),
+    featured: true,
+    createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://codeium.com/windsurf"),
+    problem: "Existing AI coding assistants are purely reactive—they wait for you to type or ask a question before providing help.",
+    solution: "An agentic IDE that proactively understands your entire codebase and intent, suggesting multi-file edits and anticipating your next moves seamlessly.",
+    challenge: "Building a context engine fast enough to index and understand a full repository in real-time without lagging the editor.",
+    techChoices: ["Codeium Engine", "Electron", "TypeScript", "Rust"],
+    targetUser: "Software Engineers looking for a deeply integrated, agentic workflow.",
+    keyFeatures: ["Agentic workflows", "Proactive suggestions", "Deep codebase indexing", "Familiar UI"],
+    impact: "Pushing the boundaries of what an IDE can do, moving from autocomplete to autonomous, supervised coding.",
+    guide: [
+      { step: 1, title: "Install Editor", description: "Download Windsurf from the official website and install it." },
+      { step: 2, title: "Import Settings", description: "Automatically migrate your VS Code settings, keybindings, and extensions during the initial setup." },
+      { step: 3, title: "Collaborate", description: "Open a file and watch as the agent proactively highlights areas for improvement or automatically completes complex refactoring tasks." }
+    ]
+  },
+  {
+    id: "tool-14",
+    name: "AutoGen",
+    slug: "autogen",
+    description: "A framework that enables the development of LLM applications using multiple agents that can converse with each other to solve tasks.",
+    website: "https://microsoft.github.io/autogen/",
+    github: "https://github.com/microsoft/autogen",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["Python"],
+    categoryId: "cat-4",
+    tags: ["python", "rag"],
+    lastUpdated: new Date().toISOString(),
+    featured: true,
+    createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://microsoft.github.io/autogen/"),
+    problem: "Single-agent LLM setups struggle with complex, multi-step tasks that require different personas, verification, and code execution.",
+    solution: "A framework that allows developers to define multiple specialized agents (e.g., a coder, a reviewer, a manager) that communicate to solve problems collaboratively.",
+    challenge: "Handling infinite conversation loops, error recovery during code execution, and managing context limits across multiple agents.",
+    techChoices: ["Python", "Docker for sandboxing", "OpenAI API"],
+    targetUser: "AI Researchers and Advanced Application Developers.",
+    keyFeatures: ["Multi-agent conversations", "Human-in-the-loop support", "Seamless code execution", "Customizable agent personas"],
+    impact: "Pioneered the multi-agent design pattern, proving that collaborative AI agents can solve tasks far more complex than single models.",
+    guide: [
+      { step: 1, title: "Install Package", description: "Run 'pip install pyautogen' in your Python environment." },
+      { step: 2, title: "Define Agents", description: "Create an AssistantAgent (the coder) and a UserProxyAgent (the executor/reviewer) in your script." },
+      { step: 3, title: "Initiate Chat", description: "Call 'user_proxy.initiate_chat()' with your task description. Watch as the agents converse, write code, and verify it automatically." }
+    ]
+  },
+  {
+    id: "tool-15",
+    name: "Perplexity",
+    slug: "perplexity",
+    description: "An AI-powered search engine that provides direct answers with citations instead of a list of links.",
+    website: "https://perplexity.ai",
+    pricing: "Freemium",
+    isOpenSource: false,
+    platform: ["Web", "iOS", "Android"],
+    categoryId: "cat-19",
+    tags: [],
+    lastUpdated: new Date().toISOString(),
+    featured: true,
+    createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://perplexity.ai"),
+    problem: "Traditional search engines force users to click through SEO-optimized articles and ads to find specific information.",
+    solution: "A conversational search engine that reads multiple sources in real-time, synthesizes the information, and provides a direct, cited answer.",
+    challenge: "Executing rapid concurrent web searches, scraping relevant text, and performing RAG (Retrieval-Augmented Generation) in under 2 seconds.",
+    techChoices: ["Custom RAG Pipeline", "Next.js", "Various LLMs (Claude, GPT-4, Sonar)"],
+    targetUser: "Researchers, Students, and Knowledge Workers.",
+    keyFeatures: ["Real-time web search", "Inline citations", "Pro search mode", "Focus modes (Academic, YouTube, etc.)"],
+    impact: "Challenged the traditional Google search monopoly by proving the viability and superior UX of answer-engine mechanics.",
+    guide: [
+      { step: 1, title: "Search", description: "Visit perplexity.ai and type a complex question instead of just keywords." },
+      { step: 2, title: "Review Citations", description: "Read the generated summary and hover over the footnote numbers to verify the source material." },
+      { step: 3, title: "Ask Follow-ups", description: "Continue the conversation in the same thread to drill down into specific details without losing context." }
+    ]
+  },
+  {
+    id: "tool-16",
+    name: "Hugging Face",
+    slug: "huggingface",
+    description: "The AI community building the future. The GitHub of machine learning, hosting hundreds of thousands of models and datasets.",
+    website: "https://huggingface.co",
+    github: "https://github.com/huggingface",
+    pricing: "Freemium",
+    isOpenSource: true,
+    platform: ["Web", "Python", "API"],
+    categoryId: "cat-10",
+    tags: ["python", "open-source"],
+    lastUpdated: new Date().toISOString(),
+    featured: true,
+    createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://huggingface.co"),
+    problem: "Machine learning models, datasets, and training code were fragmented across different platforms, making reproducibility and sharing difficult.",
+    solution: "A centralized hub (Model Hub) and unified open-source library (`transformers`) that standardize how models are shared, downloaded, and fine-tuned.",
+    challenge: "Hosting and serving petabytes of model weights and datasets globally while providing a seamless, Git-based version control experience.",
+    techChoices: ["Python", "PyTorch/TensorFlow", "Git LFS", "Inference Endpoints"],
+    targetUser: "Machine Learning Engineers, Data Scientists, and AI Researchers.",
+    keyFeatures: ["Model Hub", "Dataset Hub", "Spaces (Gradio/Streamlit hosting)", "Transformers library"],
+    impact: "Accelerated the open-source AI movement by orders of magnitude, becoming the undeniable central repository for global AI research.",
+    guide: [
+      { step: 1, title: "Find a Model", description: "Browse the Model Hub to find a pre-trained model for your task (e.g., text classification, image generation)." },
+      { step: 2, title: "Install Transformers", description: "Run 'pip install transformers' in your Python environment." },
+      { step: 3, title: "Load and Run", description: "Use the 'pipeline' API to download the model weights and run inference in just three lines of Python code." }
+    ]
+  },
+  {
+    id: "tool-17",
+    name: "Supabase",
+    slug: "supabase",
+    description: "The open source Firebase alternative. Build production-ready AI apps fast.",
+    website: "https://supabase.com",
+    github: "https://github.com/supabase/supabase",
+    pricing: "Freemium",
+    isOpenSource: true,
+    platform: ["Web", "API"],
+    categoryId: "cat-11",
+    tags: ["open-source", "typescript"],
+    lastUpdated: new Date().toISOString(),
+    featured: true,
+    createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://supabase.com"),
+    problem: "Setting up a Postgres database with authentication, storage, and real-time capabilities takes weeks of backend boilerplate.",
+    solution: "A Backend-as-a-Service that provides a dedicated Postgres database, instant APIs, authentication, and vector storage out of the box.",
+    challenge: "Scaling dedicated databases for millions of users while maintaining a developer experience as simple as Firebase.",
+    techChoices: ["PostgreSQL", "pgvector", "Elixir", "TypeScript"],
+    targetUser: "Full Stack Developers and Startup Founders.",
+    keyFeatures: ["Postgres Database", "Authentication", "Edge Functions", "pgvector support"],
+    impact: "Became the go-to backend for modern web and AI applications due to its open-source nature and robust SQL foundation.",
+    guide: [
+      { step: 1, title: "Create Project", description: "Sign in to Supabase and create a new project. You will get an instant Postgres database." },
+      { step: 2, title: "Create Tables", description: "Use the Table Editor UI to create tables for your users, or run SQL queries directly via the SQL Editor." },
+      { step: 3, title: "Connect Client", description: "Install '@supabase/supabase-js' in your frontend, initialize the client, and query your data directly from the UI safely." }
+    ]
+  },
+  {
+    id: "tool-18",
+    name: "v0",
+    slug: "v0",
+    description: "Generative UI by Vercel. Ship beautiful, accessible components in seconds.",
+    website: "https://v0.dev",
+    pricing: "Freemium",
+    isOpenSource: false,
+    platform: ["Web"],
+    categoryId: "cat-5",
+    tags: ["react", "typescript"],
+    lastUpdated: new Date().toISOString(),
+    featured: true,
+    createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://v0.dev"),
+    problem: "Writing boilerplate HTML, Tailwind classes, and React state for basic UI components is time-consuming and tedious.",
+    solution: "An AI system that translates natural language prompts or uploaded images directly into working, copy-pasteable React code using shadcn/ui.",
+    challenge: "Ensuring the generated code is not just visually appealing, but also accessible, responsive, and uses valid React state paradigms.",
+    techChoices: ["Next.js", "Tailwind CSS", "shadcn/ui", "Custom LLM Orchestration"],
+    targetUser: "Frontend Developers and Designers.",
+    keyFeatures: ["Text-to-UI", "Image-to-UI", "Iterative refinement", "One-click copy to codebase"],
+    impact: "Changed how developers prototype frontends, shifting the focus from writing markup to defining logic and UX.",
+    guide: [
+      { step: 1, title: "Prompt", description: "Visit v0.dev and type 'Create a modern pricing table with 3 tiers and a toggle for yearly billing'." },
+      { step: 2, title: "Refine", description: "Click on specific parts of the generated UI and prompt v0 to change colors, add icons, or modify the layout." },
+      { step: 3, title: "Copy Code", description: "Click the code button to copy the React and Tailwind implementation directly into your project." }
+    ]
+  },
+  {
+    id: "tool-19",
+    name: "Devin",
+    slug: "devin",
+    description: "The first fully autonomous AI software engineer.",
+    website: "https://cognition.ai",
+    pricing: "Paid",
+    isOpenSource: false,
+    platform: ["Web"],
+    categoryId: "cat-4",
+    tags: ["editor"],
+    lastUpdated: new Date().toISOString(),
+    featured: true,
+    createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://cognition.ai"),
+    problem: "Current AI coding tools act as assistants that require constant supervision and line-by-line prompting.",
+    solution: "An autonomous agent equipped with its own shell, code editor, and browser that can take a high-level goal and execute it end-to-end.",
+    challenge: "Planning long-horizon tasks, recovering from unexpected terminal errors, and maintaining focus over thousands of steps.",
+    techChoices: ["Proprietary LLM", "Sandboxed execution environments"],
+    targetUser: "Engineering Teams and Technical Founders.",
+    keyFeatures: ["Autonomous execution", "Integrated terminal", "Integrated browser", "End-to-end app deployment"],
+    impact: "Sparked the race for autonomous software engineers, proving that AI can resolve real GitHub issues and deploy apps independently.",
+    guide: [
+      { step: 1, title: "Assign a Task", description: "Give Devin a prompt like 'Build a snake game in React and deploy it to Netlify'." },
+      { step: 2, title: "Monitor Progress", description: "Watch in real-time as Devin opens its editor, writes code, runs npm commands, and debugs errors." },
+      { step: 3, title: "Review", description: "Check the final output, review the commits Devin made, and provide feedback for adjustments." }
+    ]
+  },
+  {
+    id: "tool-20",
+    name: "Llama 3",
+    slug: "llama-3",
+    description: "The most capable openly available LLM to date, built by Meta.",
+    website: "https://llama.meta.com",
+    github: "https://github.com/meta-llama/llama3",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["API", "Local"],
+    categoryId: "cat-3",
+    tags: ["open-source", "local"],
+    lastUpdated: new Date().toISOString(),
+    featured: true,
+    createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://llama.meta.com"),
+    problem: "Proprietary models create vendor lock-in, privacy concerns, and unpredictable pricing for enterprise applications.",
+    solution: "A family of state-of-the-art open-weight models (8B, 70B, 400B) that rival proprietary models in reasoning, math, and coding tasks.",
+    challenge: "Training massive models efficiently across tens of thousands of GPUs while ensuring post-training alignment produces safe but helpful responses.",
+    techChoices: ["PyTorch", "24K GPU Cluster", "Grouped Query Attention"],
+    targetUser: "AI Researchers, Developers, and Enterprises.",
+    keyFeatures: ["Open weights", "Exceptional reasoning", "High efficiency", "Broad ecosystem support"],
+    impact: "Tilted the balance of power back toward open source, allowing startups to build highly capable AI apps without relying on OpenAI APIs.",
+    guide: [
+      { step: 1, title: "Request Access", description: "Go to Meta's Llama website or Hugging Face to accept the license agreement and download the weights." },
+      { step: 2, title: "Run Locally", description: "Use tools like Ollama or LM Studio to load the 8B model natively on your Mac or PC." },
+      { step: 3, title: "Fine-tune", description: "Use libraries like Unsloth or Hugging Face PEFT to fine-tune the model on your proprietary company data." }
+    ]
   }
 ]
 
@@ -199,28 +615,28 @@ export const COLLECTIONS: Collection[] = [
     title: "Best AI Coding Tools",
     slug: "best-ai-coding-tools",
     description: "The most popular tools for software engineers to write code faster.",
-    toolIds: ["tool-1", "tool-2"]
+    toolIds: ["tool-1", "tool-2", "tool-13", "tool-19"]
   },
   {
     id: "col-2",
     title: "Best AI IDEs",
     slug: "best-ai-ides",
     description: "Fully featured integrated development environments built around AI.",
-    toolIds: ["tool-1"]
+    toolIds: ["tool-1", "tool-13"]
   },
   {
     id: "col-3",
     title: "Best Free AI",
     slug: "best-free-ai",
     description: "Powerful AI tools you can use completely for free.",
-    toolIds: ["tool-3", "tool-4", "tool-6", "tool-10"]
+    toolIds: ["tool-3", "tool-4", "tool-6", "tool-10", "tool-14", "tool-20"]
   },
   {
     id: "col-4",
     title: "Best Open Source AI",
     slug: "best-open-source-ai",
     description: "Support the community with these amazing open source projects.",
-    toolIds: ["tool-3", "tool-4", "tool-6", "tool-10"]
+    toolIds: ["tool-3", "tool-4", "tool-6", "tool-10", "tool-14", "tool-16", "tool-17", "tool-20"]
   },
   {
     id: "col-5",
@@ -234,13 +650,13 @@ export const COLLECTIONS: Collection[] = [
     title: "Best AI Agents",
     slug: "best-ai-agents",
     description: "Autonomous frameworks and systems to automate complex tasks.",
-    toolIds: ["tool-3"]
+    toolIds: ["tool-3", "tool-14", "tool-19"]
   },
   {
     id: "col-7",
     title: "Best AI for Students",
     slug: "best-ai-for-students",
     description: "Tools that are great for learning, researching, and writing code on a budget.",
-    toolIds: ["tool-1", "tool-4"]
+    toolIds: ["tool-1", "tool-4", "tool-11", "tool-15"]
   }
 ]
