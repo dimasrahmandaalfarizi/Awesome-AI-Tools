@@ -25,11 +25,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         <section className="border-b border-[var(--border)] bg-[var(--surface)]/30 pt-16 pb-12">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-8">
-              {/* Logo Placeholder */}
-              <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] flex items-center justify-center text-4xl font-bold text-white shadow-lg shrink-0">
-                {tool.name.charAt(0)}
-              </div>
-              
+
               <div className="flex-1 space-y-4">
                 <div className="flex items-center gap-3 flex-wrap">
                   <h1 className="text-4xl font-bold tracking-tight">{tool.name}</h1>
@@ -82,62 +78,108 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="md:col-span-2 space-y-16">
               
-              {/* Screenshots Mockup */}
-              <div>
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <div className="w-2 h-6 bg-[var(--primary)] rounded-full"></div> Gallery
-                </h2>
-                <div className="w-full aspect-video bg-[var(--surface)]/50 border border-[var(--border)] rounded-2xl overflow-hidden relative group">
-                  <div className="absolute inset-0 bg-[var(--primary)]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="flex items-center justify-center h-full text-[var(--muted)] flex-col gap-2">
-                    <div className="w-16 h-16 rounded-xl bg-[var(--background)] flex items-center justify-center border border-[var(--border)] shadow-lg">
-                      📸
-                    </div>
-                    <span>Screenshot Placeholder</span>
+              {/* Screenshot Preview */}
+              {tool.screenshotUrl && (
+                <div>
+                  <h2 className="text-2xl font-bold mb-6">Preview</h2>
+                  <div className="w-full aspect-video bg-[var(--surface)]/50 border border-[var(--border)] rounded-2xl overflow-hidden relative group shadow-sm">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img 
+                      src={tool.screenshotUrl} 
+                      alt={`Screenshot of ${tool.name}`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                    />
+                    <div className="absolute inset-0 bg-[var(--primary)]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </div>
                 </div>
-                <div className="flex gap-4 mt-4 overflow-x-auto pb-2">
-                  {[1, 2, 3].map(i => (
-                    <div key={i} className="w-32 h-20 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex-shrink-0 opacity-60 hover:opacity-100 cursor-pointer transition-opacity"></div>
-                  ))}
-                </div>
-              </div>
+              )}
 
-              <div>
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <div className="w-2 h-6 bg-[var(--primary)] rounded-full"></div> About {tool.name}
-                </h2>
-                <div className="prose prose-invert max-w-none text-[var(--muted)] space-y-4 leading-relaxed text-lg">
-                  <p>
-                    {tool.description} This is a placeholder for a more comprehensive description that would typically come from a database markdown field. It highlights the key features, use cases, and problems this tool solves for developers.
-                  </p>
-                  <p>
-                    The platform supports {tool.platform.join(", ")}, making it accessible for diverse development environments.
-                  </p>
-                </div>
-              </div>
-
+              {/* Problem & Solution */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="bg-green-500/5 border border-green-500/20 rounded-2xl p-6">
-                  <h3 className="font-semibold text-green-500 mb-4 flex items-center gap-2">
-                    <CheckCircle2 className="h-5 w-5" /> Pros
-                  </h3>
-                  <ul className="space-y-3 text-[var(--muted)] text-sm">
-                    <li>Excellent developer experience</li>
-                    <li>Fast and responsive interface</li>
-                    <li>Active community support</li>
-                  </ul>
+                <div>
+                  <h2 className="text-xl font-bold mb-4 text-[var(--muted)]">Problem</h2>
+                  <p className="text-lg leading-relaxed">{tool.problem || "Information not available."}</p>
                 </div>
-                <div className="bg-red-500/5 border border-red-500/20 rounded-2xl p-6">
-                  <h3 className="font-semibold text-red-500 mb-4 flex items-center gap-2">
-                    <X className="h-5 w-5" /> Cons
-                  </h3>
-                  <ul className="space-y-3 text-[var(--muted)] text-sm">
-                    <li>Steep learning curve for beginners</li>
-                    <li>Pricing can be expensive for large teams</li>
-                  </ul>
+                <div>
+                  <h2 className="text-xl font-bold mb-4 text-[var(--primary)]">Solution</h2>
+                  <p className="text-lg leading-relaxed">{tool.solution || "Information not available."}</p>
                 </div>
               </div>
+
+              {/* Challenge */}
+              <div>
+                <h2 className="text-2xl font-bold mb-6">Challenge</h2>
+                <div className="prose prose-invert max-w-none text-[var(--muted)] text-lg leading-relaxed">
+                  <p>{tool.challenge || "Information not available."}</p>
+                </div>
+              </div>
+
+              {/* Key Features & Tech Choices */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8">
+                  <h2 className="text-xl font-bold mb-6">Key Features</h2>
+                  <ul className="space-y-4">
+                    {(tool.keyFeatures || []).map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] mt-2 shrink-0"></div>
+                        <span className="text-[var(--muted)]">{feature}</span>
+                      </li>
+                    ))}
+                    {(!tool.keyFeatures || tool.keyFeatures.length === 0) && (
+                      <p className="text-[var(--muted)]">Features not listed.</p>
+                    )}
+                  </ul>
+                </div>
+
+                <div className="space-y-8">
+                  <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8">
+                    <h2 className="text-xl font-bold mb-6">Tech Choices</h2>
+                    <div className="flex flex-wrap gap-2">
+                      {(tool.techChoices || []).map((tech, i) => (
+                        <span key={i} className="px-3 py-1 bg-[var(--background)] border border-[var(--border)] rounded-full text-sm font-medium text-[var(--muted)]">
+                          {tech}
+                        </span>
+                      ))}
+                      {(!tool.techChoices || tool.techChoices.length === 0) && (
+                        <p className="text-[var(--muted)]">Tech stack not specified.</p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8">
+                    <h2 className="text-xl font-bold mb-4">Target User</h2>
+                    <p className="text-[var(--muted)]">{tool.targetUser || "General developers."}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Impact */}
+              <div className="border-t border-[var(--border)] pt-12">
+                <h2 className="text-2xl font-bold mb-6">Impact</h2>
+                <p className="text-xl leading-relaxed text-[var(--muted)] italic border-l-4 border-[var(--primary)] pl-6">
+                  "{tool.impact || "The impact of this tool is currently being measured by the community."}"
+                </p>
+              </div>
+              {/* Guide / How to Use */}
+              {tool.guide && tool.guide.length > 0 && (
+                <div className="border-t border-[var(--border)] pt-12">
+                  <h2 className="text-2xl font-bold mb-8">How to Use</h2>
+                  <div className="space-y-6">
+                    {tool.guide.map((step) => (
+                      <div key={step.step} className="flex gap-6">
+                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/20 flex items-center justify-center font-bold text-[var(--primary)]">
+                          {step.step}
+                        </div>
+                        <div className="pt-1.5">
+                          <h3 className="font-bold text-lg mb-2">{step.title}</h3>
+                          <p className="text-[var(--muted)] leading-relaxed">{step.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
             </div>
 
             <div className="space-y-8">

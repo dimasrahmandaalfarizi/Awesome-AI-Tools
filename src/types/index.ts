@@ -29,6 +29,19 @@ export interface Tool {
   lastUpdated: string
   featured: boolean
   createdAt: string
+  problem?: string
+  solution?: string
+  challenge?: string
+  techChoices?: string[]
+  targetUser?: string
+  keyFeatures?: string[]
+  impact?: string
+  screenshotUrl?: string
+  guide?: {
+    step: number;
+    title: string;
+    description: string;
+  }[]
 }
 
 export interface Collection {
@@ -37,4 +50,15 @@ export interface Collection {
   slug: string
   description: string
   toolIds: string[]
+}
+
+export interface AiSkill {
+  id: string
+  name: string
+  slug: string
+  description: string
+  frameworks: string[]
+  content: string
+  author?: string
+  createdAt: string
 }

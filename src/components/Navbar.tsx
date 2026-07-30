@@ -14,7 +14,7 @@ export function Navbar() {
             <Link href="/categories/llm" className="hover:text-[var(--foreground)] transition-colors">LLMs</Link>
             <Link href="/categories/coding-assistant" className="hover:text-[var(--foreground)] transition-colors">Coding</Link>
             <Link href="/categories/agent-framework" className="hover:text-[var(--foreground)] transition-colors">Agents</Link>
-            <Link href="/categories/image-generation" className="hover:text-[var(--foreground)] transition-colors">Images</Link>
+            <Link href="/skills" className="hover:text-[var(--foreground)] transition-colors text-[var(--primary)]">AI Skills</Link>
           </nav>
         </div>
 
