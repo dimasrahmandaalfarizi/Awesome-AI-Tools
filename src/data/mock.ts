@@ -21,6 +21,7 @@ export const CATEGORIES: Category[] = [
   { id: "cat-18", name: "Security", slug: "security", description: "Tools for AI safety, security, and vulnerability scanning.", createdAt: new Date().toISOString() },
   { id: "cat-19", name: "Research", slug: "research", description: "Tools for academic and industry AI research.", createdAt: new Date().toISOString() },
   { id: "cat-20", name: "Open Source", slug: "open-source", description: "A selection of purely open-source AI projects.", createdAt: new Date().toISOString() },
+  { id: "cat-21", name: "AI API Router", slug: "ai-api-router", description: "Local proxies and routing layers to manage multiple LLM APIs.", createdAt: new Date().toISOString() },
 ]
 
 export const TAGS: Tag[] = [
@@ -804,6 +805,35 @@ export const TOOLS: Tool[] = [
       { step: 1, title: "Install Toolkit", description: "Install the AWS Toolkit extension in your IDE." },
       { step: 2, title: "Authenticate", description: "Sign in using AWS Builder ID or your company's IAM Identity Center." },
       { step: 3, title: "Upgrade Code", description: "Use the Q Agent to automatically refactor and upgrade a legacy Java 8 application to Java 17." }
+    ]
+  },
+  {
+    id: "tool-28",
+    name: "9Router",
+    slug: "9router",
+    description: "An open-source, local proxy tool acting as a centralized routing layer for AI coding assistants.",
+    website: "https://github.com/decolua/9router",
+    github: "https://github.com/decolua/9router",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["Local", "Node.js", "Docker"],
+    categoryId: "cat-21",
+    tags: ["open-source", "local", "proxy"],
+    lastUpdated: new Date().toISOString(),
+    featured: true,
+    createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://github.com/decolua/9router"),
+    problem: "Developers use multiple AI coding tools (Cursor, Cline, Copilot) which require separate configuration of API keys and lack unified cost management or auto-fallback capabilities.",
+    solution: "A local OpenAI-compatible proxy (localhost:20128/v1) that routes requests from any AI coding tool to over 40 different API providers, featuring smart fallbacks and cost management.",
+    challenge: "Translating and unifying API formats across different providers (OpenAI, Anthropic, Gemini) and compressing massive token usage from verbose tool outputs (like git diffs).",
+    techChoices: ["Node.js", "Next.js", "React", "Tailwind CSS"],
+    targetUser: "Developers who use multiple AI coding assistants and want to optimize their API costs and workflows.",
+    keyFeatures: ["Centralized Routing", "Smart 3-tier auto-fallback", "RTK Token Saver (20-40% compression)", "Local Web Dashboard", "Format Translation"],
+    impact: "Provides developers with absolute control over their API usage and costs across all their AI coding tools, preventing vendor lock-in.",
+    guide: [
+      { step: 1, title: "Install Globally", description: "Run 'npm install -g 9router' in your terminal." },
+      { step: 2, title: "Start the Proxy", description: "Run '9router' and access the local web dashboard to configure your API keys." },
+      { step: 3, title: "Configure Assistants", description: "Set your AI coding assistants (like Cline or Cursor) to use 'http://localhost:20128/v1' as their OpenAI-compatible endpoint." }
     ]
   }
 ]
