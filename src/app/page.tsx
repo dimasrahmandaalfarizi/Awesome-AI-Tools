@@ -1,20 +1,16 @@
 "use client"
 
-import { useState } from "react"
 import { motion } from "framer-motion"
-import { Search, ArrowRight, Star, ExternalLink } from "lucide-react"
+import { ArrowRight, Star, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
 import { Button } from "@/components/ui/Button"
-import { Input } from "@/components/ui/Input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card"
 import { Badge } from "@/components/ui/Badge"
 import { CATEGORIES, TOOLS, COLLECTIONS } from "@/data/mock"
 
 export default function Home() {
-  const [searchQuery, setSearchQuery] = useState("")
-
   const featuredTools = TOOLS.filter(t => t.featured).slice(0, 6)
   
   return (
@@ -47,25 +43,40 @@ export default function Home() {
                 The largest curated collection of AI tools, frameworks, MCP servers, agents, and resources to supercharge your development workflow.
               </p>
 
-              {/* Search Bar */}
-              <form action="/search" className="relative max-w-2xl mx-auto mt-12 group">
-                <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                  <Search className="h-6 w-6 text-[var(--muted)] group-focus-within:text-[var(--primary)] transition-colors" />
+              {/* Library Usage Code Snippet */}
+              <div className="max-w-2xl mx-auto mt-12 text-left bg-[#0d1117] rounded-xl overflow-hidden border border-[#30363d] shadow-2xl">
+                <div className="flex items-center justify-between px-4 py-3 bg-[#161b22] border-b border-[#30363d]">
+                  <div className="flex space-x-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                  </div>
+                  <div className="text-xs font-mono text-gray-400">awesome-ai-tools</div>
+                  <div className="w-12"></div>
                 </div>
-                <Input
-                  type="text"
-                  name="q"
-                  placeholder="Search for tools, categories, or keywords (e.g. 'coding assistant', 'cursor')..."
-                  className="h-16 pl-14 pr-32 rounded-full text-lg shadow-md border-[var(--border)] bg-[var(--surface)] focus-visible:ring-[var(--primary)] transition-all"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <div className="absolute inset-y-2 right-2 flex items-center">
-                  <Button type="submit" className="rounded-full px-6 h-full font-semibold">
-                    Search
-                  </Button>
+                <div className="p-5 md:p-6 overflow-x-auto text-sm md:text-base font-mono text-gray-300 leading-relaxed">
+                  <div className="text-gray-500 mb-1">{"// 1. Install via NPM"}</div>
+                  <div className="mb-6 text-gray-100 font-semibold">
+                    <span className="text-pink-400">npm</span> install awesome-ai-tools
+                  </div>
+                  
+                  <div className="text-gray-500 mb-1">{"// 2. Import and use the data"}</div>
+                  <div>
+                    <span className="text-purple-400">import</span> {"{ getAllSkills, getAllTools }"} <span className="text-purple-400">from</span> <span className="text-green-300">'awesome-ai-tools'</span>;
+                  </div>
+                  <br />
+                  <div>
+                    <span className="text-purple-400">const</span> skills = <span className="text-blue-300">getAllSkills</span>();
+                  </div>
+                  <div>
+                    <span className="text-purple-400">const</span> tools = <span className="text-blue-300">getAllTools</span>();
+                  </div>
+                  <br />
+                  <div>
+                    <span className="text-blue-300">console</span>.<span className="text-blue-300">log</span>(<span className="text-green-300">`Loaded </span><span className="text-purple-400">${"{"}</span>skills.length<span className="text-purple-400">{"}"}</span><span className="text-green-300"> AI workflows!`</span>);
+                  </div>
                 </div>
-              </form>
+              </div>
             </motion.div>
           </div>
         </section>

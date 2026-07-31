@@ -1,29 +1,27 @@
-import { Category, Tool, Collection, Tag, AiSkill } from "@/types"
-
-export const CATEGORIES: Category[] = [
-  { id: "cat-1", name: "AI IDE", slug: "ai-ide", description: "Integrated Development Environments with native AI capabilities.", createdAt: new Date().toISOString() },
-  { id: "cat-2", name: "Coding Assistant", slug: "coding-assistant", description: "Tools that assist with writing, reviewing, and debugging code.", createdAt: new Date().toISOString() },
-  { id: "cat-3", name: "LLM", slug: "llm", description: "Large Language Models and related tooling.", createdAt: new Date().toISOString() },
-  { id: "cat-4", name: "Agent Framework", slug: "agent-framework", description: "Frameworks for building autonomous AI agents.", createdAt: new Date().toISOString() },
-  { id: "cat-5", name: "MCP Server", slug: "mcp-server", description: "Model Context Protocol servers and implementations.", createdAt: new Date().toISOString() },
-  { id: "cat-6", name: "Image Generation", slug: "image-generation", description: "Tools to generate and edit images using AI.", createdAt: new Date().toISOString() },
-  { id: "cat-7", name: "Video Generation", slug: "video-generation", description: "Tools to generate and edit video using AI.", createdAt: new Date().toISOString() },
-  { id: "cat-8", name: "Audio AI", slug: "audio-ai", description: "Text-to-speech, speech-to-text, and audio generation tools.", createdAt: new Date().toISOString() },
-  { id: "cat-9", name: "Prompt Engineering", slug: "prompt-engineering", description: "Tools for managing, testing, and optimizing prompts.", createdAt: new Date().toISOString() },
-  { id: "cat-10", name: "Deployment", slug: "deployment", description: "Infrastructure and tools for deploying AI models.", createdAt: new Date().toISOString() },
-  { id: "cat-11", name: "Database", slug: "database", description: "AI-enhanced databases and related tooling.", createdAt: new Date().toISOString() },
-  { id: "cat-12", name: "Vector Database", slug: "vector-database", description: "Databases optimized for storing and querying vector embeddings.", createdAt: new Date().toISOString() },
-  { id: "cat-13", name: "Automation", slug: "automation", description: "Tools for automating workflows with AI.", createdAt: new Date().toISOString() },
-  { id: "cat-14", name: "Browser AI", slug: "browser-ai", description: "Browser extensions and web automation AI.", createdAt: new Date().toISOString() },
-  { id: "cat-15", name: "Productivity", slug: "productivity", description: "General productivity tools supercharged with AI.", createdAt: new Date().toISOString() },
-  { id: "cat-16", name: "Documentation", slug: "documentation", description: "Tools for generating and managing technical documentation.", createdAt: new Date().toISOString() },
-  { id: "cat-17", name: "Testing", slug: "testing", description: "AI-powered testing and QA tools.", createdAt: new Date().toISOString() },
-  { id: "cat-18", name: "Security", slug: "security", description: "Tools for AI safety, security, and vulnerability scanning.", createdAt: new Date().toISOString() },
-  { id: "cat-19", name: "Research", slug: "research", description: "Tools for academic and industry AI research.", createdAt: new Date().toISOString() },
-  { id: "cat-20", name: "Open Source", slug: "open-source", description: "A selection of purely open-source AI projects.", createdAt: new Date().toISOString() },
-]
-
-export const TAGS: Tag[] = [
+// src/data/mock.ts
+var CATEGORIES = [
+  { id: "cat-1", name: "AI IDE", slug: "ai-ide", description: "Integrated Development Environments with native AI capabilities.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-2", name: "Coding Assistant", slug: "coding-assistant", description: "Tools that assist with writing, reviewing, and debugging code.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-3", name: "LLM", slug: "llm", description: "Large Language Models and related tooling.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-4", name: "Agent Framework", slug: "agent-framework", description: "Frameworks for building autonomous AI agents.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-5", name: "MCP Server", slug: "mcp-server", description: "Model Context Protocol servers and implementations.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-6", name: "Image Generation", slug: "image-generation", description: "Tools to generate and edit images using AI.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-7", name: "Video Generation", slug: "video-generation", description: "Tools to generate and edit video using AI.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-8", name: "Audio AI", slug: "audio-ai", description: "Text-to-speech, speech-to-text, and audio generation tools.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-9", name: "Prompt Engineering", slug: "prompt-engineering", description: "Tools for managing, testing, and optimizing prompts.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-10", name: "Deployment", slug: "deployment", description: "Infrastructure and tools for deploying AI models.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-11", name: "Database", slug: "database", description: "AI-enhanced databases and related tooling.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-12", name: "Vector Database", slug: "vector-database", description: "Databases optimized for storing and querying vector embeddings.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-13", name: "Automation", slug: "automation", description: "Tools for automating workflows with AI.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-14", name: "Browser AI", slug: "browser-ai", description: "Browser extensions and web automation AI.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-15", name: "Productivity", slug: "productivity", description: "General productivity tools supercharged with AI.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-16", name: "Documentation", slug: "documentation", description: "Tools for generating and managing technical documentation.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-17", name: "Testing", slug: "testing", description: "AI-powered testing and QA tools.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-18", name: "Security", slug: "security", description: "Tools for AI safety, security, and vulnerability scanning.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-19", name: "Research", slug: "research", description: "Tools for academic and industry AI research.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-20", name: "Open Source", slug: "open-source", description: "A selection of purely open-source AI projects.", createdAt: (/* @__PURE__ */ new Date()).toISOString() }
+];
+var TAGS = [
   { id: "tag-1", name: "Copilot", slug: "copilot" },
   { id: "tag-2", name: "Editor", slug: "editor" },
   { id: "tag-3", name: "Python", slug: "python" },
@@ -33,12 +31,10 @@ export const TAGS: Tag[] = [
   { id: "tag-7", name: "Terminal", slug: "terminal" },
   { id: "tag-8", name: "RAG", slug: "rag" },
   { id: "tag-9", name: "Open Source", slug: "open-source" },
-  { id: "tag-10", name: "Serverless", slug: "serverless" },
-]
-
-const getScreenshot = (url: string) => `https://image.thum.io/get/width/1200/crop/800/${url}`
-
-export const TOOLS: Tool[] = [
+  { id: "tag-10", name: "Serverless", slug: "serverless" }
+];
+var getScreenshot = (url) => `https://image.thum.io/get/width/1200/crop/800/${url}`;
+var TOOLS = [
   {
     id: "tool-1",
     name: "Cursor",
@@ -51,9 +47,9 @@ export const TOOLS: Tool[] = [
     platform: ["macOS", "Windows", "Linux"],
     categoryId: "cat-1",
     tags: ["editor", "copilot"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://cursor.com"),
     problem: "Developers spend too much time writing boilerplate code, navigating large codebases to find context, and switching between their editor and browser to search for solutions.",
     solution: "Cursor integrates advanced AI models directly into a familiar VS Code-forked environment, enabling real-time code generation, intelligent codebase-aware Q&A, and autonomous multi-file editing via Composer.",
@@ -79,9 +75,9 @@ export const TOOLS: Tool[] = [
     platform: ["VS Code", "JetBrains", "Neovim"],
     categoryId: "cat-2",
     tags: ["copilot"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://github.com/features/copilot"),
     problem: "Context switching and looking up documentation interrupts the developer flow state, leading to decreased productivity.",
     solution: "A deeply integrated AI extension that provides real-time, context-aware code completions and suggestions directly in the editor as you type.",
@@ -108,9 +104,9 @@ export const TOOLS: Tool[] = [
     platform: ["Python", "TypeScript"],
     categoryId: "cat-4",
     tags: ["python", "typescript", "rag"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://langchain.com"),
     problem: "Building complex applications with Large Language Models requires orchestrating multiple calls, managing state, and integrating with external data sources, which is tedious and repetitive.",
     solution: "A comprehensive open-source framework providing standardized abstractions for chains, agents, memory, and data retrieval (RAG).",
@@ -137,9 +133,9 @@ export const TOOLS: Tool[] = [
     platform: ["macOS", "Windows", "Linux"],
     categoryId: "cat-3",
     tags: ["local", "terminal"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://ollama.com"),
     problem: "Running advanced LLMs locally is highly technical, requiring complex environment setups, dependency management, and hardware configuration.",
     solution: "A streamlined CLI and background service that packages models, weights, and dependencies into a single, easily runnable container-like format.",
@@ -165,9 +161,9 @@ export const TOOLS: Tool[] = [
     platform: ["Web", "API"],
     categoryId: "cat-12",
     tags: ["serverless", "rag"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: false,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://pinecone.io"),
     problem: "Traditional databases are not optimized for similarity search on high-dimensional vector embeddings, a core requirement for Retrieval-Augmented Generation (RAG).",
     solution: "A fully managed, purpose-built vector database designed for lightning-fast similarity search at massive scale with zero infrastructure overhead.",
@@ -193,9 +189,9 @@ export const TOOLS: Tool[] = [
     platform: ["API"],
     categoryId: "cat-5",
     tags: ["typescript"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: false,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://modelcontextprotocol.io"),
     problem: "AI agents struggle to accurately generate UI components that strictly adhere to a company's specific, proprietary design system.",
     solution: "An MCP server that exposes design tokens, component libraries, and style guidelines directly to LLMs during the generation process.",
@@ -221,9 +217,9 @@ export const TOOLS: Tool[] = [
     platform: ["Discord", "Web"],
     categoryId: "cat-6",
     tags: [],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: "/midjourney.png",
     problem: "Creating high-quality, artistic, and photorealistic digital imagery traditionally requires immense technical skill, software, and time.",
     solution: "A cutting-edge generative AI model accessible via Discord and Web that translates natural language prompts into stunning visual art in seconds.",
@@ -249,9 +245,9 @@ export const TOOLS: Tool[] = [
     platform: ["Web"],
     categoryId: "cat-7",
     tags: [],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: false,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://runwayml.com"),
     problem: "Video production and VFX are incredibly resource-intensive, requiring expensive equipment, studios, and specialized editing skills.",
     solution: "A web-based creative suite featuring advanced Gen-2 and Gen-3 models that can generate video from text, images, or existing video, alongside automated editing tools.",
@@ -277,9 +273,9 @@ export const TOOLS: Tool[] = [
     platform: ["Web", "API"],
     categoryId: "cat-8",
     tags: [],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: false,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://elevenlabs.io"),
     problem: "Traditional Text-to-Speech (TTS) voices sound robotic, lack emotional nuance, and cannot dynamically adjust intonation based on context.",
     solution: "A deep learning model capable of generating highly realistic, emotionally expressive, and context-aware human speech from text.",
@@ -306,9 +302,9 @@ export const TOOLS: Tool[] = [
     platform: ["TypeScript", "React"],
     categoryId: "cat-10",
     tags: ["react", "typescript"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://sdk.vercel.ai"),
     problem: "Streaming AI responses to the frontend while managing UI state, loading states, and tool-calling is complex and prone to boilerplate.",
     solution: "A unified, framework-agnostic SDK that abstracts away the complexities of streaming UI, function calling, and provider switching.",
@@ -334,9 +330,9 @@ export const TOOLS: Tool[] = [
     platform: ["Web", "iOS", "Android"],
     categoryId: "cat-3",
     tags: ["python", "typescript"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://openai.com/chatgpt"),
     problem: "People and developers need an accessible, general-purpose intelligence interface for brainstorming, writing, coding, and problem-solving without writing API code.",
     solution: "A highly optimized conversational interface built on top of state-of-the-art GPT models, offering multimodal capabilities (vision, audio, data analysis) out of the box.",
@@ -362,9 +358,9 @@ export const TOOLS: Tool[] = [
     platform: ["Web", "iOS", "Android"],
     categoryId: "cat-3",
     tags: ["python", "typescript"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://anthropic.com/claude"),
     problem: "Enterprise users need AI models that suffer from fewer hallucinations, can process massive documents in a single prompt, and are highly steerable.",
     solution: "An AI assistant powered by the Claude 3 model family, featuring a massive context window (200K+ tokens) and built using Constitutional AI for safer outputs.",
@@ -390,11 +386,11 @@ export const TOOLS: Tool[] = [
     platform: ["macOS", "Windows", "Linux"],
     categoryId: "cat-1",
     tags: ["editor", "copilot"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://codeium.com/windsurf"),
-    problem: "Existing AI coding assistants are purely reactive—they wait for you to type or ask a question before providing help.",
+    problem: "Existing AI coding assistants are purely reactive\u2014they wait for you to type or ask a question before providing help.",
     solution: "An agentic IDE that proactively understands your entire codebase and intent, suggesting multi-file edits and anticipating your next moves seamlessly.",
     challenge: "Building a context engine fast enough to index and understand a full repository in real-time without lagging the editor.",
     techChoices: ["Codeium Engine", "Electron", "TypeScript", "Rust"],
@@ -419,9 +415,9 @@ export const TOOLS: Tool[] = [
     platform: ["Python"],
     categoryId: "cat-4",
     tags: ["python", "rag"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://microsoft.github.io/autogen/"),
     problem: "Single-agent LLM setups struggle with complex, multi-step tasks that require different personas, verification, and code execution.",
     solution: "A framework that allows developers to define multiple specialized agents (e.g., a coder, a reviewer, a manager) that communicate to solve problems collaboratively.",
@@ -447,9 +443,9 @@ export const TOOLS: Tool[] = [
     platform: ["Web", "iOS", "Android"],
     categoryId: "cat-19",
     tags: [],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://perplexity.ai"),
     problem: "Traditional search engines force users to click through SEO-optimized articles and ads to find specific information.",
     solution: "A conversational search engine that reads multiple sources in real-time, synthesizes the information, and provides a direct, cited answer.",
@@ -476,9 +472,9 @@ export const TOOLS: Tool[] = [
     platform: ["Web", "Python", "API"],
     categoryId: "cat-10",
     tags: ["python", "open-source"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://huggingface.co"),
     problem: "Machine learning models, datasets, and training code were fragmented across different platforms, making reproducibility and sharing difficult.",
     solution: "A centralized hub (Model Hub) and unified open-source library (`transformers`) that standardize how models are shared, downloaded, and fine-tuned.",
@@ -505,9 +501,9 @@ export const TOOLS: Tool[] = [
     platform: ["Web", "API"],
     categoryId: "cat-11",
     tags: ["open-source", "typescript"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://supabase.com"),
     problem: "Setting up a Postgres database with authentication, storage, and real-time capabilities takes weeks of backend boilerplate.",
     solution: "A Backend-as-a-Service that provides a dedicated Postgres database, instant APIs, authentication, and vector storage out of the box.",
@@ -533,9 +529,9 @@ export const TOOLS: Tool[] = [
     platform: ["Web"],
     categoryId: "cat-5",
     tags: ["react", "typescript"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://v0.dev"),
     problem: "Writing boilerplate HTML, Tailwind classes, and React state for basic UI components is time-consuming and tedious.",
     solution: "An AI system that translates natural language prompts or uploaded images directly into working, copy-pasteable React code using shadcn/ui.",
@@ -561,9 +557,9 @@ export const TOOLS: Tool[] = [
     platform: ["Web"],
     categoryId: "cat-4",
     tags: ["editor"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://cognition.ai"),
     problem: "Current AI coding tools act as assistants that require constant supervision and line-by-line prompting.",
     solution: "An autonomous agent equipped with its own shell, code editor, and browser that can take a high-level goal and execute it end-to-end.",
@@ -590,9 +586,9 @@ export const TOOLS: Tool[] = [
     platform: ["API", "Local"],
     categoryId: "cat-3",
     tags: ["open-source", "local"],
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
     featured: true,
-    createdAt: new Date().toISOString(),
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
     screenshotUrl: getScreenshot("https://llama.meta.com"),
     problem: "Proprietary models create vendor lock-in, privacy concerns, and unpredictable pricing for enterprise applications.",
     solution: "A family of state-of-the-art open-weight models (8B, 70B, 400B) that rival proprietary models in reasoning, math, and coding tasks.",
@@ -606,209 +602,9 @@ export const TOOLS: Tool[] = [
       { step: 2, title: "Run Locally", description: "Use tools like Ollama or LM Studio to load the 8B model natively on your Mac or PC." },
       { step: 3, title: "Fine-tune", description: "Use libraries like Unsloth or Hugging Face PEFT to fine-tune the model on your proprietary company data." }
     ]
-  },
-  {
-    id: "tool-21",
-    name: "Supermaven",
-    slug: "supermaven",
-    description: "The fastest AI copilot with a massive 1-million-token context window.",
-    website: "https://supermaven.com",
-    pricing: "Freemium",
-    isOpenSource: false,
-    platform: ["VS Code", "JetBrains", "Neovim"],
-    categoryId: "cat-2",
-    tags: ["copilot", "editor"],
-    lastUpdated: new Date().toISOString(),
-    featured: true,
-    createdAt: new Date().toISOString(),
-    screenshotUrl: getScreenshot("https://supermaven.com"),
-    problem: "Traditional copilots struggle with latency, making the developer wait for suggestions, which breaks their flow.",
-    solution: "A blazingly fast copilot powered by a custom architecture (Babble) that provides instantaneous autocomplete while maintaining awareness of the entire repository.",
-    challenge: "Achieving sub-200ms latency on massive context windows without bankrupting the company on inference costs.",
-    techChoices: ["Babble Architecture", "Custom Inference Engine"],
-    targetUser: "Senior Developers and Codebase Architects.",
-    keyFeatures: ["1M token context", "Near-zero latency", "Full codebase awareness", "Free tier available"],
-    impact: "Set a new standard for autocomplete speed, forcing competitors to optimize their latency.",
-    guide: [
-      { step: 1, title: "Install Extension", description: "Search for 'Supermaven' in your IDE marketplace." },
-      { step: 2, title: "Authenticate", description: "Sign in to activate the free tier." },
-      { step: 3, title: "Code", description: "Just start typing. Supermaven will instantly suggest code blocks based on your entire project's context." }
-    ]
-  },
-  {
-    id: "tool-22",
-    name: "Aider",
-    slug: "aider",
-    description: "AI pair programming in your terminal. Let AI write code while you manage the big picture.",
-    website: "https://aider.chat",
-    github: "https://github.com/paul-gauthier/aider",
-    pricing: "Free",
-    isOpenSource: true,
-    platform: ["Terminal", "Python"],
-    categoryId: "cat-2",
-    tags: ["terminal", "python", "open-source"],
-    lastUpdated: new Date().toISOString(),
-    featured: true,
-    createdAt: new Date().toISOString(),
-    screenshotUrl: getScreenshot("https://aider.chat"),
-    problem: "IDE-based AI tools are tightly coupled to specific editors and often struggle to execute complex multi-file refactors autonomously.",
-    solution: "A command-line chat tool that seamlessly pairs with any Git repository, allowing you to ask an LLM to edit files, which it does by creating clean git commits automatically.",
-    challenge: "Parsing LLM diff outputs reliably so that edits are applied cleanly without breaking existing syntax.",
-    techChoices: ["Python", "Universal Diff Format", "Git CLI"],
-    targetUser: "CLI power users, Vim/Emacs users, and developers who prefer terminal workflows.",
-    keyFeatures: ["Automatic git commits", "Works with any LLM (Claude, GPT-4, Local)", "Voice coding support", "Repository mapping"],
-    impact: "Proved that AI coding doesn't require a heavy GUI IDE, popularizing the 'chat-to-git' workflow.",
-    guide: [
-      { step: 1, title: "Install", description: "Run 'pip install aider-chat' in your terminal." },
-      { step: 2, title: "Run Aider", description: "Navigate to your git repository and type 'aider'. Ensure your API keys (e.g., ANTHROPIC_API_KEY) are set." },
-      { step: 3, title: "Ask for Changes", description: "Type 'Add a new contact form to the homepage'. Aider will read the files, write the code, and commit the changes." }
-    ]
-  },
-  {
-    id: "tool-23",
-    name: "Codeium",
-    slug: "codeium",
-    description: "The modern coding superpower. A highly capable, permanently free GitHub Copilot alternative.",
-    website: "https://codeium.com",
-    pricing: "Freemium",
-    isOpenSource: false,
-    platform: ["VS Code", "JetBrains", "Visual Studio", "Chrome"],
-    categoryId: "cat-2",
-    tags: ["copilot"],
-    lastUpdated: new Date().toISOString(),
-    featured: false,
-    createdAt: new Date().toISOString(),
-    screenshotUrl: getScreenshot("https://codeium.com"),
-    problem: "Most high-quality AI coding assistants charge hefty monthly subscriptions, gating students and open-source developers.",
-    solution: "A fully-featured AI assistant offering autocomplete, chat, and search powered by proprietary models, completely free for individual developers.",
-    challenge: "Training and serving proprietary coding models that rival OpenAI/Anthropic while maintaining a sustainable business model.",
-    techChoices: ["Proprietary LLMs", "Multi-IDE extensions"],
-    targetUser: "Students, Indie Hackers, and Enterprise Teams.",
-    keyFeatures: ["Permanently free for individuals", "In-editor chat", "Context awareness", "70+ supported languages"],
-    impact: "Democratized access to premium AI coding features, capturing a massive user base previously priced out of the market.",
-    guide: [
-      { step: 1, title: "Install Extension", description: "Find Codeium in your IDE's extension tab." },
-      { step: 2, title: "Log In", description: "Create a free Codeium account." },
-      { step: 3, title: "Chat and Code", description: "Use the autocomplete or open the Codeium chat panel to ask questions about your repository." }
-    ]
-  },
-  {
-    id: "tool-24",
-    name: "Sourcegraph Cody",
-    slug: "cody",
-    description: "An AI coding assistant that lives in your editor and can find, explain, and write code using your entire codebase.",
-    website: "https://sourcegraph.com/cody",
-    github: "https://github.com/sourcegraph/cody",
-    pricing: "Freemium",
-    isOpenSource: true,
-    platform: ["VS Code", "JetBrains", "Web"],
-    categoryId: "cat-2",
-    tags: ["copilot", "open-source"],
-    lastUpdated: new Date().toISOString(),
-    featured: false,
-    createdAt: new Date().toISOString(),
-    screenshotUrl: getScreenshot("https://sourcegraph.com/cody"),
-    problem: "AI tools often hallucinate because they don't have deep, indexed context of a company's massive, multi-repository codebase.",
-    solution: "Combines Sourcegraph's enterprise-grade code search engine with modern LLMs to provide highly accurate, codebase-aware answers.",
-    challenge: "Generating and updating embeddings for monolithic enterprise repositories in real-time.",
-    techChoices: ["Sourcegraph Search Engine", "React", "TypeScript"],
-    targetUser: "Enterprise Developers working on large, undocumented codebases.",
-    keyFeatures: ["Deep codebase context", "Choose your LLM (Claude, GPT-4)", "Unit test generation", "Code smell detection"],
-    impact: "Bridged the gap between AI generation and enterprise code search, making onboarding to new codebases incredibly fast.",
-    guide: [
-      { step: 1, title: "Install", description: "Install the Cody extension for VS Code or JetBrains." },
-      { step: 2, title: "Connect", description: "Sign in with your Sourcegraph account." },
-      { step: 3, title: "Ask Cody", description: "Highlight a confusing function and ask 'What does this do and where is it used across the company?'" }
-    ]
-  },
-  {
-    id: "tool-25",
-    name: "Cline",
-    slug: "cline",
-    description: "An autonomous AI software engineer that operates directly within VS Code.",
-    website: "https://cline.bot",
-    github: "https://github.com/cline/cline",
-    pricing: "Free",
-    isOpenSource: true,
-    platform: ["VS Code"],
-    categoryId: "cat-4",
-    tags: ["editor", "open-source"],
-    lastUpdated: new Date().toISOString(),
-    featured: true,
-    createdAt: new Date().toISOString(),
-    screenshotUrl: getScreenshot("https://cline.bot"),
-    problem: "Developers want autonomous agent capabilities (like Devin) but prefer them deeply integrated into their existing VS Code environment.",
-    solution: "A VS Code extension that gives an LLM the ability to read files, write code, run terminal commands, and use the browser, all under user supervision.",
-    challenge: "Ensuring the AI agent doesn't execute destructive commands while allowing it enough freedom to actually complete complex tasks.",
-    techChoices: ["TypeScript", "VS Code Extension API", "MCP (Model Context Protocol)"],
-    targetUser: "Full Stack Developers and Open Source Contributors.",
-    keyFeatures: ["Terminal execution", "File editing", "MCP Tool integration", "Human-in-the-loop approval"],
-    impact: "Brought autonomous coding directly to the world's most popular editor, accelerating the adoption of agentic workflows.",
-    guide: [
-      { step: 1, title: "Install Cline", description: "Search for 'Cline' in the VS Code marketplace." },
-      { step: 2, title: "Configure Provider", description: "Open the extension settings and input your Anthropic or OpenAI API key." },
-      { step: 3, title: "Assign Task", description: "Open the Cline chat and instruct it to 'Setup a new Postgres database connection and write the CRUD endpoints'." }
-    ]
-  },
-  {
-    id: "tool-26",
-    name: "Tabnine",
-    slug: "tabnine",
-    description: "The AI coding assistant that you control. Private, secure, and compliant.",
-    website: "https://tabnine.com",
-    pricing: "Paid",
-    isOpenSource: false,
-    platform: ["VS Code", "JetBrains", "Visual Studio", "Eclipse"],
-    categoryId: "cat-2",
-    tags: ["copilot"],
-    lastUpdated: new Date().toISOString(),
-    featured: false,
-    createdAt: new Date().toISOString(),
-    screenshotUrl: getScreenshot("https://tabnine.com"),
-    problem: "Enterprises in highly regulated industries (finance, healthcare, defense) cannot send their proprietary code to public LLM APIs due to privacy concerns.",
-    solution: "An AI coding assistant that offers fully isolated deployments (VPC, on-premises) and trains its models exclusively on permissive open-source code to avoid IP infringement.",
-    challenge: "Delivering high-quality code suggestions on highly constrained local or VPC hardware without relying on massive cloud clusters.",
-    techChoices: ["Rust", "Custom isolated LLMs"],
-    targetUser: "Enterprise Engineering Teams in regulated industries.",
-    keyFeatures: ["Zero data retention", "On-premises deployment", "IP indemnification", "Personalized codebase training"],
-    impact: "Allowed risk-averse enterprises to adopt AI coding tools without compromising on compliance or security.",
-    guide: [
-      { step: 1, title: "Enterprise Setup", description: "Work with IT to deploy Tabnine within your company's secure VPC or firewall." },
-      { step: 2, title: "Install Plugin", description: "Install the Tabnine plugin in your company-approved IDE." },
-      { step: 3, title: "Code Securely", description: "Enjoy AI autocomplete knowing your code never leaves your organization's network." }
-    ]
-  },
-  {
-    id: "tool-27",
-    name: "Amazon Q Developer",
-    slug: "amazon-q",
-    description: "Generative AI-powered assistant designed for software development on AWS.",
-    website: "https://aws.amazon.com/q/developer/",
-    pricing: "Freemium",
-    isOpenSource: false,
-    platform: ["VS Code", "JetBrains", "AWS Console"],
-    categoryId: "cat-2",
-    tags: ["copilot"],
-    lastUpdated: new Date().toISOString(),
-    featured: false,
-    createdAt: new Date().toISOString(),
-    screenshotUrl: getScreenshot("https://aws.amazon.com/q/developer/"),
-    problem: "Developers struggle to navigate complex cloud infrastructure, write IAM policies, and upgrade legacy code efficiently.",
-    solution: "An AI assistant deeply integrated with the AWS ecosystem that can not only write code but also answer architectural questions, troubleshoot cloud deployments, and autonomously upgrade Java applications.",
-    challenge: "Integrating an AI assistant across the fragmented surfaces of the AWS console, CLI, and local IDEs while maintaining consistent context.",
-    techChoices: ["Amazon Bedrock", "Proprietary AWS Models"],
-    targetUser: "Cloud Engineers, DevOps, and developers heavily invested in AWS.",
-    keyFeatures: ["AWS context awareness", "Legacy code transformation (e.g., Java upgrades)", "Security scanning", "Feature development agent"],
-    impact: "Significantly reduced the learning curve for AWS infrastructure, allowing developers to build cloud-native apps faster.",
-    guide: [
-      { step: 1, title: "Install Toolkit", description: "Install the AWS Toolkit extension in your IDE." },
-      { step: 2, title: "Authenticate", description: "Sign in using AWS Builder ID or your company's IAM Identity Center." },
-      { step: 3, title: "Upgrade Code", description: "Use the Q Agent to automatically refactor and upgrade a legacy Java 8 application to Java 17." }
-    ]
   }
-]
-
-export const COLLECTIONS: Collection[] = [
+];
+var COLLECTIONS = [
   {
     id: "col-1",
     title: "Best AI Coding Tools",
@@ -858,9 +654,8 @@ export const COLLECTIONS: Collection[] = [
     description: "Tools that are great for learning, researching, and writing code on a budget.",
     toolIds: ["tool-1", "tool-4", "tool-11", "tool-15"]
   }
-]
-
-export const AI_SKILLS: AiSkill[] = [
+];
+var AI_SKILLS = [
   {
     id: "skill-1",
     name: "TDD Expert",
@@ -869,7 +664,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Copilot", "Claude Code"],
     content: "When writing new features, ALWAYS follow Test-Driven Development (TDD):\n1. Ask me to clarify requirements if ambiguous.\n2. Write the failing tests FIRST.\n3. Wait for me to run the tests and confirm they fail.\n4. Write the minimum code necessary to make the tests pass.\n5. Refactor the code while keeping tests green.",
     author: "VoltAgent",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-2",
@@ -879,7 +674,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Cline", "Claude Code"],
     content: "You are an expert in Next.js App Router. Follow these rules:\n- Always use 'use client' for components that require interactivity (hooks, event listeners).\n- Keep data fetching in Server Components where possible.\n- Do NOT use 'next/router', use 'next/navigation'.\n- Do NOT use 'getServerSideProps' or 'getStaticProps'. Use native async/await in Server Components.\n- Use `loading.tsx` and `error.tsx` for suspense and error boundaries.",
     author: "Community",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-3",
@@ -889,7 +684,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Copilot", "Claude Code", "GitHub Actions"],
     content: "Before proposing any code changes, perform a security audit:\n1. Check for SQL Injection risks in database queries.\n2. Ensure all user inputs are sanitized and escaped (XSS prevention).\n3. Verify that no hardcoded secrets or API keys are included.\n4. Check for proper authorization checks on protected routes.\n5. If any vulnerabilities are found, explain the risk and provide a secure alternative.",
     author: "VoltAgent",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-4",
@@ -899,7 +694,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "v0", "Cline"],
     content: "When generating UI components:\n- Use Tailwind CSS for all styling.\n- Prioritize accessibility (use aria-labels, semantic HTML elements, sufficient contrast).\n- Ensure the design is fully responsive using Tailwind breakpoints (sm, md, lg, xl).\n- Use modern aesthetics: subtle shadows, glassmorphism (backdrop-blur), rounded corners, and consistent spacing.\n- Avoid hardcoding colors; use CSS variables (e.g., var(--background), var(--primary)) if a theme system is present.",
     author: "UI Guild",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-5",
@@ -909,7 +704,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Copilot", "Cline"],
     content: "Always generate commit messages using the Conventional Commits specification:\n- Format: <type>(<scope>): <subject>\n- Types: feat, fix, docs, style, refactor, perf, test, chore.\n- Scope is optional but recommended.\n- Subject must be imperative, present tense (e.g., 'add feature' not 'added feature').\n- Do not capitalize the first letter of the subject.\n- Do not end the subject with a period.",
     author: "Community",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-6",
@@ -919,7 +714,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Jupyter", "Copilot"],
     content: "When writing Python data science code:\n- Always prefer pandas for data manipulation and numpy for numerical operations.\n- Handle missing data explicitly before analysis.\n- Use matplotlib or seaborn for visualizations with proper titles and labels.\n- Vectorize operations instead of using for-loops when iterating over DataFrames.\n- For ML, adhere to the scikit-learn API (fit/predict).",
     author: "DataCommunity",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-7",
@@ -929,7 +724,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cline", "Claude Code", "Cursor"],
     content: "When designing or generating new features, enforce Clean Architecture:\n1. Separate concerns into standard layers: Domain (Entities), Use Cases (Interactors), Interface Adapters (Controllers/Presenters), and Frameworks/Drivers.\n2. Apply SOLID principles, particularly Dependency Inversion (use interfaces/abstract classes for external services).\n3. Never import database or web framework dependencies directly into the Domain layer.",
     author: "UncleBobFans",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-8",
@@ -939,7 +734,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "v0", "Copilot"],
     content: "All UI components must be accessible:\n- Ensure text contrast ratios meet WCAG AA standards (4.5:1 for normal text).\n- Provide `aria-label` or `aria-labelledby` for icon-only buttons.\n- Support full keyboard navigation (focus states, tab order).\n- Use semantic HTML tags (`<nav>`, `<main>`, `<article>`) instead of generic `<div>`s.\n- Never remove focus outlines without providing an accessible custom alternative.",
     author: "A11yProject",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-9",
@@ -949,7 +744,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Claude Code"],
     content: "When writing Rust code:\n- Prioritize safe ownership and borrowing over `Clone` or `Rc`/`Arc` unless necessary.\n- Do NOT use `.unwrap()` or `.expect()` in production code; handle errors properly with `Result` and the `?` operator.\n- Utilize the type system to enforce state invariants.\n- Write comprehensive documentation comments (`///`) and inline unit tests for every public function.",
     author: "Rustaceans",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-10",
@@ -959,7 +754,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Copilot", "Claude Code"],
     content: "When generating GitHub Actions workflows:\n- Pin all actions to specific commit SHAs instead of mutable tags (e.g., v2).\n- Always use least-privilege for `permissions` (e.g., `contents: read`).\n- Never log secrets or credentials.\n- Use caching strategies (`actions/cache`) to speed up build and dependency installation times.\n- Run tests on multiple OS matrices only when explicitly required.",
     author: "DevOpsGuild",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-11",
@@ -969,7 +764,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Claude Code"],
     content: "Whenever you create or modify an API endpoint:\n1. Provide comprehensive OpenAPI (Swagger) annotations or equivalent standard docstrings.\n2. Clearly define the request schema (body, parameters, headers) and all possible response schemas (200, 400, 401, 404, 500).\n3. Include a realistic example for both the request payload and the response.\n4. Document authorization requirements clearly.",
     author: "API-First",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-12",
@@ -979,7 +774,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Copilot"],
     content: "When writing PostgreSQL queries or schema migrations:\n- Always consider indexing for columns used in WHERE, JOIN, and ORDER BY clauses.\n- Avoid `SELECT *`; explicitly select only the required columns.\n- Use EXPLAIN ANALYZE for query optimization if asked.\n- Prefer Common Table Expressions (CTEs) for complex nested queries to improve readability.\n- Use proper foreign key constraints with ON DELETE actions defined.",
     author: "PostgresCommunity",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-13",
@@ -989,7 +784,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Copilot"],
     content: "When writing React Native code:\n- Always prefer Expo APIs (e.g., `expo-router`, `expo-image`) over third-party alternatives when possible.\n- Use `StyleSheet.create` for styling unless a utility library like NativeWind is explicitly configured.\n- Optimize lists using `FlashList` instead of `FlatList` for better performance.\n- Avoid heavy synchronous operations on the JS thread to maintain 60 FPS.",
     author: "ExpoCommunity",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-14",
@@ -997,9 +792,9 @@ export const AI_SKILLS: AiSkill[] = [
     slug: "sveltekit-tailwind-mastery",
     description: "Enforces idiomatic SvelteKit folder structures, reactive declarations, and Tailwind styling.",
     frameworks: ["Cursor", "Cline"],
-    content: "When writing SvelteKit code:\n- Use standard `+page.svelte`, `+page.server.ts`, and `+layout.svelte` routing conventions.\n- Use `$: ` reactive declarations instead of manual state synchronization.\n- Keep logic inside `<script context=\"module\">` or external TS files if it doesn't depend on component state.\n- Apply Tailwind classes directly in the template; avoid `<style>` blocks unless absolutely necessary.",
+    content: 'When writing SvelteKit code:\n- Use standard `+page.svelte`, `+page.server.ts`, and `+layout.svelte` routing conventions.\n- Use `$: ` reactive declarations instead of manual state synchronization.\n- Keep logic inside `<script context="module">` or external TS files if it doesn\'t depend on component state.\n- Apply Tailwind classes directly in the template; avoid `<style>` blocks unless absolutely necessary.',
     author: "RichHarrisFans",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-15",
@@ -1009,7 +804,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Claude Code"],
     content: "When writing Go backend code:\n- Adhere to effective Go guidelines (e.g., return early, handle errors explicitly without nesting).\n- Use channels and goroutines responsibly to avoid memory leaks.\n- Prefer the standard library `net/http` or lightweight frameworks like Fiber/Gin.\n- Never ignore errors with `_` unless explicitly documented why it's safe.\n- Use table-driven tests for comprehensive unit testing.",
     author: "Gophers",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-16",
@@ -1019,7 +814,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Copilot"],
     content: "When writing Vue 3 components:\n- Always use `<script setup>` syntax. Never use the legacy Options API.\n- Use `ref` for primitive values and `reactive` for deeply nested objects.\n- Prefer composables (functions starting with `use`) for reusable state logic instead of mixins.\n- Use `defineProps` and `defineEmits` with TypeScript interfaces for strong typing.\n- Optimize large lists using virtual scroll libraries.",
     author: "VueMastery",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-17",
@@ -1029,7 +824,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "GitHub Actions"],
     content: "When writing or reviewing Solidity code:\n- Always check for reentrancy vulnerabilities and use the Checks-Effects-Interactions pattern or `ReentrancyGuard`.\n- Ensure exact pragmas are used (e.g., `pragma solidity 0.8.24;`).\n- Optimize gas usage by packing structs tightly and caching storage variables in memory.\n- Explicitly mark variable visibility and restrict function access with `onlyOwner` or similar modifiers.\n- Avoid using `tx.origin` for authorization.",
     author: "Web3Guild",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-18",
@@ -1039,7 +834,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Cline", "Claude Code"],
     content: "When generating Dockerfiles or K8s manifests:\n- Always use multi-stage builds to keep final image sizes minimal.\n- Never run containers as root; define a non-root `USER`.\n- Base images should use specific tags (e.g., `alpine:3.19`), never `latest`.\n- In Kubernetes deployments, always define `resources.requests` and `resources.limits` to prevent node starvation.\n- Define health checks (`livenessProbe`, `readinessProbe`) for all web services.",
     author: "CloudNative",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-19",
@@ -1049,7 +844,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Copilot"],
     content: "When writing Laravel code:\n- Use Eloquent ORM and explicit relationships instead of raw DB queries when possible.\n- Prevent N+1 query problems by eagerly loading relationships using `with()`.\n- Always use Form Requests for validation instead of validating in the controller.\n- Take advantage of PHP 8+ features: constructor property promotion, match expressions, and typed properties.\n- Keep controllers thin and move complex business logic into Action or Service classes.",
     author: "Artisans",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-20",
@@ -1059,7 +854,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Claude Code"],
     content: "When writing Godot code:\n- Prefer static typing in GDScript (e.g., `var health: int = 100`) for performance and autocomplete.\n- Structure scenes hierarchically and favor composition over deep inheritance.\n- Use Signals for decoupling components instead of direct node references where appropriate.\n- Avoid heavy logic in `_process` or `_physics_process`; use timers or event-driven logic if possible.\n- Preload resources (scenes, sounds) at the top of the script using `preload()` to prevent stuttering during gameplay.",
     author: "GodotCommunity",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-21",
@@ -1069,7 +864,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Claude Code", "Cline"],
     content: "Before writing any implementation code:\n1. Ask clarifying questions to eliminate ambiguity in the requirements.\n2. Draft a formal specification document detailing the intended behavior and edge cases.\n3. Wait for the user's explicit approval on the specification.\n4. Only proceed with coding once the spec is finalized. Do not make assumptions.",
     author: "AddyOsmani",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-22",
@@ -1079,7 +874,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Copilot"],
     content: "Enforce strict Test-Driven Development (RED-GREEN-REFACTOR):\n1. Write a failing test for the next piece of functionality.\n2. Run the test and verify it fails (RED).\n3. Write the absolute minimum amount of code required to make the test pass (GREEN).\n4. Refactor the code for quality while keeping tests passing.\n5. Never write implementation code without a failing test first.",
     author: "AddyOsmani",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-23",
@@ -1089,7 +884,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Antigravity", "Claude Code", "Cursor"],
     content: "When tackling a complex feature:\n1. Break the work down into bite-sized tasks (2-5 minutes each).\n2. Dispatch a separate context or subagent for each task.\n3. Perform a two-stage review on each task's output: first check for spec compliance, then check for code quality.\n4. Do not proceed to the next task until the current one passes review.",
     author: "Obra Superpowers",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-24",
@@ -1099,7 +894,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["GitHub Copilot", "Cursor"],
     content: "When reviewing a diff or planning changes:\n1. Compare the proposed code changes strictly against the original stated intent or issue description.\n2. Flag any modifications, refactoring, or new features that fall outside this scope.\n3. Recommend splitting out-of-scope changes into a separate PR or branch.\n4. Ask for explicit user justification before proceeding with out-of-scope code.",
     author: "ShubhamSaboo",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-25",
@@ -1109,7 +904,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Claude Code", "Cursor"],
     content: "When analyzing an old or abandoned project:\n1. Scan the repository to identify the last active commit and the state of the codebase.\n2. Determine the core blockers or missing features that caused development to stop.\n3. Check for deprecated dependencies or code rot.\n4. Provide a structured roadmap with prioritized steps on how to modernize and finish the project.",
     author: "ShubhamSaboo",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-26",
@@ -1119,7 +914,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Claude Code"],
     content: "When given a complex task:\n1. Do NOT write any implementation code immediately.\n2. Analyze the requirements and generate a `plan.md` file outlining the architecture, file changes, and edge cases.\n3. Ask the user for explicit approval on the plan.\n4. Only begin execution after the user approves.",
     author: "Claude Experts",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-27",
@@ -1129,7 +924,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Claude Code"],
     content: "When a session becomes long or complex:\n1. Pause and run `/compact` to summarize the current state and discard irrelevant history.\n2. Use `/clear` if moving to a completely unrelated feature.\n3. Always start new major features by running `/init` to refresh codebase understanding and prevent hallucinated dependencies.",
     author: "Claude Experts",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-28",
@@ -1139,7 +934,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Aider"],
     content: "When editing code in Aider:\n1. Focus on one specific goal or file change at a time.\n2. Avoid big, sweeping refactors across the entire codebase in a single prompt.\n3. Ensure that every edit results in a working state before moving to the next task.\n4. Use the `/architect` mode for complex, multi-file refactoring before writing code.",
     author: "Aider Community",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-29",
@@ -1149,7 +944,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Aider"],
     content: "For every code change:\n1. Always read and adhere to the project's `CONVENTIONS.md` file.\n2. Strictly follow the defined Tech Stack, Linting rules, and Testing requirements (e.g., TDD).\n3. If a request contradicts the conventions, notify the user and ask for clarification before proceeding.",
     author: "Aider Community",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-30",
@@ -1159,7 +954,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Devin", "AutoGPT", "Antigravity"],
     content: "If a command or build fails:\n1. Do not panic or ask the user immediately.\n2. Analyze the error output completely.\n3. Check the documentation or source code for the failing component.\n4. Propose a hypothesis for the failure.\n5. Attempt a fix and re-run the command up to 3 times before escalating to the user.",
     author: "Autonomous Guild",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-31",
@@ -1169,7 +964,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["GPT-4", "Claude 3.5 Sonnet", "Gemini 1.5 Pro"],
     content: "Before providing your final answer or code:\n1. Write a `<thinking>` block.\n2. Break down the problem into logical steps.\n3. Identify constraints, potential pitfalls, and edge cases.\n4. Evaluate alternative approaches and select the optimal one.\n5. Only after closing the `</thinking>` block, provide your final implementation.",
     author: "Prompt Engineers",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-32",
@@ -1179,7 +974,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["GPT-4", "Claude 3.5 Sonnet"],
     content: "When reviewing code, act as a strict Application Security Auditor:\n1. Scan for OWASP Top 10 vulnerabilities (e.g., SQLi, XSS, CSRF, IDOR).\n2. Check for hardcoded secrets or credentials.\n3. Validate that all user inputs are sanitized and parameterized.\n4. Report findings categorized by Severity (Critical, High, Medium, Low) with actionable remediation steps.",
     author: "SecOps",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-33",
@@ -1189,7 +984,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Copilot"],
     content: "When generating frontend code:\n1. Always use semantic HTML5 elements (header, main, nav, article).\n2. Ensure a proper heading hierarchy (h1 -> h2 -> h3) without skipping levels.\n3. Include descriptive alt attributes for all images.\n4. Add appropriate meta tags for SEO and social sharing (OpenGraph, Twitter Cards).\n5. Ensure fast load performance by avoiding render-blocking scripts.",
     author: "WebMasters",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-34",
@@ -1199,7 +994,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["GPT-4", "Claude 3.5 Sonnet"],
     content: "When tasked with writing Regular Expressions:\n1. Avoid catastrophic backtracking by failing fast.\n2. Use non-capturing groups `(?:)` unless extraction is explicitly needed.\n3. Provide a detailed, line-by-line explanation of how the pattern works.\n4. Generate at least 5 positive and 5 negative test cases to prove the regex is robust.",
     author: "RegexMasters",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-35",
@@ -1209,7 +1004,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Jupyter"],
     content: "When optimizing Python code:\n1. Identify bottlenecks using `cProfile` or line profilers.\n2. Replace nested loops with vectorized NumPy or Pandas operations where applicable.\n3. Use generators (`yield`) instead of lists for large datasets to save memory.\n4. Utilize list comprehensions instead of `for.append()`.\n5. Consider `multiprocessing` or `asyncio` for I/O bound tasks.",
     author: "Pythonistas",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-36",
@@ -1219,7 +1014,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Claude Code", "Cursor"],
     content: "When designing database schemas:\n1. Normalize to at least 3NF (Third Normal Form) to reduce data redundancy.\n2. Define clear Primary Keys and Foreign Keys with appropriate cascading actions.\n3. Recommend indexes for frequently queried or joined columns.\n4. Use appropriate data types (e.g., `TIMESTAMPTZ` instead of `TIMESTAMP`).\n5. Provide the raw SQL DDL script and an Entity-Relationship (ER) explanation.",
     author: "DBAGuild",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-37",
@@ -1229,7 +1024,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Copilot", "Cline"],
     content: "When building Next.js applications:\n1. Default to React Server Components (RSC). Only use `'use client'` when interactivity (hooks, event listeners) is strictly required.\n2. Use the `app/` directory routing conventions (`page.tsx`, `layout.tsx`, `loading.tsx`).\n3. Implement data fetching at the server component level using `fetch` with appropriate caching strategies.\n4. Use Server Actions for form mutations instead of API routes.",
     author: "VercelFans",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-38",
@@ -1239,7 +1034,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Claude Code", "GitHub Actions"],
     content: "When reviewing a Pull Request:\n1. Be constructive, polite, and objective.\n2. Focus on logic errors, performance issues, and architectural flaws rather than nitpicking style (assume a linter handles style).\n3. If suggesting a change, provide a concrete code snippet showing the improvement.\n4. Call out missing test coverage for new business logic.",
     author: "QA Guild",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-39",
@@ -1249,7 +1044,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Antigravity", "AutoGPT"],
     content: "When writing shell scripts:\n1. Always start with `set -euo pipefail` to ensure the script exits on errors or unbound variables.\n2. Avoid using `cat` when input redirection (`<`) is sufficient.\n3. Quote all variables to prevent word splitting.\n4. Prefer `awk` or `sed` for text processing instead of complex loops.\n5. Provide a fallback or error message if required dependencies are missing.",
     author: "SysAdmins",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-40",
@@ -1259,7 +1054,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Antigravity"],
     content: "As an Antigravity agent:\n1. Always prioritize checking Knowledge Items (KIs) before conducting deep research.\n2. Use the `command_status` tool for background tasks instead of blocking.\n3. When writing markdown artifacts, strictly adhere to GitHub Flavored Markdown and use Alerts for critical info.\n4. Spawn subagents using `browser_subagent` when visual interactions or dynamic web scraping are required.",
     author: "Deepmind Team",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-41",
@@ -1269,7 +1064,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "v0", "Claude Code"],
     content: "When acting as a UI/UX Designer:\n1. Adhere strictly to the requested aesthetic (e.g., Neumorphism, Glassmorphism, Brutalism).\n2. Automatically configure Tailwind configuration for appropriate color scales.\n3. Integrate headless UI components like shadcn/ui or Radix UI for accessible primitives.\n4. Ensure micro-interactions (hover, focus, active states) are always defined.",
     author: "escapeboy",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-42",
@@ -1279,7 +1074,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Claude Code", "Cursor"],
     content: "Before writing any code, act as a Senior PM:\n1. Define the core user journey and 'Happy Path'.\n2. Outline UI/UX highlights that will delight the user.\n3. Identify at least 3 edge cases or failure modes and how the UI should handle them.\n4. Present a markdown specification for approval.",
     author: "wwwazzz",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-43",
@@ -1287,9 +1082,9 @@ export const AI_SKILLS: AiSkill[] = [
     slug: "vibe-coding-optimizer",
     description: "Workflows for UI/UX improvements, performance optimization, and preparing apps for production.",
     frameworks: ["Cursor", "Windsurf"],
-    content: "When refining an application for production:\n1. Perform a 'Vibe Check'—ensure animations are smooth (60fps) and transitions are natural.\n2. Run Lighthouse optimization checks mentally: minimize layout shifts (CLS) and optimize largest contentful paint (LCP).\n3. Clean up console.logs and unused CSS classes.\n4. Verify responsive design on mobile, tablet, and desktop breakpoints.",
+    content: "When refining an application for production:\n1. Perform a 'Vibe Check'\u2014ensure animations are smooth (60fps) and transitions are natural.\n2. Run Lighthouse optimization checks mentally: minimize layout shifts (CLS) and optimize largest contentful paint (LCP).\n3. Clean up console.logs and unused CSS classes.\n4. Verify responsive design on mobile, tablet, and desktop breakpoints.",
     author: "KhazP",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-44",
@@ -1299,7 +1094,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["AutoGPT", "LangChain"],
     content: "As a Scientific Researcher:\n1. Use PubMed or ArXiv APIs to retrieve peer-reviewed literature.\n2. Summarize abstracts highlighting methodology and limitations.\n3. Format mathematical equations strictly in LaTeX.\n4. Provide inline citations in APA or IEEE format whenever stating a factual claim.",
     author: "K-Dense-AI",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-45",
@@ -1309,7 +1104,7 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["Cursor", "Copilot"],
     content: "When writing frontend code in this project:\n1. NEVER use arbitrary values in Tailwind (e.g., `w-[324px]`). Always use the defined spacing scale.\n2. Do not introduce new colors; use only the CSS variables defined in `globals.css` or the Tailwind config.\n3. Use predefined typography classes for headings and body text.\n4. If a requested component violates the design system, warn the user and suggest a compliant alternative.",
     author: "spencergoldade",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   },
   {
     id: "skill-46",
@@ -1319,6 +1114,36 @@ export const AI_SKILLS: AiSkill[] = [
     frameworks: ["AutoGen", "LangGraph"],
     content: "When orchestrating multiple agents:\n1. Define clear boundaries and responsibilities for each agent (e.g., Researcher, Coder, Reviewer).\n2. Ensure the output of one agent is correctly formatted as the input for the next.\n3. Implement a 'Supervisor' node that verifies the final aggregated output meets the original user request before presenting it.\n4. Handle timeouts or infinite loops gracefully by setting a maximum step limit.",
     author: "repowise-dev",
-    createdAt: new Date().toISOString()
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   }
-]
+];
+
+// src/lib/index.ts
+function getAllSkills() {
+  return AI_SKILLS;
+}
+function getSkillBySlug(slug) {
+  return AI_SKILLS.find((skill) => skill.slug === slug);
+}
+function getAllTools() {
+  return TOOLS;
+}
+function getToolBySlug(slug) {
+  return TOOLS.find((tool) => tool.slug === slug);
+}
+function getAllCategories() {
+  return CATEGORIES;
+}
+export {
+  AI_SKILLS,
+  CATEGORIES,
+  COLLECTIONS,
+  TAGS,
+  TOOLS,
+  getAllCategories,
+  getAllSkills,
+  getAllTools,
+  getSkillBySlug,
+  getToolBySlug
+};
+//# sourceMappingURL=index.mjs.map

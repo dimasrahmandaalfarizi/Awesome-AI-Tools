@@ -1,12 +1,11 @@
+#!/usr/bin/env node
 "use strict";
+var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") {
     for (let key of __getOwnPropNames(from))
@@ -15,23 +14,20 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
 
-// src/lib/index.ts
-var index_exports = {};
-__export(index_exports, {
-  AI_SKILLS: () => AI_SKILLS,
-  CATEGORIES: () => CATEGORIES,
-  COLLECTIONS: () => COLLECTIONS,
-  TAGS: () => TAGS,
-  TOOLS: () => TOOLS,
-  getAllCategories: () => getAllCategories,
-  getAllSkills: () => getAllSkills,
-  getAllTools: () => getAllTools,
-  getSkillBySlug: () => getSkillBySlug,
-  getToolBySlug: () => getToolBySlug
-});
-module.exports = __toCommonJS(index_exports);
+// src/cli/index.ts
+var import_commander = require("commander");
+var import_prompts = __toESM(require("prompts"));
+var import_fs = __toESM(require("fs"));
+var import_path = __toESM(require("path"));
 
 // src/data/mock.ts
 var CATEGORIES = [
@@ -55,18 +51,6 @@ var CATEGORIES = [
   { id: "cat-18", name: "Security", slug: "security", description: "Tools for AI safety, security, and vulnerability scanning.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
   { id: "cat-19", name: "Research", slug: "research", description: "Tools for academic and industry AI research.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
   { id: "cat-20", name: "Open Source", slug: "open-source", description: "A selection of purely open-source AI projects.", createdAt: (/* @__PURE__ */ new Date()).toISOString() }
-];
-var TAGS = [
-  { id: "tag-1", name: "Copilot", slug: "copilot" },
-  { id: "tag-2", name: "Editor", slug: "editor" },
-  { id: "tag-3", name: "Python", slug: "python" },
-  { id: "tag-4", name: "TypeScript", slug: "typescript" },
-  { id: "tag-5", name: "Local", slug: "local" },
-  { id: "tag-6", name: "React", slug: "react" },
-  { id: "tag-7", name: "Terminal", slug: "terminal" },
-  { id: "tag-8", name: "RAG", slug: "rag" },
-  { id: "tag-9", name: "Open Source", slug: "open-source" },
-  { id: "tag-10", name: "Serverless", slug: "serverless" }
 ];
 var getScreenshot = (url) => `https://image.thum.io/get/width/1200/crop/800/${url}`;
 var TOOLS = [
@@ -639,57 +623,6 @@ var TOOLS = [
     ]
   }
 ];
-var COLLECTIONS = [
-  {
-    id: "col-1",
-    title: "Best AI Coding Tools",
-    slug: "best-ai-coding-tools",
-    description: "The most popular tools for software engineers to write code faster.",
-    toolIds: ["tool-1", "tool-2", "tool-13", "tool-19"]
-  },
-  {
-    id: "col-2",
-    title: "Best AI IDEs",
-    slug: "best-ai-ides",
-    description: "Fully featured integrated development environments built around AI.",
-    toolIds: ["tool-1", "tool-13"]
-  },
-  {
-    id: "col-3",
-    title: "Best Free AI",
-    slug: "best-free-ai",
-    description: "Powerful AI tools you can use completely for free.",
-    toolIds: ["tool-3", "tool-4", "tool-6", "tool-10", "tool-14", "tool-20"]
-  },
-  {
-    id: "col-4",
-    title: "Best Open Source AI",
-    slug: "best-open-source-ai",
-    description: "Support the community with these amazing open source projects.",
-    toolIds: ["tool-3", "tool-4", "tool-6", "tool-10", "tool-14", "tool-16", "tool-17", "tool-20"]
-  },
-  {
-    id: "col-5",
-    title: "Best MCP Servers",
-    slug: "best-mcp-servers",
-    description: "Top implementations for the Model Context Protocol.",
-    toolIds: ["tool-6"]
-  },
-  {
-    id: "col-6",
-    title: "Best AI Agents",
-    slug: "best-ai-agents",
-    description: "Autonomous frameworks and systems to automate complex tasks.",
-    toolIds: ["tool-3", "tool-14", "tool-19"]
-  },
-  {
-    id: "col-7",
-    title: "Best AI for Students",
-    slug: "best-ai-for-students",
-    description: "Tools that are great for learning, researching, and writing code on a budget.",
-    toolIds: ["tool-1", "tool-4", "tool-11", "tool-15"]
-  }
-];
 var AI_SKILLS = [
   {
     id: "skill-1",
@@ -1090,36 +1023,157 @@ var AI_SKILLS = [
     content: "As an Antigravity agent:\n1. Always prioritize checking Knowledge Items (KIs) before conducting deep research.\n2. Use the `command_status` tool for background tasks instead of blocking.\n3. When writing markdown artifacts, strictly adhere to GitHub Flavored Markdown and use Alerts for critical info.\n4. Spawn subagents using `browser_subagent` when visual interactions or dynamic web scraping are required.",
     author: "Deepmind Team",
     createdAt: (/* @__PURE__ */ new Date()).toISOString()
+  },
+  {
+    id: "skill-41",
+    name: "UI/UX Pro Max",
+    slug: "ui-ux-pro-max",
+    description: "Extensive styling and design instructions covering over 50 UI styles and shadcn/ui integration.",
+    frameworks: ["Cursor", "v0", "Claude Code"],
+    content: "When acting as a UI/UX Designer:\n1. Adhere strictly to the requested aesthetic (e.g., Neumorphism, Glassmorphism, Brutalism).\n2. Automatically configure Tailwind configuration for appropriate color scales.\n3. Integrate headless UI components like shadcn/ui or Radix UI for accessible primitives.\n4. Ensure micro-interactions (hover, focus, active states) are always defined.",
+    author: "escapeboy",
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
+  },
+  {
+    id: "skill-42",
+    name: "Senior Product Manager",
+    slug: "senior-product-manager",
+    description: "Forces the LLM to analyze product requirements, define user flows, and identify edge cases before coding.",
+    frameworks: ["Claude Code", "Cursor"],
+    content: "Before writing any code, act as a Senior PM:\n1. Define the core user journey and 'Happy Path'.\n2. Outline UI/UX highlights that will delight the user.\n3. Identify at least 3 edge cases or failure modes and how the UI should handle them.\n4. Present a markdown specification for approval.",
+    author: "wwwazzz",
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
+  },
+  {
+    id: "skill-43",
+    name: "Vibe Coding Optimizer",
+    slug: "vibe-coding-optimizer",
+    description: "Workflows for UI/UX improvements, performance optimization, and preparing apps for production.",
+    frameworks: ["Cursor", "Windsurf"],
+    content: "When refining an application for production:\n1. Perform a 'Vibe Check'\u2014ensure animations are smooth (60fps) and transitions are natural.\n2. Run Lighthouse optimization checks mentally: minimize layout shifts (CLS) and optimize largest contentful paint (LCP).\n3. Clean up console.logs and unused CSS classes.\n4. Verify responsive design on mobile, tablet, and desktop breakpoints.",
+    author: "KhazP",
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
+  },
+  {
+    id: "skill-44",
+    name: "Scientific Research Agent",
+    slug: "scientific-research-agent",
+    description: "Equips the agent with skills to parse scientific papers, query academic databases, and format LaTeX.",
+    frameworks: ["AutoGPT", "LangChain"],
+    content: "As a Scientific Researcher:\n1. Use PubMed or ArXiv APIs to retrieve peer-reviewed literature.\n2. Summarize abstracts highlighting methodology and limitations.\n3. Format mathematical equations strictly in LaTeX.\n4. Provide inline citations in APA or IEEE format whenever stating a factual claim.",
+    author: "K-Dense-AI",
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
+  },
+  {
+    id: "skill-45",
+    name: "Design System Enforcer",
+    slug: "design-system-enforcer",
+    description: "Strictly enforces existing design tokens, spacing scales, and typography defined in the project.",
+    frameworks: ["Cursor", "Copilot"],
+    content: "When writing frontend code in this project:\n1. NEVER use arbitrary values in Tailwind (e.g., `w-[324px]`). Always use the defined spacing scale.\n2. Do not introduce new colors; use only the CSS variables defined in `globals.css` or the Tailwind config.\n3. Use predefined typography classes for headings and body text.\n4. If a requested component violates the design system, warn the user and suggest a compliant alternative.",
+    author: "spencergoldade",
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
+  },
+  {
+    id: "skill-46",
+    name: "AI Agent Orchestrator",
+    slug: "ai-agent-orchestrator",
+    description: "Instructions for managing multiple sub-agents in a complex workflow (routing, delegation, aggregation).",
+    frameworks: ["AutoGen", "LangGraph"],
+    content: "When orchestrating multiple agents:\n1. Define clear boundaries and responsibilities for each agent (e.g., Researcher, Coder, Reviewer).\n2. Ensure the output of one agent is correctly formatted as the input for the next.\n3. Implement a 'Supervisor' node that verifies the final aggregated output meets the original user request before presenting it.\n4. Handle timeouts or infinite loops gracefully by setting a maximum step limit.",
+    author: "repowise-dev",
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   }
 ];
 
-// src/lib/index.ts
-function getAllSkills() {
-  return AI_SKILLS;
-}
-function getSkillBySlug(slug) {
-  return AI_SKILLS.find((skill) => skill.slug === slug);
-}
-function getAllTools() {
-  return TOOLS;
-}
-function getToolBySlug(slug) {
-  return TOOLS.find((tool) => tool.slug === slug);
-}
-function getAllCategories() {
-  return CATEGORIES;
-}
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  AI_SKILLS,
-  CATEGORIES,
-  COLLECTIONS,
-  TAGS,
-  TOOLS,
-  getAllCategories,
-  getAllSkills,
-  getAllTools,
-  getSkillBySlug,
-  getToolBySlug
+// src/cli/index.ts
+var program = new import_commander.Command();
+program.name("awesome-ai-tools").description("CLI to instantly apply AI skills to your local projects").version("0.1.0");
+program.command("list").description("List all available AI skills").action(() => {
+  console.log("\n\u{1F680} Available AI Skills:\n");
+  AI_SKILLS.forEach((skill) => {
+    console.log(`- ${skill.name} (${skill.slug})`);
+    console.log(`  ${skill.description}
+`);
+  });
+  console.log("Run 'npx awesome-ai-tools add <slug>' to apply a skill to your project.\n");
 });
+program.command("add").description("Add a specific AI skill to your project").argument("<slug>", "The slug of the skill to add (e.g., ui-ux-pro-max)").option("-e, --editor <type>", "Target editor (cursor, windsurf, cline, claude)").action(async (slug, options) => {
+  const skill = AI_SKILLS.find((s) => s.slug === slug);
+  if (!skill) {
+    console.error(`
+\u274C Error: Skill with slug '${slug}' not found.`);
+    console.log("Run 'npx awesome-ai-tools list' to see available skills.\n");
+    process.exit(1);
+  }
+  let editor = options.editor;
+  if (!editor) {
+    const response = await (0, import_prompts.default)({
+      type: "select",
+      name: "editor",
+      message: "Which AI Editor are you using?",
+      choices: [
+        { title: "Cursor", value: "cursor", description: "Creates .cursorrules" },
+        { title: "Windsurf", value: "windsurf", description: "Creates .windsurfrules" },
+        { title: "Cline", value: "cline", description: "Creates .clinerules" },
+        { title: "Claude Code", value: "claude", description: "Creates system-prompt.md" }
+      ]
+    });
+    editor = response.editor;
+  }
+  if (!editor) {
+    console.log("\nOperation cancelled.\n");
+    process.exit(0);
+  }
+  let filename = "";
+  switch (editor) {
+    case "cursor":
+      filename = ".cursorrules";
+      break;
+    case "windsurf":
+      filename = ".windsurfrules";
+      break;
+    case "cline":
+      filename = ".clinerules";
+      break;
+    case "claude":
+      filename = `${slug}-system-prompt.md`;
+      break;
+    default:
+      console.error("\n\u274C Error: Unsupported editor type.");
+      process.exit(1);
+  }
+  const targetPath = import_path.default.join(process.cwd(), filename);
+  try {
+    if (import_fs.default.existsSync(targetPath)) {
+      const { overwrite } = await (0, import_prompts.default)({
+        type: "confirm",
+        name: "overwrite",
+        message: `${filename} already exists. Do you want to overwrite it? (No will append)`,
+        initial: false
+      });
+      if (overwrite) {
+        import_fs.default.writeFileSync(targetPath, skill.content, "utf8");
+        console.log(`
+\u2705 Overwrote ${filename} with '${skill.name}' skill rules.
+`);
+      } else {
+        import_fs.default.appendFileSync(targetPath, "\n\n" + skill.content, "utf8");
+        console.log(`
+\u2705 Appended '${skill.name}' skill rules to ${filename}.
+`);
+      }
+    } else {
+      import_fs.default.writeFileSync(targetPath, skill.content, "utf8");
+      console.log(`
+\u2705 Created ${filename} with '${skill.name}' skill rules.
+`);
+    }
+  } catch (error) {
+    console.error(`
+\u274C Failed to write file: ${error.message}
+`);
+  }
+});
+program.parse();
 //# sourceMappingURL=index.js.map

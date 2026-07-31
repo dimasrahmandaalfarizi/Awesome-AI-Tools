@@ -5,7 +5,7 @@ import { notFound } from "next/navigation"
 import { Badge } from "@/components/ui/Badge"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-import { CopyButton } from "@/components/CopyButton"
+import { ExportSkill } from "@/components/ExportSkill"
 
 export default async function SkillPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params
@@ -39,17 +39,7 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
               </div>
             </div>
 
-            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl overflow-hidden shadow-sm">
-              <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] bg-[var(--background)]/50">
-                <h3 className="font-semibold text-sm text-[var(--muted)]">Prompt / Instructions</h3>
-                <CopyButton text={skill.content} />
-              </div>
-              <div className="p-6 relative">
-                <pre className="text-sm font-mono whitespace-pre-wrap text-[var(--foreground)] leading-relaxed">
-                  {skill.content}
-                </pre>
-              </div>
-            </div>
+            <ExportSkill slug={skill.slug} content={skill.content} />
             
             <div className="mt-12 p-6 rounded-2xl bg-[var(--primary)]/5 border border-[var(--primary)]/20">
               <h3 className="font-bold text-lg mb-2 text-[var(--primary)]">How to use this skill</h3>
