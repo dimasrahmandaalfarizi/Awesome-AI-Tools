@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { CommandPalette } from "@/components/features/CommandPalette";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Awesome AI Dev Tools",
@@ -18,6 +20,8 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         {children}
+        <CommandPalette />
+        <Toaster theme="dark" position="bottom-right" />
       </body>
     </html>
   );

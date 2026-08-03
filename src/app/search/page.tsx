@@ -2,8 +2,8 @@
 
 import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
-import { Navbar } from "@/components/Navbar"
-import { Footer } from "@/components/Footer"
+import { Navbar } from "@/components/layouts/Navbar"
+import { Footer } from "@/components/layouts/Footer"
 import { Input } from "@/components/ui/Input"
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/Card"
 import { Badge } from "@/components/ui/Badge"

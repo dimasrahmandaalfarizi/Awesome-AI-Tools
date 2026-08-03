@@ -2,16 +2,19 @@
 
 import { useState } from "react"
 import { Copy, CheckCircle2 } from "lucide-react"
+import { toast } from "sonner"
 
-export function CopyButton({ text }: { text: string }) {
+export function CopyButton({ text, label = "Copied to clipboard!" }: { text: string, label?: string }) {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(text)
       setCopied(true)
+      toast.success(label)
       setTimeout(() => setCopied(false), 2000)
     } catch (err) {
+      toast.error("Failed to copy text")
       console.error("Failed to copy text: ", err)
     }
   }

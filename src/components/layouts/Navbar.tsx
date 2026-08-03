@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Search, Code } from "lucide-react"
-import { Button } from "./ui/Button"
+import { Button } from "../ui/Button"
 
 export function Navbar() {
   return (

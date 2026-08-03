@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Navbar } from "@/components/Navbar"
-import { Footer } from "@/components/Footer"
+import { Navbar } from "@/components/layouts/Navbar"
+import { Footer } from "@/components/layouts/Footer"
 import { TOOLS } from "@/data/mock"
 import { Button } from "@/components/ui/Button"
 import { ExternalLink, Plus, X, Check, Minus } from "lucide-react"

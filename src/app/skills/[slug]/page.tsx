@@ -1,11 +1,11 @@
 import { AI_SKILLS } from "@/data/mock"
-import { Navbar } from "@/components/Navbar"
-import { Footer } from "@/components/Footer"
+import { Navbar } from "@/components/layouts/Navbar"
+import { Footer } from "@/components/layouts/Footer"
 import { notFound } from "next/navigation"
 import { Badge } from "@/components/ui/Badge"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-import { ExportSkill } from "@/components/ExportSkill"
+import { ExportSkill } from "@/components/features/ExportSkill"
 
 export default async function SkillPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "./ui/Button"
+import { Button } from "../ui/Button"
 import { Copy, Download, Check } from "lucide-react"
 
 interface ExportSkillProps {

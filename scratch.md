@@ -757,8 +757,41 @@ Production ready
 
 ---
 
-# FINAL INSTRUCTION
+# DETAILED FRONTEND & UX SPECIFICATIONS
 
+## 1. Micro-interactions & User Experience
+- **Command Palette (`Cmd+K` / `Ctrl+K`)**: Global shortcut to trigger a unified search interface. Users can search tools, navigate categories, or toggle themes directly from this modal.
+- **Copy to Clipboard**: Code snippets (e.g., npm install commands), prompts, or URLs must have a one-click copy button with a sleek toast notification.
+- **Framer Motion Animations**:
+  - Spotlight hover effects on tool cards (glowing borders tracking the cursor).
+  - Spring-based micro-animations for buttons and dropdowns.
+  - Skeleton loaders for all async data fetching to prevent layout shift.
+
+## 2. Tool Detail Page Layout
+- **Sticky Table of Contents (ToC)**: A sidebar that tracks scroll position, allowing quick jumps to "Features", "Pricing", or "Alternatives".
+- **Media Gallery**: High-quality screenshot presentation. Use a lightbox modal or a smooth carousel slider to view multiple images.
+- **Terminal Snippets**: For CLI tools (e.g., Aider, Copilot CLI), display installation commands in a macOS-style terminal window component with syntax highlighting.
+
+## 3. Responsive Strategy
+- **Mobile Filters**: On desktop, filters reside in a left sidebar. On mobile, they must convert into a Bottom Sheet (Drawer) that swipes up to save screen space.
+- **Comparison Tables**: Standard tables fail on mobile. On mobile screens, comparison views should convert to a stacked card format or enable horizontal snapping scroll.
+
+## 4. Advanced SEO & Metadata (Frontend)
+- **Structured Data (JSON-LD)**: Implement `SoftwareApplication` schema for every tool page. This allows Google to display ratings, price, and supported OS directly in search results.
+- **Dynamic Open Graph (OG) Images**: Use `@vercel/og` to automatically generate unique share images for each tool, displaying its logo, name, and category on a branded background.
+
+## 5. Next.js Component Architecture
+Adopt a feature-based structure for scalability:
+- `components/ui/`: Standard UI components (buttons, inputs, dialogs) typically from shadcn/ui.
+- `components/features/`: Domain-specific components (e.g., `ToolCard`, `CategorySidebar`, `ComparisonTable`).
+- `components/layouts/`: Structural components (e.g., `Navbar`, `Footer`, `SidebarLayout`).
+
+## 6. Collections Presentation
+- **"Playlist" Style Layout**: Collections should feel curated (like Spotify playlists). Feature a large banner with a title and description, followed by a list view of tools (instead of a grid) emphasizing rank and curated reasoning for each tool.
+
+---
+
+# FINAL INSTRUCTION
 Generate the entire project as if it were intended to become one of GitHub's most-starred open-source repositories.
 
 Prioritize maintainability, scalability, developer experience, clean UI, reusable architecture, and excellent documentation.

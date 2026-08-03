@@ -1,6 +1,6 @@
 import { AI_SKILLS } from "@/data/mock"
-import { Navbar } from "@/components/Navbar"
-import { Footer } from "@/components/Footer"
+import { Navbar } from "@/components/layouts/Navbar"
+import { Footer } from "@/components/layouts/Footer"
 import { SkillsClient } from "./SkillsClient"
 
 export default function SkillsPage() {
