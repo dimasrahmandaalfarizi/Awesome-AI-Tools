@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { CommandPalette } from "@/components/features/CommandPalette";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Awesome AI Dev Tools",
@@ -16,12 +17,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full antialiased dark`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
-        {children}
-        <CommandPalette />
-        <Toaster theme="dark" position="bottom-right" />
+      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <CommandPalette />
+          <Toaster theme="dark" position="bottom-right" />
+        </ThemeProvider>
       </body>
     </html>
   );

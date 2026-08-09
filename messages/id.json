@@ -1,0 +1,19 @@
+{
+  "Navbar": {
+    "search": "Cari...",
+    "tools": "Alat",
+    "categories": "Kategori",
+    "collections": "Koleksi",
+    "compare": "Bandingkan"
+  },
+  "Home": {
+    "heroBadge": "Lebih dari 1,000+ Alat AI Dikurasi",
+    "heroTitle": "Temukan alat terbaik untuk",
+    "heroTitleHighlight": "Developer AI",
+    "heroDescription": "Koleksi terbesar dari alat AI, framework, server MCP, agent, dan sumber daya untuk memaksimalkan alur kerja pengembangan Anda.",
+    "exploreCategories": "Jelajahi Kategori",
+    "viewAll": "Lihat semua",
+    "trendingTools": "Alat Terpopuler",
+    "trendingDesc": "Alat AI paling populer minggu ini."
+  }
+}

@@ -85,9 +85,11 @@ export default function Home() {
         <section className="container mx-auto px-4 py-16">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-bold tracking-tight">Explore Categories</h2>
-            <Button variant="ghost" className="text-[var(--primary)]">
-              View all <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link href="/categories">
+              <Button variant="ghost" className="text-[var(--primary)]">
+                View all <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {CATEGORIES.slice(0, 4).map((category) => (

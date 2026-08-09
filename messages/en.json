@@ -1,0 +1,19 @@
+{
+  "Navbar": {
+    "search": "Search...",
+    "tools": "Tools",
+    "categories": "Categories",
+    "collections": "Collections",
+    "compare": "Compare"
+  },
+  "Home": {
+    "heroBadge": "Over 1,000+ AI Tools Curated",
+    "heroTitle": "Discover the best",
+    "heroTitleHighlight": "AI Developer Tools",
+    "heroDescription": "The largest curated collection of AI tools, frameworks, MCP servers, agents, and resources to supercharge your development workflow.",
+    "exploreCategories": "Explore Categories",
+    "viewAll": "View all",
+    "trendingTools": "Trending Tools",
+    "trendingDesc": "The most popular AI tools this week."
+  }
+}

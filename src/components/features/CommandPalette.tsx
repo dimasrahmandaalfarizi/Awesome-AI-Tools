@@ -4,10 +4,12 @@ import * as React from "react"
 import { Command } from "cmdk"
 import { Search, Monitor, Moon, Sun, ArrowRight, Laptop } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { useTheme } from "next-themes"
 
 export function CommandPalette() {
   const [open, setOpen] = React.useState(false)
   const router = useRouter()
+  const { setTheme } = useTheme()
 
   // Toggle the menu when ⌘K is pressed
   React.useEffect(() => {
@@ -76,21 +78,21 @@ export function CommandPalette() {
 
             <Command.Group heading="Theme" className="px-2 py-2 text-xs font-medium text-[var(--muted)]">
               <Command.Item 
-                onSelect={() => runCommand(() => console.log('Light theme'))}
+                onSelect={() => runCommand(() => setTheme('light'))}
                 className="flex items-center gap-2 px-3 py-2 text-sm rounded-md cursor-pointer hover:bg-[var(--accent)] hover:text-white aria-selected:bg-[var(--accent)] aria-selected:text-white"
               >
                 <Sun className="w-4 h-4" />
                 Light
               </Command.Item>
               <Command.Item 
-                onSelect={() => runCommand(() => console.log('Dark theme'))}
+                onSelect={() => runCommand(() => setTheme('dark'))}
                 className="flex items-center gap-2 px-3 py-2 text-sm rounded-md cursor-pointer hover:bg-[var(--accent)] hover:text-white aria-selected:bg-[var(--accent)] aria-selected:text-white"
               >
                 <Moon className="w-4 h-4" />
                 Dark
               </Command.Item>
               <Command.Item 
-                onSelect={() => runCommand(() => console.log('System theme'))}
+                onSelect={() => runCommand(() => setTheme('system'))}
                 className="flex items-center gap-2 px-3 py-2 text-sm rounded-md cursor-pointer hover:bg-[var(--accent)] hover:text-white aria-selected:bg-[var(--accent)] aria-selected:text-white"
               >
                 <Monitor className="w-4 h-4" />
