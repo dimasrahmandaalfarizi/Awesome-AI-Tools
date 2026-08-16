@@ -835,6 +835,23 @@ export const TOOLS: Tool[] = [
       { step: 2, title: "Start the Proxy", description: "Run '9router' and access the local web dashboard to configure your API keys." },
       { step: 3, title: "Configure Assistants", description: "Set your AI coding assistants (like Cline or Cursor) to use 'http://localhost:20128/v1' as their OpenAI-compatible endpoint." }
     ]
+  },
+  {
+    id: "tool-29",
+    name: "Agent QA",
+    slug: "agent-qa",
+    description: "Natural-language web and mobile regression QA with CLI and MCP workflows, retained test artifacts, and failure triage.",
+    website: "https://github.com/vostride/agent-qa",
+    github: "https://github.com/vostride/agent-qa",
+    pricing: "Free",
+    isOpenSource: false,
+    platform: ["Node.js", "CLI", "MCP"],
+    categoryId: "cat-17",
+    tags: ["typescript", "terminal"],
+    lastUpdated: new Date().toISOString(),
+    featured: false,
+    createdAt: new Date().toISOString(),
+    screenshotUrl: getScreenshot("https://github.com/vostride/agent-qa")
   }
 ]
 
