@@ -7,6 +7,7 @@
     "compare": "Compare",
     "skills": "AI Skills",
     "router": "AI Router",
+    "docs": "Docs",
     "submitTool": "Submit Tool"
   },
   "Home": {
@@ -151,9 +152,10 @@
     "placeholder": "Search tools, skills, categories, or actions...",
     "noResults": "No results found for your query.",
     "navigation": "Navigation",
-    "proxyDesc": "Configure local proxy",
+    "proxyDesc": "Local proxy configuration",
     "skillsDesc": "Explore prompt rules",
     "compareDesc": "Compare features",
+    "docsDesc": "Ollama setup & API docs",
     "aiTools": "AI Tools",
     "agentSkills": "Agent Skills",
     "categories": "Categories",

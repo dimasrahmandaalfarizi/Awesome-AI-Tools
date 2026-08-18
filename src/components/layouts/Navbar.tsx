@@ -2,7 +2,7 @@
 
 import { Link, usePathname, useRouter } from "@/i18n/routing"
 import { useTranslations, useLocale } from "next-intl"
-import { Search, Sparkles, Server, Globe, Scale } from "lucide-react"
+import { Search, Sparkles, Server, Globe, Scale, BookOpen } from "lucide-react"
 import { Button } from "../ui/Button"
 
 export function Navbar() {
@@ -39,6 +39,10 @@ export function Navbar() {
             <Link href="/router" className="flex items-center gap-1.5 hover:text-[var(--primary)] transition-colors">
               <Server className="w-3.5 h-3.5 text-[var(--primary)]" />
               {t("router")}
+            </Link>
+            <Link href="/docs/quickstart" className="flex items-center gap-1.5 hover:text-[var(--foreground)] transition-colors">
+              <BookOpen className="w-3.5 h-3.5 text-zinc-400" />
+              {t("docs")}
             </Link>
             <Link href="/compare" className="flex items-center gap-1.5 hover:text-[var(--foreground)] transition-colors">
               <Scale className="w-3.5 h-3.5 text-[var(--secondary)]" />

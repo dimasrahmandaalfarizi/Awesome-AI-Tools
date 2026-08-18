@@ -23,6 +23,7 @@ export function Footer() {
               <li><Link href="/categories" className="hover:text-[var(--primary)] transition-colors">{tNav("categories")}</Link></li>
               <li><Link href="/skills" className="hover:text-[var(--primary)] transition-colors">{tNav("skills")}</Link></li>
               <li><Link href="/router" className="hover:text-[var(--primary)] transition-colors">{tNav("router")}</Link></li>
+              <li><Link href="/docs/quickstart" className="hover:text-[var(--primary)] transition-colors">{tNav("docs")}</Link></li>
               <li><Link href="/collections" className="hover:text-[var(--primary)] transition-colors">{tNav("collections")}</Link></li>
               <li><Link href="/compare" className="hover:text-[var(--primary)] transition-colors">{tNav("compare")}</Link></li>
             </ul>

@@ -7,6 +7,7 @@
     "compare": "Bandingkan",
     "skills": "AI Skills",
     "router": "AI Router",
+    "docs": "Dokumentasi",
     "submitTool": "Kirim Alat"
   },
   "Home": {
@@ -154,6 +155,7 @@
     "proxyDesc": "Konfigurasi proxy lokal",
     "skillsDesc": "Jelajahi aturan prompt",
     "compareDesc": "Bandingkan fitur",
+    "docsDesc": "Panduan Ollama & referensi API",
     "aiTools": "Alat AI",
     "agentSkills": "Skill Agen",
     "categories": "Kategori",
