@@ -52,6 +52,33 @@
   }
 }
 
+/* Manual theme overrides via class on <html> */
+html.light {
+  --background: #ffffff;
+  --foreground: #09090B;
+  --surface: #f4f4f5;
+  
+  --primary: #4338ca;
+  --secondary: #16a34a;
+  --accent: #0891b2;
+  
+  --muted: #52525b;
+  --border: #e4e4e7;
+}
+
+html.dark {
+  --background: #09090B;
+  --foreground: #FAFAFA;
+  --surface: #18181B;
+  
+  --primary: #4F46E5;
+  --secondary: #22C55E;
+  --accent: #06B6D4;
+  
+  --muted: #A1A1AA;
+  --border: #27272A;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);

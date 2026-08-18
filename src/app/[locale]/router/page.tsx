@@ -147,8 +147,7 @@ export default function RouterDashboard() {
             <Badge variant="accent" className="mb-4 px-3 py-1">
               {t("badge")}
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 flex items-center justify-center gap-3">
-              <Server className="w-10 h-10 text-[var(--primary)]" />
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
               {t("title")}
             </h1>
             <p className="text-xl text-[var(--muted)] max-w-2xl mx-auto">

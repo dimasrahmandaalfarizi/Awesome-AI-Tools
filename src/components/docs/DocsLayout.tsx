@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import * as React from "react"
 import { Menu, X } from "lucide-react"
@@ -27,7 +27,7 @@ export function DocsLayout({ doc }: DocsLayoutProps) {
         >
           {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
-        <span className="font-semibold text-sm">Awesome AI Docs</span>
+        <span className="font-semibold text-sm">Documentation</span>
         <div className="w-8" />
       </div>
 

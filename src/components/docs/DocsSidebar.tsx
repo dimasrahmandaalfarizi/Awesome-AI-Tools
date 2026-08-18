@@ -1,7 +1,7 @@
-﻿"use client"
+"use client"
 
 import * as React from "react"
-import { Link } from "@/i18n/routing"
+import { Link, useRouter, usePathname } from "@/i18n/routing"
 import { useLocale } from "next-intl"
 import { Search, ExternalLink } from "lucide-react"
 import { DocsThemeToggle } from "./DocsThemeToggle"
@@ -17,9 +17,15 @@ export interface DocsSidebarProps {
 export function DocsSidebar({ currentSlug, activeTab, isOpen, onClose }: DocsSidebarProps) {
   const locale = useLocale()
   const isId = locale === "id"
+  const router = useRouter()
+  const pathname = usePathname()
 
   const handleOpenSearch = () => {
     window.dispatchEvent(new CustomEvent("open-command-palette"))
+  }
+
+  const switchLocale = (nextLocale: string) => {
+    router.replace(pathname, { locale: nextLocale })
   }
 
   const sections = DOC_SECTIONS.filter(s => s.tab === activeTab || activeTab === "guide")
@@ -30,17 +36,48 @@ export function DocsSidebar({ currentSlug, activeTab, isOpen, onClose }: DocsSid
         isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
       }`}
     >
-      {/* Brand & Theme Header */}
+      {/* Brand & Controls Header */}
       <div className="flex h-14 items-center justify-between px-5 border-b border-zinc-200/80 dark:border-zinc-800/60">
-        <Link href="/docs/quickstart" className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-white hover:opacity-90">
-          <div className="w-8 h-8 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 flex items-center justify-center font-black text-sm tracking-tighter">
-            AI
-          </div>
-          <span className="font-heading tracking-tight text-sm">Docs</span>
+        <Link href="/docs/quickstart" className="font-semibold text-zinc-900 dark:text-white hover:opacity-80 transition-opacity text-sm tracking-tight">
+          Documentation
         </Link>
 
-        {/* Change Theme Pill in sidebar */}
-        <DocsThemeToggle />
+        <div className="flex items-center gap-1.5">
+          {/* Language Switcher pill */}
+          <div
+            role="group"
+            aria-label="Language switcher"
+            className="flex items-center gap-0.5 p-0.5 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400"
+          >
+            <button
+              type="button"
+              onClick={() => switchLocale("en")}
+              title="English"
+              className={`px-2 py-0.5 rounded-full text-[10px] font-bold transition-all ${
+                !isId
+                  ? "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-sm"
+                  : "hover:text-zinc-900 dark:hover:text-zinc-200"
+              }`}
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              onClick={() => switchLocale("id")}
+              title="Indonesia"
+              className={`px-2 py-0.5 rounded-full text-[10px] font-bold transition-all ${
+                isId
+                  ? "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-sm"
+                  : "hover:text-zinc-900 dark:hover:text-zinc-200"
+              }`}
+            >
+              ID
+            </button>
+          </div>
+
+          {/* Theme Toggle */}
+          <DocsThemeToggle />
+        </div>
       </div>
 
       {/* Search Input Bar (Ctrl+K) */}
@@ -131,3 +168,5 @@ export function DocsSidebar({ currentSlug, activeTab, isOpen, onClose }: DocsSid
     </aside>
   )
 }
+
+

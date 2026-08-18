@@ -4,7 +4,7 @@ import { CATEGORIES, TOOLS } from "@/data/mock"
 import { getLocalizedCategory } from "@/lib/localizeData"
 import { Link } from "@/i18n/routing"
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card"
-import { ArrowRight, Layers } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
 export default async function CategoriesPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -18,8 +18,7 @@ export default async function CategoriesPage({ params }: { params: Promise<{ loc
       <main className="flex-1 min-h-[calc(100vh-16rem)] bg-[var(--background)]">
         <div className="container mx-auto px-4 py-16 max-w-6xl">
           <div className="mb-12 text-center max-w-2xl mx-auto space-y-4">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight flex items-center justify-center gap-3">
-              <Layers className="w-10 h-10 text-[var(--primary)]" />
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
               {t("title")}
             </h1>
             <p className="text-xl text-[var(--muted)]">
