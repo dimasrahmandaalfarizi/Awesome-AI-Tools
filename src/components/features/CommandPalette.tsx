@@ -101,6 +101,16 @@ export function CommandPalette() {
                 <span className="text-[11px] text-[var(--muted)]">{t("compareDesc")}</span>
               </Command.Item>
               <Command.Item 
+                onSelect={() => runCommand(() => router.push("/chat"))}
+                className="flex items-center justify-between px-3 py-2.5 text-sm rounded-lg cursor-pointer hover:bg-[var(--primary)]/10 hover:text-[var(--primary)] aria-selected:bg-[var(--primary)]/10 aria-selected:text-[var(--primary)] transition-colors"
+              >
+                <div className="flex items-center gap-2.5">
+                  <Sparkles className="w-4 h-4 text-cyan-400" />
+                  <span className="font-medium">{tNav("aiChat")}</span>
+                </div>
+                <span className="text-[11px] text-[var(--muted)]">Local Ollama AI Chat</span>
+              </Command.Item>
+              <Command.Item 
                 onSelect={() => runCommand(() => router.push("/docs/quickstart"))}
                 className="flex items-center justify-between px-3 py-2.5 text-sm rounded-lg cursor-pointer hover:bg-[var(--primary)]/10 hover:text-[var(--primary)] aria-selected:bg-[var(--primary)]/10 aria-selected:text-[var(--primary)] transition-colors"
               >

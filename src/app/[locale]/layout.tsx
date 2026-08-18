@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { CommandPalette } from "@/components/features/CommandPalette";
+import { AIChatWidget } from "@/components/features/AIChatWidget";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { NextIntlClientProvider } from 'next-intl';
@@ -48,6 +49,7 @@ export default async function RootLayout({
           >
             {children}
             <CommandPalette />
+            <AIChatWidget />
             <Toaster theme="dark" position="bottom-right" />
           </ThemeProvider>
         </NextIntlClientProvider>

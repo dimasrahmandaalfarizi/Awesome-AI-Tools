@@ -21,10 +21,10 @@ export interface ProxyConfig {
 }
 
 const DEFAULT_CONFIG: ProxyConfig = {
-  activeProvider: "deepseek",
+  activeProvider: "ollama",
   keys: {},
   customBaseUrl: "http://localhost:11434/v1/chat/completions",
-  defaultTargetModel: "",
+  defaultTargetModel: "qwen2.5-coder",
   modelMapping: {
     "gpt-4o": "deepseek-chat",
     "gpt-4": "deepseek-chat",
