@@ -1,10 +1,10 @@
-﻿"use client"
+"use client"
 
 import * as React from "react"
 import { Monitor, Sun, Moon } from "lucide-react"
 import { useTheme } from "@/components/providers/ThemeProvider"
 
-export function DocsThemeToggle() {
+export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
 
@@ -40,7 +40,7 @@ export function DocsThemeToggle() {
         aria-checked={theme === "system"}
         title="System theme"
         onClick={() => setTheme("system")}
-        className={`p-1 rounded-full transition-all flex items-center justify-center ${
+        className={`p-1 rounded-full transition-all flex items-center justify-center cursor-pointer ${
           theme === "system"
             ? "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-sm"
             : "hover:text-zinc-900 dark:hover:text-zinc-200"
@@ -56,7 +56,7 @@ export function DocsThemeToggle() {
         aria-checked={theme === "light"}
         title="Light theme"
         onClick={() => setTheme("light")}
-        className={`p-1 rounded-full transition-all flex items-center justify-center ${
+        className={`p-1 rounded-full transition-all flex items-center justify-center cursor-pointer ${
           theme === "light"
             ? "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-sm"
             : "hover:text-zinc-900 dark:hover:text-zinc-200"
@@ -72,7 +72,7 @@ export function DocsThemeToggle() {
         aria-checked={theme === "dark"}
         title="Dark theme"
         onClick={() => setTheme("dark")}
-        className={`p-1 rounded-full transition-all flex items-center justify-center ${
+        className={`p-1 rounded-full transition-all flex items-center justify-center cursor-pointer ${
           theme === "dark"
             ? "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-sm"
             : "hover:text-zinc-900 dark:hover:text-zinc-200"

@@ -5,6 +5,7 @@ import { Link, usePathname, useRouter } from "@/i18n/routing"
 import { useTranslations, useLocale } from "next-intl"
 import { Search, Globe, Menu, X } from "lucide-react"
 import { Button } from "../ui/Button"
+import { ThemeToggle } from "../ui/ThemeToggle"
 
 export function Navbar() {
   const t = useTranslations("Navbar")
@@ -78,6 +79,11 @@ export function Navbar() {
             <span className="uppercase">{locale}</span>
           </Button>
 
+          {/* Theme Switcher Toggle (Desktop/Tablet) */}
+          <div className="hidden sm:block">
+            <ThemeToggle />
+          </div>
+
           {/* Submit Tool Button */}
           <Button
             size="sm"
@@ -146,6 +152,12 @@ export function Navbar() {
             >
               {t("compare")}
             </Link>
+
+            {/* Theme Selector inside mobile menu for extra small screens */}
+            <div className="pt-4 border-t border-[var(--border)]/30 flex items-center justify-between px-3 sm:hidden">
+              <span className="text-xs text-[var(--muted)] font-medium">Theme</span>
+              <ThemeToggle />
+            </div>
 
             {/* Submit Tool Button in Mobile Menu for small screens */}
             <div className="pt-4 sm:hidden">

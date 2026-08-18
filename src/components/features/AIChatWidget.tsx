@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import * as React from "react"
 import { X, Send, RefreshCw, Check, Copy, Trash2 } from "lucide-react"
@@ -303,7 +303,7 @@ export function AIChatWidget() {
           </div>
 
           {/* Chat Messages List */}
-          <div className="flex-1 overflow-y-auto p-3.5 space-y-3 text-xs">
+          <div className="flex-1 overflow-y-auto custom-scrollbar p-3.5 space-y-3 text-xs">
             {/* No Model Warning if Ollama online but 0 models */}
             {ollamaOnline && models.length === 0 && (
               <div className="p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 space-y-2">

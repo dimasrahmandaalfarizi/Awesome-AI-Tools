@@ -1,10 +1,9 @@
-﻿"use client"
+"use client"
 
 import * as React from "react"
 import { Link } from "@/i18n/routing"
 import { useLocale } from "next-intl"
 import { Search, ExternalLink } from "lucide-react"
-import { DocsThemeToggle } from "./DocsThemeToggle"
 import { DOC_SECTIONS } from "@/data/docs"
 
 export interface DocsSidebarProps {
@@ -31,11 +30,10 @@ export function DocsSidebar({ currentSlug, activeTab, isOpen, onClose }: DocsSid
       }`}
     >
       {/* Brand & Theme Header */}
-      <div className="flex h-14 items-center justify-between px-5 border-b border-zinc-200/80 dark:border-zinc-800/60">
+      <div className="flex h-14 items-center px-5 border-b border-zinc-200/80 dark:border-zinc-800/60">
         <Link href="/docs/quickstart" className="font-semibold text-zinc-900 dark:text-white hover:opacity-80 transition-opacity text-sm tracking-tight">
           Documentation
         </Link>
-        <DocsThemeToggle />
       </div>
 
       {/* Search Input Bar (Ctrl+K) */}
@@ -56,7 +54,7 @@ export function DocsSidebar({ currentSlug, activeTab, isOpen, onClose }: DocsSid
       </div>
 
       {/* Navigation List */}
-      <div className="flex-1 overflow-y-auto px-4 py-3 space-y-6 text-sm">
+      <div className="flex-1 overflow-y-auto custom-scrollbar px-4 py-3 space-y-6 text-sm">
         {sections.map((section, idx) => (
           <div key={idx} className="space-y-1.5">
             <h4 className="px-2 text-xs font-bold text-zinc-900 dark:text-zinc-100 tracking-wider">

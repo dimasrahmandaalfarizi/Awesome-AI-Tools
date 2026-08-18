@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import * as React from "react"
 import { Navbar } from "@/components/layouts/Navbar"
@@ -269,7 +269,7 @@ export default function ChatPage() {
           </div>
 
           {/* Messages Container */}
-          <div className="flex-1 overflow-y-auto py-6 space-y-4 min-h-[380px]">
+          <div className="flex-1 overflow-y-auto custom-scrollbar py-6 space-y-4 min-h-[380px]">
             
             {/* Warning if Ollama online but 0 models */}
             {ollamaOnline && models.length === 0 && (
