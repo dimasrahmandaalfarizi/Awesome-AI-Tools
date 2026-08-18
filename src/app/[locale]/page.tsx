@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion"
 import { ArrowRight, Star, ExternalLink } from "lucide-react"
-import Link from "next/link"
+import { Link } from "@/i18n/routing"
 import { Navbar } from "@/components/layouts/Navbar"
 import { Footer } from "@/components/layouts/Footer"
 import { Button } from "@/components/ui/Button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card"
 import { Badge } from "@/components/ui/Badge"
+import { ToolLogo } from "@/components/ui/ToolLogo"
 import { CATEGORIES, TOOLS, COLLECTIONS } from "@/data/mock"
 
 import { useTranslations } from "next-intl"
@@ -122,16 +123,19 @@ export default function Home() {
                 <CardHeader>
                   <div className="flex justify-between items-start mb-2">
                     <Badge variant={tool.isOpenSource ? "accent" : "secondary"}>
-                      {tool.isOpenSource ? "Open Source" : tool.pricing}
+                      {tool.isOpenSource ? t("openSource") : tool.pricing}
                     </Badge>
                     <div className="text-xs text-[var(--muted)] bg-[var(--background)] px-2 py-1 rounded-full border border-[var(--border)]">
                       {CATEGORIES.find(c => c.id === tool.categoryId)?.name}
                     </div>
                   </div>
-                  <Link href={`/tools/${tool.slug}`} className="hover:underline">
-                    <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-colors">{tool.name}</CardTitle>
-                  </Link>
-                  <CardDescription className="line-clamp-2 mt-2">
+                  <div className="flex items-center gap-3 mt-1">
+                    <ToolLogo name={tool.name} website={tool.website} logo={tool.logo} size="md" />
+                    <Link href={`/tools/${tool.slug}`} className="hover:underline">
+                      <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-colors">{tool.name}</CardTitle>
+                    </Link>
+                  </div>
+                  <CardDescription className="line-clamp-2 mt-3">
                     {tool.description}
                   </CardDescription>
                 </CardHeader>

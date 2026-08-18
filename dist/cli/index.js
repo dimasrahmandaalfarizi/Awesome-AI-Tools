@@ -50,7 +50,8 @@ var CATEGORIES = [
   { id: "cat-17", name: "Testing", slug: "testing", description: "AI-powered testing and QA tools.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
   { id: "cat-18", name: "Security", slug: "security", description: "Tools for AI safety, security, and vulnerability scanning.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
   { id: "cat-19", name: "Research", slug: "research", description: "Tools for academic and industry AI research.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
-  { id: "cat-20", name: "Open Source", slug: "open-source", description: "A selection of purely open-source AI projects.", createdAt: (/* @__PURE__ */ new Date()).toISOString() }
+  { id: "cat-20", name: "Open Source", slug: "open-source", description: "A selection of purely open-source AI projects.", createdAt: (/* @__PURE__ */ new Date()).toISOString() },
+  { id: "cat-21", name: "AI API Router", slug: "ai-api-router", description: "Local proxies and routing layers to manage multiple LLM APIs.", createdAt: (/* @__PURE__ */ new Date()).toISOString() }
 ];
 var getScreenshot = (url) => `https://image.thum.io/get/width/1200/crop/800/${url}`;
 var TOOLS = [
@@ -621,6 +622,722 @@ var TOOLS = [
       { step: 2, title: "Run Locally", description: "Use tools like Ollama or LM Studio to load the 8B model natively on your Mac or PC." },
       { step: 3, title: "Fine-tune", description: "Use libraries like Unsloth or Hugging Face PEFT to fine-tune the model on your proprietary company data." }
     ]
+  },
+  {
+    id: "tool-21",
+    name: "Supermaven",
+    slug: "supermaven",
+    description: "The fastest AI copilot with a massive 1-million-token context window.",
+    website: "https://supermaven.com",
+    pricing: "Freemium",
+    isOpenSource: false,
+    platform: ["VS Code", "JetBrains", "Neovim"],
+    categoryId: "cat-2",
+    tags: ["copilot", "editor"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://supermaven.com"),
+    problem: "Traditional copilots struggle with latency, making the developer wait for suggestions, which breaks their flow.",
+    solution: "A blazingly fast copilot powered by a custom architecture (Babble) that provides instantaneous autocomplete while maintaining awareness of the entire repository.",
+    challenge: "Achieving sub-200ms latency on massive context windows without bankrupting the company on inference costs.",
+    techChoices: ["Babble Architecture", "Custom Inference Engine"],
+    targetUser: "Senior Developers and Codebase Architects.",
+    keyFeatures: ["1M token context", "Near-zero latency", "Full codebase awareness", "Free tier available"],
+    impact: "Set a new standard for autocomplete speed, forcing competitors to optimize their latency.",
+    guide: [
+      { step: 1, title: "Install Extension", description: "Search for 'Supermaven' in your IDE marketplace." },
+      { step: 2, title: "Authenticate", description: "Sign in to activate the free tier." },
+      { step: 3, title: "Code", description: "Just start typing. Supermaven will instantly suggest code blocks based on your entire project's context." }
+    ]
+  },
+  {
+    id: "tool-22",
+    name: "Aider",
+    slug: "aider",
+    description: "AI pair programming in your terminal. Let AI write code while you manage the big picture.",
+    website: "https://aider.chat",
+    github: "https://github.com/paul-gauthier/aider",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["Terminal", "Python"],
+    categoryId: "cat-2",
+    tags: ["terminal", "python", "open-source"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://aider.chat"),
+    problem: "IDE-based AI tools are tightly coupled to specific editors and often struggle to execute complex multi-file refactors autonomously.",
+    solution: "A command-line chat tool that seamlessly pairs with any Git repository, allowing you to ask an LLM to edit files, which it does by creating clean git commits automatically.",
+    challenge: "Parsing LLM diff outputs reliably so that edits are applied cleanly without breaking existing syntax.",
+    techChoices: ["Python", "Universal Diff Format", "Git CLI"],
+    targetUser: "CLI power users, Vim/Emacs users, and developers who prefer terminal workflows.",
+    keyFeatures: ["Automatic git commits", "Works with any LLM (Claude, GPT-4, Local)", "Voice coding support", "Repository mapping"],
+    impact: "Proved that AI coding doesn't require a heavy GUI IDE, popularizing the 'chat-to-git' workflow.",
+    guide: [
+      { step: 1, title: "Install", description: "Run 'pip install aider-chat' in your terminal." },
+      { step: 2, title: "Run Aider", description: "Navigate to your git repository and type 'aider'. Ensure your API keys (e.g., ANTHROPIC_API_KEY) are set." },
+      { step: 3, title: "Ask for Changes", description: "Type 'Add a new contact form to the homepage'. Aider will read the files, write the code, and commit the changes." }
+    ]
+  },
+  {
+    id: "tool-23",
+    name: "Codeium",
+    slug: "codeium",
+    description: "The modern coding superpower. A highly capable, permanently free GitHub Copilot alternative.",
+    website: "https://codeium.com",
+    pricing: "Freemium",
+    isOpenSource: false,
+    platform: ["VS Code", "JetBrains", "Visual Studio", "Chrome"],
+    categoryId: "cat-2",
+    tags: ["copilot"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: false,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://codeium.com"),
+    problem: "Most high-quality AI coding assistants charge hefty monthly subscriptions, gating students and open-source developers.",
+    solution: "A fully-featured AI assistant offering autocomplete, chat, and search powered by proprietary models, completely free for individual developers.",
+    challenge: "Training and serving proprietary coding models that rival OpenAI/Anthropic while maintaining a sustainable business model.",
+    techChoices: ["Proprietary LLMs", "Multi-IDE extensions"],
+    targetUser: "Students, Indie Hackers, and Enterprise Teams.",
+    keyFeatures: ["Permanently free for individuals", "In-editor chat", "Context awareness", "70+ supported languages"],
+    impact: "Democratized access to premium AI coding features, capturing a massive user base previously priced out of the market.",
+    guide: [
+      { step: 1, title: "Install Extension", description: "Find Codeium in your IDE's extension tab." },
+      { step: 2, title: "Log In", description: "Create a free Codeium account." },
+      { step: 3, title: "Chat and Code", description: "Use the autocomplete or open the Codeium chat panel to ask questions about your repository." }
+    ]
+  },
+  {
+    id: "tool-24",
+    name: "Sourcegraph Cody",
+    slug: "cody",
+    description: "An AI coding assistant that lives in your editor and can find, explain, and write code using your entire codebase.",
+    website: "https://sourcegraph.com/cody",
+    github: "https://github.com/sourcegraph/cody",
+    pricing: "Freemium",
+    isOpenSource: true,
+    platform: ["VS Code", "JetBrains", "Web"],
+    categoryId: "cat-2",
+    tags: ["copilot", "open-source"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: false,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://sourcegraph.com/cody"),
+    problem: "AI tools often hallucinate because they don't have deep, indexed context of a company's massive, multi-repository codebase.",
+    solution: "Combines Sourcegraph's enterprise-grade code search engine with modern LLMs to provide highly accurate, codebase-aware answers.",
+    challenge: "Generating and updating embeddings for monolithic enterprise repositories in real-time.",
+    techChoices: ["Sourcegraph Search Engine", "React", "TypeScript"],
+    targetUser: "Enterprise Developers working on large, undocumented codebases.",
+    keyFeatures: ["Deep codebase context", "Choose your LLM (Claude, GPT-4)", "Unit test generation", "Code smell detection"],
+    impact: "Bridged the gap between AI generation and enterprise code search, making onboarding to new codebases incredibly fast.",
+    guide: [
+      { step: 1, title: "Install", description: "Install the Cody extension for VS Code or JetBrains." },
+      { step: 2, title: "Connect", description: "Sign in with your Sourcegraph account." },
+      { step: 3, title: "Ask Cody", description: "Highlight a confusing function and ask 'What does this do and where is it used across the company?'" }
+    ]
+  },
+  {
+    id: "tool-25",
+    name: "Cline",
+    slug: "cline",
+    description: "An autonomous AI software engineer that operates directly within VS Code.",
+    website: "https://cline.bot",
+    github: "https://github.com/cline/cline",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["VS Code"],
+    categoryId: "cat-4",
+    tags: ["editor", "open-source"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://cline.bot"),
+    problem: "Developers want autonomous agent capabilities (like Devin) but prefer them deeply integrated into their existing VS Code environment.",
+    solution: "A VS Code extension that gives an LLM the ability to read files, write code, run terminal commands, and use the browser, all under user supervision.",
+    challenge: "Ensuring the AI agent doesn't execute destructive commands while allowing it enough freedom to actually complete complex tasks.",
+    techChoices: ["TypeScript", "VS Code Extension API", "MCP (Model Context Protocol)"],
+    targetUser: "Full Stack Developers and Open Source Contributors.",
+    keyFeatures: ["Terminal execution", "File editing", "MCP Tool integration", "Human-in-the-loop approval"],
+    impact: "Brought autonomous coding directly to the world's most popular editor, accelerating the adoption of agentic workflows.",
+    guide: [
+      { step: 1, title: "Install Cline", description: "Search for 'Cline' in the VS Code marketplace." },
+      { step: 2, title: "Configure Provider", description: "Open the extension settings and input your Anthropic or OpenAI API key." },
+      { step: 3, title: "Assign Task", description: "Open the Cline chat and instruct it to 'Setup a new Postgres database connection and write the CRUD endpoints'." }
+    ]
+  },
+  {
+    id: "tool-26",
+    name: "Tabnine",
+    slug: "tabnine",
+    description: "The AI coding assistant that you control. Private, secure, and compliant.",
+    website: "https://tabnine.com",
+    pricing: "Paid",
+    isOpenSource: false,
+    platform: ["VS Code", "JetBrains", "Visual Studio", "Eclipse"],
+    categoryId: "cat-2",
+    tags: ["copilot"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: false,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://tabnine.com"),
+    problem: "Enterprises in highly regulated industries (finance, healthcare, defense) cannot send their proprietary code to public LLM APIs due to privacy concerns.",
+    solution: "An AI coding assistant that offers fully isolated deployments (VPC, on-premises) and trains its models exclusively on permissive open-source code to avoid IP infringement.",
+    challenge: "Delivering high-quality code suggestions on highly constrained local or VPC hardware without relying on massive cloud clusters.",
+    techChoices: ["Rust", "Custom isolated LLMs"],
+    targetUser: "Enterprise Engineering Teams in regulated industries.",
+    keyFeatures: ["Zero data retention", "On-premises deployment", "IP indemnification", "Personalized codebase training"],
+    impact: "Allowed risk-averse enterprises to adopt AI coding tools without compromising on compliance or security.",
+    guide: [
+      { step: 1, title: "Enterprise Setup", description: "Work with IT to deploy Tabnine within your company's secure VPC or firewall." },
+      { step: 2, title: "Install Plugin", description: "Install the Tabnine plugin in your company-approved IDE." },
+      { step: 3, title: "Code Securely", description: "Enjoy AI autocomplete knowing your code never leaves your organization's network." }
+    ]
+  },
+  {
+    id: "tool-27",
+    name: "Amazon Q Developer",
+    slug: "amazon-q",
+    description: "Generative AI-powered assistant designed for software development on AWS.",
+    website: "https://aws.amazon.com/q/developer/",
+    pricing: "Freemium",
+    isOpenSource: false,
+    platform: ["VS Code", "JetBrains", "AWS Console"],
+    categoryId: "cat-2",
+    tags: ["copilot"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: false,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://aws.amazon.com/q/developer/"),
+    problem: "Developers struggle to navigate complex cloud infrastructure, write IAM policies, and upgrade legacy code efficiently.",
+    solution: "An AI assistant deeply integrated with the AWS ecosystem that can not only write code but also answer architectural questions, troubleshoot cloud deployments, and autonomously upgrade Java applications.",
+    challenge: "Integrating an AI assistant across the fragmented surfaces of the AWS console, CLI, and local IDEs while maintaining consistent context.",
+    techChoices: ["Amazon Bedrock", "Proprietary AWS Models"],
+    targetUser: "Cloud Engineers, DevOps, and developers heavily invested in AWS.",
+    keyFeatures: ["AWS context awareness", "Legacy code transformation (e.g., Java upgrades)", "Security scanning", "Feature development agent"],
+    impact: "Significantly reduced the learning curve for AWS infrastructure, allowing developers to build cloud-native apps faster.",
+    guide: [
+      { step: 1, title: "Install Toolkit", description: "Install the AWS Toolkit extension in your IDE." },
+      { step: 2, title: "Authenticate", description: "Sign in using AWS Builder ID or your company's IAM Identity Center." },
+      { step: 3, title: "Upgrade Code", description: "Use the Q Agent to automatically refactor and upgrade a legacy Java 8 application to Java 17." }
+    ]
+  },
+  {
+    id: "tool-28",
+    name: "9Router",
+    slug: "9router",
+    description: "An open-source, local proxy tool acting as a centralized routing layer for AI coding assistants.",
+    website: "https://github.com/decolua/9router",
+    github: "https://github.com/decolua/9router",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["Local", "Node.js", "Docker"],
+    categoryId: "cat-21",
+    tags: ["open-source", "local", "proxy"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://github.com/decolua/9router"),
+    problem: "Developers use multiple AI coding tools (Cursor, Cline, Copilot) which require separate configuration of API keys and lack unified cost management or auto-fallback capabilities.",
+    solution: "A local OpenAI-compatible proxy (localhost:20128/v1) that routes requests from any AI coding tool to over 40 different API providers, featuring smart fallbacks and cost management.",
+    challenge: "Translating and unifying API formats across different providers (OpenAI, Anthropic, Gemini) and compressing massive token usage from verbose tool outputs (like git diffs).",
+    techChoices: ["Node.js", "Next.js", "React", "Tailwind CSS"],
+    targetUser: "Developers who use multiple AI coding assistants and want to optimize their API costs and workflows.",
+    keyFeatures: ["Centralized Routing", "Smart 3-tier auto-fallback", "RTK Token Saver (20-40% compression)", "Local Web Dashboard", "Format Translation"],
+    impact: "Provides developers with absolute control over their API usage and costs across all their AI coding tools, preventing vendor lock-in.",
+    guide: [
+      { step: 1, title: "Install Globally", description: "Run 'npm install -g 9router' in your terminal." },
+      { step: 2, title: "Start the Proxy", description: "Run '9router' and access the local web dashboard to configure your API keys." },
+      { step: 3, title: "Configure Assistants", description: "Set your AI coding assistants (like Cline or Cursor) to use 'http://localhost:20128/v1' as their OpenAI-compatible endpoint." }
+    ]
+  },
+  {
+    id: "tool-29",
+    name: "DeepSeek-R1",
+    slug: "deepseek-r1",
+    description: "State-of-the-art open-weights reasoning model trained via large-scale reinforcement learning. Rivals OpenAI o1 in math, coding, and logical reasoning.",
+    website: "https://chat.deepseek.com",
+    github: "https://github.com/deepseek-ai/DeepSeek-R1",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["Web", "API", "Local"],
+    categoryId: "cat-3",
+    tags: ["reasoning", "open-source", "local"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://chat.deepseek.com"),
+    problem: "Proprietary reasoning models are expensive, closed-source, and introduce vendor lock-in for enterprise chain-of-thought workflows.",
+    solution: "An open-weights reasoning LLM that uses pure RL (Reinforcement Learning) without supervised fine-tuning warm-up to achieve remarkable reasoning benchmarks at ultra-low inference cost.",
+    challenge: "Managing lengthy chain-of-thought token generation while preventing reasoning drift and maintaining fast throughput.",
+    techChoices: ["PyTorch", "Multi-Head Latent Attention", "Reinforcement Learning (GRPO)"],
+    targetUser: "AI Researchers, Data Scientists, and Developers needing advanced logical reasoning.",
+    keyFeatures: ["Deep reasoning tokens (<think>)", "Open weights with MIT license", "Distilled models (1.5B to 70B)", "Exceptional math and coding score"],
+    impact: "Disrupted the global AI industry by providing frontier-class reasoning performance at a fraction of standard proprietary pricing.",
+    guide: [
+      { step: 1, title: "Try Online", description: "Visit chat.deepseek.com and enable 'DeepThink (R1)' mode for reasoning queries." },
+      { step: 2, title: "Run Locally", description: "Run 'ollama run deepseek-r1:8b' or 'ollama run deepseek-r1:14b' on your local machine." },
+      { step: 3, title: "Integrate via API", description: "Use the OpenAI-compatible API at 'https://api.deepseek.com' with model 'deepseek-reasoner'." }
+    ]
+  },
+  {
+    id: "tool-30",
+    name: "DeepSeek-V3",
+    slug: "deepseek-v3",
+    description: "A 671B parameter Mixture-of-Experts (MoE) model activating 37B per token, delivering frontier-level performance in coding and general knowledge.",
+    website: "https://deepseek.com",
+    github: "https://github.com/deepseek-ai/DeepSeek-V3",
+    pricing: "Freemium",
+    isOpenSource: true,
+    platform: ["API", "Web", "Local"],
+    categoryId: "cat-3",
+    tags: ["open-source", "python"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://deepseek.com"),
+    problem: "Massive dense LLMs require prohibitive compute clusters to train and serve, leading to high API pricing.",
+    solution: "A highly optimized Mixture-of-Experts architecture combined with Multi-head Latent Attention (MLA) that achieves top-tier inference speeds at extremely low cost.",
+    challenge: "Load balancing thousands of expert routing paths across massive GPU networks without communication bottlenecks.",
+    techChoices: ["Custom MoE Kernel", "Multi-Head Latent Attention", "FP8 Mixed Precision"],
+    targetUser: "Developers, Startups, and High-throughput Enterprise Apps.",
+    keyFeatures: ["671B total / 37B active parameters", "128K context window", "Ultra-fast generation speeds", "Very low API pricing"],
+    impact: "Set a new global benchmark for price-to-performance in large foundational models.",
+    guide: [
+      { step: 1, title: "Get API Key", description: "Sign up at platform.deepseek.com and generate an API key." },
+      { step: 2, title: "Configure Base URL", description: "Set your API base to 'https://api.deepseek.com' in any OpenAI-compatible client." },
+      { step: 3, title: "Use Model", description: "Specify 'deepseek-chat' as your model identifier." }
+    ]
+  },
+  {
+    id: "tool-31",
+    name: "Claude 3.7 Sonnet",
+    slug: "claude-3-7-sonnet",
+    description: "The first hybrid reasoning model combining instant responses with extended, controllable thinking for coding and complex engineering tasks.",
+    website: "https://anthropic.com/claude",
+    pricing: "Freemium",
+    isOpenSource: false,
+    platform: ["Web", "API"],
+    categoryId: "cat-3",
+    tags: ["reasoning", "copilot"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://anthropic.com/claude"),
+    problem: "Developers previously had to choose between fast models (for autocomplete/chat) and slow pure-reasoning models without control over budget.",
+    solution: "A hybrid reasoning architecture that allows users and developers to dial in exact thinking token budgets for complex coding and math problems.",
+    challenge: "Balancing standard conversational tone with deep architectural problem solving in a single weights checkpoint.",
+    techChoices: ["Constitutional AI", "Hybrid Thinking Engine", "React Artifacts"],
+    targetUser: "Software Architects, Senior Engineers, and Product Builders.",
+    keyFeatures: ["Controllable thinking tokens", "World-class coding benchmarks", "200K context window", "Deep integration with Claude Code CLI"],
+    impact: "Established the gold standard for AI coding agents and autonomous problem-solving.",
+    guide: [
+      { step: 1, title: "Open Claude", description: "Visit claude.ai or use Anthropic's Messages API." },
+      { step: 2, title: "Enable Extended Thinking", description: "Toggle Extended Thinking in the web interface or provide the 'thinking' parameter in API calls." },
+      { step: 3, title: "Execute Complex Tasks", description: "Paste entire code repositories or complex architecture specs to receive verified solutions." }
+    ]
+  },
+  {
+    id: "tool-32",
+    name: "Qwen 2.5 Coder",
+    slug: "qwen-2-5-coder",
+    description: "Alibaba's flagship open-weights coding model series (0.5B to 32B), matching top commercial models in code generation and debugging.",
+    website: "https://chat.qwenlm.ai",
+    github: "https://github.com/QwenLM/Qwen2.5-Coder",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["Local", "API", "Web"],
+    categoryId: "cat-3",
+    tags: ["open-source", "local", "copilot"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://chat.qwenlm.ai"),
+    problem: "Developers needing local, private coding copilots were limited to low-accuracy small models.",
+    solution: "Trained on 5.5+ trillion tokens of code, Qwen 2.5 Coder 32B matches proprietary 2024 models in full repo coding, math, and multi-file reasoning.",
+    challenge: "Maintaining high comprehension across 92+ programming languages while supporting 128K context lengths locally.",
+    techChoices: ["PyTorch", "FlashAttention-2", "RoPE Scaling"],
+    targetUser: "Local-first Developers, Privacy-conscious enterprises, and VS Code users.",
+    keyFeatures: ["32B flagship and lightweight 7B/14B variants", "128K context support", "92+ programming languages", "Apache 2.0 / Permissive open license"],
+    impact: "Empowered millions of developers to run a true state-of-the-art coding copilot entirely on consumer hardware (MacBook / RTX 4090).",
+    guide: [
+      { step: 1, title: "Install via Ollama", description: "Run 'ollama run qwen2.5-coder:32b' or 'ollama run qwen2.5-coder:7b' in terminal." },
+      { step: 2, title: "Connect to Editor", description: "Point Continue.dev, Cline, or Cursor to your local Ollama endpoint." },
+      { step: 3, title: "Code Privately", description: "Enjoy zero-latency in-editor code completions with total data privacy." }
+    ]
+  },
+  {
+    id: "tool-33",
+    name: "Claude Code",
+    slug: "claude-code",
+    description: "An agentic command-line tool by Anthropic that lives in your terminal, understands your codebase, and helps you code faster through natural language.",
+    website: "https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview",
+    pricing: "Freemium",
+    isOpenSource: false,
+    platform: ["Terminal", "macOS", "Linux", "Windows"],
+    categoryId: "cat-2",
+    tags: ["terminal", "copilot", "claude-code"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://anthropic.com"),
+    problem: "IDE extensions can be distracting and struggle with large-scale multi-file terminal operations like git rebasing, build fixing, and package management.",
+    solution: "A native CLI agent powered by Claude 3.7 Sonnet that reads your local repo, executes tests, creates commits, and plans architectural refactors directly in the terminal.",
+    challenge: "Safely sandboxing terminal command execution and minimizing context window token spend across complex multi-step sessions.",
+    techChoices: ["Node.js", "Anthropic Claude 3.7 API", "Terminal UI"],
+    targetUser: "Terminal enthusiasts, Senior Engineers, and DevOps developers.",
+    keyFeatures: ["Direct terminal integration", "Deep git awareness and automatic commits", "Understands CLAUDE.md guidelines", "Autonomous test and fix loops"],
+    impact: "Reinvented the terminal workflow by placing an elite AI pair programmer directly into developer CLI environments.",
+    guide: [
+      { step: 1, title: "Install Globally", description: "Run 'npm install -g @anthropic-ai/claude-code' in your terminal." },
+      { step: 2, title: "Authenticate", description: "Run 'claude' in any project directory and authenticate with your Anthropic account." },
+      { step: 3, title: "Command the Agent", description: "Type prompts like 'Fix the failing unit tests and commit the changes' and let Claude Code work." }
+    ]
+  },
+  {
+    id: "tool-34",
+    name: "Roo Code (Roo-Cline)",
+    slug: "roo-code",
+    description: "An advanced, community-driven autonomous coding assistant for VS Code with custom modes, MCP server integration, and multi-model support.",
+    website: "https://roocode.com",
+    github: "https://github.com/RooVetGit/Roo-Cline",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["VS Code"],
+    categoryId: "cat-4",
+    tags: ["editor", "open-source", "mcp"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://roocode.com"),
+    problem: "Standard coding assistants lack specialization\u2014they treat architecture, testing, and documentation with the same rigid prompt.",
+    solution: "An open-source agent featuring customizable personas (Code, Architect, Ask, Debugger), token cost tracking, and full Model Context Protocol (MCP) tool support.",
+    challenge: "Coordinating multi-step file operations and terminal executions without hallucinating dependencies.",
+    techChoices: ["TypeScript", "VS Code Extension API", "MCP Standard"],
+    targetUser: "Power developers wanting full transparency, customized modes, and MCP tools in VS Code.",
+    keyFeatures: ["Custom system modes (.roomodes)", "Full MCP support", "Token cost monitoring", "OpenRouter / DeepSeek / Claude / Local models support"],
+    impact: "Became the fastest-growing open-source coding agent extension for VS Code in 2025.",
+    guide: [
+      { step: 1, title: "Install Extension", description: "Search for 'Roo Code' in the VS Code Marketplace and install." },
+      { step: 2, title: "Choose API Provider", description: "Configure your API key (DeepSeek, Claude, OpenRouter, or Ollama)." },
+      { step: 3, title: "Switch Modes", description: "Switch between 'Architect' to plan and 'Code' to write features automatically." }
+    ]
+  },
+  {
+    id: "tool-35",
+    name: "Trae IDE",
+    slug: "trae",
+    description: "An adaptive AI IDE developed by ByteDance that integrates conversational coding agents and intelligent workspace indexing.",
+    website: "https://trae.ai",
+    pricing: "Free",
+    isOpenSource: false,
+    platform: ["macOS", "Windows"],
+    categoryId: "cat-1",
+    tags: ["editor", "copilot"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://trae.ai"),
+    problem: "Most AI IDEs require paid subscriptions or complex multi-plugin configurations.",
+    solution: "A polished, dedicated AI editor offering free access to top-tier models (Claude 3.5/3.7, GPT-4o) with native workspace indexing and Builder mode.",
+    challenge: "Providing low-latency agentic multi-file generation with rich inline diff visualizers.",
+    techChoices: ["VS Code Fork", "Rust indexing engine", "Proprietary Agent Orchestration"],
+    targetUser: "Developers seeking a powerful, free, all-in-one AI IDE alternative to Cursor.",
+    keyFeatures: ["Builder mode for multi-file creation", "Free access to Claude and GPT-4o", "Deep codebase indexing", "Familiar VS Code keybindings"],
+    impact: "Lowered the barrier of entry for next-gen AI-native code editors worldwide.",
+    guide: [
+      { step: 1, title: "Download", description: "Download Trae from trae.ai and run the installer." },
+      { step: 2, title: "Open Project", description: "Import your VS Code extensions and settings in one click." },
+      { step: 3, title: "Use Builder Mode", description: "Press Cmd+U or open the chat panel to ask Trae to build full stack features." }
+    ]
+  },
+  {
+    id: "tool-36",
+    name: "Goose",
+    slug: "goose",
+    description: "An open-source, extensible AI agent by Block that automates engineering tasks through CLI and tool execution.",
+    website: "https://block.github.io/goose",
+    github: "https://github.com/block/goose",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["macOS", "Linux", "Windows", "Terminal"],
+    categoryId: "cat-4",
+    tags: ["open-source", "terminal", "autonomous-agent"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: false,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://block.github.io/goose"),
+    problem: "Building custom autonomous automation agents often requires writing glue code from scratch for every single workflow.",
+    solution: "A modular, plug-and-play desktop and CLI agent that can connect to MCP servers, run commands, and automate developer tasks.",
+    challenge: "Ensuring tool-calling reliability and agent loop safety across diverse enterprise environments.",
+    techChoices: ["Rust", "Python", "Model Context Protocol"],
+    targetUser: "DevOps, Software Engineers, and Automation builders.",
+    keyFeatures: ["Extensible MCP plugin architecture", "CLI and GUI interfaces", "Supports any LLM provider", "Open source by Block"],
+    impact: "Established a robust open-source foundation for enterprise-ready developer agents.",
+    guide: [
+      { step: 1, title: "Install", description: "Run 'curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh | bash'." },
+      { step: 2, title: "Configure", description: "Run 'goose configure' to set your preferred LLM provider." },
+      { step: 3, title: "Automate", description: "Run 'goose session' to start an autonomous problem-solving session." }
+    ]
+  },
+  {
+    id: "tool-37",
+    name: "OpenHands",
+    slug: "openhands",
+    description: "The leading open-source platform for software development agents. Formerly OpenDevin.",
+    website: "https://all-hands.dev",
+    github: "https://github.com/All-Hands-AI/OpenHands",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["Docker", "Web", "Local"],
+    categoryId: "cat-4",
+    tags: ["open-source", "autonomous-agent", "docker"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://all-hands.dev"),
+    problem: "Autonomous software engineer tools like Devin are closed-source and expensive for general developer communities.",
+    solution: "A fully open-source platform with a web GUI, sandboxed Docker environment, and modular agent architecture capable of solving real GitHub issues.",
+    challenge: "Safely sandboxing agent bash commands and browser automation within reliable Docker containers.",
+    techChoices: ["Python", "FastAPI", "React", "Docker Sandboxing"],
+    targetUser: "AI Researchers, Open Source Maintainers, and Autonomous Agent Builders.",
+    keyFeatures: ["Docker execution sandbox", "Interactive Web UI", "Benchmark-tested on SWE-bench", "Supports any LLM provider"],
+    impact: "Proved that the open-source community can build autonomous software engineers rivaling proprietary venture-backed startups.",
+    guide: [
+      { step: 1, title: "Start Container", description: "Run the official OpenHands docker container with Docker Desktop running." },
+      { step: 2, title: "Open Web UI", description: "Navigate to 'http://localhost:3000' in your browser." },
+      { step: 3, title: "Provide Task", description: "Give OpenHands a GitHub repository link or prompt to build, test, and commit." }
+    ]
+  },
+  {
+    id: "tool-38",
+    name: "GitHub MCP Server",
+    slug: "github-mcp-server",
+    description: "Official Model Context Protocol server enabling AI agents to search repos, read pull requests, manage issues, and create commits.",
+    website: "https://github.com/modelcontextprotocol/servers/tree/main/src/github",
+    github: "https://github.com/modelcontextprotocol/servers",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["Node.js", "Docker"],
+    categoryId: "cat-5",
+    tags: ["mcp", "open-source", "typescript"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://github.com"),
+    problem: "AI agents cannot natively interact with GitHub repositories, pull requests, or issue trackers without custom REST wrappers.",
+    solution: "A standardized Model Context Protocol server that gives any MCP client (Claude Desktop, Cursor, Roo Code) structured tools for full GitHub operations.",
+    challenge: "Handling GitHub rate limits and pagination cleanly across large repositories.",
+    techChoices: ["TypeScript", "GitHub Octokit SDK", "MCP SDK"],
+    targetUser: "Developers connecting AI assistants directly to GitHub workflows.",
+    keyFeatures: ["Search code & repositories", "Create and review pull requests", "Manage issues & discussions", "Push commits directly"],
+    impact: "Became the standard integration bridge between LLM agents and GitHub source control.",
+    guide: [
+      { step: 1, title: "Configure MCP", description: "Add '@modelcontextprotocol/server-github' to your Claude Desktop or Cline MCP settings." },
+      { step: 2, title: "Add Personal Token", description: "Set your GITHUB_PERSONAL_ACCESS_TOKEN in the environment configuration." },
+      { step: 3, title: "Use in Chat", description: "Ask your AI agent: 'Inspect issue #42 in my repo and create a pull request with a fix'." }
+    ]
+  },
+  {
+    id: "tool-39",
+    name: "PostgreSQL MCP Server",
+    slug: "postgres-mcp-server",
+    description: "Model Context Protocol server providing read/write schema inspection and query execution for PostgreSQL databases.",
+    website: "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres",
+    github: "https://github.com/modelcontextprotocol/servers",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["Node.js", "Docker"],
+    categoryId: "cat-5",
+    tags: ["mcp", "open-source", "database"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://postgresql.org"),
+    problem: "AI assistants cannot inspect live database schemas or verify SQL queries without tedious copy-pasting.",
+    solution: "A lightweight MCP server exposing PostgreSQL database introspection, schema validation, and SQL querying directly to AI agents.",
+    challenge: "Ensuring secure execution and preventing accidental destructive SQL operations.",
+    techChoices: ["TypeScript", "pg driver", "MCP SDK"],
+    targetUser: "Backend Developers, Data Engineers, and Database Administrators.",
+    keyFeatures: ["Live schema discovery", "Read and execute queries", "SQL syntax validation", "Works with Neon, Supabase, and local Postgres"],
+    impact: "Eliminated the friction of manual database inspection when building backend applications with AI.",
+    guide: [
+      { step: 1, title: "Add to MCP Config", description: "Specify 'npx -y @modelcontextprotocol/server-postgres postgresql://user:pass@localhost:5432/mydb'." },
+      { step: 2, title: "Connect Client", description: "Open Claude Desktop or Roo Code." },
+      { step: 3, title: "Query with AI", description: "Prompt: 'Analyze the users table schema and write an optimized index recommendation'." }
+    ]
+  },
+  {
+    id: "tool-40",
+    name: "Filesystem MCP Server",
+    slug: "filesystem-mcp-server",
+    description: "Model Context Protocol server for secure local directory access, file reading, writing, and directory searching.",
+    website: "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+    github: "https://github.com/modelcontextprotocol/servers",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["Node.js"],
+    categoryId: "cat-5",
+    tags: ["mcp", "open-source", "local"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: false,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://modelcontextprotocol.io"),
+    problem: "Desktop AI clients (like Claude Desktop) cannot natively access local folders without secure directory boundaries.",
+    solution: "A sandboxed MCP server granting file manipulation permissions strictly within user-approved directory paths.",
+    challenge: "Preventing directory traversal attacks while providing rapid file tree exploration.",
+    techChoices: ["Node.js", "MCP TypeScript SDK"],
+    targetUser: "Claude Desktop users and local agent developers.",
+    keyFeatures: ["Sandboxed directory access", "Read/Write files", "Search directory trees", "File metadata extraction"],
+    impact: "Turned Claude Desktop from a pure chat interface into a capable local file assistant.",
+    guide: [
+      { step: 1, title: "Configure Path", description: "Add '@modelcontextprotocol/server-filesystem' with your chosen allowed directories." },
+      { step: 2, title: "Restart Client", description: "Restart Claude Desktop to load the file tools." },
+      { step: 3, title: "Manage Files", description: "Ask Claude to read documents or refactor source code in the allowed folder." }
+    ]
+  },
+  {
+    id: "tool-41",
+    name: "Puppeteer MCP Server",
+    slug: "puppeteer-mcp-server",
+    description: "Browser automation MCP server enabling AI models to navigate the web, fill forms, click buttons, and capture screenshots.",
+    website: "https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer",
+    github: "https://github.com/modelcontextprotocol/servers",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["Node.js"],
+    categoryId: "cat-5",
+    tags: ["mcp", "open-source", "automation"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: false,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://pptr.dev"),
+    problem: "AI agents often need live web information and UI interaction beyond static HTTP scraping.",
+    solution: "A headless Chrome automation server implementing MCP tools for full browser interaction, DOM scraping, and screenshot capture.",
+    challenge: "Handling dynamic JavaScript SPAs, bot detection, and screenshot compression efficiently.",
+    techChoices: ["Puppeteer", "Chromium", "TypeScript"],
+    targetUser: "Automation Engineers and Web Scraper Developers.",
+    keyFeatures: ["Headless browser control", "Click and type actions", "Take webpage screenshots", "Execute JavaScript in page context"],
+    impact: "Equipped AI agents with real eyes and hands on the live web.",
+    guide: [
+      { step: 1, title: "Add MCP Server", description: "Add 'npx -y @modelcontextprotocol/server-puppeteer' to your client MCP config." },
+      { step: 2, title: "Launch Agent", description: "Ask your agent: 'Visit this URL, fill out the search form, and take a screenshot of the results'." }
+    ]
+  },
+  {
+    id: "tool-42",
+    name: "Memory MCP Server",
+    slug: "memory-mcp-server",
+    description: "A graph-based persistent memory server for AI agents to maintain long-term memory across sessions.",
+    website: "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
+    github: "https://github.com/modelcontextprotocol/servers",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["Node.js"],
+    categoryId: "cat-5",
+    tags: ["mcp", "open-source"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: false,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://modelcontextprotocol.io"),
+    problem: "LLM chats lose memory between sessions, forcing developers to repeat preferences, architectural rules, and project context.",
+    solution: "A local knowledge-graph MCP server that automatically stores entities, relations, and observations across conversations.",
+    challenge: "Dynamically querying and updating graph relations without polluting the LLM prompt context.",
+    techChoices: ["TypeScript", "Knowledge Graph Engine"],
+    targetUser: "Anyone using AI assistants across recurring, long-term engineering projects.",
+    keyFeatures: ["Entity & Relation graph storage", "Continuous cross-session memory", "Search and retrieve facts", "Local JSON persistence"],
+    impact: "Gave AI assistants true continuity and long-term memory across disjoint chat sessions.",
+    guide: [
+      { step: 1, title: "Install Memory Server", description: "Add '@modelcontextprotocol/server-memory' to your MCP configuration." },
+      { step: 2, title: "Tell AI Facts", description: "Say: 'Remember that our project uses Tailwind CSS v4 and PostgreSQL with Drizzle ORM'." },
+      { step: 3, title: "Recall in New Chats", description: "In a new session, ask: 'What stack do we use for the database?' and the agent will retrieve it from memory." }
+    ]
+  },
+  {
+    id: "tool-43",
+    name: "Flux.1",
+    slug: "flux-1",
+    description: "Next-generation open-weights text-to-image model by Black Forest Labs with unprecedented typography rendering and photorealism.",
+    website: "https://blackforestlabs.ai",
+    github: "https://github.com/blackforestlabs/flux",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["Local", "API", "Web"],
+    categoryId: "cat-6",
+    tags: ["open-source", "local"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://blackforestlabs.ai"),
+    problem: "Open-source diffusion models historically failed at readable text rendering, human hands, and following complex prompts.",
+    solution: "A 12B parameter flow transformer model (dev, schnell, pro) capable of flawless typography, photorealism, and prompt adherence.",
+    challenge: "Optimizing 12B transformer weights for fast local generation on 16GB consumer GPUs.",
+    techChoices: ["Flow Matching", "Rotary Positional Embeddings", "PyTorch"],
+    targetUser: "Designers, Creative Developers, and Local AI enthusiasts.",
+    keyFeatures: ["Flawless text generation in images", "Schnell (4-step ultra-fast) and Dev variants", "ComfyUI & Diffusers support", "Apache 2.0 (Schnell) license"],
+    impact: "Surpassed Midjourney v6 in prompt fidelity and text rendering while remaining openly accessible for local inference.",
+    guide: [
+      { step: 1, title: "Run in ComfyUI", description: "Download the Flux.1 Schnell or Dev UNet weights and load the default workflow." },
+      { step: 2, title: "Prompt with Text", description: `Write prompts containing exact text in quotes (e.g. 'A neon sign saying "Awesome AI"').` },
+      { step: 3, title: "Generate", description: "Experience instant high-fidelity image rendering." }
+    ]
+  },
+  {
+    id: "tool-44",
+    name: "Kling AI",
+    slug: "kling-ai",
+    description: "A state-of-the-art AI video generation model capable of producing up to 1080p realistic videos with physical simulation and motion dynamics.",
+    website: "https://klingai.com",
+    pricing: "Freemium",
+    isOpenSource: false,
+    platform: ["Web"],
+    categoryId: "cat-7",
+    tags: [],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://klingai.com"),
+    problem: "AI video generation often suffers from rubbery motion, physics violations, and short 3-second limits.",
+    solution: "A 3D VAE and Spatio-Temporal Diffusion model creating cinematic video clips up to 2 minutes long with realistic real-world physics simulation.",
+    challenge: "Rendering high-resolution temporal consistency across long video timelines.",
+    techChoices: ["Spatio-Temporal Diffusion", "3D VAE Architecture"],
+    targetUser: "Filmmakers, Game Developers, and Video Creators.",
+    keyFeatures: ["Up to 2 minutes video duration", "1080p high definition output", "Motion brush & camera trajectory control", "Realistic physics simulation"],
+    impact: "Elevated AI video from short experimental snippets into viable footage for production commercials and media.",
+    guide: [
+      { step: 1, title: "Sign Up", description: "Create an account on klingai.com." },
+      { step: 2, title: "Text/Image to Video", description: "Upload a starting keyframe or write a descriptive motion prompt." },
+      { step: 3, title: "Export", description: "Render in 1080p and download your video." }
+    ]
+  },
+  {
+    id: "tool-45",
+    name: "Wan 2.1",
+    slug: "wan-2-1",
+    description: "Alibaba's open-weights video generation model series (1.3B and 14B) delivering cinematic visual quality and physics simulation locally.",
+    website: "https://wan.aliyun.com",
+    github: "https://github.com/Wan-Video/Wan2.1",
+    pricing: "Free",
+    isOpenSource: true,
+    platform: ["Local", "API", "Python"],
+    categoryId: "cat-7",
+    tags: ["open-source", "local"],
+    lastUpdated: (/* @__PURE__ */ new Date()).toISOString(),
+    featured: true,
+    createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    screenshotUrl: getScreenshot("https://wan.aliyun.com"),
+    problem: "Leading video models (Sora, Runway Gen-3) are closed proprietary APIs with steep generation fees.",
+    solution: "An open-weights video generation model suite capable of text-to-video and image-to-video generation running directly on consumer GPUs.",
+    challenge: "Compressing spatio-temporal video tokens to fit within standard 16GB-24GB VRAM budgets.",
+    techChoices: ["PyTorch", "Diffusers", "FlashAttention"],
+    targetUser: "Open Source AI Creators, Animators, and Video Engineers.",
+    keyFeatures: ["Open weights (1.3B and 14B)", "Text-to-Video and Image-to-Video", "Runs locally on consumer hardware", "Commercial-friendly license"],
+    impact: "Democratized state-of-the-art generative video for the global open-source community.",
+    guide: [
+      { step: 1, title: "Clone Repository", description: "Clone 'Wan-Video/Wan2.1' on GitHub and install dependencies." },
+      { step: 2, title: "Download Weights", description: "Fetch the 1.3B or 14B model checkpoint from Hugging Face." },
+      { step: 3, title: "Generate Video", description: "Run the inference script to generate cinematic MP4 videos from text prompts." }
+    ]
   }
 ];
 var AI_SKILLS = [
@@ -1083,22 +1800,73 @@ var AI_SKILLS = [
     content: "When orchestrating multiple agents:\n1. Define clear boundaries and responsibilities for each agent (e.g., Researcher, Coder, Reviewer).\n2. Ensure the output of one agent is correctly formatted as the input for the next.\n3. Implement a 'Supervisor' node that verifies the final aggregated output meets the original user request before presenting it.\n4. Handle timeouts or infinite loops gracefully by setting a maximum step limit.",
     author: "repowise-dev",
     createdAt: (/* @__PURE__ */ new Date()).toISOString()
+  },
+  {
+    id: "skill-47",
+    name: "Next.js 16 & React 19 Architect",
+    slug: "nextjs-16-react-19-architect",
+    description: "Enforces cutting-edge Next.js 16 App Router paradigms, React 19 Server Components, Server Actions, and strict async params.",
+    frameworks: ["Cursor", "Claude Code", "Windsurf", "Cline"],
+    content: "When developing in Next.js 16 & React 19:\n1. Strict Async Params: Always await `params` and `searchParams` in Page and Layout components (e.g. `const { slug } = await params;`).\n2. Server-First: Default to Server Components. Only add 'use client' when using browser hooks (useState, useEffect, event listeners).\n3. Data Mutation: Use React 19 Server Actions and `useActionState` / `useOptimistic` for forms instead of raw useEffect fetchers.\n4. Metadata & SEO: Always export typed `Metadata` objects or `generateMetadata` functions with Open Graph and Twitter cards.",
+    author: "dimasrahmanda",
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
+  },
+  {
+    id: "skill-48",
+    name: "DeepSeek R1 Reasoning Prompter",
+    slug: "deepseek-r1-reasoning-prompter",
+    description: "Optimizes agent queries for deep reasoning models by encouraging zero-shot thinking, step verification, and mathematical rigor.",
+    frameworks: ["Cursor", "Claude Code", "Cline"],
+    content: "When querying DeepSeek R1 or reasoning LLMs:\n1. Allow natural chain-of-thought exploration without artificial temperature manipulation (keep temp around 0.6).\n2. Format complex algorithmic questions with clear constraints, expected time/space complexity, and edge cases.\n3. Instruct the model to double-check boundary conditions (null, overflow, empty lists) before outputting final code blocks.\n4. Avoid overly verbose meta-prompts; direct problem statements yield the best reasoning traces.",
+    author: "dimasrahmanda",
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
+  },
+  {
+    id: "skill-49",
+    name: "MCP Server Builder",
+    slug: "mcp-server-builder",
+    description: "Guidance and scaffolding rules for building high-performance Model Context Protocol (MCP) servers using TypeScript or Python.",
+    frameworks: ["Cursor", "Claude Code", "Roo Code"],
+    content: "When authoring an MCP (Model Context Protocol) server:\n1. Use `@modelcontextprotocol/sdk` (TypeScript) or `mcp` (Python).\n2. Define structured JSON Schema for every tool with explicit parameter descriptions.\n3. Include resource templates (URIs) for data exposure and tools for actionable execution.\n4. Ensure error handling returns informative MCP ToolError messages rather than unhandled process crashes.\n5. Provide a stdio transport configuration snippet for Claude Desktop and Cline in the README.",
+    author: "dimasrahmanda",
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
+  },
+  {
+    id: "skill-50",
+    name: "Claude Code Project Memory (CLAUDE.md)",
+    slug: "claude-code-project-memory",
+    description: "Structure and guidelines for maintaining a high-fidelity CLAUDE.md project context file for Anthropic's Claude Code CLI.",
+    frameworks: ["Claude Code"],
+    content: "# CLAUDE.md Guidelines\nWhen maintaining CLAUDE.md for Claude Code CLI:\n1. Keep it concise and high-signal (< 200 lines).\n2. Document frequent terminal commands (build, test, lint, typecheck).\n3. Explicitly state code conventions, naming rules, and architectural patterns.\n4. Mention sensitive files or patterns the agent should never overwrite.\n5. Include guidelines on how git commits should be formatted.",
+    author: "dimasrahmanda",
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
+  },
+  {
+    id: "skill-51",
+    name: "Tailwind CSS v4 Token Architecture",
+    slug: "tailwind-v4-token-architecture",
+    description: "Enforces modern Tailwind CSS v4 CSS-first configuration using @theme directives and native CSS variables.",
+    frameworks: ["Cursor", "Windsurf", "Copilot"],
+    content: "When writing styling with Tailwind CSS v4:\n1. Configuration is CSS-first: Define design tokens in `globals.css` using `@theme` rather than a JS config file.\n2. Use CSS variables for semantic colors (`var(--background)`, `var(--primary)`).\n3. Utilize modern container queries and CSS color-mix functions where appropriate.\n4. Avoid legacy `@apply` chains; compose clean utility classes directly in JSX.",
+    author: "dimasrahmanda",
+    createdAt: (/* @__PURE__ */ new Date()).toISOString()
   }
 ];
 
 // src/cli/index.ts
 var program = new import_commander.Command();
-program.name("awesome-ai-tools").description("CLI to instantly apply AI skills to your local projects").version("0.1.0");
+program.name("awesome-ai-tools").description("CLI to instantly apply AI skills & rules to your local projects").version("0.2.0");
 program.command("list").description("List all available AI skills").action(() => {
-  console.log("\n\u{1F680} Available AI Skills:\n");
+  console.log("\n\u{1F680} Available AI Agent Skills:\n");
   AI_SKILLS.forEach((skill) => {
-    console.log(`- ${skill.name} (${skill.slug})`);
-    console.log(`  ${skill.description}
+    console.log(`- \x1B[36m${skill.name}\x1B[0m (\x1B[33m${skill.slug}\x1B[0m)`);
+    console.log(`  ${skill.description}`);
+    console.log(`  Frameworks: ${skill.frameworks.join(", ")}
 `);
   });
   console.log("Run 'npx awesome-ai-tools add <slug>' to apply a skill to your project.\n");
 });
-program.command("add").description("Add a specific AI skill to your project").argument("<slug>", "The slug of the skill to add (e.g., ui-ux-pro-max)").option("-e, --editor <type>", "Target editor (cursor, windsurf, cline, claude)").action(async (slug, options) => {
+program.command("add").description("Add a specific AI skill to your project").argument("<slug>", "The slug of the skill to add (e.g., nextjs-16-react-19-architect)").option("-e, --editor <type>", "Target editor (cursor, cursor-legacy, claude, windsurf, cline, copilot)").action(async (slug, options) => {
   const skill = AI_SKILLS.find((s) => s.slug === slug);
   if (!skill) {
     console.error(`
@@ -1111,12 +1879,14 @@ program.command("add").description("Add a specific AI skill to your project").ar
     const response = await (0, import_prompts.default)({
       type: "select",
       name: "editor",
-      message: "Which AI Editor are you using?",
+      message: "Which AI Editor / Assistant are you using?",
       choices: [
-        { title: "Cursor", value: "cursor", description: "Creates .cursorrules" },
-        { title: "Windsurf", value: "windsurf", description: "Creates .windsurfrules" },
-        { title: "Cline", value: "cline", description: "Creates .clinerules" },
-        { title: "Claude Code", value: "claude", description: "Creates system-prompt.md" }
+        { title: "Cursor (.cursor/rules/<slug>.mdc) [Recommended]", value: "cursor", description: "Creates modern multi-file MDC rule" },
+        { title: "Claude Code (CLAUDE.md)", value: "claude", description: "Appends to project CLAUDE.md guidelines" },
+        { title: "Windsurf (.windsurfrules)", value: "windsurf", description: "Creates or appends to .windsurfrules" },
+        { title: "Cline / Roo Code (.clinerules)", value: "cline", description: "Creates or appends to .clinerules" },
+        { title: "GitHub Copilot (.github/copilot-instructions.md)", value: "copilot", description: "Creates repository custom instructions" },
+        { title: "Cursor Legacy (.cursorrules)", value: "cursor-legacy", description: "Single-file legacy .cursorrules" }
       ]
     });
     editor = response.editor;
@@ -1125,48 +1895,93 @@ program.command("add").description("Add a specific AI skill to your project").ar
     console.log("\nOperation cancelled.\n");
     process.exit(0);
   }
-  let filename = "";
+  let targetPath = "";
+  let fileContent = skill.content;
   switch (editor) {
-    case "cursor":
-      filename = ".cursorrules";
+    case "cursor": {
+      const rulesDir = import_path.default.join(process.cwd(), ".cursor", "rules");
+      if (!import_fs.default.existsSync(rulesDir)) {
+        import_fs.default.mkdirSync(rulesDir, { recursive: true });
+      }
+      targetPath = import_path.default.join(rulesDir, `${slug}.mdc`);
+      fileContent = `---
+description: ${skill.description}
+globs: *
+alwaysApply: true
+---
+
+${skill.content}
+`;
       break;
-    case "windsurf":
-      filename = ".windsurfrules";
-      break;
-    case "cline":
-      filename = ".clinerules";
+    }
+    case "cursor-legacy":
+      targetPath = import_path.default.join(process.cwd(), ".cursorrules");
       break;
     case "claude":
-      filename = `${slug}-system-prompt.md`;
+      targetPath = import_path.default.join(process.cwd(), "CLAUDE.md");
+      fileContent = `
+## Skill: ${skill.name}
+${skill.content}
+`;
       break;
+    case "windsurf":
+      targetPath = import_path.default.join(process.cwd(), ".windsurfrules");
+      break;
+    case "cline":
+      targetPath = import_path.default.join(process.cwd(), ".clinerules");
+      break;
+    case "copilot": {
+      const githubDir = import_path.default.join(process.cwd(), ".github");
+      if (!import_fs.default.existsSync(githubDir)) {
+        import_fs.default.mkdirSync(githubDir, { recursive: true });
+      }
+      targetPath = import_path.default.join(githubDir, "copilot-instructions.md");
+      break;
+    }
     default:
       console.error("\n\u274C Error: Unsupported editor type.");
       process.exit(1);
   }
-  const targetPath = import_path.default.join(process.cwd(), filename);
+  const relativeTarget = import_path.default.relative(process.cwd(), targetPath) || import_path.default.basename(targetPath);
   try {
     if (import_fs.default.existsSync(targetPath)) {
-      const { overwrite } = await (0, import_prompts.default)({
-        type: "confirm",
-        name: "overwrite",
-        message: `${filename} already exists. Do you want to overwrite it? (No will append)`,
-        initial: false
-      });
-      if (overwrite) {
-        import_fs.default.writeFileSync(targetPath, skill.content, "utf8");
+      if (editor === "cursor") {
+        import_fs.default.writeFileSync(targetPath, fileContent, "utf8");
         console.log(`
-\u2705 Overwrote ${filename} with '${skill.name}' skill rules.
+\u2705 Updated rule file: \x1B[32m${relativeTarget}\x1B[0m
 `);
       } else {
-        import_fs.default.appendFileSync(targetPath, "\n\n" + skill.content, "utf8");
-        console.log(`
-\u2705 Appended '${skill.name}' skill rules to ${filename}.
+        const { action } = await (0, import_prompts.default)({
+          type: "select",
+          name: "action",
+          message: `${relativeTarget} already exists. What would you like to do?`,
+          choices: [
+            { title: "Append skill rules to existing file", value: "append" },
+            { title: "Overwrite existing file", value: "overwrite" },
+            { title: "Cancel", value: "cancel" }
+          ],
+          initial: 0
+        });
+        if (action === "cancel" || !action) {
+          console.log("\nOperation cancelled.\n");
+          process.exit(0);
+        }
+        if (action === "overwrite") {
+          import_fs.default.writeFileSync(targetPath, fileContent, "utf8");
+          console.log(`
+\u2705 Overwrote \x1B[32m${relativeTarget}\x1B[0m with '${skill.name}' skill rules.
 `);
+        } else {
+          import_fs.default.appendFileSync(targetPath, "\n\n" + fileContent, "utf8");
+          console.log(`
+\u2705 Appended '${skill.name}' skill rules to \x1B[32m${relativeTarget}\x1B[0m.
+`);
+        }
       }
     } else {
-      import_fs.default.writeFileSync(targetPath, skill.content, "utf8");
+      import_fs.default.writeFileSync(targetPath, fileContent, "utf8");
       console.log(`
-\u2705 Created ${filename} with '${skill.name}' skill rules.
+\u2705 Created \x1B[32m${relativeTarget}\x1B[0m with '${skill.name}' rules.
 `);
     }
   } catch (error) {

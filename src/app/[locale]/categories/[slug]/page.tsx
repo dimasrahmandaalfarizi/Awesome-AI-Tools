@@ -4,12 +4,18 @@ import { CATEGORIES, TOOLS } from "@/data/mock"
 import { notFound } from "next/navigation"
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/Card"
 import { Badge } from "@/components/ui/Badge"
-import Link from "next/link"
+import { ToolLogo } from "@/components/ui/ToolLogo"
+import { Link } from "@/i18n/routing"
 import { ExternalLink } from "lucide-react"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
-export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function CategoryPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
   const resolvedParams = await params;
-  const category = CATEGORIES.find(c => c.slug === resolvedParams.slug)
+  const { locale, slug } = resolvedParams;
+  setRequestLocale(locale);
+  const category = CATEGORIES.find(c => c.slug === slug);
+  const tCat = await getTranslations({ locale, namespace: "Categories" });
+  const tTool = await getTranslations({ locale, namespace: "ToolDetail" });
   
   if (!category) {
     notFound()
@@ -33,13 +39,16 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                 <CardHeader>
                   <div className="flex justify-between items-start mb-2">
                     <Badge variant={tool.isOpenSource ? "accent" : "secondary"}>
-                      {tool.isOpenSource ? "Open Source" : tool.pricing}
+                      {tool.isOpenSource ? tTool("openSource") : tool.pricing}
                     </Badge>
                   </div>
-                  <Link href={`/tools/${tool.slug}`} className="hover:underline">
-                    <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-colors">{tool.name}</CardTitle>
-                  </Link>
-                  <CardDescription className="line-clamp-2 mt-2">
+                  <div className="flex items-center gap-3 mt-1">
+                    <ToolLogo name={tool.name} website={tool.website} logo={tool.logo} size="md" />
+                    <Link href={`/tools/${tool.slug}`} className="hover:underline">
+                      <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-colors">{tool.name}</CardTitle>
+                    </Link>
+                  </div>
+                  <CardDescription className="line-clamp-2 mt-3">
                     {tool.description}
                   </CardDescription>
                 </CardHeader>
@@ -59,7 +68,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
           {categoryTools.length === 0 && (
             <div className="text-center py-20 text-[var(--muted)]">
-              No tools found in this category yet.
+              {tCat("noTools")}
             </div>
           )}
         </div>

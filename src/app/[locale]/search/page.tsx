@@ -9,11 +9,14 @@ import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/comp
 import { Badge } from "@/components/ui/Badge"
 import { Button } from "@/components/ui/Button"
 import { Search as SearchIcon, ExternalLink, SlidersHorizontal } from "lucide-react"
-import Link from "next/link"
+import { Link } from "@/i18n/routing"
+import { useTranslations } from "next-intl"
 import { TOOLS, CATEGORIES } from "@/data/mock"
+import { ToolLogo } from "@/components/ui/ToolLogo"
 import { motion, AnimatePresence } from "framer-motion"
 
 function SearchContent() {
+  const t = useTranslations("Search")
   const searchParams = useSearchParams()
   const initialQuery = searchParams.get("q") || ""
 
@@ -36,15 +39,12 @@ function SearchContent() {
     return matchesSearch && matchesCategory && matchesPricing
   })
 
-  // Update URL on search change (without full page reload, optional, skipping for simplicity)
-  // We'll just rely on the initial query or local state for fast interactive search
-
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="text-center space-y-4 mb-12">
-          <h1 className="text-4xl font-bold tracking-tight">Search Tools</h1>
-          <p className="text-[var(--muted)] text-lg">Find exactly what you need from our curated collection.</p>
+          <h1 className="text-4xl font-bold tracking-tight">{t("title")}</h1>
+          <p className="text-[var(--muted)] text-lg">{t("description")}</p>
         </div>
 
         {/* Search Bar & Filter Toggle */}
@@ -53,7 +53,7 @@ function SearchContent() {
             <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[var(--muted)] group-focus-within:text-[var(--primary)] transition-colors" />
             <Input
               type="text"
-              placeholder="Search by name, description, or tags..."
+              placeholder={t("placeholder")}
               className="h-14 pl-12 text-lg rounded-xl shadow-sm border-[var(--border)] focus-visible:ring-[var(--primary)] bg-[var(--surface)]"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -64,7 +64,7 @@ function SearchContent() {
             className="h-14 px-6 rounded-xl"
             onClick={() => setShowFilters(!showFilters)}
           >
-            <SlidersHorizontal className="mr-2 h-5 w-5" /> Filters
+            <SlidersHorizontal className="mr-2 h-5 w-5" /> {t("filters")}
           </Button>
         </div>
 
@@ -79,14 +79,14 @@ function SearchContent() {
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 rounded-xl bg-[var(--surface)] border border-[var(--border)] mt-4">
                 <div>
-                  <h3 className="font-semibold mb-3 text-sm">Category</h3>
+                  <h3 className="font-semibold mb-3 text-sm">{t("category")}</h3>
                   <div className="flex flex-wrap gap-2">
                     <Badge 
                       variant={selectedCategory === "all" ? "default" : "secondary"}
                       className="cursor-pointer"
                       onClick={() => setSelectedCategory("all")}
                     >
-                      All
+                      {t("all")}
                     </Badge>
                     {CATEGORIES.map(cat => (
                       <Badge 
@@ -101,21 +101,21 @@ function SearchContent() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-3 text-sm">Pricing / Open Source</h3>
+                  <h3 className="font-semibold mb-3 text-sm">{t("pricing")}</h3>
                   <div className="flex flex-wrap gap-2">
                     <Badge 
                       variant={pricingFilter === "all" ? "default" : "secondary"}
                       className="cursor-pointer"
                       onClick={() => setPricingFilter("all")}
                     >
-                      All
+                      {t("all")}
                     </Badge>
                     <Badge 
                       variant={pricingFilter === "open-source" ? "accent" : "secondary"}
                       className="cursor-pointer"
                       onClick={() => setPricingFilter("open-source")}
                     >
-                      Open Source Only
+                      {t("openSource")}
                     </Badge>
                     <Badge 
                       variant={pricingFilter === "free" ? "default" : "secondary"}
@@ -134,7 +134,7 @@ function SearchContent() {
         {/* Results */}
         <div>
           <div className="mb-6 flex justify-between items-end">
-            <h2 className="text-xl font-semibold">Results ({filteredTools.length})</h2>
+            <h2 className="text-xl font-semibold">{t("results")} ({filteredTools.length})</h2>
           </div>
           
           {filteredTools.length > 0 ? (
@@ -150,12 +150,15 @@ function SearchContent() {
                         {CATEGORIES.find(c => c.id === tool.categoryId)?.name}
                       </div>
                     </div>
-                    <Link href={`/tools/${tool.slug}`} className="hover:underline">
-                      <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-all">
-                        {tool.name}
-                      </CardTitle>
-                    </Link>
-                    <CardDescription className="line-clamp-2 mt-2">
+                    <div className="flex items-center gap-3 mt-1">
+                      <ToolLogo name={tool.name} website={tool.website} logo={tool.logo} size="md" />
+                      <Link href={`/tools/${tool.slug}`} className="hover:underline">
+                        <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-all">
+                          {tool.name}
+                        </CardTitle>
+                      </Link>
+                    </div>
+                    <CardDescription className="line-clamp-2 mt-3">
                       {tool.description}
                     </CardDescription>
                   </CardHeader>
@@ -175,9 +178,9 @@ function SearchContent() {
           ) : (
             <div className="text-center py-20 text-[var(--muted)] bg-[var(--surface)]/30 rounded-xl border border-[var(--border)] backdrop-blur-md">
               <SearchIcon className="h-12 w-12 mx-auto mb-4 opacity-50" />
-              <p className="text-lg">No tools found matching your criteria.</p>
+              <p className="text-lg">{t("noResults")}</p>
               <Button variant="link" onClick={() => { setQuery(""); setSelectedCategory("all"); setPricingFilter("all") }}>
-                Clear Filters
+                {t("clearFilters")}
               </Button>
             </div>
           )}

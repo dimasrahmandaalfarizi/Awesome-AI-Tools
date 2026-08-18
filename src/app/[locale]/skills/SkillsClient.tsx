@@ -1,9 +1,10 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import Link from "next/link"
+import { Link } from "@/i18n/routing"
 import { Badge } from "@/components/ui/Badge"
 import { Input } from "@/components/ui/Input"
+import { useTranslations } from "next-intl"
 import type { AiSkill } from "@/types"
 
 interface SkillsClientProps {
@@ -11,6 +12,7 @@ interface SkillsClientProps {
 }
 
 export function SkillsClient({ skills }: SkillsClientProps) {
+  const t = useTranslations("Skills")
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedFramework, setSelectedFramework] = useState<string>("All")
 
@@ -41,7 +43,7 @@ export function SkillsClient({ skills }: SkillsClientProps) {
         <div className="w-full max-w-md">
           <Input 
             type="search" 
-            placeholder="Search AI skills..." 
+            placeholder={t("searchPlaceholder")} 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full"
@@ -50,7 +52,7 @@ export function SkillsClient({ skills }: SkillsClientProps) {
         
         <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4 w-full">
           <span className="text-sm text-[var(--muted)] whitespace-nowrap sm:mt-1.5 font-medium">
-            Filter by Tool:
+            {t("filterByTool")}
           </span>
           <div className="flex flex-wrap gap-2">
             {allFrameworks.map(fw => (
@@ -63,7 +65,7 @@ export function SkillsClient({ skills }: SkillsClientProps) {
                     : "bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--primary)] hover:text-[var(--primary)]"
                 }`}
               >
-                {fw}
+                {fw === "All" ? t("all") : fw}
               </button>
             ))}
           </div>
@@ -92,7 +94,7 @@ export function SkillsClient({ skills }: SkillsClientProps) {
                   ))}
                 </div>
                 <div className="text-xs text-[var(--muted)]">
-                  By {skill.author || "Community"}
+                  {t("byAuthor")} {skill.author || "Community"}
                 </div>
               </div>
             </Link>
@@ -100,7 +102,7 @@ export function SkillsClient({ skills }: SkillsClientProps) {
         </div>
       ) : (
         <div className="text-center py-20 border border-dashed border-[var(--border)] rounded-2xl bg-[var(--surface)]/30">
-          <p className="text-[var(--muted)] text-lg">No AI skills found matching your criteria.</p>
+          <p className="text-[var(--muted)] text-lg">{t("noSkills")}</p>
           <button 
             onClick={() => {
               setSearchQuery("")
@@ -108,7 +110,7 @@ export function SkillsClient({ skills }: SkillsClientProps) {
             }}
             className="mt-4 text-[var(--primary)] hover:underline"
           >
-            Clear filters
+            {t("clearFilters")}
           </button>
         </div>
       )}

@@ -10,17 +10,18 @@ const program = new Command();
 
 program
   .name("awesome-ai-tools")
-  .description("CLI to instantly apply AI skills to your local projects")
-  .version("0.1.0");
+  .description("CLI to instantly apply AI skills & rules to your local projects")
+  .version("0.2.0");
 
 program
   .command("list")
   .description("List all available AI skills")
   .action(() => {
-    console.log("\n🚀 Available AI Skills:\n");
+    console.log("\n🚀 Available AI Agent Skills:\n");
     AI_SKILLS.forEach((skill) => {
-      console.log(`- ${skill.name} (${skill.slug})`);
-      console.log(`  ${skill.description}\n`);
+      console.log(`- \x1b[36m${skill.name}\x1b[0m (\x1b[33m${skill.slug}\x1b[0m)`);
+      console.log(`  ${skill.description}`);
+      console.log(`  Frameworks: ${skill.frameworks.join(", ")}\n`);
     });
     console.log("Run 'npx awesome-ai-tools add <slug>' to apply a skill to your project.\n");
   });
@@ -28,8 +29,8 @@ program
 program
   .command("add")
   .description("Add a specific AI skill to your project")
-  .argument("<slug>", "The slug of the skill to add (e.g., ui-ux-pro-max)")
-  .option("-e, --editor <type>", "Target editor (cursor, windsurf, cline, claude)")
+  .argument("<slug>", "The slug of the skill to add (e.g., nextjs-16-react-19-architect)")
+  .option("-e, --editor <type>", "Target editor (cursor, cursor-legacy, claude, windsurf, cline, copilot)")
   .action(async (slug, options) => {
     const skill = AI_SKILLS.find((s) => s.slug === slug);
 
@@ -45,12 +46,14 @@ program
       const response = await prompts({
         type: "select",
         name: "editor",
-        message: "Which AI Editor are you using?",
+        message: "Which AI Editor / Assistant are you using?",
         choices: [
-          { title: "Cursor", value: "cursor", description: "Creates .cursorrules" },
-          { title: "Windsurf", value: "windsurf", description: "Creates .windsurfrules" },
-          { title: "Cline", value: "cline", description: "Creates .clinerules" },
-          { title: "Claude Code", value: "claude", description: "Creates system-prompt.md" },
+          { title: "Cursor (.cursor/rules/<slug>.mdc) [Recommended]", value: "cursor", description: "Creates modern multi-file MDC rule" },
+          { title: "Claude Code (CLAUDE.md)", value: "claude", description: "Appends to project CLAUDE.md guidelines" },
+          { title: "Windsurf (.windsurfrules)", value: "windsurf", description: "Creates or appends to .windsurfrules" },
+          { title: "Cline / Roo Code (.clinerules)", value: "cline", description: "Creates or appends to .clinerules" },
+          { title: "GitHub Copilot (.github/copilot-instructions.md)", value: "copilot", description: "Creates repository custom instructions" },
+          { title: "Cursor Legacy (.cursorrules)", value: "cursor-legacy", description: "Single-file legacy .cursorrules" },
         ],
       });
       editor = response.editor;
@@ -61,48 +64,88 @@ program
       process.exit(0);
     }
 
-    let filename = "";
+    let targetPath = "";
+    let fileContent = skill.content;
+
     switch (editor) {
-      case "cursor":
-        filename = ".cursorrules";
+      case "cursor": {
+        const rulesDir = path.join(process.cwd(), ".cursor", "rules");
+        if (!fs.existsSync(rulesDir)) {
+          fs.mkdirSync(rulesDir, { recursive: true });
+        }
+        targetPath = path.join(rulesDir, `${slug}.mdc`);
+        fileContent = `---
+description: ${skill.description}
+globs: *
+alwaysApply: true
+---
+
+${skill.content}
+`;
         break;
-      case "windsurf":
-        filename = ".windsurfrules";
-        break;
-      case "cline":
-        filename = ".clinerules";
+      }
+      case "cursor-legacy":
+        targetPath = path.join(process.cwd(), ".cursorrules");
         break;
       case "claude":
-        filename = `${slug}-system-prompt.md`;
+        targetPath = path.join(process.cwd(), "CLAUDE.md");
+        fileContent = `\n## Skill: ${skill.name}\n${skill.content}\n`;
         break;
+      case "windsurf":
+        targetPath = path.join(process.cwd(), ".windsurfrules");
+        break;
+      case "cline":
+        targetPath = path.join(process.cwd(), ".clinerules");
+        break;
+      case "copilot": {
+        const githubDir = path.join(process.cwd(), ".github");
+        if (!fs.existsSync(githubDir)) {
+          fs.mkdirSync(githubDir, { recursive: true });
+        }
+        targetPath = path.join(githubDir, "copilot-instructions.md");
+        break;
+      }
       default:
         console.error("\n❌ Error: Unsupported editor type.");
         process.exit(1);
     }
 
-    const targetPath = path.join(process.cwd(), filename);
+    const relativeTarget = path.relative(process.cwd(), targetPath) || path.basename(targetPath);
 
     try {
-      // If file exists, we could prompt to overwrite, but for simplicity we append or overwrite.
-      // Usually users want to append rules. Let's ask if it exists.
       if (fs.existsSync(targetPath)) {
-        const { overwrite } = await prompts({
-          type: "confirm",
-          name: "overwrite",
-          message: `${filename} already exists. Do you want to overwrite it? (No will append)`,
-          initial: false,
-        });
-
-        if (overwrite) {
-          fs.writeFileSync(targetPath, skill.content, "utf8");
-          console.log(`\n✅ Overwrote ${filename} with '${skill.name}' skill rules.\n`);
+        if (editor === "cursor") {
+          fs.writeFileSync(targetPath, fileContent, "utf8");
+          console.log(`\n✅ Updated rule file: \x1b[32m${relativeTarget}\x1b[0m\n`);
         } else {
-          fs.appendFileSync(targetPath, "\n\n" + skill.content, "utf8");
-          console.log(`\n✅ Appended '${skill.name}' skill rules to ${filename}.\n`);
+          const { action } = await prompts({
+            type: "select",
+            name: "action",
+            message: `${relativeTarget} already exists. What would you like to do?`,
+            choices: [
+              { title: "Append skill rules to existing file", value: "append" },
+              { title: "Overwrite existing file", value: "overwrite" },
+              { title: "Cancel", value: "cancel" },
+            ],
+            initial: 0,
+          });
+
+          if (action === "cancel" || !action) {
+            console.log("\nOperation cancelled.\n");
+            process.exit(0);
+          }
+
+          if (action === "overwrite") {
+            fs.writeFileSync(targetPath, fileContent, "utf8");
+            console.log(`\n✅ Overwrote \x1b[32m${relativeTarget}\x1b[0m with '${skill.name}' skill rules.\n`);
+          } else {
+            fs.appendFileSync(targetPath, "\n\n" + fileContent, "utf8");
+            console.log(`\n✅ Appended '${skill.name}' skill rules to \x1b[32m${relativeTarget}\x1b[0m.\n`);
+          }
         }
       } else {
-        fs.writeFileSync(targetPath, skill.content, "utf8");
-        console.log(`\n✅ Created ${filename} with '${skill.name}' skill rules.\n`);
+        fs.writeFileSync(targetPath, fileContent, "utf8");
+        console.log(`\n✅ Created \x1b[32m${relativeTarget}\x1b[0m with '${skill.name}' rules.\n`);
       }
     } catch (error: any) {
       console.error(`\n❌ Failed to write file: ${error.message}\n`);

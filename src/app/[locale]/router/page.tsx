@@ -6,12 +6,84 @@ import { Footer } from "@/components/layouts/Footer"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Card } from "@/components/ui/Card"
-import { Copy, Server, Key, Save, CheckCircle } from "lucide-react"
+import { Badge } from "@/components/ui/Badge"
+import { Copy, Server, Key, Save, CheckCircle, Cpu, Zap, Globe, Sparkles, Terminal, Laptop } from "lucide-react"
+import { useTranslations } from "next-intl"
+import { AIProvider } from "@/lib/proxy/config"
+
+interface ProviderMeta {
+  id: AIProvider
+  name: string
+  badgeKey: any
+  descKey: any
+  icon: any
+  keyPlaceholder: string
+}
+
+const PROVIDERS: ProviderMeta[] = [
+  {
+    id: "deepseek",
+    name: "DeepSeek",
+    badgeKey: "deepseekBadge",
+    descKey: "deepseekDesc",
+    icon: Sparkles,
+    keyPlaceholder: "sk-...",
+  },
+  {
+    id: "openrouter",
+    name: "OpenRouter",
+    badgeKey: "openrouterBadge",
+    descKey: "openrouterDesc",
+    icon: Globe,
+    keyPlaceholder: "sk-or-v1-...",
+  },
+  {
+    id: "gemini",
+    name: "Google Gemini",
+    badgeKey: "geminiBadge",
+    descKey: "geminiDesc",
+    icon: Cpu,
+    keyPlaceholder: "AIzaSy...",
+  },
+  {
+    id: "groq",
+    name: "Groq",
+    badgeKey: "groqBadge",
+    descKey: "groqDesc",
+    icon: Zap,
+    keyPlaceholder: "gsk_...",
+  },
+  {
+    id: "openai",
+    name: "OpenAI",
+    badgeKey: "openaiBadge",
+    descKey: "openaiDesc",
+    icon: Server,
+    keyPlaceholder: "sk-proj-...",
+  },
+  {
+    id: "ollama",
+    name: "Ollama (Local)",
+    badgeKey: "ollamaBadge",
+    descKey: "ollamaDesc",
+    icon: Laptop,
+    keyPlaceholder: "No key required",
+  },
+]
 
 export default function RouterDashboard() {
-  const [activeProvider, setActiveProvider] = useState<"openai" | "groq">("groq")
-  const [openaiKey, setOpenaiKey] = useState("")
-  const [groqKey, setGroqKey] = useState("")
+  const t = useTranslations("Router")
+  const [activeProvider, setActiveProvider] = useState<AIProvider>("deepseek")
+  const [keys, setKeys] = useState<Record<string, string>>({
+    deepseek: "",
+    openrouter: "",
+    gemini: "",
+    groq: "",
+    openai: "",
+    custom: "",
+  })
+  const [customBaseUrl, setCustomBaseUrl] = useState("http://localhost:11434/v1/chat/completions")
+  const [defaultTargetModel, setDefaultTargetModel] = useState("")
   const [isSaving, setIsSaving] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
   const [saveStatus, setSaveStatus] = useState<"idle" | "success" | "error">("idle")
@@ -20,12 +92,17 @@ export default function RouterDashboard() {
     fetch("/api/router/config")
       .then(res => res.json())
       .then(data => {
-        setActiveProvider(data.activeProvider)
-        setOpenaiKey(data.keys.openai || "")
-        setGroqKey(data.keys.groq || "")
+        if (data.activeProvider) setActiveProvider(data.activeProvider)
+        if (data.keys) setKeys(prev => ({ ...prev, ...data.keys }))
+        if (data.customBaseUrl) setCustomBaseUrl(data.customBaseUrl)
+        if (data.defaultTargetModel) setDefaultTargetModel(data.defaultTargetModel)
       })
-      .catch(err => console.error("Failed to load config", err))
+      .catch(err => console.error("Failed to load router config", err))
   }, [])
+
+  const handleKeyChange = (provider: string, val: string) => {
+    setKeys(prev => ({ ...prev, [provider]: val }))
+  }
 
   const handleSave = async () => {
     setIsSaving(true)
@@ -36,10 +113,9 @@ export default function RouterDashboard() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           activeProvider,
-          keys: {
-            openai: openaiKey,
-            groq: groqKey,
-          }
+          keys,
+          customBaseUrl,
+          defaultTargetModel,
         })
       })
       if (res.ok) {
@@ -48,7 +124,7 @@ export default function RouterDashboard() {
       } else {
         setSaveStatus("error")
       }
-    } catch (e) {
+    } catch {
       setSaveStatus("error")
     }
     setIsSaving(false)
@@ -66,97 +142,167 @@ export default function RouterDashboard() {
     <>
       <Navbar />
       <main className="flex-1 min-h-[calc(100vh-16rem)] bg-[var(--background)]">
-        <section className="container mx-auto px-4 py-12 max-w-4xl">
+        <section className="container mx-auto px-4 py-12 max-w-5xl">
           <div className="mb-10 text-center">
-            <h1 className="text-4xl font-bold tracking-tight mb-4 flex items-center justify-center gap-3">
+            <Badge variant="accent" className="mb-4 px-3 py-1">
+              {t("badge")}
+            </Badge>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 flex items-center justify-center gap-3">
               <Server className="w-10 h-10 text-[var(--primary)]" />
-              AI Proxy Router
+              {t("title")}
             </h1>
             <p className="text-xl text-[var(--muted)] max-w-2xl mx-auto">
-              Centralized API routing for your local AI coding assistants. Route requests from Cursor, Cline, or Copilot to your preferred provider.
+              {t("description")}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             
+            {/* Configuration Column */}
             <div className="md:col-span-2 space-y-6">
-              <Card className="p-6 border-[var(--border)] bg-[var(--surface)] shadow-sm">
+              <Card className="p-6 md:p-8 border-[var(--border)] bg-[var(--surface)] shadow-sm">
                 <h2 className="text-xl font-semibold mb-6 flex items-center gap-2 border-b border-[var(--border)] pb-4">
                   <Key className="w-5 h-5 text-[var(--primary)]" />
-                  Provider Configuration
+                  {t("selectProvider")}
                 </h2>
 
                 <div className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Active Provider</label>
-                    <div className="flex gap-4">
-                      <label className={`flex-1 flex items-center justify-center p-4 border rounded-xl cursor-pointer transition-all ${activeProvider === 'openai' ? 'border-[var(--primary)] bg-[var(--primary)]/10 ring-2 ring-[var(--primary)]/20' : 'border-[var(--border)] hover:bg-[var(--foreground)]/5'}`}>
-                        <input type="radio" name="provider" value="openai" checked={activeProvider === 'openai'} onChange={() => setActiveProvider('openai')} className="sr-only" />
-                        <span className="font-semibold">OpenAI</span>
+                  {/* Provider Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {PROVIDERS.map((prov) => {
+                      const Icon = prov.icon
+                      const isSelected = activeProvider === prov.id
+                      return (
+                        <div
+                          key={prov.id}
+                          onClick={() => setActiveProvider(prov.id)}
+                          className={`p-4 border rounded-xl cursor-pointer transition-all flex flex-col justify-between ${
+                            isSelected
+                              ? "border-[var(--primary)] bg-[var(--primary)]/10 ring-2 ring-[var(--primary)]/20"
+                              : "border-[var(--border)] bg-[var(--background)]/50 hover:bg-[var(--foreground)]/5"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <div className="flex items-center gap-2 font-bold text-sm">
+                              <Icon className={`w-4 h-4 ${isSelected ? "text-[var(--primary)]" : "text-[var(--muted)]"}`} />
+                              {prov.name}
+                            </div>
+                            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[var(--surface)] text-[var(--muted)] border border-[var(--border)]">
+                              {t(prov.badgeKey)}
+                            </span>
+                          </div>
+                          <p className="text-xs text-[var(--muted)] leading-relaxed">{t(prov.descKey)}</p>
+                        </div>
+                      )
+                    })}
+                  </div>
+
+                  {/* Dynamic Key Input based on provider */}
+                  <div className="pt-4 border-t border-[var(--border)] space-y-4">
+                    <h3 className="text-sm font-semibold text-[var(--foreground)]">
+                      {t("credentialsFor")} {PROVIDERS.find(p => p.id === activeProvider)?.name}
+                    </h3>
+
+                    {activeProvider !== "ollama" && (
+                      <div>
+                        <label className="block text-xs font-medium text-[var(--muted)] mb-1">
+                          {t("apiKey")}
+                        </label>
+                        <Input
+                          type="password"
+                          placeholder={PROVIDERS.find(p => p.id === activeProvider)?.keyPlaceholder || "Enter API Key..."}
+                          value={keys[activeProvider] || ""}
+                          onChange={(e) => handleKeyChange(activeProvider, e.target.value)}
+                          className="font-mono bg-[var(--background)] text-sm"
+                        />
+                        <p className="text-[11px] text-[var(--muted)] mt-1">
+                          {t("keySecurityNote")}
+                        </p>
+                      </div>
+                    )}
+
+                    {activeProvider === "ollama" && (
+                      <div>
+                        <label className="block text-xs font-medium text-[var(--muted)] mb-1">
+                          {t("localEndpoint")}
+                        </label>
+                        <Input
+                          type="text"
+                          value={customBaseUrl}
+                          onChange={(e) => setCustomBaseUrl(e.target.value)}
+                          className="font-mono bg-[var(--background)] text-sm"
+                          placeholder="http://localhost:11434/v1/chat/completions"
+                        />
+                        <p className="text-[11px] text-[var(--muted)] mt-1">
+                          {t("ollamaNote")}
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Model Override / Mapping Option */}
+                    <div className="pt-3 border-t border-[var(--border)]/50">
+                      <label className="block text-xs font-medium text-[var(--muted)] mb-1">
+                        {t("modelOverride")}
                       </label>
-                      <label className={`flex-1 flex items-center justify-center p-4 border rounded-xl cursor-pointer transition-all ${activeProvider === 'groq' ? 'border-[var(--primary)] bg-[var(--primary)]/10 ring-2 ring-[var(--primary)]/20' : 'border-[var(--border)] hover:bg-[var(--foreground)]/5'}`}>
-                        <input type="radio" name="provider" value="groq" checked={activeProvider === 'groq'} onChange={() => setActiveProvider('groq')} className="sr-only" />
-                        <span className="font-semibold">Groq (Fast & Free)</span>
-                      </label>
+                      <Input
+                        type="text"
+                        placeholder="e.g. deepseek-chat, gemini-2.0-flash, or llama-3.3-70b-versatile"
+                        value={defaultTargetModel}
+                        onChange={(e) => setDefaultTargetModel(e.target.value)}
+                        className="font-mono bg-[var(--background)] text-sm"
+                      />
+                      <p className="text-[11px] text-[var(--muted)] mt-1">
+                        {t("modelOverrideNote")}
+                      </p>
                     </div>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="pt-4 border-t border-[var(--border)] flex justify-between items-center">
                     <div>
-                      <label className="block text-sm font-medium mb-1">OpenAI API Key</label>
-                      <Input 
-                        type="password" 
-                        placeholder="sk-..." 
-                        value={openaiKey} 
-                        onChange={(e) => setOpenaiKey(e.target.value)} 
-                        className="font-mono bg-[var(--background)]"
-                      />
+                      {saveStatus === "success" && (
+                        <span className="text-sm text-green-500 flex items-center gap-1.5 font-medium">
+                          <CheckCircle className="w-4 h-4"/> {t("saved")}
+                        </span>
+                      )}
+                      {saveStatus === "error" && <span className="text-sm text-red-500 font-medium">{t("saveError")}</span>}
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-1">Groq API Key</label>
-                      <Input 
-                        type="password" 
-                        placeholder="gsk_..." 
-                        value={groqKey} 
-                        onChange={(e) => setGroqKey(e.target.value)} 
-                        className="font-mono bg-[var(--background)]"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-[var(--border)] flex justify-end items-center gap-4">
-                    {saveStatus === "success" && <span className="text-sm text-green-500 flex items-center gap-1"><CheckCircle className="w-4 h-4"/> Saved successfully</span>}
-                    {saveStatus === "error" && <span className="text-sm text-red-500">Failed to save</span>}
                     <Button onClick={handleSave} disabled={isSaving} className="bg-[var(--primary)] text-[var(--background)] hover:bg-[var(--primary)]/90">
                       <Save className="w-4 h-4 mr-2" />
-                      {isSaving ? "Saving..." : "Save Configuration"}
+                      {isSaving ? t("saving") : t("saveConfig")}
                     </Button>
                   </div>
                 </div>
               </Card>
             </div>
 
-            <div className="md:col-span-1">
-              <Card className="p-6 border-[var(--border)] bg-[var(--surface)] shadow-sm sticky top-6">
-                <h2 className="font-semibold mb-4 text-lg border-b border-[var(--border)] pb-2">How to Use</h2>
-                <div className="space-y-4 text-sm text-[var(--muted)]">
-                  <p>1. Enter your API keys and click Save.</p>
-                  <p>2. Open your AI coding assistant (Cursor, Cline, etc.).</p>
-                  <p>3. Set the <strong>OpenAI Base URL</strong> to:</p>
+            {/* Quick Setup Instructions Column */}
+            <div className="md:col-span-1 space-y-6">
+              <Card className="p-6 border-[var(--border)] bg-[var(--surface)] shadow-sm sticky top-20">
+                <h2 className="font-bold mb-4 text-base border-b border-[var(--border)] pb-3 flex items-center gap-2">
+                  <Terminal className="w-4 h-4 text-[var(--primary)]" />
+                  {t("editorSetup")}
+                </h2>
+                <div className="space-y-4 text-xs text-[var(--muted)] leading-relaxed">
+                  <p>{t("step1")}</p>
+                  <p>{t("step2")}</p>
                   
-                  <div className="bg-[var(--background)] border border-[var(--border)] rounded-lg p-3 relative group">
-                    <code className="text-xs break-all text-[var(--foreground)] font-mono select-all">
+                  <div className="bg-[var(--background)] border border-[var(--border)] rounded-lg p-2.5 relative group">
+                    <code className="text-[11px] break-all text-[var(--primary)] font-mono font-bold select-all">
                       {proxyUrl}
                     </code>
                     <button 
                       onClick={handleCopy}
-                      className="absolute right-2 top-2 p-1.5 bg-[var(--surface)] border border-[var(--border)] rounded-md opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[var(--foreground)]/5"
+                      className="absolute right-1.5 top-1.5 p-1 bg-[var(--surface)] border border-[var(--border)] rounded-md hover:bg-[var(--foreground)]/10 transition-colors"
+                      title="Copy URL"
                     >
                       {isCopied ? <CheckCircle className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
                     </button>
                   </div>
 
-                  <p>4. Leave the API Key field in your editor blank (or type anything, the proxy will inject your real key).</p>
+                  <div className="p-3 bg-[var(--primary)]/5 rounded-lg border border-[var(--primary)]/20 space-y-1 text-[11px]">
+                    <span className="font-semibold text-[var(--foreground)] block">{t("proTipTitle")}</span>
+                    <span>{t("proTipDesc")}</span>
+                  </div>
                 </div>
               </Card>
             </div>

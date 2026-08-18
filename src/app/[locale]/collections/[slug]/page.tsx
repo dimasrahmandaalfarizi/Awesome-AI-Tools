@@ -4,12 +4,17 @@ import { COLLECTIONS, TOOLS, CATEGORIES } from "@/data/mock"
 import { notFound } from "next/navigation"
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/Card"
 import { Badge } from "@/components/ui/Badge"
-import Link from "next/link"
+import { ToolLogo } from "@/components/ui/ToolLogo"
+import { Link } from "@/i18n/routing"
 import { ExternalLink } from "lucide-react"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 
-export default async function CollectionPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function CollectionPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
   const resolvedParams = await params;
-  const collection = COLLECTIONS.find(c => c.slug === resolvedParams.slug)
+  const { locale, slug } = resolvedParams;
+  setRequestLocale(locale);
+  const collection = COLLECTIONS.find(c => c.slug === slug);
+  const t = await getTranslations({ locale, namespace: "ToolDetail" });
   
   if (!collection) {
     notFound()
@@ -33,15 +38,18 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
                 <CardHeader>
                   <div className="flex justify-between items-start mb-2">
                     <Badge variant={tool.isOpenSource ? "accent" : "secondary"}>
-                      {tool.isOpenSource ? "Open Source" : tool.pricing}
+                      {tool.isOpenSource ? t("openSource") : tool.pricing}
                     </Badge>
                     <div className="text-xs text-[var(--muted)] bg-[var(--background)] px-2 py-1 rounded-full border border-[var(--border)]">
                       {CATEGORIES.find(c => c.id === tool.categoryId)?.name}
                     </div>
                   </div>
-                  <Link href={`/tools/${tool.slug}`} className="hover:underline">
-                    <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-all">{tool.name}</CardTitle>
-                  </Link>
+                  <div className="flex items-center gap-3 mt-1">
+                    <ToolLogo name={tool.name} website={tool.website} logo={tool.logo} size="md" />
+                    <Link href={`/tools/${tool.slug}`} className="hover:underline">
+                      <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-all">{tool.name}</CardTitle>
+                    </Link>
+                  </div>
                   <CardDescription className="line-clamp-2 mt-2">
                     {tool.description}
                   </CardDescription>

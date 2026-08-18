@@ -3,31 +3,87 @@
 import { useState } from "react"
 import { Button } from "../ui/Button"
 import { Copy, Download, Check } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 interface ExportSkillProps {
   slug: string
   content: string
+  description?: string
 }
 
-type Editor = "cursor" | "windsurf" | "cline" | "claude" | "copilot"
+type Editor = "cursor-mdc" | "claude" | "windsurf" | "cline" | "copilot" | "cursor-legacy"
 
-const EDITORS: { id: Editor; name: string; filename: string }[] = [
-  { id: "cursor", name: "Cursor", filename: ".cursorrules" },
-  { id: "windsurf", name: "Windsurf", filename: ".windsurfrules" },
-  { id: "cline", name: "Cline", filename: ".clinerules" },
-  { id: "claude", name: "Claude Code", filename: "system-prompt.md" },
-  { id: "copilot", name: "GitHub Copilot", filename: "instructions.md" },
+interface EditorOption {
+  id: Editor
+  name: string
+  filename: string
+  displayPath: (slug: string) => string
+  formatContent: (slug: string, content: string, description?: string) => string
+}
+
+const EDITORS: EditorOption[] = [
+  {
+    id: "cursor-mdc",
+    name: "Cursor (.mdc)",
+    filename: ".mdc",
+    displayPath: (slug) => `.cursor/rules/${slug}.mdc`,
+    formatContent: (slug, content, description) => `---
+description: ${description || "AI Agent Rule & Guideline"}
+globs: *
+alwaysApply: true
+---
+
+${content}`
+  },
+  {
+    id: "claude",
+    name: "Claude Code",
+    filename: "CLAUDE.md",
+    displayPath: () => "CLAUDE.md",
+    formatContent: (slug, content) => `\n## Project Skill: ${slug}\n${content}\n`
+  },
+  {
+    id: "windsurf",
+    name: "Windsurf",
+    filename: ".windsurfrules",
+    displayPath: () => ".windsurfrules",
+    formatContent: (_, content) => content
+  },
+  {
+    id: "cline",
+    name: "Cline / Roo Code",
+    filename: ".clinerules",
+    displayPath: () => ".clinerules",
+    formatContent: (_, content) => content
+  },
+  {
+    id: "copilot",
+    name: "GitHub Copilot",
+    filename: "copilot-instructions.md",
+    displayPath: () => ".github/copilot-instructions.md",
+    formatContent: (_, content) => content
+  },
+  {
+    id: "cursor-legacy",
+    name: "Cursor Legacy",
+    filename: ".cursorrules",
+    displayPath: () => ".cursorrules",
+    formatContent: (_, content) => content
+  }
 ]
 
-export function ExportSkill({ slug, content }: ExportSkillProps) {
-  const [selectedEditor, setSelectedEditor] = useState<Editor>("cursor")
+export function ExportSkill({ slug, content, description }: ExportSkillProps) {
+  const t = useTranslations("Skills")
+  const [selectedEditor, setSelectedEditor] = useState<Editor>("cursor-mdc")
   const [isCopied, setIsCopied] = useState(false)
 
-  const activeEditor = EDITORS.find(e => e.id === selectedEditor)!
+  const activeEditor = EDITORS.find(e => e.id === selectedEditor) || EDITORS[0]
+  const formattedContent = activeEditor.formatContent(slug, content, description)
+  const displayPath = activeEditor.displayPath(slug)
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(content)
+      await navigator.clipboard.writeText(formattedContent)
       setIsCopied(true)
       setTimeout(() => setIsCopied(false), 2000)
     } catch (err) {
@@ -36,15 +92,15 @@ export function ExportSkill({ slug, content }: ExportSkillProps) {
   }
 
   const handleDownload = () => {
-    const filename = activeEditor.id === "claude" || activeEditor.id === "copilot" 
-      ? `${slug}-${activeEditor.filename}` 
+    const downloadFilename = activeEditor.id === "cursor-mdc" 
+      ? `${slug}.mdc` 
       : activeEditor.filename
 
-    const blob = new Blob([content], { type: "text/plain;charset=utf-8" })
+    const blob = new Blob([formattedContent], { type: "text/plain;charset=utf-8" })
     const url = URL.createObjectURL(blob)
     const link = document.createElement("a")
     link.href = url
-    link.download = filename
+    link.download = downloadFilename
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -61,7 +117,7 @@ export function ExportSkill({ slug, content }: ExportSkillProps) {
             onClick={() => setSelectedEditor(editor.id)}
             className={`px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors border-b-2 ${
               selectedEditor === editor.id
-                ? "border-[var(--primary)] text-[var(--foreground)]"
+                ? "border-[var(--primary)] text-[var(--foreground)] bg-[var(--primary)]/5"
                 : "border-transparent text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--foreground)]/5"
             }`}
           >
@@ -71,28 +127,28 @@ export function ExportSkill({ slug, content }: ExportSkillProps) {
       </div>
 
       {/* Action Bar */}
-      <div className="flex items-center justify-between px-6 py-3 bg-[var(--surface)] border-b border-[var(--border)]/50">
+      <div className="flex items-center justify-between px-6 py-3 bg-[var(--surface)] border-b border-[var(--border)]/50 flex-wrap gap-2">
         <div className="flex items-center text-xs font-mono text-[var(--muted)]">
-          Filename: <span className="ml-2 px-2 py-1 bg-[var(--background)] rounded text-[var(--foreground)] border border-[var(--border)]">
-            {activeEditor.id === "claude" || activeEditor.id === "copilot" ? `${slug}-${activeEditor.filename}` : activeEditor.filename}
+          {t("targetFile")} <span className="ml-2 px-2.5 py-1 bg-[var(--background)] rounded text-[var(--primary)] font-semibold border border-[var(--border)]">
+            {displayPath}
           </span>
         </div>
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={handleCopy} className="h-8">
             {isCopied ? <Check className="w-4 h-4 mr-2 text-green-500" /> : <Copy className="w-4 h-4 mr-2" />}
-            {isCopied ? "Copied!" : "Copy"}
+            {isCopied ? t("copied") : t("copyRule")}
           </Button>
           <Button size="sm" onClick={handleDownload} className="h-8 bg-[var(--primary)] text-[var(--background)] hover:bg-[var(--primary)]/90">
             <Download className="w-4 h-4 mr-2" />
-            Download File
+            {t("downloadFile")}
           </Button>
         </div>
       </div>
 
       {/* Content Area */}
-      <div className="p-6 relative max-h-[500px] overflow-y-auto">
-        <pre className="text-sm font-mono whitespace-pre-wrap text-[var(--foreground)] leading-relaxed">
-          {content}
+      <div className="p-6 relative max-h-[500px] overflow-y-auto bg-[#0d1117] text-gray-200">
+        <pre className="text-sm font-mono whitespace-pre-wrap leading-relaxed">
+          {formattedContent}
         </pre>
       </div>
     </div>
