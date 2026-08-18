@@ -10,7 +10,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/Badge"
 import { CATEGORIES, TOOLS, COLLECTIONS } from "@/data/mock"
 
+import { useTranslations } from "next-intl"
+
 export default function Home() {
+  const t = useTranslations("Home")
   const featuredTools = TOOLS.filter(t => t.featured).slice(0, 6)
   
   return (
@@ -31,16 +34,16 @@ export default function Home() {
             >
               <Badge variant="secondary" className="px-3 py-1 mb-6 text-sm border-[var(--border)] border bg-[var(--surface)] text-[var(--foreground)]">
                 <Star className="w-3.5 h-3.5 mr-2 text-[var(--warning)] fill-[var(--warning)]" />
-                Over 1,000+ AI Tools Curated
+                {t("heroBadge")}
               </Badge>
               <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-balance">
-                Discover the best <br />
+                {t("heroTitle")} <br />
                 <span className="text-[var(--primary)]">
-                  AI Developer Tools
+                  {t("heroTitleHighlight")}
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-[var(--muted)] text-balance max-w-2xl mx-auto">
-                The largest curated collection of AI tools, frameworks, MCP servers, agents, and resources to supercharge your development workflow.
+                {t("heroDescription")}
               </p>
 
               {/* Library Usage Code Snippet */}
@@ -84,10 +87,10 @@ export default function Home() {
         {/* Featured Categories */}
         <section className="container mx-auto px-4 py-16">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold tracking-tight">Explore Categories</h2>
+            <h2 className="text-2xl font-bold tracking-tight">{t("exploreCategories")}</h2>
             <Link href="/categories">
               <Button variant="ghost" className="text-[var(--primary)]">
-                View all <ArrowRight className="ml-2 h-4 w-4" />
+                {t("viewAll")} <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>
@@ -109,8 +112,8 @@ export default function Home() {
         <section className="container mx-auto px-4 py-16 border-t border-[var(--border)]">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-bold tracking-tight">Trending Tools</h2>
-              <p className="text-[var(--muted)] mt-1">The most popular AI tools this week.</p>
+              <h2 className="text-2xl font-bold tracking-tight">{t("trendingTools")}</h2>
+              <p className="text-[var(--muted)] mt-1">{t("trendingDesc")}</p>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
