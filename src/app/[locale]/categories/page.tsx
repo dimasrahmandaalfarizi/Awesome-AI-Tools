@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layouts/Navbar"
 import { Footer } from "@/components/layouts/Footer"
 import { CATEGORIES, TOOLS } from "@/data/mock"
+import { getLocalizedCategory } from "@/lib/localizeData"
 import { Link } from "@/i18n/routing"
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card"
 import { ArrowRight, Layers } from "lucide-react"
@@ -27,7 +28,8 @@ export default async function CategoriesPage({ params }: { params: Promise<{ loc
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CATEGORIES.map((category) => {
+            {CATEGORIES.map((c) => {
+              const category = getLocalizedCategory(c, locale)
               const toolsCount = TOOLS.filter(t => t.categoryId === category.id).length
 
               return (

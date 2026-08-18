@@ -2,7 +2,7 @@
 
 import { Link, usePathname, useRouter } from "@/i18n/routing"
 import { useTranslations, useLocale } from "next-intl"
-import { Search, Sparkles, Server, Globe, Scale, BookOpen } from "lucide-react"
+import { Search, Globe } from "lucide-react"
 import { Button } from "../ui/Button"
 
 export function Navbar() {
@@ -32,20 +32,16 @@ export function Navbar() {
             <Link href="/categories" className="hover:text-[var(--foreground)] transition-colors">
               {t("categories")}
             </Link>
-            <Link href="/skills" className="flex items-center gap-1.5 hover:text-[var(--primary)] transition-colors font-semibold text-[var(--foreground)]">
-              <Sparkles className="w-3.5 h-3.5 text-[var(--accent)]" />
+            <Link href="/skills" className="hover:text-[var(--primary)] transition-colors font-semibold text-[var(--foreground)]">
               {t("skills")}
             </Link>
-            <Link href="/router" className="flex items-center gap-1.5 hover:text-[var(--primary)] transition-colors">
-              <Server className="w-3.5 h-3.5 text-[var(--primary)]" />
+            <Link href="/router" className="hover:text-[var(--primary)] transition-colors">
               {t("router")}
             </Link>
-            <Link href="/docs/quickstart" className="flex items-center gap-1.5 hover:text-[var(--foreground)] transition-colors">
-              <BookOpen className="w-3.5 h-3.5 text-zinc-400" />
+            <Link href="/docs/quickstart" className="hover:text-[var(--foreground)] transition-colors">
               {t("docs")}
             </Link>
-            <Link href="/compare" className="flex items-center gap-1.5 hover:text-[var(--foreground)] transition-colors">
-              <Scale className="w-3.5 h-3.5 text-[var(--secondary)]" />
+            <Link href="/compare" className="hover:text-[var(--foreground)] transition-colors">
               {t("compare")}
             </Link>
           </nav>

@@ -10,12 +10,13 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/Badge"
 import { ToolLogo } from "@/components/ui/ToolLogo"
 import { CATEGORIES, TOOLS, COLLECTIONS } from "@/data/mock"
-
-import { useTranslations } from "next-intl"
+import { getLocalizedCategory, getLocalizedTool } from "@/lib/localizeData"
+import { useTranslations, useLocale } from "next-intl"
 
 export default function Home() {
   const t = useTranslations("Home")
-  const featuredTools = TOOLS.filter(t => t.featured).slice(0, 6)
+  const locale = useLocale()
+  const featuredTools = TOOLS.filter(t => t.featured).slice(0, 6).map(t => getLocalizedTool(t, locale))
   
   return (
     <>
@@ -96,16 +97,19 @@ export default function Home() {
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-            {CATEGORIES.slice(0, 4).map((category) => (
-              <Link key={category.id} href={`/categories/${category.slug}`}>
-                <Card className="hover:border-[var(--primary)]/50 transition-colors cursor-pointer h-full group">
-                  <CardHeader>
-                    <CardTitle className="group-hover:text-[var(--primary)] transition-colors">{category.name}</CardTitle>
-                    <CardDescription>{category.description}</CardDescription>
-                  </CardHeader>
-                </Card>
-              </Link>
-            ))}
+            {CATEGORIES.slice(0, 4).map((c) => {
+              const category = getLocalizedCategory(c, locale)
+              return (
+                <Link key={category.id} href={`/categories/${category.slug}`}>
+                  <Card className="hover:border-[var(--primary)]/50 transition-colors cursor-pointer h-full group">
+                    <CardHeader>
+                      <CardTitle className="group-hover:text-[var(--primary)] transition-colors">{category.name}</CardTitle>
+                      <CardDescription>{category.description}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </Link>
+              )
+            })}
           </div>
         </section>
 
@@ -126,7 +130,10 @@ export default function Home() {
                       {tool.isOpenSource ? t("openSource") : tool.pricing}
                     </Badge>
                     <div className="text-xs text-[var(--muted)] bg-[var(--background)] px-2 py-1 rounded-full border border-[var(--border)]">
-                      {CATEGORIES.find(c => c.id === tool.categoryId)?.name}
+                      {(() => {
+                        const cat = CATEGORIES.find(c => c.id === tool.categoryId)
+                        return cat ? getLocalizedCategory(cat, locale).name : ""
+                      })()}
                     </div>
                   </div>
                   <div className="flex items-center gap-3 mt-1">

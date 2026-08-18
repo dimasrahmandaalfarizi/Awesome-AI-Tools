@@ -5,13 +5,15 @@ import { Command } from "cmdk"
 import { Search, Monitor, Moon, Sun, ArrowRight, Laptop, Sparkles, Box, Wrench, Server, BookOpen } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useTheme } from "@/components/providers/ThemeProvider"
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
 import { TOOLS, CATEGORIES, AI_SKILLS } from "@/data/mock"
+import { getLocalizedCategory, getLocalizedTool } from "@/lib/localizeData"
 import { ToolLogo } from "@/components/ui/ToolLogo"
 
 export function CommandPalette() {
   const t = useTranslations("CommandPalette")
   const tNav = useTranslations("Navbar")
+  const locale = useLocale()
   const [open, setOpen] = React.useState(false)
   const router = useRouter()
   const { setTheme } = useTheme()
@@ -114,27 +116,30 @@ export function CommandPalette() {
 
             {/* AI Tools */}
             <Command.Group heading={t("aiTools")} className="px-2 py-1.5 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider">
-              {TOOLS.map((tool) => (
-                <Command.Item
-                  key={tool.id}
-                  value={`${tool.name} ${tool.description} ${tool.tags.join(" ")}`}
-                  onSelect={() => runCommand(() => router.push(`/tools/${tool.slug}`))}
-                  className="flex items-center justify-between px-3 py-2 text-sm rounded-lg cursor-pointer hover:bg-[var(--primary)]/10 hover:text-[var(--foreground)] aria-selected:bg-[var(--primary)]/10 aria-selected:text-[var(--foreground)] transition-colors"
-                >
-                  <div className="flex items-center gap-2.5 truncate mr-2">
-                    <ToolLogo name={tool.name} website={tool.website} logo={tool.logo} size="sm" />
-                    <div className="truncate">
-                      <span className="font-medium">{tool.name}</span>
-                      <span className="text-xs text-[var(--muted)] ml-2 truncate hidden sm:inline">
-                        {tool.description.slice(0, 45)}...
-                      </span>
+              {TOOLS.map((tItem) => {
+                const tool = getLocalizedTool(tItem, locale)
+                return (
+                  <Command.Item
+                    key={tool.id}
+                    value={`${tool.name} ${tool.description} ${tool.tags.join(" ")}`}
+                    onSelect={() => runCommand(() => router.push(`/tools/${tool.slug}`))}
+                    className="flex items-center justify-between px-3 py-2 text-sm rounded-lg cursor-pointer hover:bg-[var(--primary)]/10 hover:text-[var(--foreground)] aria-selected:bg-[var(--primary)]/10 aria-selected:text-[var(--foreground)] transition-colors"
+                  >
+                    <div className="flex items-center gap-2.5 truncate mr-2">
+                      <ToolLogo name={tool.name} website={tool.website} logo={tool.logo} size="sm" />
+                      <div className="truncate">
+                        <span className="font-medium">{tool.name}</span>
+                        <span className="text-xs text-[var(--muted)] ml-2 truncate hidden sm:inline">
+                          {tool.description.slice(0, 45)}...
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[var(--background)] text-[var(--muted)] border border-[var(--border)] shrink-0">
-                    {tool.pricing}
-                  </span>
-                </Command.Item>
-              ))}
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[var(--background)] text-[var(--muted)] border border-[var(--border)] shrink-0">
+                      {tool.pricing}
+                    </span>
+                  </Command.Item>
+                )
+              })}
             </Command.Group>
 
             <Command.Separator className="h-px bg-[var(--border)] my-1" />

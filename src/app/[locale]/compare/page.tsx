@@ -4,18 +4,23 @@ import { useState } from "react"
 import { Navbar } from "@/components/layouts/Navbar"
 import { Footer } from "@/components/layouts/Footer"
 import { TOOLS } from "@/data/mock"
+import { getLocalizedTool } from "@/lib/localizeData"
 import { Button } from "@/components/ui/Button"
 import { ToolLogo } from "@/components/ui/ToolLogo"
 import { ExternalLink, Plus, X, Check, Minus } from "lucide-react"
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
 
 export default function ComparePage() {
   const t = useTranslations("Compare")
+  const locale = useLocale()
   const [selectedToolIds, setSelectedToolIds] = useState<string[]>(["tool-1", "tool-2"])
   const [isSelectingFor, setIsSelectingFor] = useState<number | null>(null)
 
-  const selectedTools = selectedToolIds.map(id => TOOLS.find(t => t.id === id)!)
-  const availableTools = TOOLS.filter(t => !selectedToolIds.includes(t.id))
+  const selectedTools = selectedToolIds.map(id => {
+    const raw = TOOLS.find(t => t.id === id)!
+    return getLocalizedTool(raw, locale)
+  })
+  const availableTools = TOOLS.filter(t => !selectedToolIds.includes(t.id)).map(t => getLocalizedTool(t, locale))
 
   const handleRemoveTool = (index: number) => {
     if (selectedTools.length > 1) {

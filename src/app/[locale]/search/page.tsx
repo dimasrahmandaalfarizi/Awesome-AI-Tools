@@ -10,13 +10,16 @@ import { Badge } from "@/components/ui/Badge"
 import { Button } from "@/components/ui/Button"
 import { Search as SearchIcon, ExternalLink, SlidersHorizontal } from "lucide-react"
 import { Link } from "@/i18n/routing"
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
 import { TOOLS, CATEGORIES } from "@/data/mock"
+import { getLocalizedCategory, getLocalizedTool, getLocalizedPricing } from "@/lib/localizeData"
 import { ToolLogo } from "@/components/ui/ToolLogo"
 import { motion, AnimatePresence } from "framer-motion"
 
 function SearchContent() {
   const t = useTranslations("Search")
+  const tHome = useTranslations("Home")
+  const locale = useLocale()
   const searchParams = useSearchParams()
   const initialQuery = searchParams.get("q") || ""
 
@@ -26,7 +29,8 @@ function SearchContent() {
   const [showFilters, setShowFilters] = useState(false)
 
   // Filtering logic
-  const filteredTools = TOOLS.filter(tool => {
+  const localizedTools = TOOLS.map(t => getLocalizedTool(t, locale))
+  const filteredTools = localizedTools.filter(tool => {
     const matchesSearch = tool.name.toLowerCase().includes(query.toLowerCase()) || 
                           tool.description.toLowerCase().includes(query.toLowerCase()) ||
                           tool.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
@@ -34,7 +38,7 @@ function SearchContent() {
     const matchesCategory = selectedCategory === "all" || tool.categoryId === selectedCategory
     const matchesPricing = pricingFilter === "all" || 
                            (pricingFilter === "open-source" && tool.isOpenSource) ||
-                           (pricingFilter === "free" && (tool.pricing === "Free" || tool.pricing === "Freemium"))
+                           (pricingFilter === "free" && ((tool.pricing as string) === "Free" || (tool.pricing as string) === "Freemium" || (tool.pricing as string) === "Gratis"))
 
     return matchesSearch && matchesCategory && matchesPricing
   })
@@ -88,16 +92,19 @@ function SearchContent() {
                     >
                       {t("all")}
                     </Badge>
-                    {CATEGORIES.map(cat => (
-                      <Badge 
-                        key={cat.id}
-                        variant={selectedCategory === cat.id ? "default" : "secondary"}
-                        className="cursor-pointer"
-                        onClick={() => setSelectedCategory(cat.id)}
-                      >
-                        {cat.name}
-                      </Badge>
-                    ))}
+                    {CATEGORIES.map(c => {
+                      const cat = getLocalizedCategory(c, locale)
+                      return (
+                        <Badge 
+                          key={cat.id}
+                          variant={selectedCategory === cat.id ? "default" : "secondary"}
+                          className="cursor-pointer"
+                          onClick={() => setSelectedCategory(cat.id)}
+                        >
+                          {cat.name}
+                        </Badge>
+                      )
+                    })}
                   </div>
                 </div>
                 <div>
@@ -122,7 +129,7 @@ function SearchContent() {
                       className="cursor-pointer"
                       onClick={() => setPricingFilter("free")}
                     >
-                      Free / Freemium
+                      {locale === "id" ? "Gratis / Freemium" : "Free / Freemium"}
                     </Badge>
                   </div>
                 </div>
@@ -144,10 +151,13 @@ function SearchContent() {
                   <CardHeader>
                     <div className="flex justify-between items-start mb-2">
                       <Badge variant={tool.isOpenSource ? "accent" : "secondary"}>
-                        {tool.isOpenSource ? "Open Source" : tool.pricing}
+                        {tool.isOpenSource ? t("openSource") : tool.pricing}
                       </Badge>
                       <div className="text-xs text-[var(--muted)] bg-[var(--background)] px-2 py-1 rounded-full border border-[var(--border)]">
-                        {CATEGORIES.find(c => c.id === tool.categoryId)?.name}
+                        {(() => {
+                          const cat = CATEGORIES.find(c => c.id === tool.categoryId)
+                          return cat ? getLocalizedCategory(cat, locale).name : ""
+                        })()}
                       </div>
                     </div>
                     <div className="flex items-center gap-3 mt-1">

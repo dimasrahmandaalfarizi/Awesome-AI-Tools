@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layouts/Navbar"
 import { Footer } from "@/components/layouts/Footer"
 import { CATEGORIES, TOOLS } from "@/data/mock"
+import { getLocalizedCategory, getLocalizedTool } from "@/lib/localizeData"
 import { notFound } from "next/navigation"
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/Card"
 import { Badge } from "@/components/ui/Badge"
@@ -13,15 +14,16 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   const resolvedParams = await params;
   const { locale, slug } = resolvedParams;
   setRequestLocale(locale);
-  const category = CATEGORIES.find(c => c.slug === slug);
+  const rawCategory = CATEGORIES.find(c => c.slug === slug);
   const tCat = await getTranslations({ locale, namespace: "Categories" });
   const tTool = await getTranslations({ locale, namespace: "ToolDetail" });
   
-  if (!category) {
+  if (!rawCategory) {
     notFound()
   }
 
-  const categoryTools = TOOLS.filter(t => t.categoryId === category.id)
+  const category = getLocalizedCategory(rawCategory, locale)
+  const categoryTools = TOOLS.filter(t => t.categoryId === category.id).map(t => getLocalizedTool(t, locale))
 
   return (
     <>

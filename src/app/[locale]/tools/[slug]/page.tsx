@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layouts/Navbar"
 import { Footer } from "@/components/layouts/Footer"
 import { CATEGORIES, TOOLS } from "@/data/mock"
+import { getLocalizedCategory, getLocalizedTool } from "@/lib/localizeData"
 import { notFound } from "next/navigation"
 import { Badge } from "@/components/ui/Badge"
 import { Button } from "@/components/ui/Button"
@@ -13,14 +14,16 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
   const resolvedParams = await params;
   const { locale, slug } = resolvedParams;
   setRequestLocale(locale);
-  const tool = TOOLS.find(t => t.slug === slug);
+  const rawTool = TOOLS.find(t => t.slug === slug);
   const t = await getTranslations({ locale, namespace: "ToolDetail" });
   
-  if (!tool) {
+  if (!rawTool) {
     notFound()
   }
 
-  const category = CATEGORIES.find(c => c.id === tool.categoryId)
+  const tool = getLocalizedTool(rawTool, locale)
+  const rawCat = CATEGORIES.find(c => c.id === tool.categoryId)
+  const category = rawCat ? getLocalizedCategory(rawCat, locale) : undefined
 
   return (
     <>
