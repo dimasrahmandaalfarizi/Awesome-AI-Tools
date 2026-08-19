@@ -403,6 +403,74 @@ export const TOOL_TRANSLATIONS_ID: Record<string, {
     keyFeatures: ["Kueri langsung ke S3 & Parquet", "Dukungan WASM di browser", "Ekstensi pencarian vektor", "Binding native Python & JS"]
   }
 
+,
+  "google-antigravity": {
+    description: "Lingkungan pengembangan koding AI tingkat lanjut oleh Google DeepMind yang dirancang untuk pair-programming mendalam, orkestrasi multi-agen, refactoring proaktif, dan alur kerja otomatis.",
+    problem: "Asisten AI tradisional bekerja secara pasif sebagai autocomplete tanpa pemahaman holistik atas repositori.",
+    solution: "Sistem agentic DeepMind yang membaca arsitektur kode lengkap, menjalankan rencana kerja bertahap, dan mengorkestrasi subagen.",
+    keyFeatures: ["Engine Agentic DeepMind", "Delegasi Subagen Multi-Agent", "Eksekusi Otomatis Workspace", "Context Window Luas 8K+"]
+  },
+  "openai-codex": {
+    description: "Sistem AI pembuat kode dan penerjemah bahasa alami ke kode oleh OpenAI yang dilatih pada miliaran baris kode di 70+ bahasa pemrograman.",
+    problem: "Menulis kode boilerplate dan menerjemahkan algoritma ke sintaksis yang tepat di bahasa yang belum dikuasai.",
+    solution: "Model bahasa khusus koding yang menerjemahkan prompt bahasa Inggris biasa menjadi kode program yang siap dieksekusi.",
+    keyFeatures: ["Mendukung 70+ bahasa pemrograman", "Penerjemahan bahasa alami ke kode", "Mesin utama GitHub Copilot", "Penyelesaian kode cepat"]
+  },
+  "zed-ai": {
+    description: "Editor koding performa tinggi berbasis Rust dengan akselerasi GPU. Dilengkapi asisten Zed AI bawaan dengan dukungan multi-model (Claude, OpenAI, Ollama).",
+    problem: "Editor berbasis Electron sering terasa berat dan lambat saat mengetik cepat atau streaming AI.",
+    solution: "Editor native Rust yang dirender GPU hingga 120 FPS dengan integrasi panel asisten multi-model.",
+    keyFeatures: ["Engine render GPU 120 FPS", "Dukungan multi-model (Claude, Ollama, GPT-4)", "Transformasi kode inline", "Pair programming real-time"]
+  },
+  "void-editor": {
+    description: "Editor koding AI-first open-source alternatif Cursor dengan kendali model bebas (Ollama, Anthropic, OpenAI) dan privasi tanpa telemetri.",
+    problem: "AI IDE proprietary mengunci prompt backend, mewajibkan langganan bulanan, dan mengambil data telemetri.",
+    solution: "Fork VS Code yang sepenuhnya open-source, bebas telemetri, dan mendukung model lokal maupun cloud.",
+    keyFeatures: ["100% open-source & bebas telemetri", "Dukungan Ollama lokal & custom API", "Diff kode inline & edit Ctrl+K", "Indexing codebase cepat"]
+  },
+  "pearai": {
+    description: "Editor koding AI open-source yang transparan dengan integrasi memori konteks, refactoring multi-file, dan pencarian kode cerdas.",
+    problem: "Banyak ekstensi AI terpisah di VS Code yang saling bentrok shortcut dan menyulitkan manajemen konteks.",
+    solution: "AI IDE open-source terpadu yang menggabungkan memori konteks cerdas dan generator multi-file.",
+    keyFeatures: ["Generasi proyek multi-file", "Integrasi memori konteks (Mem0)", "Kompatibel ekstensi VS Code", "Pengembangan komunitas open-source"]
+  },
+  "project-idx": {
+    description: "AI IDE cloud dari Google berbasis Code-OSS dengan kapabilitas Gemini AI, template multi-framework, dan emulator Android/Web bawaan.",
+    problem: "Menyiapkan environment koding cross-platform dengan emulator Android dan server backend butuh waktu berjam-jam.",
+    solution: "Workspace cloud di browser dengan konfigurasi kontainer Nix dan bantuan AI Gemini terintegrasi.",
+    keyFeatures: ["Chat & autocomplete Gemini AI", "Konfigurasi kontainer Nix", "Simulator Android & Web bawaan", "Template awal multi-framework"]
+  },
+  "aide-codestory": {
+    description: "AI-native IDE open-source berbasis VS Code untuk perubahan kode multi-file berbasis agen, refactoring proaktif, dan indexing simbol repositori.",
+    problem: "Perubahan kode oleh AI yang tidak mempertimbangkan dependensi file lain sering merusak import dan tipe data.",
+    solution: "Arsitektur agen yang merencanakan diff multi-file, menguji dengan linter, dan memvalidasi konsistensi kode.",
+    keyFeatures: ["Orkestrasi perubahan multi-file", "Deteksi bug proaktif", "Indexing grafik simbol kode", "Sepenuhnya open-source"]
+  },
+  "melty": {
+    description: "Editor koding AI open-source pertama yang memantau alur kerja terminal & git Anda secara real-time untuk menulis commit dan kode bersama Anda.",
+    problem: "Asisten AI tidak mengetahui riwayat perintah terminal atau modifikasi manual developer sebelumnya.",
+    solution: "Memahami konteks kerja secara mendalam dengan memantau perubahan editor, eksekusi terminal, dan state git.",
+    keyFeatures: ["Asisten pair-programming proaktif", "Generator commit git kontekstual", "Pemahaman terminal", "Fork VS Code open-source"]
+  },
+  "positron": {
+    description: "AI IDE generasi berikutnya khusus Data Science & AI Engineering oleh Posit (pembuat RStudio) berbasis Code-OSS dengan dukungan Python dan R.",
+    problem: "Editor kode biasa tidak memiliki panel inspeksi data, tabel data interaktif, dan visualisasi grafik bawaan.",
+    solution: "IDE Code-OSS modern dengan Data Explorer interaktif, penampil variabel, visualisasi plot, dan asisten AI.",
+    keyFeatures: ["Data Explorer interaktif untuk DataFrame", "Dukungan kernel Python & R", "Asisten koding AI", "Pondasi Code-OSS modern"]
+  },
+  "augment-code": {
+    description: "Platform koding AI enterprise dengan autocomplete super cepat di bawah 100ms dan pemahaman konteks lintas repositori raksasa.",
+    problem: "Asisten AI sering gagal pada repositori skala besar dengan ratusan ribu file karena indexing yang lambat.",
+    solution: "Engine indexing semantik berkemampuan tinggi yang menghasilkan saran kode lintas repositori dalam waktu <100ms.",
+    keyFeatures: ["Kecepatan autocomplete < 100ms", "Indexing repositori skala besar", "Kepatuhan keamanan enterprise", "Chat inline kontekstual"]
+  },
+  "gitpod-flex": {
+    description: "Environment pengembangan cloud otomatis dengan kontainer terisolasi dan eksekusi alur kerja agen AI otonom di background.",
+    problem: "Menjalankan agen koding AI eksperimental di lokal berisiko merusak environment dan menghabiskan RAM/baterai.",
+    solution: "Menyediakan lingkungan kontainer cloud sekali-pakai di mana agen AI dapat bekerja secara terisolasi dan aman.",
+    keyFeatures: ["Kontainer dev cloud sekali pakai", "Eksekusi agen AI di background", "Penyediaan workspace instan", "Dukungan multi-cloud"]
+  }
+
 }
 
 export const PRICING_TRANSLATIONS_ID: Record<string, string> = {

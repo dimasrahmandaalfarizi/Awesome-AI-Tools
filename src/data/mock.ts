@@ -5315,6 +5315,1173 @@ export const TOOLS: Tool[] = [
       "Evals for RAG and agents",
       "Zero-setup local mode"
     ]
+  },
+  {
+    "id": "tool-128",
+    "name": "Antigravity",
+    "slug": "google-antigravity",
+    "description": "Advanced agentic AI coding environment by Google DeepMind designed for deep pair-programming, multi-agent orchestration, proactive refactoring, and automated workspace workflows.",
+    "website": "https://deepmind.google/technologies/gemini",
+    "pricing": "Free",
+    "isOpenSource": false,
+    "platform": [
+      "macOS",
+      "Windows",
+      "Linux"
+    ],
+    "categoryId": "cat-1",
+    "tags": [
+      "editor",
+      "Copilot",
+      "Autonomous Agent",
+      "Reasoning"
+    ],
+    "lastUpdated": "2026-08-19T07:45:56.752Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:45:56.757Z",
+    "problem": "Traditional AI coding assistants act as passive autocomplete widgets rather than proactive, intelligent engineering partners.",
+    "solution": "DeepMind agentic system that reads full repository architecture, executes multi-step plans, and coordinates subagents autonomously.",
+    "keyFeatures": [
+      "DeepMind Agentic Engine",
+      "Multi-Agent Subagent Delegation",
+      "Automated Workspace Execution",
+      "8K+ Context Memory Window"
+    ]
+  },
+  {
+    "id": "tool-129",
+    "name": "OpenAI Codex",
+    "slug": "openai-codex",
+    "description": "Pioneering AI code generation and natural-language-to-code engine by OpenAI, trained on billions of lines of public code across 70+ languages.",
+    "website": "https://openai.com/index/openai-codex",
+    "pricing": "Paid",
+    "isOpenSource": false,
+    "platform": [
+      "Cloud",
+      "API",
+      "Web"
+    ],
+    "categoryId": "cat-2",
+    "tags": [
+      "Copilot",
+      "LLM",
+      "Python",
+      "TypeScript"
+    ],
+    "lastUpdated": "2026-08-19T07:45:56.757Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:45:56.757Z",
+    "problem": "Writing boilerplate syntax and translating algorithmic logic into syntax-accurate code across multiple unfamiliar languages.",
+    "solution": "Specialized language model fine-tuned on code repositories to translate plain English prompts into clean, working code.",
+    "keyFeatures": [
+      "70+ programming languages support",
+      "Translates natural language to code",
+      "Powers GitHub Copilot engine",
+      "Fast API completions"
+    ]
+  },
+  {
+    "id": "tool-130",
+    "name": "Zed (Zed AI)",
+    "slug": "zed-ai",
+    "description": "High-performance, multiplayer code editor written in Rust with GPU acceleration. Features built-in Zed AI assistant with multi-model support (Claude, OpenAI, Ollama).",
+    "website": "https://zed.dev",
+    "github": "https://github.com/zed-industries/zed",
+    "pricing": "Free",
+    "isOpenSource": true,
+    "platform": [
+      "macOS",
+      "Linux",
+      "Windows"
+    ],
+    "categoryId": "cat-1",
+    "tags": [
+      "editor",
+      "Rust",
+      "Open Source",
+      "Local"
+    ],
+    "lastUpdated": "2026-08-19T07:45:56.757Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:45:56.757Z",
+    "problem": "Heavy Electron-based editors lag during fast typing, rendering large files, and streaming AI responses.",
+    "solution": "Native Rust GPU-rendered editor delivering 120 FPS typing with integrated multi-model assistant panels.",
+    "keyFeatures": [
+      "120 FPS GPU rendering engine",
+      "Multi-model support (Claude, Ollama, GPT-4)",
+      "Inline AI transforms",
+      "CRDT real-time multiplayer pair programming"
+    ]
+  },
+  {
+    "id": "tool-131",
+    "name": "Void Editor",
+    "slug": "void-editor",
+    "description": "Open-source AI-first code editor and alternative to Cursor. Gives you full control over models (Ollama, Anthropic, OpenAI, OpenRouter) with zero data telemetry.",
+    "website": "https://voideditor.com",
+    "github": "https://github.com/voideditor/void",
+    "pricing": "Free",
+    "isOpenSource": true,
+    "platform": [
+      "macOS",
+      "Windows",
+      "Linux"
+    ],
+    "categoryId": "cat-1",
+    "tags": [
+      "editor",
+      "Open Source",
+      "Local",
+      "Privacy"
+    ],
+    "lastUpdated": "2026-08-19T07:45:56.757Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:45:56.757Z",
+    "problem": "Proprietary AI IDEs hide backend prompts, charge mandatory monthly subscriptions, and collect telemetry data.",
+    "solution": "Fully open-source VS Code fork letting you bring any local or cloud LLM with zero telemetry tracking.",
+    "keyFeatures": [
+      "100% open-source & telemetry-free",
+      "Local Ollama & custom endpoint support",
+      "Inline code diffs & Ctrl+K editing",
+      "Fast codebase indexing"
+    ]
+  },
+  {
+    "id": "tool-132",
+    "name": "PearAI",
+    "slug": "pearai",
+    "description": "The open-source AI code editor designed for transparency. Combines curated AI capabilities with multi-file refactoring and memory context.",
+    "website": "https://trypear.ai",
+    "github": "https://github.com/trypear/pearai-master",
+    "pricing": "Freemium",
+    "isOpenSource": true,
+    "platform": [
+      "macOS",
+      "Windows",
+      "Linux"
+    ],
+    "categoryId": "cat-1",
+    "tags": [
+      "editor",
+      "Open Source",
+      "Copilot"
+    ],
+    "lastUpdated": "2026-08-19T07:45:56.757Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:45:56.757Z",
+    "problem": "Fragmented AI extensions in VS Code create conflicting shortcuts, poor context sharing, and cluttered UI.",
+    "solution": "Unified open-source AI IDE integrating memory context, multi-file creator, and intelligent code search out of the box.",
+    "keyFeatures": [
+      "Multi-file project generation",
+      "Integrated memory context (Mem0)",
+      "VS Code extension compatibility",
+      "Open-source community development"
+    ]
+  },
+  {
+    "id": "tool-133",
+    "name": "Project IDX",
+    "slug": "project-idx",
+    "description": "Cloud-based AI-first IDE by Google built on Code-OSS with Gemini AI capabilities, fullstack multi-framework templates, and built-in Android/Web simulators.",
+    "website": "https://idx.dev",
+    "pricing": "Free",
+    "isOpenSource": false,
+    "platform": [
+      "Web",
+      "Cloud"
+    ],
+    "categoryId": "cat-1",
+    "tags": [
+      "editor",
+      "Google",
+      "Cloud",
+      "React"
+    ],
+    "lastUpdated": "2026-08-19T07:45:56.757Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:45:56.757Z",
+    "problem": "Setting up cross-platform development with Android emulators, iOS simulators, and backend services takes hours.",
+    "solution": "Browser-based cloud workspace with Nix-powered container environments and native Gemini code assistance.",
+    "keyFeatures": [
+      "Gemini code chat & completion",
+      "Nix environment configuration",
+      "Built-in Android & web preview emulators",
+      "Multi-framework starter templates"
+    ]
+  },
+  {
+    "id": "tool-134",
+    "name": "Aide (CodeStory)",
+    "slug": "aide-codestory",
+    "description": "Open-source AI-native IDE built on VS Code. Features multi-file agentic code generation, proactive refactoring, and deep codebase indexation.",
+    "website": "https://aide.dev",
+    "github": "https://github.com/CodeStory-Git/aide",
+    "pricing": "Free",
+    "isOpenSource": true,
+    "platform": [
+      "macOS",
+      "Windows",
+      "Linux"
+    ],
+    "categoryId": "cat-1",
+    "tags": [
+      "editor",
+      "Open Source",
+      "Autonomous Agent"
+    ],
+    "lastUpdated": "2026-08-19T07:45:56.757Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:45:56.757Z",
+    "problem": "AI code edits that fail to consider project-wide dependencies result in broken imports and runtime type mismatches.",
+    "solution": "Agentic architecture that plans multi-file diffs, tests changes against linters, and verifies project consistency.",
+    "keyFeatures": [
+      "Multi-file change orchestration",
+      "Proactive bug hunter",
+      "Symbol graph codebase indexing",
+      "Open-source codebase"
+    ]
+  },
+  {
+    "id": "tool-135",
+    "name": "Melty",
+    "slug": "melty",
+    "description": "The first open-source AI code editor that watches what you do and writes code alongside you, tracking git commits and terminal commands.",
+    "website": "https://melty.eco",
+    "github": "https://github.com/meltylabs/melty",
+    "pricing": "Free",
+    "isOpenSource": true,
+    "platform": [
+      "macOS",
+      "Windows",
+      "Linux"
+    ],
+    "categoryId": "cat-1",
+    "tags": [
+      "editor",
+      "Open Source",
+      "Copilot"
+    ],
+    "lastUpdated": "2026-08-19T07:45:56.757Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:45:56.757Z",
+    "problem": "AI assistants have no memory of the developer manual edits or previous terminal commands, repeating mistakes.",
+    "solution": "Understands your exact workflow context by observing editor edits, terminal executions, and git state.",
+    "keyFeatures": [
+      "Proactive pair-programming assistant",
+      "Git commit generator with intent",
+      "Contextual terminal awareness",
+      "Open-source VS Code fork"
+    ]
+  },
+  {
+    "id": "tool-136",
+    "name": "Positron",
+    "slug": "positron",
+    "description": "Next-generation data science and AI IDE by Posit (makers of RStudio) built on Code-OSS with deep Python, R, and copilot integrations.",
+    "website": "https://positron.posit.co",
+    "github": "https://github.com/posit-dev/positron",
+    "pricing": "Free",
+    "isOpenSource": true,
+    "platform": [
+      "macOS",
+      "Windows",
+      "Linux"
+    ],
+    "categoryId": "cat-1",
+    "tags": [
+      "editor",
+      "Python",
+      "Open Source",
+      "Data"
+    ],
+    "lastUpdated": "2026-08-19T07:45:56.757Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:45:56.757Z",
+    "problem": "General-purpose code editors lack specialized data inspection panels, dataframe viewers, and interactive plot engines.",
+    "solution": "Modern Code-OSS IDE with dedicated Data Explorer, Variables Inspector, Plot viewer, and AI assistant.",
+    "keyFeatures": [
+      "Interactive Data Explorer for DataFrames",
+      "Python & R dual kernel support",
+      "AI code assistance",
+      "Modern Code-OSS foundation"
+    ]
+  },
+  {
+    "id": "tool-137",
+    "name": "Augment Code",
+    "slug": "augment-code",
+    "description": "Enterprise AI coding platform with blazing fast sub-100ms autocomplete and deep context awareness across massive multi-repository codebases.",
+    "website": "https://augmentcode.com",
+    "pricing": "Paid",
+    "isOpenSource": false,
+    "platform": [
+      "VS Code",
+      "JetBrains"
+    ],
+    "categoryId": "cat-2",
+    "tags": [
+      "Copilot",
+      "editor",
+      "Enterprise",
+      "Fast"
+    ],
+    "lastUpdated": "2026-08-19T07:45:56.757Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:45:56.757Z",
+    "problem": "AI assistants fail on large enterprise monorepos with hundreds of thousands of files due to slow context indexing.",
+    "solution": "Proprietary high-throughput codebase semantic indexing engine delivering sub-100ms multi-file context completions.",
+    "keyFeatures": [
+      "Sub-100ms autocomplete speed",
+      "Multi-repository codebase indexing",
+      "Strict enterprise security & compliance",
+      "Contextual inline chat"
+    ]
+  },
+  {
+    "id": "tool-138",
+    "name": "Gitpod Flex AI",
+    "slug": "gitpod-flex",
+    "description": "Automated AI cloud development environment with isolated developer containers and autonomous background agent workflows.",
+    "website": "https://gitpod.io",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "Cloud",
+      "Web",
+      "VS Code"
+    ],
+    "categoryId": "cat-1",
+    "tags": [
+      "editor",
+      "Cloud",
+      "Autonomous Agent",
+      "Docker"
+    ],
+    "lastUpdated": "2026-08-19T07:45:56.757Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:45:56.757Z",
+    "problem": "Running experimental AI coding agents locally can corrupt developer environments and consume heavy battery/RAM.",
+    "solution": "Spins up disposable cloud dev environments with pre-installed toolchains where agents work safely in isolation.",
+    "keyFeatures": [
+      "Disposable cloud dev containers",
+      "Autonomous AI background task execution",
+      "Instant workspace provisioning",
+      "Multi-cloud hosting"
+    ]
+  },
+  {
+    "id": "tool-139",
+    "name": "Firecrawl",
+    "slug": "firecrawl",
+    "description": "Turn entire websites into clean, LLM-ready markdown or structured data. Handles JavaScript rendering, proxies, and anti-bot evasions.",
+    "website": "https://firecrawl.dev",
+    "github": "https://github.com/mendableai/firecrawl",
+    "pricing": "Freemium",
+    "isOpenSource": true,
+    "platform": [
+      "API",
+      "Cloud",
+      "Python",
+      "Node.js"
+    ],
+    "categoryId": "cat-14",
+    "tags": [
+      "Open Source",
+      "RAG",
+      "Search",
+      "Web"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.634Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Scraping dynamic SPA websites and converting bloated HTML into clean context for LLMs is frustrating.",
+    "solution": "Single API endpoint that crawls entire domains and returns clean Markdown with automatic JS execution.",
+    "keyFeatures": [
+      "Crawl full website domains",
+      "Clean Markdown output for RAG",
+      "JavaScript rendering & bypass",
+      "Python & TypeScript SDKs"
+    ]
+  },
+  {
+    "id": "tool-140",
+    "name": "Crawl4AI",
+    "slug": "crawl4ai",
+    "description": "Open-source, lightning-fast LLM-friendly web crawler and scraper. Extract clean markdown, structured JSON, and media with zero cost.",
+    "website": "https://crawl4ai.com",
+    "github": "https://github.com/unclecode/crawl4ai",
+    "pricing": "Free",
+    "isOpenSource": true,
+    "platform": [
+      "Python",
+      "Docker"
+    ],
+    "categoryId": "cat-14",
+    "tags": [
+      "Open Source",
+      "Python",
+      "RAG",
+      "Local"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Commercial web scrapers charge high monthly subscriptions for basic RAG data ingestion.",
+    "solution": "High-speed local Python web crawler with heuristic content extraction and multi-tab concurrency.",
+    "keyFeatures": [
+      "6x faster than standard scrapers",
+      "Heuristic markdown extraction",
+      "Chromium browser automation",
+      "100% open-source & free"
+    ]
+  },
+  {
+    "id": "tool-141",
+    "name": "Jina Reader API",
+    "slug": "jina-reader",
+    "description": "Convert any URL into clean, search-friendly markdown for LLMs by simply prefixing the URL with r.jina.ai/.",
+    "website": "https://jina.ai/reader",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "API",
+      "Web"
+    ],
+    "categoryId": "cat-14",
+    "tags": [
+      "Search",
+      "RAG",
+      "API"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Injecting raw web pages into prompt context wastes tokens on navigation bars, ads, and footers.",
+    "solution": "Prefix any URL with r.jina.ai to fetch pure article text in token-optimized Markdown.",
+    "keyFeatures": [
+      "Zero-setup URL prefixing",
+      "Token-optimized Markdown",
+      "PDF & image OCR reading",
+      "Free tier with generous limits"
+    ]
+  },
+  {
+    "id": "tool-142",
+    "name": "Mintlify",
+    "slug": "mintlify",
+    "description": "The modern standard for developer documentation. AI-powered docs platform with interactive API playgrounds and automated PR updates.",
+    "website": "https://mintlify.com",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "Cloud",
+      "Web",
+      "GitHub"
+    ],
+    "categoryId": "cat-16",
+    "tags": [
+      "Productivity",
+      "GitHub",
+      "Next.js"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Maintaining technical developer documentation that stays synced with evolving API codebases is hard.",
+    "solution": "Git-based documentation engine with automated OpenAPI sync, MDX components, and AI search assistant.",
+    "keyFeatures": [
+      "Interactive OpenAPI playground",
+      "MDX custom components",
+      "AI-powered doc search",
+      "GitHub continuous deployment"
+    ]
+  },
+  {
+    "id": "tool-143",
+    "name": "Swimm",
+    "slug": "swimm-io",
+    "description": "Developer knowledge platform that creates auto-syncing codebase documentation, walkthroughs, and IDE-embedded explanations.",
+    "website": "https://swimm.io",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "VS Code",
+      "JetBrains",
+      "GitHub"
+    ],
+    "categoryId": "cat-16",
+    "tags": [
+      "Productivity",
+      "editor",
+      "GitHub"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Documentation goes stale as soon as developers rename functions or refactor directory structures.",
+    "solution": "Patented Auto-sync algorithms that track code tokens and update documentation diffs on git push.",
+    "keyFeatures": [
+      "Auto-syncing code snippets",
+      "In-IDE doc tooltips",
+      "Pull request doc verification",
+      "AI codebase walkthroughs"
+    ]
+  },
+  {
+    "id": "tool-144",
+    "name": "Trigger.dev",
+    "slug": "trigger-dev",
+    "description": "The open-source background jobs framework for Next.js and Node.js. Run long-running AI tasks, queues, and workflows without serverless timeouts.",
+    "website": "https://trigger.dev",
+    "github": "https://github.com/triggerdotdev/trigger.dev",
+    "pricing": "Freemium",
+    "isOpenSource": true,
+    "platform": [
+      "TypeScript",
+      "Node.js",
+      "Next.js"
+    ],
+    "categoryId": "cat-13",
+    "tags": [
+      "Open Source",
+      "TypeScript",
+      "Next.js",
+      "Serverless"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Vercel and serverless functions terminate AI model generation jobs after 10-60 second timeout limits.",
+    "solution": "Durable execution engine that runs multi-hour AI workflows with real-time logs and automated retries.",
+    "keyFeatures": [
+      "Zero serverless timeout limits",
+      "Durable execution with checkpoints",
+      "Real-time task streaming",
+      "Next.js native SDK"
+    ]
+  },
+  {
+    "id": "tool-145",
+    "name": "Inngest",
+    "slug": "inngest",
+    "description": "Event-driven, serverless background workflow platform to orchestrate AI pipelines, step functions, and durable agent execution.",
+    "website": "https://inngest.com",
+    "github": "https://github.com/inngest/inngest",
+    "pricing": "Freemium",
+    "isOpenSource": true,
+    "platform": [
+      "TypeScript",
+      "Python",
+      "Go"
+    ],
+    "categoryId": "cat-13",
+    "tags": [
+      "Open Source",
+      "Serverless",
+      "TypeScript",
+      "Workflow"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Managing Celery, Redis queues, and worker infrastructure for async AI tasks adds DevOps overhead.",
+    "solution": "Write standard async/await code that automatically pauses, retries, and coordinates multi-step AI agents.",
+    "keyFeatures": [
+      "Step-function orchestration",
+      "Zero-infrastructure queueing",
+      "Fan-out batch AI processing",
+      "Local development Dev Server"
+    ]
+  },
+  {
+    "id": "tool-146",
+    "name": "Convex",
+    "slug": "convex",
+    "description": "The reactive fullstack backend platform replacing database, server functions, and websockets for AI and React apps.",
+    "website": "https://convex.dev",
+    "github": "https://github.com/get-convex/convex-backend",
+    "pricing": "Freemium",
+    "isOpenSource": true,
+    "platform": [
+      "TypeScript",
+      "React",
+      "Next.js"
+    ],
+    "categoryId": "cat-11",
+    "tags": [
+      "Database",
+      "Serverless",
+      "React",
+      "TypeScript"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Building real-time multiplayer AI applications requires complex state management, database sync, and websocket servers.",
+    "solution": "100% type-safe reactive backend where database mutations automatically push live updates to all connected React clients.",
+    "keyFeatures": [
+      "Automatic real-time reactive queries",
+      "Built-in vector search indexing",
+      "100% end-to-end TypeScript types",
+      "ACID transaction guarantees"
+    ]
+  },
+  {
+    "id": "tool-147",
+    "name": "InstantDB",
+    "slug": "instantdb",
+    "description": "A modern Client-Side Database for React and React Native that gives you real-time sync, optimistic updates, and relational queries out of the box.",
+    "website": "https://instantdb.com",
+    "github": "https://github.com/instantdb/instant",
+    "pricing": "Freemium",
+    "isOpenSource": true,
+    "platform": [
+      "React",
+      "React Native",
+      "Web"
+    ],
+    "categoryId": "cat-11",
+    "tags": [
+      "Database",
+      "Open Source",
+      "React",
+      "Local"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "State management and offline caching in collaborative React apps require thousands of lines of boilerplate.",
+    "solution": "Graph database in the client that syncs instantaneously with the cloud, enabling optimistic 0ms UI updates.",
+    "keyFeatures": [
+      "Instant 0ms local reads & writes",
+      "Real-time multi-user multiplayer",
+      "Declarative relational queries",
+      "Offline persistence"
+    ]
+  },
+  {
+    "id": "tool-148",
+    "name": "Cohere Command R+",
+    "slug": "cohere-command-r-plus",
+    "description": "State-of-the-art enterprise foundation LLM optimized for conversational interaction, multi-step tool use, and enterprise RAG.",
+    "website": "https://cohere.com/command",
+    "pricing": "Paid",
+    "isOpenSource": false,
+    "platform": [
+      "API",
+      "Cloud"
+    ],
+    "categoryId": "cat-3",
+    "tags": [
+      "LLM",
+      "Enterprise",
+      "RAG",
+      "API"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Standard LLMs struggle to cite precise source documents and execute multi-step business APIs reliably.",
+    "solution": "Model architecture trained specifically for verifiable citations and complex multi-tool calling workflows.",
+    "keyFeatures": [
+      "128K context window",
+      "Verifiable grounded citations",
+      "Multi-step tool calling",
+      "Multilingual across 10 global languages"
+    ]
+  },
+  {
+    "id": "tool-149",
+    "name": "Mistral Large 2",
+    "slug": "mistral-large-2",
+    "description": "Flagship open-weights foundation model by Mistral AI with 123B parameters, advanced reasoning, multilingual support, and coding prowess.",
+    "website": "https://mistral.ai/technology",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "Cloud",
+      "API"
+    ],
+    "categoryId": "cat-3",
+    "tags": [
+      "LLM",
+      "Reasoning",
+      "Fast",
+      "API"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "High cost of proprietary US models and lack of data privacy for European enterprise deployments.",
+    "solution": "World-class European frontier model matching GPT-4o capabilities in mathematics, code, and 128K context.",
+    "keyFeatures": [
+      "128K context window",
+      "State-of-the-art coding and math benchmarks",
+      "Native JSON and function calling",
+      "Available on La Plateforme & Bedrock"
+    ]
+  },
+  {
+    "id": "tool-150",
+    "name": "Voyage AI",
+    "slug": "voyage-ai",
+    "description": "Industry-leading embedding and reranking models designed for state-of-the-art RAG retrieval accuracy and domain customization.",
+    "website": "https://voyageai.com",
+    "pricing": "Paid",
+    "isOpenSource": false,
+    "platform": [
+      "API",
+      "Python"
+    ],
+    "categoryId": "cat-12",
+    "tags": [
+      "Vector Database",
+      "RAG",
+      "API"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Generic embedding models fail to capture deep technical context in codebases and legal documents.",
+    "solution": "Domain-specific embedding models (voyage-code-3, voyage-3-large) consistently topping retrieval benchmarks.",
+    "keyFeatures": [
+      "Top-ranked MTEB retrieval performance",
+      "Specialized code embedding models",
+      "Reranking API",
+      "32K context token support"
+    ]
+  },
+  {
+    "id": "tool-151",
+    "name": "Greptile",
+    "slug": "greptile",
+    "description": "AI code reviewer and codebase intelligence API that understands your entire repository architecture, dependency graph, and history.",
+    "website": "https://greptile.com",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "GitHub",
+      "GitLab",
+      "API"
+    ],
+    "categoryId": "cat-17",
+    "tags": [
+      "Testing",
+      "GitHub",
+      "Code Review",
+      "Copilot"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Single-file code review tools miss cross-file architectural bugs and logic errors in large pull requests.",
+    "solution": "Indexes the full AST, dependency graph, and commit history to provide context-rich PR reviews.",
+    "keyFeatures": [
+      "Full repository graph understanding",
+      "Line-by-line architectural PR review",
+      "Slack and GitHub bot integration",
+      "Developer API for code Q&A"
+    ]
+  },
+  {
+    "id": "tool-152",
+    "name": "Graphite",
+    "slug": "graphite-ai",
+    "description": "Stacked PR and code review platform with AI automated reviewers, stack branching, and fast merge queues for high-velocity teams.",
+    "website": "https://graphite.dev",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "CLI",
+      "Web",
+      "GitHub"
+    ],
+    "categoryId": "cat-17",
+    "tags": [
+      "Productivity",
+      "GitHub",
+      "Terminal"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Large monolithic pull requests cause review gridlock, merge conflicts, and slow engineering velocity.",
+    "solution": "Enables stacked diffs (stacking small dependent PRs) with AI-assisted review summaries and auto-sync.",
+    "keyFeatures": [
+      "Stacked PR branch management",
+      "AI review summary generation",
+      "Instant merge queue",
+      "CLI companion gt tool"
+    ]
+  },
+  {
+    "id": "tool-153",
+    "name": "GitKraken AI",
+    "slug": "gitkraken-ai",
+    "description": "Popular visual Git client with integrated AI commit generation, conflict resolution assistance, and workspace intelligence.",
+    "website": "https://gitkraken.com",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "macOS",
+      "Windows",
+      "Linux"
+    ],
+    "categoryId": "cat-15",
+    "tags": [
+      "Productivity",
+      "editor"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Resolving complex merge conflicts and writing consistent conventional git commits takes time.",
+    "solution": "Visual git graph interface with AI-powered commit messages and interactive merge conflict assistant.",
+    "keyFeatures": [
+      "AI commit message generation",
+      "Visual interactive merge conflict resolver",
+      "Multi-repo workspace management",
+      "Jira and GitHub integration"
+    ]
+  },
+  {
+    "id": "tool-154",
+    "name": "Locofy.ai",
+    "slug": "locofy",
+    "description": "Figma to frontend code generator powered by AI. Turn designs into responsive React, Next.js, Vue, and React Native components.",
+    "website": "https://locofy.ai",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "Figma",
+      "Web"
+    ],
+    "categoryId": "cat-13",
+    "tags": [
+      "React",
+      "UI",
+      "Design",
+      "Next.js"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Translating complex responsive design systems from Figma into production code takes weeks of manual work.",
+    "solution": "Large Design Model (LDM) that detects layout hierarchies, responsive breakpoints, and outputs clean modular code.",
+    "keyFeatures": [
+      "Figma plugin integration",
+      "Exports React, Next.js, and React Native",
+      "Tailwind and CSS Modules support",
+      "Interactive prototype preview"
+    ]
+  },
+  {
+    "id": "tool-155",
+    "name": "Builder.io Visual Copilot",
+    "slug": "builder-io",
+    "description": "AI-powered Figma to React, Vue, Svelte, and Angular code compiler with pixel-perfect responsive layouts and headless CMS integration.",
+    "website": "https://builder.io",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "Web",
+      "Figma",
+      "React"
+    ],
+    "categoryId": "cat-13",
+    "tags": [
+      "React",
+      "UI",
+      "Design",
+      "TypeScript"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Design-to-code converters generate messy absolute-positioned spaghetti code that engineers throw away.",
+    "solution": "AI compiler that produces clean, semantic Flexbox and CSS Grid components matching existing design tokens.",
+    "keyFeatures": [
+      "Semantic Flexbox/Grid output",
+      "Figma design token mapping",
+      "Visual headless CMS editor",
+      "Supports 10+ frontend frameworks"
+    ]
+  },
+  {
+    "id": "tool-156",
+    "name": "Clerk Auth",
+    "slug": "clerk-auth",
+    "description": "The modern authentication and user management platform built for Next.js, React, and modern fullstack developers.",
+    "website": "https://clerk.com",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "Next.js",
+      "React",
+      "TypeScript"
+    ],
+    "categoryId": "cat-18",
+    "tags": [
+      "Security",
+      "Next.js",
+      "React",
+      "Serverless"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Implementing secure multi-tenant auth, session tokens, MFA, and organization switching is error-prone.",
+    "solution": "Drop-in React components (`<SignIn />`, `<UserButton />`) and server middleware with zero auth boilerplate.",
+    "keyFeatures": [
+      "Drop-in React auth components",
+      "Multi-tenant organization support",
+      "Next.js App Router middleware",
+      "Passkey and WebAuthn support"
+    ]
+  },
+  {
+    "id": "tool-157",
+    "name": "WorkOS",
+    "slug": "workos",
+    "description": "Enterprise readiness platform for developers. Add Single Sign-On (SAML/OIDC), SCIM directory sync, and audit logs with clean APIs.",
+    "website": "https://workos.com",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "Cloud",
+      "API",
+      "Node.js",
+      "Python"
+    ],
+    "categoryId": "cat-18",
+    "tags": [
+      "Security",
+      "Enterprise",
+      "API"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Selling SaaS to enterprise customers requires months of engineering for complex SAML SSO and SCIM provisioning.",
+    "solution": "Unified modular APIs to enable Okta, Azure AD, and Google Workspace SSO in under a day.",
+    "keyFeatures": [
+      "Enterprise SAML & OIDC SSO",
+      "SCIM user directory sync",
+      "Real-time audit log streaming",
+      "Role-Based Access Control (RBAC)"
+    ]
+  },
+  {
+    "id": "tool-158",
+    "name": "Google Drive MCP Server",
+    "slug": "gdrive-mcp",
+    "description": "Model Context Protocol server enabling AI agents to search, read, and create documents inside Google Drive and Google Docs.",
+    "website": "https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive",
+    "github": "https://github.com/modelcontextprotocol/servers",
+    "pricing": "Free",
+    "isOpenSource": true,
+    "platform": [
+      "Node.js"
+    ],
+    "categoryId": "cat-5",
+    "tags": [
+      "MCP",
+      "Open Source",
+      "Productivity",
+      "Google"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "AI coding assistants lack direct access to company design briefs, specs, and spreadsheets stored in Google Drive.",
+    "solution": "MCP server providing tools to search Drive files, inspect sheet tables, and read Google Docs directly.",
+    "keyFeatures": [
+      "Search Drive files",
+      "Read Google Docs text",
+      "Read Google Sheets data",
+      "Works with Cursor and Claude Desktop"
+    ]
+  },
+  {
+    "id": "tool-159",
+    "name": "Kubernetes MCP Server",
+    "slug": "kubernetes-mcp",
+    "description": "Model Context Protocol server allowing AI assistants to inspect cluster pods, logs, deployments, and ingress configurations.",
+    "website": "https://github.com/modelcontextprotocol/servers",
+    "github": "https://github.com/modelcontextprotocol/servers",
+    "pricing": "Free",
+    "isOpenSource": true,
+    "platform": [
+      "Python",
+      "Node.js"
+    ],
+    "categoryId": "cat-5",
+    "tags": [
+      "MCP",
+      "Open Source",
+      "DevOps"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": true,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Triage and troubleshooting of crashed Kubernetes pods requires executing manual kubectl commands.",
+    "solution": "MCP server enabling agents to inspect pod crash logs, describe events, and recommend Helm fixes.",
+    "keyFeatures": [
+      "Inspect pod health & logs",
+      "Query deployment status",
+      "Describe cluster events",
+      "Safe read-only execution mode"
+    ]
+  },
+  {
+    "id": "tool-160",
+    "name": "Redis MCP Server",
+    "slug": "redis-mcp",
+    "description": "Model Context Protocol server for inspecting Redis keys, monitoring memory consumption, and running atomic commands.",
+    "website": "https://github.com/modelcontextprotocol/servers",
+    "github": "https://github.com/modelcontextprotocol/servers",
+    "pricing": "Free",
+    "isOpenSource": true,
+    "platform": [
+      "Node.js"
+    ],
+    "categoryId": "cat-5",
+    "tags": [
+      "MCP",
+      "Open Source",
+      "Database"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Debugging cached session tokens and Redis queue bottlenecks directly from the IDE.",
+    "solution": "MCP interface allowing AI assistants to query keys, inspect TTLs, and verify cache invalidation logic.",
+    "keyFeatures": [
+      "Query Redis key structures",
+      "Inspect memory and TTLs",
+      "Stream queue monitoring",
+      "Claude and Cursor integration"
+    ]
+  },
+  {
+    "id": "tool-161",
+    "name": "HeyGen",
+    "slug": "heygen",
+    "description": "AI video generation platform for creating realistic talking avatar videos with studio-grade lip syncing and multilingual translation.",
+    "website": "https://heygen.com",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "Web",
+      "API"
+    ],
+    "categoryId": "cat-7",
+    "tags": [
+      "Video Generation",
+      "Audio AI",
+      "Creative"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Recording product walkthroughs and localized developer tutorials in 20+ languages requires studios and actors.",
+    "solution": "Instant photorealistic AI avatars generated from text scripts with natural facial expressions.",
+    "keyFeatures": [
+      "Photorealistic custom avatars",
+      "Automated video translation with voice clone",
+      "Interactive Streaming Avatar API",
+      "100+ languages supported"
+    ]
+  },
+  {
+    "id": "tool-162",
+    "name": "Descript",
+    "slug": "descript",
+    "description": "All-in-one AI audio and video editor where editing video is as simple as editing a text transcript. Features Studio Sound and Eye Contact.",
+    "website": "https://descript.com",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "macOS",
+      "Windows"
+    ],
+    "categoryId": "cat-8",
+    "tags": [
+      "Audio AI",
+      "Video Generation",
+      "Productivity"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Trimming filler words (ums, uhs) and editing audio tracks in timeline-based video editors is tedious.",
+    "solution": "Doc-like editor where deleting words in the transcript instantly cuts the corresponding audio/video section.",
+    "keyFeatures": [
+      "Transcript-based video editing",
+      "One-click filler word removal",
+      "Studio Sound AI background noise removal",
+      "Overdub voice synthesis"
+    ]
+  },
+  {
+    "id": "tool-163",
+    "name": "Prompt Armor",
+    "slug": "prompt-armor",
+    "description": "Enterprise AI security platform that protects LLMs, RAG applications, and agents against indirect prompt injection, data exfiltration, and SSRF.",
+    "website": "https://promptarmor.com",
+    "pricing": "Paid",
+    "isOpenSource": false,
+    "platform": [
+      "API",
+      "Cloud"
+    ],
+    "categoryId": "cat-18",
+    "tags": [
+      "Security",
+      "Enterprise",
+      "API"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Adversaries embedding invisible malicious instructions in external web pages or PDFs to hijack agent actions.",
+    "solution": "Real-time security proxy analyzing retrieved text and user inputs for zero-day prompt injection signatures.",
+    "keyFeatures": [
+      "Indirect prompt injection detection",
+      "Data exfiltration prevention",
+      "Sub-20ms latency inspection",
+      "Enterprise compliance reports"
+    ]
+  },
+  {
+    "id": "tool-164",
+    "name": "Lakera Guard",
+    "slug": "lakera-guard",
+    "description": "Real-time AI security API defending LLM systems against prompt injections, jailbreaks, PII leaks, and malicious inputs in sub-25ms.",
+    "website": "https://lakera.ai",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "API",
+      "Cloud"
+    ],
+    "categoryId": "cat-18",
+    "tags": [
+      "Security",
+      "Fast",
+      "API"
+    ],
+    "lastUpdated": "2026-08-19T07:57:39.635Z",
+    "featured": false,
+    "createdAt": "2026-08-19T07:57:39.635Z",
+    "problem": "Protecting consumer-facing AI chatbots from prompt injection attacks without degrading inference latency.",
+    "solution": "Developer-first security API that validates inputs and outputs in under 25ms with millions of attack signatures.",
+    "keyFeatures": [
+      "Sub-25ms security API latency",
+      "Jailbreak & prompt injection detection",
+      "PII & sensitive data redaction",
+      "Python and TypeScript SDKs"
+    ]
   }
 ]
 
@@ -6453,5 +7620,144 @@ export const AI_SKILLS: AiSkill[] = [
     ],
     "content": "# Linux eBPF Performance Profiling Protocol\n1. Use bpftrace and BCC tools to attach to kernel kprobes and tracepoints with near-zero overhead.\n2. Profile on-CPU and off-CPU latency bottlenecks using flame graphs.\n3. Monitor TCP socket retransmissions and dropped packets at the kernel interface.\n4. Inspect system call frequency and memory page faults per container process.",
     "createdAt": "2026-08-19T06:31:20.575Z"
+  },
+  {
+    "id": "skill-76",
+    "name": "Svelte 5 Runes & Modern Reactive Architecture",
+    "slug": "svelte-5-runes-expert",
+    "description": "Master Svelte 5 universal reactivity using runes ($state, $derived, $effect), snippet composition, and high-performance client rendering.",
+    "frameworks": [
+      "Svelte",
+      "TypeScript",
+      "JavaScript"
+    ],
+    "content": "# Svelte 5 Runes Architecture Guide\n1. Use $state for fine-grained reactive variables and $derived for computed state.\n2. Keep $effect minimal and avoid using it for state synchronization.\n3. Use snippets instead of slots for reusable, type-safe component templates.\n4. Prefer universal reactivity in .svelte.ts files for shared store logic.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-77",
+    "name": "Vue 3 Composition API & Nuxt 3 Fullstack Master",
+    "slug": "vue-3-nuxt-3-master",
+    "description": "Production-ready fullstack Vue 3 applications with Nuxt 3, Nitro server engine, Pinia state stores, and auto-imports.",
+    "frameworks": [
+      "Vue",
+      "Nuxt.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "content": "# Nuxt 3 & Vue 3 Composition Architecture\n1. Use script setup with TypeScript and explicit defineProps/defineEmits.\n2. Leverage useAsyncData and useFetch with unique keys for SSR data hydration.\n3. Organize persistent global state inside modular Pinia stores.\n4. Write lightweight server API routes under server/api/ using Nitro engine.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-78",
+    "name": "Rust Async Tokio & Actor Concurrency Expert",
+    "slug": "rust-tokio-async-concurrency",
+    "description": "Build ultra-fast async networking and distributed systems using Rust Tokio runtime, mpsc channels, Arc/Mutex, and async-trait.",
+    "frameworks": [
+      "Rust",
+      "Tokio",
+      "Async",
+      "Backend"
+    ],
+    "content": "# Rust Async Tokio Concurrency Architecture\n1. Never block the Tokio executor thread with synchronous I/O or heavy CPU calculations (use spawn_blocking).\n2. Communicate between tasks using Tokio mpsc or broadcast channels instead of shared mutable state.\n3. Implement graceful shutdown using tokio::select! and CancellationToken.\n4. Structure actor loops with message enums for isolated state ownership.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-79",
+    "name": "Go Microservices: Concurrency, Channels & gRPC",
+    "slug": "golang-microservices-grpc",
+    "description": "High-throughput Go 1.22+ backend microservices with goroutines, channels, context cancellation, and gRPC protocol buffers.",
+    "frameworks": [
+      "Go",
+      "gRPC",
+      "Microservices",
+      "Docker"
+    ],
+    "content": "# Go Microservices & Concurrency Best Practices\n1. Always propagate context.Context across all I/O and database operations.\n2. Prevent goroutine leaks by ensuring channel receivers have exit conditions.\n3. Define type-safe service contracts using Protobuf v3 with gRPC-Go.\n4. Implement structured slog logging and Prometheus metrics middleware.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-80",
+    "name": "Cloudflare Workers & Hono Edge API Specialist",
+    "slug": "cloudflare-workers-hono-expert",
+    "description": "Ultra-low latency serverless edge applications using Cloudflare Workers, Hono web framework, Cloudflare D1 (SQL), and KV caching.",
+    "frameworks": [
+      "Cloudflare",
+      "Hono",
+      "TypeScript",
+      "Serverless"
+    ],
+    "content": "# Cloudflare Workers & Hono Edge Architecture\n1. Use Hono for lightweight, zero-dependency routing on the edge runtime.\n2. Store relational data in Cloudflare D1 with prepared statements.\n3. Cache read-heavy API responses using Cloudflare Workers KV and Cache API.\n4. Deploy with Wrangler CLI using modular environment bindings.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-81",
+    "name": "WebSockets & WebRTC Real-Time Streaming Engineer",
+    "slug": "websockets-webrtc-realtime",
+    "description": "Low-latency bidirectional audio/video streaming, data channels, heartbeat keep-alive, and horizontal websocket scaling with Redis PUB/SUB.",
+    "frameworks": [
+      "WebSockets",
+      "WebRTC",
+      "Node.js",
+      "TypeScript"
+    ],
+    "content": "# WebSockets & WebRTC Real-Time Architecture\n1. Implement ping/pong heartbeat intervals to detect broken network connections.\n2. Scale WebSocket connections across multiple nodes using Redis PUB/SUB adapters.\n3. Use WebRTC DataChannels for ultra-low latency peer-to-peer binary streaming.\n4. Handle client reconnects with exponential backoff and message queue buffers.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-82",
+    "name": "Distributed Tracing & Metrics with OpenTelemetry",
+    "slug": "opentelemetry-distributed-tracing",
+    "description": "End-to-end observability, auto-instrumentation, trace context propagation (W3C), and metric exports to Jaeger, Prometheus, and Grafana.",
+    "frameworks": [
+      "OpenTelemetry",
+      "DevOps",
+      "Observability",
+      "Node.js"
+    ],
+    "content": "# OpenTelemetry Observability Protocol\n1. Instrument HTTP servers and database clients using OpenTelemetry SDK.\n2. Propagate traceparent and tracestate W3C headers across service boundaries.\n3. Attach business context attributes to spans without logging sensitive PII.\n4. Export spans and metrics via OTLP gRPC collector for minimal overhead.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-83",
+    "name": "Enterprise Monorepo Architect with Turborepo & pnpm",
+    "slug": "turborepo-pnpm-monorepo-master",
+    "description": "High-speed monorepo workspace architecture with pnpm workspaces, Turborepo remote caching, internal package sharing, and boundary linting.",
+    "frameworks": [
+      "Turborepo",
+      "pnpm",
+      "TypeScript",
+      "Next.js"
+    ],
+    "content": "# Turborepo & pnpm Monorepo Architecture\n1. Define pipeline task dependencies and cache hash inputs inside turbo.json.\n2. Share internal UI and utility packages using TypeScript path aliases and package.json exports.\n3. Enable remote caching in CI pipelines to achieve instant sub-minute builds.\n4. Enforce strict boundary rules between apps and internal packages.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-84",
+    "name": "Accessibility (a11y) & WCAG 2.2 AAA Standards Master",
+    "slug": "wcag-accessibility-expert",
+    "description": "Accessible web development meeting WCAG 2.2 AAA guidelines: keyboard navigation, ARIA landmarks, screen reader announcements, and focus management.",
+    "frameworks": [
+      "Accessibility",
+      "HTML",
+      "React",
+      "CSS"
+    ],
+    "content": "# Accessibility & WCAG 2.2 Guidelines\n1. Ensure all interactive components are fully operable via Keyboard (Tab, Enter, Space, Escape).\n2. Maintain minimum color contrast ratios (4.5:1 for normal text, 7:1 for AAA).\n3. Use semantic HTML elements (<button>, <nav>, <main>) before resorting to ARIA roles.\n4. Manage modal focus traps and announce dynamic state changes with aria-live.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-85",
+    "name": "Multi-Agent Swarm Orchestration & Consensus Protocol",
+    "slug": "multi-agent-swarm-orchestrator",
+    "description": "Design autonomous multi-agent swarms with supervisor routing, voting consensus, tool delegation, and hierarchical memory architectures.",
+    "frameworks": [
+      "Autonomous Agent",
+      "Python",
+      "TypeScript",
+      "LangGraph"
+    ],
+    "content": "# Multi-Agent Swarm Orchestration Protocol\n1. Implement hierarchical supervisor agents to route tasks to domain specialists.\n2. Use majority voting and debate consensus algorithms for high-stakes decisions.\n3. Isolate subagent context windows to prevent token budget depletion.\n4. Provide deterministic checkpointing and rollback capabilities on agent failure.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
   }
 ]

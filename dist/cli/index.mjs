@@ -1006,6 +1006,145 @@ var AI_SKILLS = [
     ],
     "content": "# Linux eBPF Performance Profiling Protocol\n1. Use bpftrace and BCC tools to attach to kernel kprobes and tracepoints with near-zero overhead.\n2. Profile on-CPU and off-CPU latency bottlenecks using flame graphs.\n3. Monitor TCP socket retransmissions and dropped packets at the kernel interface.\n4. Inspect system call frequency and memory page faults per container process.",
     "createdAt": "2026-08-19T06:31:20.575Z"
+  },
+  {
+    "id": "skill-76",
+    "name": "Svelte 5 Runes & Modern Reactive Architecture",
+    "slug": "svelte-5-runes-expert",
+    "description": "Master Svelte 5 universal reactivity using runes ($state, $derived, $effect), snippet composition, and high-performance client rendering.",
+    "frameworks": [
+      "Svelte",
+      "TypeScript",
+      "JavaScript"
+    ],
+    "content": "# Svelte 5 Runes Architecture Guide\n1. Use $state for fine-grained reactive variables and $derived for computed state.\n2. Keep $effect minimal and avoid using it for state synchronization.\n3. Use snippets instead of slots for reusable, type-safe component templates.\n4. Prefer universal reactivity in .svelte.ts files for shared store logic.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-77",
+    "name": "Vue 3 Composition API & Nuxt 3 Fullstack Master",
+    "slug": "vue-3-nuxt-3-master",
+    "description": "Production-ready fullstack Vue 3 applications with Nuxt 3, Nitro server engine, Pinia state stores, and auto-imports.",
+    "frameworks": [
+      "Vue",
+      "Nuxt.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "content": "# Nuxt 3 & Vue 3 Composition Architecture\n1. Use script setup with TypeScript and explicit defineProps/defineEmits.\n2. Leverage useAsyncData and useFetch with unique keys for SSR data hydration.\n3. Organize persistent global state inside modular Pinia stores.\n4. Write lightweight server API routes under server/api/ using Nitro engine.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-78",
+    "name": "Rust Async Tokio & Actor Concurrency Expert",
+    "slug": "rust-tokio-async-concurrency",
+    "description": "Build ultra-fast async networking and distributed systems using Rust Tokio runtime, mpsc channels, Arc/Mutex, and async-trait.",
+    "frameworks": [
+      "Rust",
+      "Tokio",
+      "Async",
+      "Backend"
+    ],
+    "content": "# Rust Async Tokio Concurrency Architecture\n1. Never block the Tokio executor thread with synchronous I/O or heavy CPU calculations (use spawn_blocking).\n2. Communicate between tasks using Tokio mpsc or broadcast channels instead of shared mutable state.\n3. Implement graceful shutdown using tokio::select! and CancellationToken.\n4. Structure actor loops with message enums for isolated state ownership.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-79",
+    "name": "Go Microservices: Concurrency, Channels & gRPC",
+    "slug": "golang-microservices-grpc",
+    "description": "High-throughput Go 1.22+ backend microservices with goroutines, channels, context cancellation, and gRPC protocol buffers.",
+    "frameworks": [
+      "Go",
+      "gRPC",
+      "Microservices",
+      "Docker"
+    ],
+    "content": "# Go Microservices & Concurrency Best Practices\n1. Always propagate context.Context across all I/O and database operations.\n2. Prevent goroutine leaks by ensuring channel receivers have exit conditions.\n3. Define type-safe service contracts using Protobuf v3 with gRPC-Go.\n4. Implement structured slog logging and Prometheus metrics middleware.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-80",
+    "name": "Cloudflare Workers & Hono Edge API Specialist",
+    "slug": "cloudflare-workers-hono-expert",
+    "description": "Ultra-low latency serverless edge applications using Cloudflare Workers, Hono web framework, Cloudflare D1 (SQL), and KV caching.",
+    "frameworks": [
+      "Cloudflare",
+      "Hono",
+      "TypeScript",
+      "Serverless"
+    ],
+    "content": "# Cloudflare Workers & Hono Edge Architecture\n1. Use Hono for lightweight, zero-dependency routing on the edge runtime.\n2. Store relational data in Cloudflare D1 with prepared statements.\n3. Cache read-heavy API responses using Cloudflare Workers KV and Cache API.\n4. Deploy with Wrangler CLI using modular environment bindings.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-81",
+    "name": "WebSockets & WebRTC Real-Time Streaming Engineer",
+    "slug": "websockets-webrtc-realtime",
+    "description": "Low-latency bidirectional audio/video streaming, data channels, heartbeat keep-alive, and horizontal websocket scaling with Redis PUB/SUB.",
+    "frameworks": [
+      "WebSockets",
+      "WebRTC",
+      "Node.js",
+      "TypeScript"
+    ],
+    "content": "# WebSockets & WebRTC Real-Time Architecture\n1. Implement ping/pong heartbeat intervals to detect broken network connections.\n2. Scale WebSocket connections across multiple nodes using Redis PUB/SUB adapters.\n3. Use WebRTC DataChannels for ultra-low latency peer-to-peer binary streaming.\n4. Handle client reconnects with exponential backoff and message queue buffers.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-82",
+    "name": "Distributed Tracing & Metrics with OpenTelemetry",
+    "slug": "opentelemetry-distributed-tracing",
+    "description": "End-to-end observability, auto-instrumentation, trace context propagation (W3C), and metric exports to Jaeger, Prometheus, and Grafana.",
+    "frameworks": [
+      "OpenTelemetry",
+      "DevOps",
+      "Observability",
+      "Node.js"
+    ],
+    "content": "# OpenTelemetry Observability Protocol\n1. Instrument HTTP servers and database clients using OpenTelemetry SDK.\n2. Propagate traceparent and tracestate W3C headers across service boundaries.\n3. Attach business context attributes to spans without logging sensitive PII.\n4. Export spans and metrics via OTLP gRPC collector for minimal overhead.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-83",
+    "name": "Enterprise Monorepo Architect with Turborepo & pnpm",
+    "slug": "turborepo-pnpm-monorepo-master",
+    "description": "High-speed monorepo workspace architecture with pnpm workspaces, Turborepo remote caching, internal package sharing, and boundary linting.",
+    "frameworks": [
+      "Turborepo",
+      "pnpm",
+      "TypeScript",
+      "Next.js"
+    ],
+    "content": "# Turborepo & pnpm Monorepo Architecture\n1. Define pipeline task dependencies and cache hash inputs inside turbo.json.\n2. Share internal UI and utility packages using TypeScript path aliases and package.json exports.\n3. Enable remote caching in CI pipelines to achieve instant sub-minute builds.\n4. Enforce strict boundary rules between apps and internal packages.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-84",
+    "name": "Accessibility (a11y) & WCAG 2.2 AAA Standards Master",
+    "slug": "wcag-accessibility-expert",
+    "description": "Accessible web development meeting WCAG 2.2 AAA guidelines: keyboard navigation, ARIA landmarks, screen reader announcements, and focus management.",
+    "frameworks": [
+      "Accessibility",
+      "HTML",
+      "React",
+      "CSS"
+    ],
+    "content": "# Accessibility & WCAG 2.2 Guidelines\n1. Ensure all interactive components are fully operable via Keyboard (Tab, Enter, Space, Escape).\n2. Maintain minimum color contrast ratios (4.5:1 for normal text, 7:1 for AAA).\n3. Use semantic HTML elements (<button>, <nav>, <main>) before resorting to ARIA roles.\n4. Manage modal focus traps and announce dynamic state changes with aria-live.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-85",
+    "name": "Multi-Agent Swarm Orchestration & Consensus Protocol",
+    "slug": "multi-agent-swarm-orchestrator",
+    "description": "Design autonomous multi-agent swarms with supervisor routing, voting consensus, tool delegation, and hierarchical memory architectures.",
+    "frameworks": [
+      "Autonomous Agent",
+      "Python",
+      "TypeScript",
+      "LangGraph"
+    ],
+    "content": "# Multi-Agent Swarm Orchestration Protocol\n1. Implement hierarchical supervisor agents to route tasks to domain specialists.\n2. Use majority voting and debate consensus algorithms for high-stakes decisions.\n3. Isolate subagent context windows to prevent token budget depletion.\n4. Provide deterministic checkpointing and rollback capabilities on agent failure.",
+    "createdAt": "2026-08-19T07:57:39.635Z"
   }
 ];
 
