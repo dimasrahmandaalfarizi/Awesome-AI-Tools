@@ -6,6 +6,7 @@ import { useTranslations, useLocale } from "next-intl"
 import { Search, Globe, Menu, X } from "lucide-react"
 import { Button } from "../ui/Button"
 import { ThemeToggle } from "../ui/ThemeToggle"
+import { useBookmarks } from "@/components/providers/BookmarkProvider"
 
 export function Navbar() {
   const t = useTranslations("Navbar")
@@ -13,6 +14,7 @@ export function Navbar() {
   const router = useRouter()
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
+  const { count } = useBookmarks()
 
   const handleOpenCommandPalette = () => {
     window.dispatchEvent(new CustomEvent("open-command-palette"))
@@ -43,6 +45,14 @@ export function Navbar() {
             </Link>
             <Link href="/chat" className="hover:text-[var(--foreground)] transition-colors">
               {t("aiChat")}
+            </Link>
+            <Link href="/stack" className="flex items-center gap-1.5 hover:text-[var(--foreground)] transition-colors">
+              <span>{t("stack")}</span>
+              {count > 0 && (
+                <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono font-bold bg-[var(--primary)]/15 text-[var(--primary)]">
+                  {count}
+                </span>
+              )}
             </Link>
             <Link href="/docs/quickstart" className="hover:text-[var(--foreground)] transition-colors">
               {t("docs")}
@@ -137,6 +147,18 @@ export function Navbar() {
               className="hover:text-[var(--foreground)] transition-colors py-3 border-b border-[var(--border)]/30"
             >
               {t("aiChat")}
+            </Link>
+            <Link
+              href="/stack"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center justify-between hover:text-[var(--foreground)] transition-colors py-3 border-b border-[var(--border)]/30"
+            >
+              <span>{t("stack")}</span>
+              {count > 0 && (
+                <span className="px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-[var(--primary)]/15 text-[var(--primary)]">
+                  {count}
+                </span>
+              )}
             </Link>
             <Link
               href="/docs/quickstart"

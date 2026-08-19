@@ -4,6 +4,7 @@ import { CommandPalette } from "@/components/features/CommandPalette";
 import { AIChatWidget } from "@/components/features/AIChatWidget";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { BookmarkProvider } from "@/components/providers/BookmarkProvider";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -47,10 +48,12 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
-            <CommandPalette />
-            <AIChatWidget />
-            <Toaster theme="dark" position="bottom-right" />
+            <BookmarkProvider>
+              {children}
+              <CommandPalette />
+              <AIChatWidget />
+              <Toaster theme="dark" position="bottom-right" />
+            </BookmarkProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

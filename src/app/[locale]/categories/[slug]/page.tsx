@@ -5,6 +5,7 @@ import { getLocalizedCategory, getLocalizedTool } from "@/lib/localizeData"
 import { notFound } from "next/navigation"
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/Card"
 import { Badge } from "@/components/ui/Badge"
+import { BookmarkButton } from "@/components/ui/BookmarkButton"
 import { ToolLogo } from "@/components/ui/ToolLogo"
 import { Link } from "@/i18n/routing"
 import { ExternalLink } from "lucide-react"
@@ -60,9 +61,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                       <span key={tag} className="text-xs text-[var(--muted)]">#{tag}</span>
                     ))}
                   </div>
-                  <a href={tool.website} target="_blank" rel="noreferrer" className="text-[var(--muted)] hover:text-[var(--primary)] transition-colors">
-                    <ExternalLink className="h-5 w-5" />
-                  </a>
+                  <div className="flex items-center gap-2">
+                    <BookmarkButton toolId={tool.id} toolName={tool.name} size="sm" />
+                    <a href={tool.website} target="_blank" rel="noreferrer" className="text-[var(--muted)] hover:text-[var(--primary)] transition-colors">
+                      <ExternalLink className="h-5 w-5" />
+                    </a>
+                  </div>
                 </CardFooter>
               </Card>
             ))}

@@ -5,6 +5,7 @@ import { getLocalizedCategory, getLocalizedTool } from "@/lib/localizeData"
 import { notFound } from "next/navigation"
 import { Badge } from "@/components/ui/Badge"
 import { Button } from "@/components/ui/Button"
+import { BookmarkButton } from "@/components/ui/BookmarkButton"
 import { ToolLogo } from "@/components/ui/ToolLogo"
 import { ExternalLink, Code } from "lucide-react"
 import { Link } from "@/i18n/routing"
@@ -67,11 +68,14 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
               </div>
 
               <div className="flex flex-col gap-3 w-full md:w-auto">
-                <Button size="lg" asChild className="w-full">
-                  <a href={tool.website} target="_blank" rel="noreferrer">
-                    {t("visitWebsite")} <ExternalLink className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
+                <div className="flex items-center gap-2">
+                  <Button size="lg" asChild className="flex-1">
+                    <a href={tool.website} target="_blank" rel="noreferrer">
+                      {t("visitWebsite")} <ExternalLink className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
+                  <BookmarkButton toolId={tool.id} toolName={tool.name} className="h-11 px-3 border border-[var(--border)]" />
+                </div>
                 {tool.github && (
                   <Button size="lg" variant="outline" asChild className="w-full">
                     <a href={tool.github} target="_blank" rel="noreferrer">
