@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json()
-    const { messages, model, stream = true } = body
+    const { messages, model, stream = true, webSearch = false } = body
 
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
       return NextResponse.json({ error: "Missing messages array" }, { status: 400 })
@@ -104,6 +104,27 @@ export async function POST(req: NextRequest) {
       })
     }
 
+    // Web Search injection
+    let webSearchContext = ""
+    if (webSearch && lastUserMessage) {
+      try {
+        const searchUrl = new URL("/api/search", req.url)
+        searchUrl.searchParams.set("q", lastUserMessage)
+        const searchRes = await fetch(searchUrl.toString(), { signal: AbortSignal.timeout(5000) })
+        if (searchRes.ok) {
+          const searchData = await searchRes.json()
+          if (Array.isArray(searchData.results) && searchData.results.length > 0) {
+            webSearchContext = "\n\nWEB SEARCH RESULTS (Use these as factual up-to-date context. Cite sources where relevant):\n"
+            searchData.results.forEach((r: { title: string; url: string; snippet: string }, i: number) => {
+              webSearchContext += `[${i + 1}] ${r.title}\n   URL: ${r.url}\n   ${r.snippet}\n\n`
+            })
+          }
+        }
+      } catch {
+        // Search failed silently - continue without it
+      }
+    }
+
     // High-Intelligence System Prompt (Claude/ChatGPT grade reasoning & context awareness)
     const systemPrompt = `You are Awesome AI Copilot, an elite, highly capable, and context-aware AI assistant running locally and privately on the user's machine.
 You possess state-of-the-art general intelligence, deep software engineering proficiency, and comprehensive knowledge of the "Awesome AI Tools" catalog platform.
@@ -115,17 +136,19 @@ COGNITIVE & BEHAVIORAL PRINCIPLES:
    - If the user provides code, thoroughly inspect it for logic errors, edge cases, performance bottlenecks, and security flaws before answering.
 
 2. ADAPTIVE & HELPFUL RESPONSES:
-   - Provide accurate, thoughtful, and structured answers with clear markdown headings, bullet points, and code blocks.
+   - Provide accurate, thoughtful, and structured answers using proper Markdown: ## headings, **bold**, *italic*, - bullet lists, 1. numbered lists, and \`\`\`code blocks\`\`\`.
+   - Structure responses with clear sections. Use headings for multi-topic answers. Use bullet lists for comparisons or feature lists.
    - When writing code: write production-ready, clean, well-commented code in the requested programming language or framework (TypeScript, React, Next.js, Python, Rust, Go, SQL, etc.).
    - When answering general or complex questions: think step-by-step, explain the reasoning clearly, and provide actionable takeaways.
 
 3. CATALOG & DOMAIN AWARENESS:
    - You have native knowledge of the Awesome AI Tools directory (IDEs, coding assistants, LLMs, MCP servers, agent frameworks, prompts, Ollama setup, API proxy router).
-   - Whenever asked for tool recommendations or comparisons, provide authoritative, objective, and well-justified comparisons.${dynamicKnowledge}
+   - Whenever asked for tool recommendations or comparisons, provide authoritative, objective, and well-justified comparisons.${dynamicKnowledge}${webSearchContext}
 
 4. LANGUAGE & TONE:
    - Naturally reply in the exact language used by the user (Bahasa Indonesia or English).
-   - Tone: Professional, warm, insightful, developer-friendly, and precise.`
+   - Tone: Professional, warm, insightful, developer-friendly, and precise.
+   - If web search results were provided, naturally incorporate them and cite source URLs inline using Markdown links [source](url) when relevant.`
 
     // Format all messages and inject the intelligent system prompt
     const formattedMessages = [
@@ -145,7 +168,7 @@ COGNITIVE & BEHAVIORAL PRINCIPLES:
         messages: formattedMessages,
         stream: Boolean(stream),
         options: {
-          num_ctx: 8192,       // Expanded context memory (8K tokens)
+          num_ctx: 12288,      // Expanded context (12K tokens to fit web search results)
           temperature: 0.7,    // Optimal balance of creativity & precision
           top_p: 0.9,          // Nucleus sampling
           repeat_penalty: 1.1  // Prevent repetitive loops

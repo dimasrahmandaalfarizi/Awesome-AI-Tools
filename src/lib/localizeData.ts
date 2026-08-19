@@ -209,6 +209,200 @@ export const TOOL_TRANSLATIONS_ID: Record<string, {
     targetUser: "Tech Lead, OSS Maintainer, dan Enterprise Dev Team.",
     keyFeatures: ["Sandbox Docker aman", "Navigasi browser web otomatis", "Penyelesaian issue GitHub otomatis", "Arsitektur multi-agent"]
   }
+,
+  "bolt-new": {
+    description: "Sandbox pengembangan web full-stack AI di browser dengan WebContainers. Bangun, jalankan, edit, dan deploy aplikasi Node.js dan React langsung dari prompt.",
+    problem: "Menyiapkan environment lokal dan konfigurasi boilerplate memakan waktu lama saat prototyping.",
+    solution: "Menjalankan runtime Node.js langsung di browser dengan WebContainers dan pembuatan aplikasi fullstack instan.",
+    keyFeatures: ["Runtime Node di browser", "Prompt-to-fullstack React app", "Deploy 1-klik ke Netlify", "Live code editor & terminal"]
+  },
+  "lovable": {
+    description: "Pembuat aplikasi web full-stack GPT-engineer yang mengubah bahasa alami menjadi aplikasi React, Tailwind, dan Supabase siap produksi.",
+    problem: "Menerjemahkan wireframe ke kode frontend dengan autentikasi dan database butuh berminggu-minggu.",
+    solution: "Menghasilkan aplikasi React produksi dengan integrasi Supabase native dan komponen Tailwind rapi.",
+    keyFeatures: ["Integrasi otomatis Supabase", "Sinkronisasi GitHub & PR", "Kanvas visual interaktif", "Ekspor kode Tailwind CSS"]
+  },
+  "replit-agent": {
+    description: "Insinyur perangkat lunak AI otonom dari Replit yang merencanakan, menulis, menguji, dan mendeploy aplikasi full-stack dari awal di cloud.",
+    problem: "Membangun aplikasi web butuh perencanaan arsitektur, konfigurasi server, dan debugging yang rumit.",
+    solution: "Agen AI menjalankan perintah terminal, instalasi paket, dan debugging error runtime secara mandiri.",
+    keyFeatures: ["Inisialisasi proyek otonom", "Debugging otomatis di sandbox", "Database & Auth bawaan", "Hosting cloud instan"]
+  },
+  "lm-studio": {
+    description: "Jelajahi, unduh, dan jalankan model LLM lokal (Llama 3, DeepSeek, Mistral, Qwen) di Mac atau PC Windows dengan akselerasi GPU dan server lokal kompatibel OpenAI.",
+    problem: "Mengonfigurasi CUDA driver dan kuantisasi untuk model lokal seringkali rumit bagi developer.",
+    solution: "Aplikasi desktop 1-klik untuk unduh model GGUF dari HuggingFace dan menyalakan HTTP server lokal.",
+    keyFeatures: ["Pencarian model HuggingFace", "Akselerasi GPU Apple Silicon & NVIDIA", "Server HTTP lokal port 1234", "Output JSON terstruktur"]
+  },
+  "open-webui": {
+    description: "Antarmuka web mandiri (self-hosted) kaya fitur untuk Ollama dan OpenAI dengan dukungan RAG dokumen, eksekusi kode, dan arena multi-model.",
+    problem: "Model lokal di CLI tidak memiliki antarmuka modern seperti ChatGPT untuk membaca dokumen dan multi-user.",
+    solution: "Web UI fleksibel yang terhubung langsung ke Ollama dengan fitur vector search dokumen dan pencarian web.",
+    keyFeatures: ["Dukungan endpoint Ollama & OpenAI", "RAG embedding dokumen", "Integrasi web search", "Manajemen hak akses multi-user"]
+  },
+  "jan-ai": {
+    description: "Alternatif ChatGPT open-source 100% offline untuk desktop yang menjalankan model lokal dengan privasi data penuh.",
+    problem: "Mengirimkan kode rahasia perusahaan ke cloud AI menimbulkan risiko kebocoran data.",
+    solution: "Menjalankan model lokal pada perangkat dengan database terenkripsi tanpa pelacakan telemetri.",
+    keyFeatures: ["Operasi 100% offline", "Server API lokal", "Model manager dengan indikator VRAM", "Ekstensi kustom"]
+  },
+  "gpt4all": {
+    description: "Chatbot lokal open-source hemat privasi oleh Nomic AI untuk menjalankan LLM pada CPU dan GPU biasa tanpa internet.",
+    problem: "Banyak developer tidak memiliki GPU mahal untuk menjalankan model AI secara lokal.",
+    solution: "Engine C++ teroptimasi yang mampu melakukan inferensi cepat pada prosesor CPU laptop standar.",
+    keyFeatures: ["Pencarian dokumen LocalDocs", "Akselerasi CPU & GPU", "SDK Python & TypeScript", "Pustaka model terkuantisasi"]
+  },
+  "langfuse": {
+    description: "Platform engineering LLM open-source untuk tracing eksekusi, evaluasi kualitas, manajemen prompt, dan metrik biaya produksi.",
+    problem: "Sulit mendebug rantai agent multi-step, degradasi prompt, dan bottleneck latensi pada produksi.",
+    solution: "Tracing alur eksekusi lengkap, rincian latensi, atribusi biaya per pengguna, dan evaluasi otomatis.",
+    keyFeatures: ["Tracing rantai bertingkat", "Manajemen versi prompt", "Evaluasi otomatis", "Pelacakan token & biaya"]
+  },
+  "langsmith": {
+    description: "Platform developer terpadu dari LangChain untuk debugging, testing, evaluasi, dan monitoring aplikasi LLM dan agen otonom.",
+    problem: "Agen LLM bersifat non-deterministik, membuat pengujian regresi dan cakupan tes sangat menantang.",
+    solution: "Visualisasi eksekusi agen, dataset playground, dan pipeline evaluasi regresi otomatis di CI/CD.",
+    keyFeatures: ["Visualisasi trace eksekusi", "Suite uji regresi", "Anotasi & label dataset", "Metrik latensi produksi"]
+  },
+  "helicone": {
+    description: "Proxy observabilitas dan caching LLM open-source dengan integrasi 1 baris kode untuk menghemat biaya dan memonitor rate-limit.",
+    problem: "Biaya API OpenAI membengkak akibat prompt berulang dan ketiadaan pembatasan rate per pengguna.",
+    solution: "Proxy pintar yang menyimpan cache respons, mencatat biaya token, dan melakukan retry otomatis.",
+    keyFeatures: ["Caching semantik respons", "Dashboard monitor biaya", "Rate limiting pengguna", "Fallback multi-provider"]
+  },
+  "litellm": {
+    description: "SDK Python dan Server Proxy terpadu untuk memanggil 100+ API LLM menggunakan format standar OpenAI dengan load balancing.",
+    problem: "Format API yang berbeda-beda di setiap penyedia LLM menyebabkan keterikatan vendor (lock-in).",
+    solution: "Menyeragamkan 100+ API LLM ke dalam skema OpenAI dengan pembagian beban (load balancing).",
+    keyFeatures: ["Format terpadu 100+ LLM", "Load balancing & failover", "Manajemen virtual API key", "Batas anggaran token"]
+  },
+  "deepeval": {
+    description: "Framework evaluasi LLM open-source untuk unit testing aplikasi AI seperti software tradisional menggunakan Pytest.",
+    problem: "Memastikan perubahan prompt tidak menimbulkan halusinasi atau regresi pada sistem RAG.",
+    solution: "Terintegrasi dengan Pytest untuk menguji skor G-Eval, faithfulness, halusinasi, dan bias di CI/CD.",
+    keyFeatures: ["Integrasi Pytest native", "Metrik RAG Triad", "Deteksi halusinasi", "Gating otomatis CI/CD"]
+  },
+  "promptfoo": {
+    description: "CLI dan library untuk evaluasi kualitas prompt LLM, keamanan, dan pengujian red-teaming otomatis terhadap 50+ model.",
+    problem: "Evaluasi prompt manual subjektif dan rentan meninggalkan celah keamanan prompt injection.",
+    solution: "Pengujian matriks prompt otomatis dengan asersi keamanan dan pemindaian celah jailbreak.",
+    keyFeatures: ["Pemindaian red teaming otomatis", "Evaluasi matriks prompt", "Integrasi CI/CD", "Web viewer dashboard"]
+  },
+  "qdrant": {
+    description: "Mesin pencari kemiripan vektor dan database vektor open-source berbasis Rust dengan filtering payload dan hybrid search.",
+    problem: "Pencarian vektor lambat dan boros memori RAM saat memfilter jutaan embeddings.",
+    solution: "Database vektor native Rust dengan kuantisasi skalar dan filtering payload langsung saat indexing.",
+    keyFeatures: ["Kuantisasi skalar & produk", "Hybrid dense & sparse search", "Antarmuka REST & gRPC", "Clustering terdistribusi"]
+  },
+  "weaviate": {
+    description: "Database vektor cloud-native yang menyimpan objek dan vektor sekaligus untuk pencarian kemiripan dengan filter terstruktur.",
+    problem: "Mengelola pipeline embedding terpisah dari database vektor menambah beban infrastruktur.",
+    solution: "Modul vectorizer bawaan yang otomatis mengubah teks dan gambar menjadi vektor saat data disimpan.",
+    keyFeatures: ["Vectorizer bawaan", "API kueri GraphQL & REST", "Pencarian hybrid kata kunci + vektor", "Dukungan multi-tenant"]
+  },
+  "chromadb": {
+    description: "Database embedding open-source AI-native yang dirancang untuk kemudahan, kecepatan, dan produktivitas developer.",
+    problem: "Menyiapkan database vektor enterprise terlalu rumit untuk prototyping RAG dan agen lokal.",
+    solution: "Penyimpanan vektor lokal zero-config yang bisa diinstal dalam 1 baris perintah pip.",
+    keyFeatures: ["Persistensi memori & disk", "Sentence-transformers bawaan", "SDK Python & JavaScript", "Siap untuk LangChain"]
+  },
+  "milvus": {
+    description: "Database vektor cloud-native skala masif (miliaran vektor) dengan akselerasi hardware dan clustering terdistribusi.",
+    problem: "Database vektor standar gagal diskalakan ketika data melebihi 100 juta vektor.",
+    solution: "Arsitektur penyimpanan dan komputasi terpisah untuk mengindeks miliaran koleksi vektor.",
+    keyFeatures: ["Indexing miliaran vektor", "Dukungan akselerasi GPU", "Managed cloud Zilliz", "10+ algoritma index"]
+  },
+  "groq": {
+    description: "Engine inferensi LPU berkecepatan rekor dunia (500+ token/detik) untuk model Llama 3, DeepSeek, dan Mixtral.",
+    problem: "Kecepatan inferensi standar (20-40 token/detik) membuat respons AI terasa lambat pada aplikasi suara.",
+    solution: "Arsitektur tensor LPU kustom yang menghasilkan 500-1000 token/detik dengan format OpenAI API.",
+    keyFeatures: ["Kecepatan 500+ token/detik", "Endpoint REST kompatibel OpenAI", "Integrasi Whisper STT", "Mendukung DeepSeek & Llama"]
+  },
+  "dify": {
+    description: "Platform pengembangan aplikasi LLM open-source dengan orkestrasi alur kerja visual, pipeline RAG, dan agen otonom.",
+    problem: "Membangun alur kerja AI butuh menyatukan API kustom, vector store, dan antarmuka chat secara manual.",
+    solution: "Studio visual lengkap dengan node workflow, manajemen dataset RAG, dan widget chat yang dapat disematkan.",
+    keyFeatures: ["Pembuat alur kerja visual", "Manajemen dataset RAG", "Widget chat web siap pasang", "Integrasi multi-model"]
+  },
+  "copilotkit": {
+    description: "Framework open-source untuk membangun AI Copilot, sidebar AI, dan Generative UI interaktif ke dalam aplikasi React.",
+    problem: "Membangun copilot yang dapat membaca dan memodifikasi state aplikasi React membutuhkan konfigurasi rumit.",
+    solution: "Hooks React bawaan yang menghubungkan model AI langsung dengan state dan aksi antarmuka pengguna.",
+    keyFeatures: ["Komponen Generative UI", "Binding dua arah state React", "Primitif sidebar copilot", "Integrasi LangGraph"]
+  },
+  "qodo": {
+    description: "Platform pembuatan unit test otomatis, review kode AI, dan integritas pengujian software untuk developer dan tim.",
+    problem: "Menulis unit test komprehensif untuk kode yang rumit memakan banyak waktu developer.",
+    solution: "Menganalisis logika kode untuk membuat unit test yang valid dan mendeteksi skenario edge case.",
+    keyFeatures: ["Generasi unit test otomatis", "Deteksi skenario edge-case", "Agen review PR di GitHub Actions", "Penjelasan perilaku kode"]
+  },
+  "coderabbit": {
+    description: "Asisten review pull request AI untuk GitHub dan GitLab dengan feedback baris demi baris dan deteksi bug otomatis.",
+    problem: "Review manual PR manusia memakan waktu berhari-hari dan sering melewatkan celah keamanan.",
+    solution: "Reviewer otomatis yang membaca diff commit dan memberikan saran perbaikan langsung pada PR.",
+    keyFeatures: ["Feedback PR baris per baris", "Saran perbaikan 1-klik", "Chat interaktif di komentar PR", "Kustomisasi aturan review"]
+  },
+  "neon": {
+    description: "PostgreSQL serverless dengan fitur instant database branching, penyimpanan elastis, dan autoscaling untuk aplikasi modern.",
+    problem: "Menyiapkan database uji coba untuk pull request dan CI/CD memakan waktu dan biaya server.",
+    solution: "Branch database instan dibuat dalam 1 detik dengan dukungan pgvector terintegrasi.",
+    keyFeatures: ["Branching database 1 detik", "Komputasi scale-to-zero", "pgvector bawaan", "Connection pooling serverless"]
+  },
+  "turso": {
+    description: "Database terdistribusi kompatibel SQLite berbasis libSQL untuk menjalankan jutaan database di edge dengan latensi mikroskopis.",
+    problem: "Arsitektur multi-tenant butuh isolasi database per pelanggan tanpa beban biaya server yang tinggi.",
+    solution: "Database SQLite ultra-ringan yang mendukung ratusan ribu database terisolasi dalam satu cluster.",
+    keyFeatures: ["Database terisolasi per tenant", "Replikasi embedded latensi 0ms", "Ekstensi vector search libSQL", "Model harga serverless"]
+  },
+  "guardrails-ai": {
+    description: "Framework open-source untuk menambahkan pagar pembatas (guardrails) struktural, tipe data, dan keamanan pada output LLM.",
+    problem: "Output LLM yang tidak valid JSON atau mengandung halusinasi merusak sistem produksi.",
+    solution: "Menerapkan spesifikasi validasi RAIL yang otomatis memperbaiki format output saat terjadi anomali.",
+    keyFeatures: ["Validasi skema JSON", "Redaksi data sensitif PII", "Filter halusinasi", "Hub validator Guardrails"]
+  },
+  "comfyui": {
+    description: "Antarmuka node graph modular paling andal untuk alur kerja Stable Diffusion, Flux.1, dan generasi video AI.",
+    problem: "UI generasi gambar biasa tidak fleksibel untuk menghubungkan ControlNet, LoRA, dan upscaler kustom.",
+    solution: "Editor grafis visual di mana setiap langkah pipeline difusi dapat diatur dan diotomatisasi secara modular.",
+    keyFeatures: ["Pipeline node grafis modular", "Dukungan Flux.1 & SDXL", "Ekspor workflow ke JSON/API", "Optimasi hemat VRAM"]
+  },
+  "continue-dev": {
+    description: "Asisten koding AI open-source terpopuler untuk menghubungkan model lokal atau cloud (Ollama, Claude, DeepSeek) ke VS Code.",
+    problem: "Asisten koding proprietary mengunci developer ke model cloud tertentu dan mengirim kode privat ke pihak ketiga.",
+    solution: "Ekstensi modular open-source yang memungkinkan developer menghubungkan Ollama lokal atau API kustom.",
+    keyFeatures: ["Penyedia model bebas", "Autocomplete Tab", "Indeks codebase & @-mentions", "Transparansi open-source"]
+  },
+  "phind": {
+    description: "Mesin pencari AI dan pair programmer yang dirancang khusus untuk insinyur perangkat lunak dengan kutipan dokumen teknis.",
+    problem: "Mencari solusi error di StackOverflow dan dokumentasi manual memakan waktu berharga developer.",
+    solution: "Mesin pencari generatif dengan grounding internet real-time dan pemahaman konteks codebase.",
+    keyFeatures: ["Jawaban teknis dengan kutipan", "Ekstensi VS Code", "Model Phind-70B", "Saran diff kode"]
+  },
+  "portkey": {
+    description: "Panel kontrol dan gateway AI enterprise untuk mengelola 200+ model LLM dengan load balancing, caching, dan audit logs.",
+    problem: "Mengelola API key, anggaran, fallback, dan log kepatuhan antar penyedia LLM di lingkungan produksi.",
+    solution: "Gateway AI 9.9KB yang super cepat dengan retry otomatis, caching semantik, dan pembatasan kuota.",
+    keyFeatures: ["Latensi gateway < 1ms", "Routing fallback multi-provider", "Audit log & batas anggaran", "Caching semantik"]
+  },
+  "pgvector": {
+    description: "Ekstensi pencarian kemiripan vektor open-source untuk PostgreSQL dengan indeks HNSW dan IVFFlat langsung di SQL.",
+    problem: "Mengoperasikan database vektor terpisah menimbulkan ketidaksinkronan data dengan database relasional utama.",
+    solution: "Menyimpan embeddings vektor langsung sebagai kolom PostgreSQL dengan transaksi ACID penuh.",
+    keyFeatures: ["Indeks HNSW & IVFFlat", "Perhitungan jarak L2 & cosine", "Join kueri SQL standar", "Didukung Supabase & Neon"]
+  },
+  "whisper-openai": {
+    description: "Model pengenalan suara canggih dari OpenAI yang dilatih pada 680.000 jam audio multibahasa untuk transkripsi akurat.",
+    problem: "API transkripsi suara komersial mahal dan sering salah mengenali istilah teknis koding.",
+    solution: "Model speech-to-text open-source yang dapat dijalankan secara lokal di GPU dan CPU biasa.",
+    keyFeatures: ["Transkripsi 99+ bahasa", "Identifikasi bahasa otomatis", "Generasi timestamp subtitle", "Dapat dijalankan via whisper.cpp"]
+  },
+  "duckdb": {
+    description: "Sistem manajemen database SQL OLAP in-process untuk kueri analitik secepat kilat pada file Parquet, CSV, dan vektor.",
+    problem: "Menjalankan kueri SQL analitik pada gigabyte file Parquet membutuhkan cluster Spark yang berat.",
+    solution: "Engine SQL kolumnar yang berjalan langsung di dalam proses tanpa dependensi server eksternal.",
+    keyFeatures: ["Kueri langsung ke S3 & Parquet", "Dukungan WASM di browser", "Ekstensi pencarian vektor", "Binding native Python & JS"]
+  }
+
 }
 
 export const PRICING_TRANSLATIONS_ID: Record<string, string> = {

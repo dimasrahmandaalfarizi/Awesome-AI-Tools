@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { motion } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 import { ArrowRight, Star, ExternalLink } from "lucide-react"
 import { Link } from "@/i18n/routing"
 import { Navbar } from "@/components/layouts/Navbar"
@@ -17,19 +17,19 @@ import { useTranslations, useLocale } from "next-intl"
 
 // ─── Framer Motion Variants ─────────────────────────────────────────────────
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: { staggerChildren: 0.09, delayChildren: 0.1 },
   },
 }
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.45 },
   },
 }
 

@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { X, Send, RefreshCw, Check, Copy, Trash2 } from "lucide-react"
+import { X, Send, RefreshCw, Check, Copy, Trash2, Globe } from "lucide-react"
 import { useLocale } from "next-intl"
 import { Link } from "@/i18n/routing"
 
@@ -28,6 +28,8 @@ export function AIChatWidget() {
   const [selectedModel, setSelectedModel] = React.useState<string>("")
   const [isCheckingStatus, setIsCheckingStatus] = React.useState(false)
   const [copiedCode, setCopiedCode] = React.useState<string | null>(null)
+  const [webSearchEnabled, setWebSearchEnabled] = React.useState(false)
+  const [isSearching, setIsSearching] = React.useState(false)
 
   const messagesEndRef = React.useRef<HTMLDivElement>(null)
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
@@ -95,15 +97,18 @@ export function AIChatWidget() {
         content: m.content
       }))
 
+      if (webSearchEnabled) setIsSearching(true)
       const res = await fetch("/api/ollama/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: payloadMessages,
           model: selectedModel || (models.length > 0 ? models[0] : "qwen2.5-coder:latest"),
-          stream: true
+          stream: true,
+          webSearch: webSearchEnabled
         })
       })
+      setIsSearching(false)
 
       if (!res.ok) {
         let errMsg = "Terjadi kesalahan saat memanggil Ollama"
@@ -178,56 +183,134 @@ export function AIChatWidget() {
     { title: "What is MCP?", prompt: "Explain Model Context Protocol (MCP) and what popular MCP servers exist." }
   ]
 
+  /** Inline markdown: **bold**, *italic*, `code`, [text](url) */
+  const renderInline = (text: string): React.ReactNode[] => {
+    const tokens = text.split(/(`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*|\[[^\]]+\]\([^)]+\))/g)
+    return tokens.map((tok, i) => {
+      if (tok.startsWith("**") && tok.endsWith("**"))
+        return <strong key={i} className="font-semibold text-zinc-100 dark:text-zinc-100">{tok.slice(2, -2)}</strong>
+      if (tok.startsWith("*") && tok.endsWith("*"))
+        return <em key={i} className="italic text-zinc-300">{tok.slice(1, -1)}</em>
+      if (tok.startsWith("`") && tok.endsWith("`"))
+        return <code key={i} className="px-1 py-0.5 rounded bg-zinc-800 text-pink-300 font-mono text-[11px]">{tok.slice(1, -1)}</code>
+      const linkMatch = tok.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
+      if (linkMatch)
+        return <a key={i} href={linkMatch[2]} target="_blank" rel="noreferrer" className="text-blue-400 underline hover:text-blue-300">{linkMatch[1]}</a>
+      return <React.Fragment key={i}>{tok}</React.Fragment>
+    })
+  }
+
   const renderFormattedText = (text: string) => {
+    // Split on fenced code blocks first
     const parts = text.split(/(```[\s\S]*?```)/g)
 
-    return parts.map((part, index) => {
+    return parts.map((part, idx) => {
+      // ── Code block ──────────────────────────────────────────────────────────
       if (part.startsWith("```") && part.endsWith("```")) {
-        const lines = part.slice(3, -3).trim().split("\n")
-        const language = lines[0].trim() || "bash"
-        const code = lines.slice(language ? 1 : 0).join("\n")
-        const codeId = `code-${index}`
-
+        const inner = part.slice(3, -3)
+        const firstNl = inner.indexOf("\n")
+        const lang = firstNl !== -1 ? inner.slice(0, firstNl).trim() : ""
+        const code = firstNl !== -1 ? inner.slice(firstNl + 1) : inner
+        const codeId = `code-${idx}`
         return (
-          <div key={index} className="my-2 rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-950 font-mono text-xs">
-            <div className="flex items-center justify-between px-3 py-1.5 bg-zinc-900 border-b border-zinc-800 text-[11px] text-zinc-400">
-              <span>{language}</span>
-              <button
-                onClick={() => copyToClipboard(code, codeId)}
-                className="flex items-center gap-1 hover:text-white transition-colors"
-              >
-                {copiedCode === codeId ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-zinc-300" />
-                    <span className="text-zinc-300">Copied</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>Copy</span>
-                  </>
-                )}
+          <div key={idx} className="my-2.5 rounded-lg overflow-hidden border border-zinc-700 bg-zinc-950 font-mono text-xs">
+            <div className="flex items-center justify-between px-3 py-1.5 bg-zinc-900 border-b border-zinc-700 text-[11px] text-zinc-400">
+              <span>{lang || "code"}</span>
+              <button onClick={() => copyToClipboard(code, codeId)} className="flex items-center gap-1 hover:text-white transition-colors">
+                {copiedCode === codeId
+                  ? <><Check className="w-3 h-3 text-emerald-400" /><span className="text-emerald-400">Copied</span></>
+                  : <><Copy className="w-3 h-3" /><span>Copy</span></>}
               </button>
             </div>
-            <pre className="p-3 text-zinc-200 overflow-x-auto selection:bg-zinc-800">
-              <code>{code}</code>
-            </pre>
+            <pre className="p-3 text-zinc-200 overflow-x-auto leading-relaxed"><code>{code}</code></pre>
           </div>
         )
       }
 
-      return (
-        <div key={index} className="whitespace-pre-wrap leading-relaxed">
-          {part.split("\n").map((line, lineIdx) => {
-            const isBullet = line.trim().startsWith("- ") || line.trim().startsWith("* ")
-            return (
-              <p key={lineIdx} className={isBullet ? "pl-3 text-xs my-0.5" : "text-xs my-1"}>
-                {line}
-              </p>
-            )
-          })}
-        </div>
-      )
+      // ── Text block ──────────────────────────────────────────────────────────
+      const lines = part.split("\n")
+      const nodes: React.ReactNode[] = []
+      let i = 0
+      while (i < lines.length) {
+        const line = lines[i]
+        const trimmed = line.trim()
+
+        // Empty line
+        if (!trimmed) { nodes.push(<div key={`${idx}-${i}`} className="h-2" />); i++; continue }
+
+        // ## Heading 2
+        if (trimmed.startsWith("## ")) {
+          nodes.push(<p key={`${idx}-${i}`} className="font-bold text-[13px] text-zinc-100 mt-3 mb-1">{renderInline(trimmed.slice(3))}</p>)
+          i++; continue
+        }
+        // ### Heading 3
+        if (trimmed.startsWith("### ")) {
+          nodes.push(<p key={`${idx}-${i}`} className="font-semibold text-[12px] text-zinc-200 mt-2 mb-0.5">{renderInline(trimmed.slice(4))}</p>)
+          i++; continue
+        }
+        // # Heading 1
+        if (trimmed.startsWith("# ")) {
+          nodes.push(<p key={`${idx}-${i}`} className="font-bold text-[14px] text-zinc-50 mt-3 mb-1.5">{renderInline(trimmed.slice(2))}</p>)
+          i++; continue
+        }
+        // Horizontal rule
+        if (trimmed === "---" || trimmed === "***") {
+          nodes.push(<hr key={`${idx}-${i}`} className="border-zinc-700 my-2" />)
+          i++; continue
+        }
+        // Bullet list (- or *)
+        if (/^[-*]\s/.test(trimmed)) {
+          const items: string[] = []
+          while (i < lines.length && /^[-*]\s/.test(lines[i].trim())) {
+            items.push(lines[i].trim().slice(2))
+            i++
+          }
+          nodes.push(
+            <ul key={`${idx}-${i}`} className="my-1 space-y-0.5 pl-3">
+              {items.map((it, k) => (
+                <li key={k} className="flex gap-1.5 text-xs text-zinc-300">
+                  <span className="text-zinc-500 mt-0.5 shrink-0">•</span>
+                  <span>{renderInline(it)}</span>
+                </li>
+              ))}
+            </ul>
+          )
+          continue
+        }
+        // Numbered list
+        if (/^\d+\.\s/.test(trimmed)) {
+          const items: string[] = []
+          let num = 1
+          while (i < lines.length && /^\d+\.\s/.test(lines[i].trim())) {
+            items.push(lines[i].trim().replace(/^\d+\.\s/, ""))
+            i++; num++
+          }
+          nodes.push(
+            <ol key={`${idx}-${i}`} className="my-1 space-y-0.5 pl-3">
+              {items.map((it, k) => (
+                <li key={k} className="flex gap-1.5 text-xs text-zinc-300">
+                  <span className="text-zinc-500 shrink-0 font-mono">{k + 1}.</span>
+                  <span>{renderInline(it)}</span>
+                </li>
+              ))}
+            </ol>
+          )
+          continue
+        }
+        // Blockquote
+        if (trimmed.startsWith("> ")) {
+          nodes.push(
+            <blockquote key={`${idx}-${i}`} className="border-l-2 border-zinc-600 pl-2.5 my-1 text-xs text-zinc-400 italic">
+              {renderInline(trimmed.slice(2))}
+            </blockquote>
+          )
+          i++; continue
+        }
+        // Normal paragraph
+        nodes.push(<p key={`${idx}-${i}`} className="text-xs text-zinc-300 leading-relaxed my-0.5">{renderInline(trimmed)}</p>)
+        i++
+      }
+      return <div key={idx}>{nodes}</div>
     })
   }
 
@@ -414,8 +497,30 @@ export function AIChatWidget() {
           </div>
 
           {/* Chat Input Footer */}
-          <div className="p-2.5 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
-            <div className="relative flex items-center">
+          <div className="border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
+            {/* Web Search Toggle Bar */}
+            <div className="flex items-center gap-2 px-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setWebSearchEnabled(v => !v)}
+                title={webSearchEnabled ? (isId ? "Matikan Web Search" : "Disable Web Search") : (isId ? "Aktifkan Web Search" : "Enable Web Search")}
+                className={`flex items-center gap-1.5 px-2 py-1 rounded-md text-[11px] font-medium border transition-all ${
+                  webSearchEnabled
+                    ? "bg-blue-500/10 border-blue-500/40 text-blue-400"
+                    : "bg-zinc-100 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
+                }`}
+              >
+                <Globe className={`w-3 h-3 ${isSearching ? "animate-spin" : ""}`} />
+                <span>{isId ? "Web Search" : "Web Search"}</span>
+                {webSearchEnabled && <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />}
+              </button>
+              {webSearchEnabled && (
+                <span className="text-[10px] text-zinc-400">
+                  {isId ? "AI akan menyertakan hasil web" : "AI will include web results"}
+                </span>
+              )}
+            </div>
+            <div className="relative flex items-center p-2.5 pt-2">
               <textarea
                 ref={inputRef}
                 value={input}
@@ -429,7 +534,7 @@ export function AIChatWidget() {
                 type="button"
                 onClick={() => handleSendMessage()}
                 disabled={!input.trim() || isLoading}
-                className="absolute right-2 p-1 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                className="absolute right-4 p-1 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               >
                 <Send className="w-3.5 h-3.5" />
               </button>
