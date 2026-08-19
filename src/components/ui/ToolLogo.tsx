@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { Sparkles } from "lucide-react"
 
 interface ToolLogoProps {
   name: string
@@ -19,13 +18,6 @@ export function ToolLogo({ name, website, logo, size = "md", className = "" }: T
     md: "w-8 h-8 rounded-lg text-sm",
     lg: "w-12 h-12 rounded-xl text-base",
     xl: "w-16 h-16 rounded-2xl text-xl",
-  }
-
-  const iconSizes = {
-    sm: "w-3.5 h-3.5",
-    md: "w-5 h-5",
-    lg: "w-7 h-7",
-    xl: "w-10 h-10",
   }
 
   const getDomain = (url?: string) => {
@@ -64,7 +56,7 @@ export function ToolLogo({ name, website, logo, size = "md", className = "" }: T
       <img
         src={logoSrc}
         alt={`${name} logo`}
-        className={`object-contain p-1 rounded transition-opacity duration-200 ${iconSizes[size]}`}
+        className="w-full h-full object-contain transition-opacity duration-200"
         loading="lazy"
         onError={() => setError(true)}
       />
