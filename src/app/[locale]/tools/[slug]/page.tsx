@@ -135,7 +135,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
                   <h2 className="text-xl font-bold mb-6">{t("keyFeatures")}</h2>
                   <ul className="space-y-4">
                     {(tool.keyFeatures || []).map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3">
+                      <li key={`feature-${i}`} className="flex items-start gap-3">
                         <div className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] mt-2 shrink-0"></div>
                         <span className="text-[var(--muted)]">{feature}</span>
                       </li>
@@ -151,7 +151,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
                     <h2 className="text-xl font-bold mb-6">{t("techChoices")}</h2>
                     <div className="flex flex-wrap gap-2">
                       {(tool.techChoices || []).map((tech, i) => (
-                        <span key={i} className="px-3 py-1 bg-[var(--background)] border border-[var(--border)] rounded-full text-sm font-medium text-[var(--muted)]">
+                        <span key={`tech-${i}`} className="px-3 py-1 bg-[var(--background)] border border-[var(--border)] rounded-full text-sm font-medium text-[var(--muted)]">
                           {tech}
                         </span>
                       ))}

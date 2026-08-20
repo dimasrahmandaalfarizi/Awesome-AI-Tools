@@ -471,6 +471,14 @@ export const TOOL_TRANSLATIONS_ID: Record<string, {
     keyFeatures: ["Kontainer dev cloud sekali pakai", "Eksekusi agen AI di background", "Penyediaan workspace instan", "Dukungan multi-cloud"]
   }
 
+,
+  "ideahunter": {
+    description: "Alat riset dan validasi startup berbasis AI untuk membantu solo founder dan indie hacker menemukan ide aplikasi & micro-SaaS tervalidasi berdasarkan sinyal pasar, kebutuhan pembeli, dan bukti permintaan.",
+    problem: "Banyak founder dan developer menghabiskan waktu berbulan-bulan membuat produk tanpa memvalidasi apakah ada pasar dan calon pembeli nyata.",
+    solution: "Memindai sinyal pasar publik dan masalah konsumen untuk menghasilkan peluang micro-SaaS terverifikasi, batasan MVP, dan jalur monetisasi.",
+    keyFeatures: ["Penemuan ide startup berbasis bukti permintaan", "Ekstraksi masalah & sinyal kebutuhan pembeli", "Rekomendasi batasan ruang lingkup MVP", "Analisis jalur monetisasi & pendapatan"]
+  }
+
 }
 
 export const PRICING_TRANSLATIONS_ID: Record<string, string> = {

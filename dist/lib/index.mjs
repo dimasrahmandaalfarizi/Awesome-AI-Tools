@@ -6479,6 +6479,37 @@ var TOOLS = [
       "PII & sensitive data redaction",
       "Python and TypeScript SDKs"
     ]
+  },
+  {
+    "id": "tool-165",
+    "name": "IdeaHunter",
+    "slug": "ideahunter",
+    "description": "AI-powered research and startup validation tool that helps solo founders and indie hackers find demand-backed app and micro-SaaS ideas using public signals, buyer pain points, and market evidence.",
+    "website": "https://ideahunter.today",
+    "logo": "https://ideahunter.today/favicon.svg",
+    "screenshotUrl": "/images/tools/ideahunter-preview.png",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "Web"
+    ],
+    "categoryId": "cat-19",
+    "tags": [
+      "Research",
+      "Productivity",
+      "SaaS"
+    ],
+    "lastUpdated": "2026-08-20T08:45:05.816Z",
+    "featured": false,
+    "createdAt": "2026-08-20T08:45:05.817Z",
+    "problem": "Founders and developers frequently spend months building software products without validating whether actual market demand and paying customers exist.",
+    "solution": "Scans public market signals, online discussions, and buyer pain points to surface validated micro-SaaS opportunities, MVP scopes, and monetization paths.",
+    "keyFeatures": [
+      "Demand-backed startup idea discovery",
+      "Buyer pain point & signal extraction",
+      "Actionable MVP scope recommendations",
+      "Monetization & revenue path analysis"
+    ]
   }
 ];
 var COLLECTIONS = [
