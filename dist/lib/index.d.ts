@@ -58,6 +58,22 @@ interface AiSkill {
     author?: string;
     createdAt: string;
 }
+interface AiAgent {
+    id: string;
+    name: string;
+    slug: string;
+    role: string;
+    description: string;
+    capabilities: string[];
+    systemPrompt: string;
+    recommendedModel?: string;
+    tools: string[];
+    tags: string[];
+    author?: string;
+    createdAt: string;
+}
+
+declare const AI_AGENTS: AiAgent[];
 
 declare const CATEGORIES: Category[];
 declare const TAGS: Tag[];
@@ -65,10 +81,12 @@ declare const TOOLS: Tool[];
 declare const COLLECTIONS: Collection[];
 declare const AI_SKILLS: AiSkill[];
 
+declare function getAllAgents(): AiAgent[];
+declare function getAgentBySlug(slug: string): AiAgent | undefined;
 declare function getAllSkills(): AiSkill[];
 declare function getSkillBySlug(slug: string): AiSkill | undefined;
 declare function getAllTools(): Tool[];
 declare function getToolBySlug(slug: string): Tool | undefined;
 declare function getAllCategories(): Category[];
 
-export { AI_SKILLS, type AiSkill, CATEGORIES, COLLECTIONS, type Category, type Collection, TAGS, TOOLS, type Tag, type Tool, getAllCategories, getAllSkills, getAllTools, getSkillBySlug, getToolBySlug };
+export { AI_AGENTS, AI_SKILLS, type AiAgent, type AiSkill, CATEGORIES, COLLECTIONS, type Category, type Collection, TAGS, TOOLS, type Tag, type Tool, getAgentBySlug, getAllAgents, getAllCategories, getAllSkills, getAllTools, getSkillBySlug, getToolBySlug };

@@ -1,4 +1,5 @@
 import { Category, Tool, Collection, Tag, AiSkill } from "@/types"
+export { AI_AGENTS } from "./agents"
 
 export const CATEGORIES: Category[] = [
   {

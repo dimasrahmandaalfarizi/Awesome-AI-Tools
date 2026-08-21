@@ -37,8 +37,11 @@ export function Navbar() {
             <Link href="/categories" className="hover:text-[var(--foreground)] transition-colors">
               {t("categories")}
             </Link>
-            <Link href="/skills" className="hover:text-[var(--primary)] transition-colors font-semibold text-[var(--foreground)]">
+            <Link href="/skills" className="hover:text-[var(--primary)] transition-colors">
               {t("skills")}
+            </Link>
+            <Link href="/agents" className="hover:text-[var(--primary)] transition-colors font-semibold text-[var(--foreground)]">
+              {t("agents")}
             </Link>
             <Link href="/router" className="hover:text-[var(--primary)] transition-colors">
               {t("router")}
@@ -130,9 +133,16 @@ export function Navbar() {
             <Link
               href="/skills"
               onClick={() => setIsOpen(false)}
-              className="hover:text-[var(--primary)] transition-colors font-semibold text-[var(--foreground)] py-3 border-b border-[var(--border)]/30"
+              className="hover:text-[var(--primary)] transition-colors py-3 border-b border-[var(--border)]/30"
             >
               {t("skills")}
+            </Link>
+            <Link
+              href="/agents"
+              onClick={() => setIsOpen(false)}
+              className="hover:text-[var(--primary)] transition-colors font-semibold text-[var(--foreground)] py-3 border-b border-[var(--border)]/30"
+            >
+              {t("agents")}
             </Link>
             <Link
               href="/router"

@@ -2,11 +2,19 @@
 export * from '../types';
 
 // Export all data
-export { CATEGORIES, TAGS, TOOLS, COLLECTIONS, AI_SKILLS } from '../data/mock';
+export { CATEGORIES, TAGS, TOOLS, COLLECTIONS, AI_SKILLS, AI_AGENTS } from '../data/mock';
 
-// Helper functions (Optional)
-import { AI_SKILLS, TOOLS, CATEGORIES } from '../data/mock';
-import type { AiSkill, Tool, Category } from '../types';
+// Helper functions
+import { AI_SKILLS, AI_AGENTS, TOOLS, CATEGORIES } from '../data/mock';
+import type { AiSkill, AiAgent, Tool, Category } from '../types';
+
+export function getAllAgents(): AiAgent[] {
+  return AI_AGENTS;
+}
+
+export function getAgentBySlug(slug: string): AiAgent | undefined {
+  return AI_AGENTS.find(agent => agent.slug === slug);
+}
 
 export function getAllSkills(): AiSkill[] {
   return AI_SKILLS;
