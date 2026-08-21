@@ -109,30 +109,82 @@ ${skill.content}
         skillFolder?.file("SKILL.md", fileContent)
       })
 
-      // 3. .cursor/rules folder
+      // 3. .cursor/rules folder (Cursor IDE @rule)
       const cursorRulesFolder = zip.folder(".cursor")?.folder("rules")
       skills.forEach((skill) => {
+        const cmdName = toCommandName(skill.slug)
         const fileContent = `---
 description: ${skill.description}
 globs: *
 alwaysApply: false
 ---
 
+# ${skill.name}
+
 ${skill.content}
 `
-        cursorRulesFolder?.file(`${skill.slug}.mdc`, fileContent)
+        cursorRulesFolder?.file(`${cmdName}.mdc`, fileContent)
       })
 
-      // 4. AGENTS.md Index
-      const agentsMdContent = `# Project AI Agent Guidelines & Slash Commands
+      // 4. .continue/prompts folder (Continue.dev /command)
+      const continueFolder = zip.folder(".continue")?.folder("prompts")
+      skills.forEach((skill) => {
+        const cmdName = toCommandName(skill.slug)
+        const fileContent = `temperature: 0.2
+description: ${skill.description}
+---
+# ${skill.name} Directive
+{{{ input }}}
 
-This repository is equipped with **Awesome AI Tools & ECC Skills Suite** (${skills.length} active skills).
+---
+Guidelines:
+${skill.content}
+`
+        continueFolder?.file(`${cmdName}.prompt`, fileContent)
+      })
 
-## Available Slash Commands in Claude Code:
-${skills.map(s => `- \`/${toCommandName(s.slug)}\` : **${s.name}** — ${s.description}`).join("\n")}
+      // 5. .github/prompts folder (GitHub Copilot /prompt)
+      const copilotFolder = zip.folder(".github")?.folder("prompts")
+      skills.forEach((skill) => {
+        const cmdName = toCommandName(skill.slug)
+        const fileContent = `---
+name: ${cmdName}
+description: ${skill.description}
+---
 
-## Quick Start
-Type any slash command in your AI coding assistant prompt (e.g. \`/tdd-workflow\`, \`/plan-first\`, \`/security-scan\`) to activate specific engineering modes.
+${skill.content}
+`
+        copilotFolder?.file(`${cmdName}.prompt.md`, fileContent)
+      })
+
+      // 6. .windsurf/workflows folder (Windsurf Cascade)
+      const windsurfFolder = zip.folder(".windsurf")?.folder("workflows")
+      skills.forEach((skill) => {
+        const cmdName = toCommandName(skill.slug)
+        const fileContent = `# Windsurf Workflow: ${skill.name}
+
+${skill.description}
+
+## Rules:
+${skill.content}
+`
+        windsurfFolder?.file(`${cmdName}.md`, fileContent)
+      })
+
+      // 7. Master AGENTS.md Index
+      const agentsMdContent = `# Universal AI Agent Guidelines & Skills Suite
+
+This repository is equipped with **Awesome AI Tools & ECC Skills Suite** (${skills.length} active skills) supporting both **CLI Agents** (Claude Code, Codex) and **AI IDEs** (Cursor, Antigravity, Windsurf, Copilot, Continue).
+
+## Triggering Skills in your AI Environment:
+- **Claude Code CLI**: Type \`/<command>\` (e.g. \`/tdd-workflow\`, \`/plan-first\`, \`/security-scan\`)
+- **Cursor IDE**: Mention \`@<command>\` or rules apply based on context
+- **Continue.dev**: Type \`/<command>\` in the Continue sidebar
+- **GitHub Copilot**: Type \`/<command>\` in Copilot Chat
+- **Antigravity / Codex**: Automatically read from \`.agents/skills/\`
+
+## Available Skills:
+${skills.map(s => `- \`/${toCommandName(s.slug)}\` (\`@${toCommandName(s.slug)}\`): **${s.name}** — ${s.description}`).join("\n")}
 `
       zip.file("AGENTS.md", agentsMdContent)
 
@@ -140,7 +192,7 @@ Type any slash command in your AI coding assistant prompt (e.g. \`/tdd-workflow\
       const url = URL.createObjectURL(blob)
       const link = document.createElement("a")
       link.href = url
-      link.download = `awesome-ai-skills-suite-all-${skills.length}.zip`
+      link.download = `awesome-ai-skills-suite-all-ides-${skills.length}.zip`
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)

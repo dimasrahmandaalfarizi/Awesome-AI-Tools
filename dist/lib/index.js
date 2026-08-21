@@ -9526,6 +9526,2960 @@ var AI_SKILLS = [
     ],
     "content": "# Memory Persistence\n\nCross-session memory persistence: extracts facts, decisions, and codebase quirks into structured markdown journals.\n\n## Use Case\nMaintaining long-term context across multiple independent agent turns.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Memory Persistence** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
     "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-203",
+    "name": "Accessibility",
+    "slug": "accessibility",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Accessibility.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Accessibility\n\nSpecialized engineering guidelines and best practices for **Accessibility**.\n\n## Instructions for AI Agent:\n1. Apply the **Accessibility** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/accessibility`)\n- Antigravity & OpenAI Codex (`.agents/skills/accessibility/SKILL.md`)\n- Cursor (`.cursor/rules/accessibility.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-204",
+    "name": "Benchmark",
+    "slug": "benchmark",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Benchmark.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Benchmark\n\nSpecialized engineering guidelines and best practices for **Benchmark**.\n\n## Instructions for AI Agent:\n1. Apply the **Benchmark** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/benchmark`)\n- Antigravity & OpenAI Codex (`.agents/skills/benchmark/SKILL.md`)\n- Cursor (`.cursor/rules/benchmark.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-205",
+    "name": "Blender Motion State Inspection",
+    "slug": "blender-motion-state-inspection",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Blender Motion State Inspection.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Blender Motion State Inspection\n\nSpecialized engineering guidelines and best practices for **Blender Motion State Inspection**.\n\n## Instructions for AI Agent:\n1. Apply the **Blender Motion State Inspection** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/blender-motion-state-inspection`)\n- Antigravity & OpenAI Codex (`.agents/skills/blender-motion-state-inspection/SKILL.md`)\n- Cursor (`.cursor/rules/blender-motion-state-inspection.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-206",
+    "name": "Carrier Relationship Management",
+    "slug": "carrier-relationship-management",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Carrier Relationship Management.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Carrier Relationship Management\n\nSpecialized engineering guidelines and best practices for **Carrier Relationship Management**.\n\n## Instructions for AI Agent:\n1. Apply the **Carrier Relationship Management** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/carrier-relationship-management`)\n- Antigravity & OpenAI Codex (`.agents/skills/carrier-relationship-management/SKILL.md`)\n- Cursor (`.cursor/rules/carrier-relationship-management.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-207",
+    "name": "Cisco Ios Patterns",
+    "slug": "cisco-ios-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Cisco Ios Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Cisco Ios Patterns\n\nSpecialized engineering guidelines and best practices for **Cisco Ios Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Cisco Ios Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/cisco-ios-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/cisco-ios-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/cisco-ios-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-208",
+    "name": "Ck",
+    "slug": "ck",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Ck.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Ck\n\nSpecialized engineering guidelines and best practices for **Ck**.\n\n## Instructions for AI Agent:\n1. Apply the **Ck** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/ck`)\n- Antigravity & OpenAI Codex (`.agents/skills/ck/SKILL.md`)\n- Cursor (`.cursor/rules/ck.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-209",
+    "name": "Claude Devfleet",
+    "slug": "claude-devfleet",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Claude Devfleet.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Claude Devfleet\n\nSpecialized engineering guidelines and best practices for **Claude Devfleet**.\n\n## Instructions for AI Agent:\n1. Apply the **Claude Devfleet** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/claude-devfleet`)\n- Antigravity & OpenAI Codex (`.agents/skills/claude-devfleet/SKILL.md`)\n- Cursor (`.cursor/rules/claude-devfleet.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-210",
+    "name": "Click Path Audit",
+    "slug": "click-path-audit",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Click Path Audit.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Click Path Audit\n\nSpecialized engineering guidelines and best practices for **Click Path Audit**.\n\n## Instructions for AI Agent:\n1. Apply the **Click Path Audit** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/click-path-audit`)\n- Antigravity & OpenAI Codex (`.agents/skills/click-path-audit/SKILL.md`)\n- Cursor (`.cursor/rules/click-path-audit.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-211",
+    "name": "Competitive Platform Analysis",
+    "slug": "competitive-platform-analysis",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Competitive Platform Analysis.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Competitive Platform Analysis\n\nSpecialized engineering guidelines and best practices for **Competitive Platform Analysis**.\n\n## Instructions for AI Agent:\n1. Apply the **Competitive Platform Analysis** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/competitive-platform-analysis`)\n- Antigravity & OpenAI Codex (`.agents/skills/competitive-platform-analysis/SKILL.md`)\n- Cursor (`.cursor/rules/competitive-platform-analysis.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-212",
+    "name": "Competitive Report Structure",
+    "slug": "competitive-report-structure",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Competitive Report Structure.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Competitive Report Structure\n\nSpecialized engineering guidelines and best practices for **Competitive Report Structure**.\n\n## Instructions for AI Agent:\n1. Apply the **Competitive Report Structure** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/competitive-report-structure`)\n- Antigravity & OpenAI Codex (`.agents/skills/competitive-report-structure/SKILL.md`)\n- Cursor (`.cursor/rules/competitive-report-structure.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-213",
+    "name": "Configure Ecc",
+    "slug": "configure-ecc",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Configure Ecc.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Configure Ecc\n\nSpecialized engineering guidelines and best practices for **Configure Ecc**.\n\n## Instructions for AI Agent:\n1. Apply the **Configure Ecc** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/configure-ecc`)\n- Antigravity & OpenAI Codex (`.agents/skills/configure-ecc/SKILL.md`)\n- Cursor (`.cursor/rules/configure-ecc.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-214",
+    "name": "Content Engine",
+    "slug": "content-engine",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Content Engine.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Content Engine\n\nSpecialized engineering guidelines and best practices for **Content Engine**.\n\n## Instructions for AI Agent:\n1. Apply the **Content Engine** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/content-engine`)\n- Antigravity & OpenAI Codex (`.agents/skills/content-engine/SKILL.md`)\n- Cursor (`.cursor/rules/content-engine.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-215",
+    "name": "Continuous Learning V2",
+    "slug": "continuous-learning-v2",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Continuous Learning V2.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Continuous Learning V2\n\nSpecialized engineering guidelines and best practices for **Continuous Learning V2**.\n\n## Instructions for AI Agent:\n1. Apply the **Continuous Learning V2** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/continuous-learning-v2`)\n- Antigravity & OpenAI Codex (`.agents/skills/continuous-learning-v2/SKILL.md`)\n- Cursor (`.cursor/rules/continuous-learning-v2.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-216",
+    "name": "Council",
+    "slug": "council",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Council.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Council\n\nSpecialized engineering guidelines and best practices for **Council**.\n\n## Instructions for AI Agent:\n1. Apply the **Council** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/council`)\n- Antigravity & OpenAI Codex (`.agents/skills/council/SKILL.md`)\n- Cursor (`.cursor/rules/council.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-217",
+    "name": "Customer Billing Ops",
+    "slug": "customer-billing-ops",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Customer Billing Ops.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Customer Billing Ops\n\nSpecialized engineering guidelines and best practices for **Customer Billing Ops**.\n\n## Instructions for AI Agent:\n1. Apply the **Customer Billing Ops** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/customer-billing-ops`)\n- Antigravity & OpenAI Codex (`.agents/skills/customer-billing-ops/SKILL.md`)\n- Cursor (`.cursor/rules/customer-billing-ops.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-218",
+    "name": "Customs Trade Compliance",
+    "slug": "customs-trade-compliance",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Customs Trade Compliance.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Customs Trade Compliance\n\nSpecialized engineering guidelines and best practices for **Customs Trade Compliance**.\n\n## Instructions for AI Agent:\n1. Apply the **Customs Trade Compliance** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/customs-trade-compliance`)\n- Antigravity & OpenAI Codex (`.agents/skills/customs-trade-compliance/SKILL.md`)\n- Cursor (`.cursor/rules/customs-trade-compliance.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-219",
+    "name": "Dart Flutter Patterns",
+    "slug": "dart-flutter-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Dart Flutter Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Dart Flutter Patterns\n\nSpecialized engineering guidelines and best practices for **Dart Flutter Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Dart Flutter Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/dart-flutter-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/dart-flutter-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/dart-flutter-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-220",
+    "name": "Dashboard Builder",
+    "slug": "dashboard-builder",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Dashboard Builder.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Dashboard Builder\n\nSpecialized engineering guidelines and best practices for **Dashboard Builder**.\n\n## Instructions for AI Agent:\n1. Apply the **Dashboard Builder** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/dashboard-builder`)\n- Antigravity & OpenAI Codex (`.agents/skills/dashboard-builder/SKILL.md`)\n- Cursor (`.cursor/rules/dashboard-builder.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-221",
+    "name": "Data Scraper Agent",
+    "slug": "data-scraper-agent",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Data Scraper Agent.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Data Scraper Agent\n\nSpecialized engineering guidelines and best practices for **Data Scraper Agent**.\n\n## Instructions for AI Agent:\n1. Apply the **Data Scraper Agent** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/data-scraper-agent`)\n- Antigravity & OpenAI Codex (`.agents/skills/data-scraper-agent/SKILL.md`)\n- Cursor (`.cursor/rules/data-scraper-agent.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-222",
+    "name": "Data Throughput Accelerator",
+    "slug": "data-throughput-accelerator",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Data Throughput Accelerator.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Data Throughput Accelerator\n\nSpecialized engineering guidelines and best practices for **Data Throughput Accelerator**.\n\n## Instructions for AI Agent:\n1. Apply the **Data Throughput Accelerator** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/data-throughput-accelerator`)\n- Antigravity & OpenAI Codex (`.agents/skills/data-throughput-accelerator/SKILL.md`)\n- Cursor (`.cursor/rules/data-throughput-accelerator.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-223",
+    "name": "Database Migrations",
+    "slug": "database-migrations",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Database Migrations.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Database Migrations\n\nSpecialized engineering guidelines and best practices for **Database Migrations**.\n\n## Instructions for AI Agent:\n1. Apply the **Database Migrations** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/database-migrations`)\n- Antigravity & OpenAI Codex (`.agents/skills/database-migrations/SKILL.md`)\n- Cursor (`.cursor/rules/database-migrations.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-224",
+    "name": "Defi Amm Security",
+    "slug": "defi-amm-security",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Defi Amm Security.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Defi Amm Security\n\nSpecialized engineering guidelines and best practices for **Defi Amm Security**.\n\n## Instructions for AI Agent:\n1. Apply the **Defi Amm Security** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/defi-amm-security`)\n- Antigravity & OpenAI Codex (`.agents/skills/defi-amm-security/SKILL.md`)\n- Cursor (`.cursor/rules/defi-amm-security.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-225",
+    "name": "Delivery Gate",
+    "slug": "delivery-gate",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Delivery Gate.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Delivery Gate\n\nSpecialized engineering guidelines and best practices for **Delivery Gate**.\n\n## Instructions for AI Agent:\n1. Apply the **Delivery Gate** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/delivery-gate`)\n- Antigravity & OpenAI Codex (`.agents/skills/delivery-gate/SKILL.md`)\n- Cursor (`.cursor/rules/delivery-gate.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-226",
+    "name": "Deployment Patterns",
+    "slug": "deployment-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Deployment Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Deployment Patterns\n\nSpecialized engineering guidelines and best practices for **Deployment Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Deployment Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/deployment-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/deployment-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/deployment-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-227",
+    "name": "Design System",
+    "slug": "design-system",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Design System.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Design System\n\nSpecialized engineering guidelines and best practices for **Design System**.\n\n## Instructions for AI Agent:\n1. Apply the **Design System** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/design-system`)\n- Antigravity & OpenAI Codex (`.agents/skills/design-system/SKILL.md`)\n- Cursor (`.cursor/rules/design-system.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-228",
+    "name": "Dev Team",
+    "slug": "dev-team",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Dev Team.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Dev Team\n\nSpecialized engineering guidelines and best practices for **Dev Team**.\n\n## Instructions for AI Agent:\n1. Apply the **Dev Team** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/dev-team`)\n- Antigravity & OpenAI Codex (`.agents/skills/dev-team/SKILL.md`)\n- Cursor (`.cursor/rules/dev-team.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-229",
+    "name": "Django Celery",
+    "slug": "django-celery",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Django Celery.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Django Celery\n\nSpecialized engineering guidelines and best practices for **Django Celery**.\n\n## Instructions for AI Agent:\n1. Apply the **Django Celery** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/django-celery`)\n- Antigravity & OpenAI Codex (`.agents/skills/django-celery/SKILL.md`)\n- Cursor (`.cursor/rules/django-celery.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-230",
+    "name": "Django Patterns",
+    "slug": "django-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Django Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Django Patterns\n\nSpecialized engineering guidelines and best practices for **Django Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Django Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/django-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/django-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/django-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-231",
+    "name": "Django Security",
+    "slug": "django-security",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Django Security.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Django Security\n\nSpecialized engineering guidelines and best practices for **Django Security**.\n\n## Instructions for AI Agent:\n1. Apply the **Django Security** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/django-security`)\n- Antigravity & OpenAI Codex (`.agents/skills/django-security/SKILL.md`)\n- Cursor (`.cursor/rules/django-security.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-232",
+    "name": "Django Tdd",
+    "slug": "django-tdd",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Django Tdd.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Django Tdd\n\nSpecialized engineering guidelines and best practices for **Django Tdd**.\n\n## Instructions for AI Agent:\n1. Apply the **Django Tdd** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/django-tdd`)\n- Antigravity & OpenAI Codex (`.agents/skills/django-tdd/SKILL.md`)\n- Cursor (`.cursor/rules/django-tdd.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-233",
+    "name": "Django Verification",
+    "slug": "django-verification",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Django Verification.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Django Verification\n\nSpecialized engineering guidelines and best practices for **Django Verification**.\n\n## Instructions for AI Agent:\n1. Apply the **Django Verification** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/django-verification`)\n- Antigravity & OpenAI Codex (`.agents/skills/django-verification/SKILL.md`)\n- Cursor (`.cursor/rules/django-verification.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-234",
+    "name": "Dotnet Patterns",
+    "slug": "dotnet-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Dotnet Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Dotnet Patterns\n\nSpecialized engineering guidelines and best practices for **Dotnet Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Dotnet Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/dotnet-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/dotnet-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/dotnet-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-235",
+    "name": "Dynamic Workflow Mode",
+    "slug": "dynamic-workflow-mode",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Dynamic Workflow Mode.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Dynamic Workflow Mode\n\nSpecialized engineering guidelines and best practices for **Dynamic Workflow Mode**.\n\n## Instructions for AI Agent:\n1. Apply the **Dynamic Workflow Mode** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/dynamic-workflow-mode`)\n- Antigravity & OpenAI Codex (`.agents/skills/dynamic-workflow-mode/SKILL.md`)\n- Cursor (`.cursor/rules/dynamic-workflow-mode.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-236",
+    "name": "Ecc Guide",
+    "slug": "ecc-guide",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Ecc Guide.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Ecc Guide\n\nSpecialized engineering guidelines and best practices for **Ecc Guide**.\n\n## Instructions for AI Agent:\n1. Apply the **Ecc Guide** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/ecc-guide`)\n- Antigravity & OpenAI Codex (`.agents/skills/ecc-guide/SKILL.md`)\n- Cursor (`.cursor/rules/ecc-guide.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-237",
+    "name": "Ecc Recipes",
+    "slug": "ecc-recipes",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Ecc Recipes.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Ecc Recipes\n\nSpecialized engineering guidelines and best practices for **Ecc Recipes**.\n\n## Instructions for AI Agent:\n1. Apply the **Ecc Recipes** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/ecc-recipes`)\n- Antigravity & OpenAI Codex (`.agents/skills/ecc-recipes/SKILL.md`)\n- Cursor (`.cursor/rules/ecc-recipes.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-238",
+    "name": "Ecc Tools Cost Audit",
+    "slug": "ecc-tools-cost-audit",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Ecc Tools Cost Audit.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Ecc Tools Cost Audit\n\nSpecialized engineering guidelines and best practices for **Ecc Tools Cost Audit**.\n\n## Instructions for AI Agent:\n1. Apply the **Ecc Tools Cost Audit** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/ecc-tools-cost-audit`)\n- Antigravity & OpenAI Codex (`.agents/skills/ecc-tools-cost-audit/SKILL.md`)\n- Cursor (`.cursor/rules/ecc-tools-cost-audit.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-239",
+    "name": "Email Ops",
+    "slug": "email-ops",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Email Ops.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Email Ops\n\nSpecialized engineering guidelines and best practices for **Email Ops**.\n\n## Instructions for AI Agent:\n1. Apply the **Email Ops** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/email-ops`)\n- Antigravity & OpenAI Codex (`.agents/skills/email-ops/SKILL.md`)\n- Cursor (`.cursor/rules/email-ops.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-240",
+    "name": "Energy Procurement",
+    "slug": "energy-procurement",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Energy Procurement.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Energy Procurement\n\nSpecialized engineering guidelines and best practices for **Energy Procurement**.\n\n## Instructions for AI Agent:\n1. Apply the **Energy Procurement** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/energy-procurement`)\n- Antigravity & OpenAI Codex (`.agents/skills/energy-procurement/SKILL.md`)\n- Cursor (`.cursor/rules/energy-procurement.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-241",
+    "name": "Enterprise Agent Ops",
+    "slug": "enterprise-agent-ops",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Enterprise Agent Ops.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Enterprise Agent Ops\n\nSpecialized engineering guidelines and best practices for **Enterprise Agent Ops**.\n\n## Instructions for AI Agent:\n1. Apply the **Enterprise Agent Ops** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/enterprise-agent-ops`)\n- Antigravity & OpenAI Codex (`.agents/skills/enterprise-agent-ops/SKILL.md`)\n- Cursor (`.cursor/rules/enterprise-agent-ops.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-242",
+    "name": "Error Handling",
+    "slug": "error-handling",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Error Handling.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Error Handling\n\nSpecialized engineering guidelines and best practices for **Error Handling**.\n\n## Instructions for AI Agent:\n1. Apply the **Error Handling** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/error-handling`)\n- Antigravity & OpenAI Codex (`.agents/skills/error-handling/SKILL.md`)\n- Cursor (`.cursor/rules/error-handling.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-243",
+    "name": "Evm Token Decimals",
+    "slug": "evm-token-decimals",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Evm Token Decimals.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Evm Token Decimals\n\nSpecialized engineering guidelines and best practices for **Evm Token Decimals**.\n\n## Instructions for AI Agent:\n1. Apply the **Evm Token Decimals** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/evm-token-decimals`)\n- Antigravity & OpenAI Codex (`.agents/skills/evm-token-decimals/SKILL.md`)\n- Cursor (`.cursor/rules/evm-token-decimals.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-244",
+    "name": "Fal Ai Media",
+    "slug": "fal-ai-media",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Fal Ai Media.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Fal Ai Media\n\nSpecialized engineering guidelines and best practices for **Fal Ai Media**.\n\n## Instructions for AI Agent:\n1. Apply the **Fal Ai Media** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/fal-ai-media`)\n- Antigravity & OpenAI Codex (`.agents/skills/fal-ai-media/SKILL.md`)\n- Cursor (`.cursor/rules/fal-ai-media.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-245",
+    "name": "Fastapi Patterns",
+    "slug": "fastapi-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Fastapi Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Fastapi Patterns\n\nSpecialized engineering guidelines and best practices for **Fastapi Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Fastapi Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/fastapi-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/fastapi-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/fastapi-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-246",
+    "name": "Finance Billing Ops",
+    "slug": "finance-billing-ops",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Finance Billing Ops.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Finance Billing Ops\n\nSpecialized engineering guidelines and best practices for **Finance Billing Ops**.\n\n## Instructions for AI Agent:\n1. Apply the **Finance Billing Ops** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/finance-billing-ops`)\n- Antigravity & OpenAI Codex (`.agents/skills/finance-billing-ops/SKILL.md`)\n- Cursor (`.cursor/rules/finance-billing-ops.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-247",
+    "name": "Flox Environments",
+    "slug": "flox-environments",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Flox Environments.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Flox Environments\n\nSpecialized engineering guidelines and best practices for **Flox Environments**.\n\n## Instructions for AI Agent:\n1. Apply the **Flox Environments** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/flox-environments`)\n- Antigravity & OpenAI Codex (`.agents/skills/flox-environments/SKILL.md`)\n- Cursor (`.cursor/rules/flox-environments.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-248",
+    "name": "Flutter Dart Code Review",
+    "slug": "flutter-dart-code-review",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Flutter Dart Code Review.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Flutter Dart Code Review\n\nSpecialized engineering guidelines and best practices for **Flutter Dart Code Review**.\n\n## Instructions for AI Agent:\n1. Apply the **Flutter Dart Code Review** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/flutter-dart-code-review`)\n- Antigravity & OpenAI Codex (`.agents/skills/flutter-dart-code-review/SKILL.md`)\n- Cursor (`.cursor/rules/flutter-dart-code-review.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-249",
+    "name": "Foundation Models On Device",
+    "slug": "foundation-models-on-device",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Foundation Models On Device.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Foundation Models On Device\n\nSpecialized engineering guidelines and best practices for **Foundation Models On Device**.\n\n## Instructions for AI Agent:\n1. Apply the **Foundation Models On Device** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/foundation-models-on-device`)\n- Antigravity & OpenAI Codex (`.agents/skills/foundation-models-on-device/SKILL.md`)\n- Cursor (`.cursor/rules/foundation-models-on-device.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-250",
+    "name": "Frontend A11y",
+    "slug": "frontend-a11y",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Frontend A11y.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Frontend A11y\n\nSpecialized engineering guidelines and best practices for **Frontend A11y**.\n\n## Instructions for AI Agent:\n1. Apply the **Frontend A11y** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/frontend-a11y`)\n- Antigravity & OpenAI Codex (`.agents/skills/frontend-a11y/SKILL.md`)\n- Cursor (`.cursor/rules/frontend-a11y.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-251",
+    "name": "Frontend Design Direction",
+    "slug": "frontend-design-direction",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Frontend Design Direction.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Frontend Design Direction\n\nSpecialized engineering guidelines and best practices for **Frontend Design Direction**.\n\n## Instructions for AI Agent:\n1. Apply the **Frontend Design Direction** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/frontend-design-direction`)\n- Antigravity & OpenAI Codex (`.agents/skills/frontend-design-direction/SKILL.md`)\n- Cursor (`.cursor/rules/frontend-design-direction.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-252",
+    "name": "Frontend Slides",
+    "slug": "frontend-slides",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Frontend Slides.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Frontend Slides\n\nSpecialized engineering guidelines and best practices for **Frontend Slides**.\n\n## Instructions for AI Agent:\n1. Apply the **Frontend Slides** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/frontend-slides`)\n- Antigravity & OpenAI Codex (`.agents/skills/frontend-slides/SKILL.md`)\n- Cursor (`.cursor/rules/frontend-slides.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-253",
+    "name": "Fsharp Testing",
+    "slug": "fsharp-testing",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Fsharp Testing.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Fsharp Testing\n\nSpecialized engineering guidelines and best practices for **Fsharp Testing**.\n\n## Instructions for AI Agent:\n1. Apply the **Fsharp Testing** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/fsharp-testing`)\n- Antigravity & OpenAI Codex (`.agents/skills/fsharp-testing/SKILL.md`)\n- Cursor (`.cursor/rules/fsharp-testing.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-254",
+    "name": "Gan Style Harness",
+    "slug": "gan-style-harness",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Gan Style Harness.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Gan Style Harness\n\nSpecialized engineering guidelines and best practices for **Gan Style Harness**.\n\n## Instructions for AI Agent:\n1. Apply the **Gan Style Harness** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/gan-style-harness`)\n- Antigravity & OpenAI Codex (`.agents/skills/gan-style-harness/SKILL.md`)\n- Cursor (`.cursor/rules/gan-style-harness.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-255",
+    "name": "Gateguard",
+    "slug": "gateguard",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Gateguard.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Gateguard\n\nSpecialized engineering guidelines and best practices for **Gateguard**.\n\n## Instructions for AI Agent:\n1. Apply the **Gateguard** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/gateguard`)\n- Antigravity & OpenAI Codex (`.agents/skills/gateguard/SKILL.md`)\n- Cursor (`.cursor/rules/gateguard.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-256",
+    "name": "Generating Python Installer",
+    "slug": "generating-python-installer",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Generating Python Installer.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Generating Python Installer\n\nSpecialized engineering guidelines and best practices for **Generating Python Installer**.\n\n## Instructions for AI Agent:\n1. Apply the **Generating Python Installer** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/generating-python-installer`)\n- Antigravity & OpenAI Codex (`.agents/skills/generating-python-installer/SKILL.md`)\n- Cursor (`.cursor/rules/generating-python-installer.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-257",
+    "name": "Github Ops",
+    "slug": "github-ops",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Github Ops.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Github Ops\n\nSpecialized engineering guidelines and best practices for **Github Ops**.\n\n## Instructions for AI Agent:\n1. Apply the **Github Ops** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/github-ops`)\n- Antigravity & OpenAI Codex (`.agents/skills/github-ops/SKILL.md`)\n- Cursor (`.cursor/rules/github-ops.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-258",
+    "name": "Golang Patterns",
+    "slug": "golang-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Golang Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Golang Patterns\n\nSpecialized engineering guidelines and best practices for **Golang Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Golang Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/golang-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/golang-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/golang-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-259",
+    "name": "Golang Testing",
+    "slug": "golang-testing",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Golang Testing.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Golang Testing\n\nSpecialized engineering guidelines and best practices for **Golang Testing**.\n\n## Instructions for AI Agent:\n1. Apply the **Golang Testing** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/golang-testing`)\n- Antigravity & OpenAI Codex (`.agents/skills/golang-testing/SKILL.md`)\n- Cursor (`.cursor/rules/golang-testing.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-260",
+    "name": "Google Workspace Ops",
+    "slug": "google-workspace-ops",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Google Workspace Ops.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Google Workspace Ops\n\nSpecialized engineering guidelines and best practices for **Google Workspace Ops**.\n\n## Instructions for AI Agent:\n1. Apply the **Google Workspace Ops** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/google-workspace-ops`)\n- Antigravity & OpenAI Codex (`.agents/skills/google-workspace-ops/SKILL.md`)\n- Cursor (`.cursor/rules/google-workspace-ops.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-261",
+    "name": "Growth Log",
+    "slug": "growth-log",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Growth Log.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Growth Log\n\nSpecialized engineering guidelines and best practices for **Growth Log**.\n\n## Instructions for AI Agent:\n1. Apply the **Growth Log** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/growth-log`)\n- Antigravity & OpenAI Codex (`.agents/skills/growth-log/SKILL.md`)\n- Cursor (`.cursor/rules/growth-log.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-262",
+    "name": "Healthcare Cdss Patterns",
+    "slug": "healthcare-cdss-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Healthcare Cdss Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Healthcare Cdss Patterns\n\nSpecialized engineering guidelines and best practices for **Healthcare Cdss Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Healthcare Cdss Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/healthcare-cdss-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/healthcare-cdss-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/healthcare-cdss-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-263",
+    "name": "Healthcare Emr Patterns",
+    "slug": "healthcare-emr-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Healthcare Emr Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Healthcare Emr Patterns\n\nSpecialized engineering guidelines and best practices for **Healthcare Emr Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Healthcare Emr Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/healthcare-emr-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/healthcare-emr-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/healthcare-emr-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-264",
+    "name": "Healthcare Eval Harness",
+    "slug": "healthcare-eval-harness",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Healthcare Eval Harness.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Healthcare Eval Harness\n\nSpecialized engineering guidelines and best practices for **Healthcare Eval Harness**.\n\n## Instructions for AI Agent:\n1. Apply the **Healthcare Eval Harness** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/healthcare-eval-harness`)\n- Antigravity & OpenAI Codex (`.agents/skills/healthcare-eval-harness/SKILL.md`)\n- Cursor (`.cursor/rules/healthcare-eval-harness.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-265",
+    "name": "Healthcare Phi Compliance",
+    "slug": "healthcare-phi-compliance",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Healthcare Phi Compliance.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Healthcare Phi Compliance\n\nSpecialized engineering guidelines and best practices for **Healthcare Phi Compliance**.\n\n## Instructions for AI Agent:\n1. Apply the **Healthcare Phi Compliance** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/healthcare-phi-compliance`)\n- Antigravity & OpenAI Codex (`.agents/skills/healthcare-phi-compliance/SKILL.md`)\n- Cursor (`.cursor/rules/healthcare-phi-compliance.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-266",
+    "name": "Hermes Imports",
+    "slug": "hermes-imports",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Hermes Imports.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Hermes Imports\n\nSpecialized engineering guidelines and best practices for **Hermes Imports**.\n\n## Instructions for AI Agent:\n1. Apply the **Hermes Imports** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/hermes-imports`)\n- Antigravity & OpenAI Codex (`.agents/skills/hermes-imports/SKILL.md`)\n- Cursor (`.cursor/rules/hermes-imports.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-267",
+    "name": "Hexagonal Architecture",
+    "slug": "hexagonal-architecture",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Hexagonal Architecture.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Hexagonal Architecture\n\nSpecialized engineering guidelines and best practices for **Hexagonal Architecture**.\n\n## Instructions for AI Agent:\n1. Apply the **Hexagonal Architecture** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/hexagonal-architecture`)\n- Antigravity & OpenAI Codex (`.agents/skills/hexagonal-architecture/SKILL.md`)\n- Cursor (`.cursor/rules/hexagonal-architecture.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-268",
+    "name": "Hipaa Compliance",
+    "slug": "hipaa-compliance",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Hipaa Compliance.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Hipaa Compliance\n\nSpecialized engineering guidelines and best practices for **Hipaa Compliance**.\n\n## Instructions for AI Agent:\n1. Apply the **Hipaa Compliance** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/hipaa-compliance`)\n- Antigravity & OpenAI Codex (`.agents/skills/hipaa-compliance/SKILL.md`)\n- Cursor (`.cursor/rules/hipaa-compliance.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-269",
+    "name": "Homelab Network Readiness",
+    "slug": "homelab-network-readiness",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Homelab Network Readiness.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Homelab Network Readiness\n\nSpecialized engineering guidelines and best practices for **Homelab Network Readiness**.\n\n## Instructions for AI Agent:\n1. Apply the **Homelab Network Readiness** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/homelab-network-readiness`)\n- Antigravity & OpenAI Codex (`.agents/skills/homelab-network-readiness/SKILL.md`)\n- Cursor (`.cursor/rules/homelab-network-readiness.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-270",
+    "name": "Homelab Network Setup",
+    "slug": "homelab-network-setup",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Homelab Network Setup.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Homelab Network Setup\n\nSpecialized engineering guidelines and best practices for **Homelab Network Setup**.\n\n## Instructions for AI Agent:\n1. Apply the **Homelab Network Setup** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/homelab-network-setup`)\n- Antigravity & OpenAI Codex (`.agents/skills/homelab-network-setup/SKILL.md`)\n- Cursor (`.cursor/rules/homelab-network-setup.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-271",
+    "name": "Homelab Pihole Dns",
+    "slug": "homelab-pihole-dns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Homelab Pihole Dns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Homelab Pihole Dns\n\nSpecialized engineering guidelines and best practices for **Homelab Pihole Dns**.\n\n## Instructions for AI Agent:\n1. Apply the **Homelab Pihole Dns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/homelab-pihole-dns`)\n- Antigravity & OpenAI Codex (`.agents/skills/homelab-pihole-dns/SKILL.md`)\n- Cursor (`.cursor/rules/homelab-pihole-dns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-272",
+    "name": "Homelab Vlan Segmentation",
+    "slug": "homelab-vlan-segmentation",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Homelab Vlan Segmentation.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Homelab Vlan Segmentation\n\nSpecialized engineering guidelines and best practices for **Homelab Vlan Segmentation**.\n\n## Instructions for AI Agent:\n1. Apply the **Homelab Vlan Segmentation** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/homelab-vlan-segmentation`)\n- Antigravity & OpenAI Codex (`.agents/skills/homelab-vlan-segmentation/SKILL.md`)\n- Cursor (`.cursor/rules/homelab-vlan-segmentation.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-273",
+    "name": "Homelab Wireguard Vpn",
+    "slug": "homelab-wireguard-vpn",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Homelab Wireguard Vpn.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Homelab Wireguard Vpn\n\nSpecialized engineering guidelines and best practices for **Homelab Wireguard Vpn**.\n\n## Instructions for AI Agent:\n1. Apply the **Homelab Wireguard Vpn** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/homelab-wireguard-vpn`)\n- Antigravity & OpenAI Codex (`.agents/skills/homelab-wireguard-vpn/SKILL.md`)\n- Cursor (`.cursor/rules/homelab-wireguard-vpn.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-274",
+    "name": "Hookify Rules",
+    "slug": "hookify-rules",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Hookify Rules.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Hookify Rules\n\nSpecialized engineering guidelines and best practices for **Hookify Rules**.\n\n## Instructions for AI Agent:\n1. Apply the **Hookify Rules** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/hookify-rules`)\n- Antigravity & OpenAI Codex (`.agents/skills/hookify-rules/SKILL.md`)\n- Cursor (`.cursor/rules/hookify-rules.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-275",
+    "name": "Inherit Legacy Style",
+    "slug": "inherit-legacy-style",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Inherit Legacy Style.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Inherit Legacy Style\n\nSpecialized engineering guidelines and best practices for **Inherit Legacy Style**.\n\n## Instructions for AI Agent:\n1. Apply the **Inherit Legacy Style** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/inherit-legacy-style`)\n- Antigravity & OpenAI Codex (`.agents/skills/inherit-legacy-style/SKILL.md`)\n- Cursor (`.cursor/rules/inherit-legacy-style.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-276",
+    "name": "Intent Driven Development",
+    "slug": "intent-driven-development",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Intent Driven Development.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Intent Driven Development\n\nSpecialized engineering guidelines and best practices for **Intent Driven Development**.\n\n## Instructions for AI Agent:\n1. Apply the **Intent Driven Development** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/intent-driven-development`)\n- Antigravity & OpenAI Codex (`.agents/skills/intent-driven-development/SKILL.md`)\n- Cursor (`.cursor/rules/intent-driven-development.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-277",
+    "name": "Inventory Demand Planning",
+    "slug": "inventory-demand-planning",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Inventory Demand Planning.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Inventory Demand Planning\n\nSpecialized engineering guidelines and best practices for **Inventory Demand Planning**.\n\n## Instructions for AI Agent:\n1. Apply the **Inventory Demand Planning** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/inventory-demand-planning`)\n- Antigravity & OpenAI Codex (`.agents/skills/inventory-demand-planning/SKILL.md`)\n- Cursor (`.cursor/rules/inventory-demand-planning.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-278",
+    "name": "Investor Materials",
+    "slug": "investor-materials",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Investor Materials.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Investor Materials\n\nSpecialized engineering guidelines and best practices for **Investor Materials**.\n\n## Instructions for AI Agent:\n1. Apply the **Investor Materials** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/investor-materials`)\n- Antigravity & OpenAI Codex (`.agents/skills/investor-materials/SKILL.md`)\n- Cursor (`.cursor/rules/investor-materials.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-279",
+    "name": "Investor Outreach",
+    "slug": "investor-outreach",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Investor Outreach.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Investor Outreach\n\nSpecialized engineering guidelines and best practices for **Investor Outreach**.\n\n## Instructions for AI Agent:\n1. Apply the **Investor Outreach** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/investor-outreach`)\n- Antigravity & OpenAI Codex (`.agents/skills/investor-outreach/SKILL.md`)\n- Cursor (`.cursor/rules/investor-outreach.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-280",
+    "name": "Ios Icon Gen",
+    "slug": "ios-icon-gen",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Ios Icon Gen.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Ios Icon Gen\n\nSpecialized engineering guidelines and best practices for **Ios Icon Gen**.\n\n## Instructions for AI Agent:\n1. Apply the **Ios Icon Gen** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/ios-icon-gen`)\n- Antigravity & OpenAI Codex (`.agents/skills/ios-icon-gen/SKILL.md`)\n- Cursor (`.cursor/rules/ios-icon-gen.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-281",
+    "name": "Iterative Retrieval",
+    "slug": "iterative-retrieval",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Iterative Retrieval.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Iterative Retrieval\n\nSpecialized engineering guidelines and best practices for **Iterative Retrieval**.\n\n## Instructions for AI Agent:\n1. Apply the **Iterative Retrieval** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/iterative-retrieval`)\n- Antigravity & OpenAI Codex (`.agents/skills/iterative-retrieval/SKILL.md`)\n- Cursor (`.cursor/rules/iterative-retrieval.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-282",
+    "name": "Ito Baskets",
+    "slug": "ito-baskets",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Ito Baskets.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Ito Baskets\n\nSpecialized engineering guidelines and best practices for **Ito Baskets**.\n\n## Instructions for AI Agent:\n1. Apply the **Ito Baskets** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/ito-baskets`)\n- Antigravity & OpenAI Codex (`.agents/skills/ito-baskets/SKILL.md`)\n- Cursor (`.cursor/rules/ito-baskets.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-283",
+    "name": "Ito Compute",
+    "slug": "ito-compute",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Ito Compute.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Ito Compute\n\nSpecialized engineering guidelines and best practices for **Ito Compute**.\n\n## Instructions for AI Agent:\n1. Apply the **Ito Compute** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/ito-compute`)\n- Antigravity & OpenAI Codex (`.agents/skills/ito-compute/SKILL.md`)\n- Cursor (`.cursor/rules/ito-compute.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-284",
+    "name": "Ito Inference",
+    "slug": "ito-inference",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Ito Inference.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Ito Inference\n\nSpecialized engineering guidelines and best practices for **Ito Inference**.\n\n## Instructions for AI Agent:\n1. Apply the **Ito Inference** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/ito-inference`)\n- Antigravity & OpenAI Codex (`.agents/skills/ito-inference/SKILL.md`)\n- Cursor (`.cursor/rules/ito-inference.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-285",
+    "name": "Ito Training",
+    "slug": "ito-training",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Ito Training.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Ito Training\n\nSpecialized engineering guidelines and best practices for **Ito Training**.\n\n## Instructions for AI Agent:\n1. Apply the **Ito Training** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/ito-training`)\n- Antigravity & OpenAI Codex (`.agents/skills/ito-training/SKILL.md`)\n- Cursor (`.cursor/rules/ito-training.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-286",
+    "name": "Java Coding Standards",
+    "slug": "java-coding-standards",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Java Coding Standards.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Java Coding Standards\n\nSpecialized engineering guidelines and best practices for **Java Coding Standards**.\n\n## Instructions for AI Agent:\n1. Apply the **Java Coding Standards** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/java-coding-standards`)\n- Antigravity & OpenAI Codex (`.agents/skills/java-coding-standards/SKILL.md`)\n- Cursor (`.cursor/rules/java-coding-standards.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-287",
+    "name": "Jira Integration",
+    "slug": "jira-integration",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Jira Integration.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Jira Integration\n\nSpecialized engineering guidelines and best practices for **Jira Integration**.\n\n## Instructions for AI Agent:\n1. Apply the **Jira Integration** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/jira-integration`)\n- Antigravity & OpenAI Codex (`.agents/skills/jira-integration/SKILL.md`)\n- Cursor (`.cursor/rules/jira-integration.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-288",
+    "name": "Jpa Patterns",
+    "slug": "jpa-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Jpa Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Jpa Patterns\n\nSpecialized engineering guidelines and best practices for **Jpa Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Jpa Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/jpa-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/jpa-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/jpa-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-289",
+    "name": "Knowledge Ops",
+    "slug": "knowledge-ops",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Knowledge Ops.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Knowledge Ops\n\nSpecialized engineering guidelines and best practices for **Knowledge Ops**.\n\n## Instructions for AI Agent:\n1. Apply the **Knowledge Ops** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/knowledge-ops`)\n- Antigravity & OpenAI Codex (`.agents/skills/knowledge-ops/SKILL.md`)\n- Cursor (`.cursor/rules/knowledge-ops.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-290",
+    "name": "Kotlin Coroutines Flows",
+    "slug": "kotlin-coroutines-flows",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Kotlin Coroutines Flows.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Kotlin Coroutines Flows\n\nSpecialized engineering guidelines and best practices for **Kotlin Coroutines Flows**.\n\n## Instructions for AI Agent:\n1. Apply the **Kotlin Coroutines Flows** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/kotlin-coroutines-flows`)\n- Antigravity & OpenAI Codex (`.agents/skills/kotlin-coroutines-flows/SKILL.md`)\n- Cursor (`.cursor/rules/kotlin-coroutines-flows.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-291",
+    "name": "Kotlin Exposed Patterns",
+    "slug": "kotlin-exposed-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Kotlin Exposed Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Kotlin Exposed Patterns\n\nSpecialized engineering guidelines and best practices for **Kotlin Exposed Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Kotlin Exposed Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/kotlin-exposed-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/kotlin-exposed-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/kotlin-exposed-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-292",
+    "name": "Kotlin Ktor Patterns",
+    "slug": "kotlin-ktor-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Kotlin Ktor Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Kotlin Ktor Patterns\n\nSpecialized engineering guidelines and best practices for **Kotlin Ktor Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Kotlin Ktor Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/kotlin-ktor-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/kotlin-ktor-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/kotlin-ktor-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-293",
+    "name": "Kotlin Patterns",
+    "slug": "kotlin-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Kotlin Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Kotlin Patterns\n\nSpecialized engineering guidelines and best practices for **Kotlin Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Kotlin Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/kotlin-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/kotlin-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/kotlin-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-294",
+    "name": "Kotlin Testing",
+    "slug": "kotlin-testing",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Kotlin Testing.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Kotlin Testing\n\nSpecialized engineering guidelines and best practices for **Kotlin Testing**.\n\n## Instructions for AI Agent:\n1. Apply the **Kotlin Testing** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/kotlin-testing`)\n- Antigravity & OpenAI Codex (`.agents/skills/kotlin-testing/SKILL.md`)\n- Cursor (`.cursor/rules/kotlin-testing.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-295",
+    "name": "Laravel Patterns",
+    "slug": "laravel-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Laravel Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Laravel Patterns\n\nSpecialized engineering guidelines and best practices for **Laravel Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Laravel Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/laravel-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/laravel-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/laravel-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-296",
+    "name": "Laravel Plugin Discovery",
+    "slug": "laravel-plugin-discovery",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Laravel Plugin Discovery.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Laravel Plugin Discovery\n\nSpecialized engineering guidelines and best practices for **Laravel Plugin Discovery**.\n\n## Instructions for AI Agent:\n1. Apply the **Laravel Plugin Discovery** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/laravel-plugin-discovery`)\n- Antigravity & OpenAI Codex (`.agents/skills/laravel-plugin-discovery/SKILL.md`)\n- Cursor (`.cursor/rules/laravel-plugin-discovery.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-297",
+    "name": "Laravel Security",
+    "slug": "laravel-security",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Laravel Security.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Laravel Security\n\nSpecialized engineering guidelines and best practices for **Laravel Security**.\n\n## Instructions for AI Agent:\n1. Apply the **Laravel Security** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/laravel-security`)\n- Antigravity & OpenAI Codex (`.agents/skills/laravel-security/SKILL.md`)\n- Cursor (`.cursor/rules/laravel-security.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-298",
+    "name": "Laravel Tdd",
+    "slug": "laravel-tdd",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Laravel Tdd.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Laravel Tdd\n\nSpecialized engineering guidelines and best practices for **Laravel Tdd**.\n\n## Instructions for AI Agent:\n1. Apply the **Laravel Tdd** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/laravel-tdd`)\n- Antigravity & OpenAI Codex (`.agents/skills/laravel-tdd/SKILL.md`)\n- Cursor (`.cursor/rules/laravel-tdd.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-299",
+    "name": "Laravel Verification",
+    "slug": "laravel-verification",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Laravel Verification.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Laravel Verification\n\nSpecialized engineering guidelines and best practices for **Laravel Verification**.\n\n## Instructions for AI Agent:\n1. Apply the **Laravel Verification** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/laravel-verification`)\n- Antigravity & OpenAI Codex (`.agents/skills/laravel-verification/SKILL.md`)\n- Cursor (`.cursor/rules/laravel-verification.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-300",
+    "name": "Latency Critical Systems",
+    "slug": "latency-critical-systems",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Latency Critical Systems.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Latency Critical Systems\n\nSpecialized engineering guidelines and best practices for **Latency Critical Systems**.\n\n## Instructions for AI Agent:\n1. Apply the **Latency Critical Systems** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/latency-critical-systems`)\n- Antigravity & OpenAI Codex (`.agents/skills/latency-critical-systems/SKILL.md`)\n- Cursor (`.cursor/rules/latency-critical-systems.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-301",
+    "name": "Lead Intelligence",
+    "slug": "lead-intelligence",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Lead Intelligence.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Lead Intelligence\n\nSpecialized engineering guidelines and best practices for **Lead Intelligence**.\n\n## Instructions for AI Agent:\n1. Apply the **Lead Intelligence** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/lead-intelligence`)\n- Antigravity & OpenAI Codex (`.agents/skills/lead-intelligence/SKILL.md`)\n- Cursor (`.cursor/rules/lead-intelligence.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-302",
+    "name": "Liquid Glass Design",
+    "slug": "liquid-glass-design",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Liquid Glass Design.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Liquid Glass Design\n\nSpecialized engineering guidelines and best practices for **Liquid Glass Design**.\n\n## Instructions for AI Agent:\n1. Apply the **Liquid Glass Design** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/liquid-glass-design`)\n- Antigravity & OpenAI Codex (`.agents/skills/liquid-glass-design/SKILL.md`)\n- Cursor (`.cursor/rules/liquid-glass-design.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-303",
+    "name": "Living Docs Governance",
+    "slug": "living-docs-governance",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Living Docs Governance.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Living Docs Governance\n\nSpecialized engineering guidelines and best practices for **Living Docs Governance**.\n\n## Instructions for AI Agent:\n1. Apply the **Living Docs Governance** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/living-docs-governance`)\n- Antigravity & OpenAI Codex (`.agents/skills/living-docs-governance/SKILL.md`)\n- Cursor (`.cursor/rules/living-docs-governance.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-304",
+    "name": "Llm Trading Agent Security",
+    "slug": "llm-trading-agent-security",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Llm Trading Agent Security.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Llm Trading Agent Security\n\nSpecialized engineering guidelines and best practices for **Llm Trading Agent Security**.\n\n## Instructions for AI Agent:\n1. Apply the **Llm Trading Agent Security** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/llm-trading-agent-security`)\n- Antigravity & OpenAI Codex (`.agents/skills/llm-trading-agent-security/SKILL.md`)\n- Cursor (`.cursor/rules/llm-trading-agent-security.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-305",
+    "name": "Logistics Exception Management",
+    "slug": "logistics-exception-management",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Logistics Exception Management.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Logistics Exception Management\n\nSpecialized engineering guidelines and best practices for **Logistics Exception Management**.\n\n## Instructions for AI Agent:\n1. Apply the **Logistics Exception Management** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/logistics-exception-management`)\n- Antigravity & OpenAI Codex (`.agents/skills/logistics-exception-management/SKILL.md`)\n- Cursor (`.cursor/rules/logistics-exception-management.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-306",
+    "name": "Loop Design Check",
+    "slug": "loop-design-check",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Loop Design Check.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Loop Design Check\n\nSpecialized engineering guidelines and best practices for **Loop Design Check**.\n\n## Instructions for AI Agent:\n1. Apply the **Loop Design Check** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/loop-design-check`)\n- Antigravity & OpenAI Codex (`.agents/skills/loop-design-check/SKILL.md`)\n- Cursor (`.cursor/rules/loop-design-check.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-307",
+    "name": "Mailtrap Email Integration",
+    "slug": "mailtrap-email-integration",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Mailtrap Email Integration.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Mailtrap Email Integration\n\nSpecialized engineering guidelines and best practices for **Mailtrap Email Integration**.\n\n## Instructions for AI Agent:\n1. Apply the **Mailtrap Email Integration** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/mailtrap-email-integration`)\n- Antigravity & OpenAI Codex (`.agents/skills/mailtrap-email-integration/SKILL.md`)\n- Cursor (`.cursor/rules/mailtrap-email-integration.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-308",
+    "name": "Make Interfaces Feel Better",
+    "slug": "make-interfaces-feel-better",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Make Interfaces Feel Better.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Make Interfaces Feel Better\n\nSpecialized engineering guidelines and best practices for **Make Interfaces Feel Better**.\n\n## Instructions for AI Agent:\n1. Apply the **Make Interfaces Feel Better** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/make-interfaces-feel-better`)\n- Antigravity & OpenAI Codex (`.agents/skills/make-interfaces-feel-better/SKILL.md`)\n- Cursor (`.cursor/rules/make-interfaces-feel-better.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-309",
+    "name": "Manim Video",
+    "slug": "manim-video",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Manim Video.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Manim Video\n\nSpecialized engineering guidelines and best practices for **Manim Video**.\n\n## Instructions for AI Agent:\n1. Apply the **Manim Video** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/manim-video`)\n- Antigravity & OpenAI Codex (`.agents/skills/manim-video/SKILL.md`)\n- Cursor (`.cursor/rules/manim-video.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-310",
+    "name": "Market Research",
+    "slug": "market-research",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Market Research.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Market Research\n\nSpecialized engineering guidelines and best practices for **Market Research**.\n\n## Instructions for AI Agent:\n1. Apply the **Market Research** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/market-research`)\n- Antigravity & OpenAI Codex (`.agents/skills/market-research/SKILL.md`)\n- Cursor (`.cursor/rules/market-research.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-311",
+    "name": "Marketing Campaign",
+    "slug": "marketing-campaign",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Marketing Campaign.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Marketing Campaign\n\nSpecialized engineering guidelines and best practices for **Marketing Campaign**.\n\n## Instructions for AI Agent:\n1. Apply the **Marketing Campaign** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/marketing-campaign`)\n- Antigravity & OpenAI Codex (`.agents/skills/marketing-campaign/SKILL.md`)\n- Cursor (`.cursor/rules/marketing-campaign.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-312",
+    "name": "Messages Ops",
+    "slug": "messages-ops",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Messages Ops.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Messages Ops\n\nSpecialized engineering guidelines and best practices for **Messages Ops**.\n\n## Instructions for AI Agent:\n1. Apply the **Messages Ops** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/messages-ops`)\n- Antigravity & OpenAI Codex (`.agents/skills/messages-ops/SKILL.md`)\n- Cursor (`.cursor/rules/messages-ops.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-313",
+    "name": "Ml Adoption Playbook",
+    "slug": "ml-adoption-playbook",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Ml Adoption Playbook.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Ml Adoption Playbook\n\nSpecialized engineering guidelines and best practices for **Ml Adoption Playbook**.\n\n## Instructions for AI Agent:\n1. Apply the **Ml Adoption Playbook** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/ml-adoption-playbook`)\n- Antigravity & OpenAI Codex (`.agents/skills/ml-adoption-playbook/SKILL.md`)\n- Cursor (`.cursor/rules/ml-adoption-playbook.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-314",
+    "name": "Motion Advanced",
+    "slug": "motion-advanced",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Motion Advanced.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Motion Advanced\n\nSpecialized engineering guidelines and best practices for **Motion Advanced**.\n\n## Instructions for AI Agent:\n1. Apply the **Motion Advanced** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/motion-advanced`)\n- Antigravity & OpenAI Codex (`.agents/skills/motion-advanced/SKILL.md`)\n- Cursor (`.cursor/rules/motion-advanced.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-315",
+    "name": "Motion Foundations",
+    "slug": "motion-foundations",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Motion Foundations.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Motion Foundations\n\nSpecialized engineering guidelines and best practices for **Motion Foundations**.\n\n## Instructions for AI Agent:\n1. Apply the **Motion Foundations** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/motion-foundations`)\n- Antigravity & OpenAI Codex (`.agents/skills/motion-foundations/SKILL.md`)\n- Cursor (`.cursor/rules/motion-foundations.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-316",
+    "name": "Motion Patterns",
+    "slug": "motion-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Motion Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Motion Patterns\n\nSpecialized engineering guidelines and best practices for **Motion Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Motion Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/motion-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/motion-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/motion-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-317",
+    "name": "Motion Ui",
+    "slug": "motion-ui",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Motion Ui.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Motion Ui\n\nSpecialized engineering guidelines and best practices for **Motion Ui**.\n\n## Instructions for AI Agent:\n1. Apply the **Motion Ui** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/motion-ui`)\n- Antigravity & OpenAI Codex (`.agents/skills/motion-ui/SKILL.md`)\n- Cursor (`.cursor/rules/motion-ui.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-318",
+    "name": "Mysql Patterns",
+    "slug": "mysql-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Mysql Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Mysql Patterns\n\nSpecialized engineering guidelines and best practices for **Mysql Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Mysql Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/mysql-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/mysql-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/mysql-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-319",
+    "name": "Nanoclaw Repl",
+    "slug": "nanoclaw-repl",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Nanoclaw Repl.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Nanoclaw Repl\n\nSpecialized engineering guidelines and best practices for **Nanoclaw Repl**.\n\n## Instructions for AI Agent:\n1. Apply the **Nanoclaw Repl** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/nanoclaw-repl`)\n- Antigravity & OpenAI Codex (`.agents/skills/nanoclaw-repl/SKILL.md`)\n- Cursor (`.cursor/rules/nanoclaw-repl.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-320",
+    "name": "Nasiko Control Plane",
+    "slug": "nasiko-control-plane",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Nasiko Control Plane.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Nasiko Control Plane\n\nSpecialized engineering guidelines and best practices for **Nasiko Control Plane**.\n\n## Instructions for AI Agent:\n1. Apply the **Nasiko Control Plane** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/nasiko-control-plane`)\n- Antigravity & OpenAI Codex (`.agents/skills/nasiko-control-plane/SKILL.md`)\n- Cursor (`.cursor/rules/nasiko-control-plane.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-321",
+    "name": "Nestjs Patterns",
+    "slug": "nestjs-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Nestjs Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Nestjs Patterns\n\nSpecialized engineering guidelines and best practices for **Nestjs Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Nestjs Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/nestjs-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/nestjs-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/nestjs-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-322",
+    "name": "Netmiko Ssh Automation",
+    "slug": "netmiko-ssh-automation",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Netmiko Ssh Automation.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Netmiko Ssh Automation\n\nSpecialized engineering guidelines and best practices for **Netmiko Ssh Automation**.\n\n## Instructions for AI Agent:\n1. Apply the **Netmiko Ssh Automation** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/netmiko-ssh-automation`)\n- Antigravity & OpenAI Codex (`.agents/skills/netmiko-ssh-automation/SKILL.md`)\n- Cursor (`.cursor/rules/netmiko-ssh-automation.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-323",
+    "name": "Network Bgp Diagnostics",
+    "slug": "network-bgp-diagnostics",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Network Bgp Diagnostics.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Network Bgp Diagnostics\n\nSpecialized engineering guidelines and best practices for **Network Bgp Diagnostics**.\n\n## Instructions for AI Agent:\n1. Apply the **Network Bgp Diagnostics** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/network-bgp-diagnostics`)\n- Antigravity & OpenAI Codex (`.agents/skills/network-bgp-diagnostics/SKILL.md`)\n- Cursor (`.cursor/rules/network-bgp-diagnostics.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-324",
+    "name": "Network Config Validation",
+    "slug": "network-config-validation",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Network Config Validation.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Network Config Validation\n\nSpecialized engineering guidelines and best practices for **Network Config Validation**.\n\n## Instructions for AI Agent:\n1. Apply the **Network Config Validation** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/network-config-validation`)\n- Antigravity & OpenAI Codex (`.agents/skills/network-config-validation/SKILL.md`)\n- Cursor (`.cursor/rules/network-config-validation.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-325",
+    "name": "Network Interface Health",
+    "slug": "network-interface-health",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Network Interface Health.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Network Interface Health\n\nSpecialized engineering guidelines and best practices for **Network Interface Health**.\n\n## Instructions for AI Agent:\n1. Apply the **Network Interface Health** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/network-interface-health`)\n- Antigravity & OpenAI Codex (`.agents/skills/network-interface-health/SKILL.md`)\n- Cursor (`.cursor/rules/network-interface-health.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-326",
+    "name": "Nodejs Keccak256",
+    "slug": "nodejs-keccak256",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Nodejs Keccak256.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Nodejs Keccak256\n\nSpecialized engineering guidelines and best practices for **Nodejs Keccak256**.\n\n## Instructions for AI Agent:\n1. Apply the **Nodejs Keccak256** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/nodejs-keccak256`)\n- Antigravity & OpenAI Codex (`.agents/skills/nodejs-keccak256/SKILL.md`)\n- Cursor (`.cursor/rules/nodejs-keccak256.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-327",
+    "name": "Nutrient Document Processing",
+    "slug": "nutrient-document-processing",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Nutrient Document Processing.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Nutrient Document Processing\n\nSpecialized engineering guidelines and best practices for **Nutrient Document Processing**.\n\n## Instructions for AI Agent:\n1. Apply the **Nutrient Document Processing** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/nutrient-document-processing`)\n- Antigravity & OpenAI Codex (`.agents/skills/nutrient-document-processing/SKILL.md`)\n- Cursor (`.cursor/rules/nutrient-document-processing.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-328",
+    "name": "Nuxt4 Patterns",
+    "slug": "nuxt4-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Nuxt4 Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Nuxt4 Patterns\n\nSpecialized engineering guidelines and best practices for **Nuxt4 Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Nuxt4 Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/nuxt4-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/nuxt4-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/nuxt4-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-329",
+    "name": "Openclaw Persona Forge",
+    "slug": "openclaw-persona-forge",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Openclaw Persona Forge.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Openclaw Persona Forge\n\nSpecialized engineering guidelines and best practices for **Openclaw Persona Forge**.\n\n## Instructions for AI Agent:\n1. Apply the **Openclaw Persona Forge** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/openclaw-persona-forge`)\n- Antigravity & OpenAI Codex (`.agents/skills/openclaw-persona-forge/SKILL.md`)\n- Cursor (`.cursor/rules/openclaw-persona-forge.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-330",
+    "name": "Opensource Pipeline",
+    "slug": "opensource-pipeline",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Opensource Pipeline.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Opensource Pipeline\n\nSpecialized engineering guidelines and best practices for **Opensource Pipeline**.\n\n## Instructions for AI Agent:\n1. Apply the **Opensource Pipeline** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/opensource-pipeline`)\n- Antigravity & OpenAI Codex (`.agents/skills/opensource-pipeline/SKILL.md`)\n- Cursor (`.cursor/rules/opensource-pipeline.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-331",
+    "name": "Orch Add Feature",
+    "slug": "orch-add-feature",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Orch Add Feature.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Orch Add Feature\n\nSpecialized engineering guidelines and best practices for **Orch Add Feature**.\n\n## Instructions for AI Agent:\n1. Apply the **Orch Add Feature** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/orch-add-feature`)\n- Antigravity & OpenAI Codex (`.agents/skills/orch-add-feature/SKILL.md`)\n- Cursor (`.cursor/rules/orch-add-feature.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-332",
+    "name": "Orch Build Mvp",
+    "slug": "orch-build-mvp",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Orch Build Mvp.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Orch Build Mvp\n\nSpecialized engineering guidelines and best practices for **Orch Build Mvp**.\n\n## Instructions for AI Agent:\n1. Apply the **Orch Build Mvp** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/orch-build-mvp`)\n- Antigravity & OpenAI Codex (`.agents/skills/orch-build-mvp/SKILL.md`)\n- Cursor (`.cursor/rules/orch-build-mvp.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-333",
+    "name": "Orch Change Feature",
+    "slug": "orch-change-feature",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Orch Change Feature.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Orch Change Feature\n\nSpecialized engineering guidelines and best practices for **Orch Change Feature**.\n\n## Instructions for AI Agent:\n1. Apply the **Orch Change Feature** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/orch-change-feature`)\n- Antigravity & OpenAI Codex (`.agents/skills/orch-change-feature/SKILL.md`)\n- Cursor (`.cursor/rules/orch-change-feature.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-334",
+    "name": "Orch Fix Defect",
+    "slug": "orch-fix-defect",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Orch Fix Defect.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Orch Fix Defect\n\nSpecialized engineering guidelines and best practices for **Orch Fix Defect**.\n\n## Instructions for AI Agent:\n1. Apply the **Orch Fix Defect** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/orch-fix-defect`)\n- Antigravity & OpenAI Codex (`.agents/skills/orch-fix-defect/SKILL.md`)\n- Cursor (`.cursor/rules/orch-fix-defect.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-335",
+    "name": "Orch Pipeline",
+    "slug": "orch-pipeline",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Orch Pipeline.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Orch Pipeline\n\nSpecialized engineering guidelines and best practices for **Orch Pipeline**.\n\n## Instructions for AI Agent:\n1. Apply the **Orch Pipeline** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/orch-pipeline`)\n- Antigravity & OpenAI Codex (`.agents/skills/orch-pipeline/SKILL.md`)\n- Cursor (`.cursor/rules/orch-pipeline.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-336",
+    "name": "Orch Refine Code",
+    "slug": "orch-refine-code",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Orch Refine Code.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Orch Refine Code\n\nSpecialized engineering guidelines and best practices for **Orch Refine Code**.\n\n## Instructions for AI Agent:\n1. Apply the **Orch Refine Code** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/orch-refine-code`)\n- Antigravity & OpenAI Codex (`.agents/skills/orch-refine-code/SKILL.md`)\n- Cursor (`.cursor/rules/orch-refine-code.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-337",
+    "name": "Parallel Execution Optimizer",
+    "slug": "parallel-execution-optimizer",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Parallel Execution Optimizer.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Parallel Execution Optimizer\n\nSpecialized engineering guidelines and best practices for **Parallel Execution Optimizer**.\n\n## Instructions for AI Agent:\n1. Apply the **Parallel Execution Optimizer** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/parallel-execution-optimizer`)\n- Antigravity & OpenAI Codex (`.agents/skills/parallel-execution-optimizer/SKILL.md`)\n- Cursor (`.cursor/rules/parallel-execution-optimizer.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-338",
+    "name": "Perl Patterns",
+    "slug": "perl-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Perl Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Perl Patterns\n\nSpecialized engineering guidelines and best practices for **Perl Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Perl Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/perl-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/perl-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/perl-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-339",
+    "name": "Perl Security",
+    "slug": "perl-security",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Perl Security.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Perl Security\n\nSpecialized engineering guidelines and best practices for **Perl Security**.\n\n## Instructions for AI Agent:\n1. Apply the **Perl Security** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/perl-security`)\n- Antigravity & OpenAI Codex (`.agents/skills/perl-security/SKILL.md`)\n- Cursor (`.cursor/rules/perl-security.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-340",
+    "name": "Perl Testing",
+    "slug": "perl-testing",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Perl Testing.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Perl Testing\n\nSpecialized engineering guidelines and best practices for **Perl Testing**.\n\n## Instructions for AI Agent:\n1. Apply the **Perl Testing** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/perl-testing`)\n- Antigravity & OpenAI Codex (`.agents/skills/perl-testing/SKILL.md`)\n- Cursor (`.cursor/rules/perl-testing.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-341",
+    "name": "Plan Orchestrate",
+    "slug": "plan-orchestrate",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Plan Orchestrate.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Plan Orchestrate\n\nSpecialized engineering guidelines and best practices for **Plan Orchestrate**.\n\n## Instructions for AI Agent:\n1. Apply the **Plan Orchestrate** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/plan-orchestrate`)\n- Antigravity & OpenAI Codex (`.agents/skills/plan-orchestrate/SKILL.md`)\n- Cursor (`.cursor/rules/plan-orchestrate.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-342",
+    "name": "Plankton Code Quality",
+    "slug": "plankton-code-quality",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Plankton Code Quality.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Plankton Code Quality\n\nSpecialized engineering guidelines and best practices for **Plankton Code Quality**.\n\n## Instructions for AI Agent:\n1. Apply the **Plankton Code Quality** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/plankton-code-quality`)\n- Antigravity & OpenAI Codex (`.agents/skills/plankton-code-quality/SKILL.md`)\n- Cursor (`.cursor/rules/plankton-code-quality.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-343",
+    "name": "Postgres Patterns",
+    "slug": "postgres-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Postgres Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Postgres Patterns\n\nSpecialized engineering guidelines and best practices for **Postgres Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Postgres Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/postgres-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/postgres-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/postgres-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-344",
+    "name": "Prediction Market Oracle Research",
+    "slug": "prediction-market-oracle-research",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Prediction Market Oracle Research.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Prediction Market Oracle Research\n\nSpecialized engineering guidelines and best practices for **Prediction Market Oracle Research**.\n\n## Instructions for AI Agent:\n1. Apply the **Prediction Market Oracle Research** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/prediction-market-oracle-research`)\n- Antigravity & OpenAI Codex (`.agents/skills/prediction-market-oracle-research/SKILL.md`)\n- Cursor (`.cursor/rules/prediction-market-oracle-research.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-345",
+    "name": "Prediction Market Risk Review",
+    "slug": "prediction-market-risk-review",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Prediction Market Risk Review.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Prediction Market Risk Review\n\nSpecialized engineering guidelines and best practices for **Prediction Market Risk Review**.\n\n## Instructions for AI Agent:\n1. Apply the **Prediction Market Risk Review** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/prediction-market-risk-review`)\n- Antigravity & OpenAI Codex (`.agents/skills/prediction-market-risk-review/SKILL.md`)\n- Cursor (`.cursor/rules/prediction-market-risk-review.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-346",
+    "name": "Prisma Patterns",
+    "slug": "prisma-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Prisma Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Prisma Patterns\n\nSpecialized engineering guidelines and best practices for **Prisma Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Prisma Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/prisma-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/prisma-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/prisma-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-347",
+    "name": "Product Lens",
+    "slug": "product-lens",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Product Lens.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Product Lens\n\nSpecialized engineering guidelines and best practices for **Product Lens**.\n\n## Instructions for AI Agent:\n1. Apply the **Product Lens** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/product-lens`)\n- Antigravity & OpenAI Codex (`.agents/skills/product-lens/SKILL.md`)\n- Cursor (`.cursor/rules/product-lens.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-348",
+    "name": "Production Audit",
+    "slug": "production-audit",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Production Audit.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Production Audit\n\nSpecialized engineering guidelines and best practices for **Production Audit**.\n\n## Instructions for AI Agent:\n1. Apply the **Production Audit** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/production-audit`)\n- Antigravity & OpenAI Codex (`.agents/skills/production-audit/SKILL.md`)\n- Cursor (`.cursor/rules/production-audit.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-349",
+    "name": "Production Scheduling",
+    "slug": "production-scheduling",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Production Scheduling.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Production Scheduling\n\nSpecialized engineering guidelines and best practices for **Production Scheduling**.\n\n## Instructions for AI Agent:\n1. Apply the **Production Scheduling** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/production-scheduling`)\n- Antigravity & OpenAI Codex (`.agents/skills/production-scheduling/SKILL.md`)\n- Cursor (`.cursor/rules/production-scheduling.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-350",
+    "name": "Project Flow Ops",
+    "slug": "project-flow-ops",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Project Flow Ops.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Project Flow Ops\n\nSpecialized engineering guidelines and best practices for **Project Flow Ops**.\n\n## Instructions for AI Agent:\n1. Apply the **Project Flow Ops** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/project-flow-ops`)\n- Antigravity & OpenAI Codex (`.agents/skills/project-flow-ops/SKILL.md`)\n- Cursor (`.cursor/rules/project-flow-ops.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-351",
+    "name": "Prompt Optimizer",
+    "slug": "prompt-optimizer",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Prompt Optimizer.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Prompt Optimizer\n\nSpecialized engineering guidelines and best practices for **Prompt Optimizer**.\n\n## Instructions for AI Agent:\n1. Apply the **Prompt Optimizer** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/prompt-optimizer`)\n- Antigravity & OpenAI Codex (`.agents/skills/prompt-optimizer/SKILL.md`)\n- Cursor (`.cursor/rules/prompt-optimizer.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-352",
+    "name": "Python Patterns",
+    "slug": "python-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Python Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Python Patterns\n\nSpecialized engineering guidelines and best practices for **Python Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Python Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/python-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/python-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/python-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-353",
+    "name": "Pytorch Patterns",
+    "slug": "pytorch-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Pytorch Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Pytorch Patterns\n\nSpecialized engineering guidelines and best practices for **Pytorch Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Pytorch Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/pytorch-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/pytorch-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/pytorch-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-354",
+    "name": "Quality Nonconformance",
+    "slug": "quality-nonconformance",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Quality Nonconformance.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Quality Nonconformance\n\nSpecialized engineering guidelines and best practices for **Quality Nonconformance**.\n\n## Instructions for AI Agent:\n1. Apply the **Quality Nonconformance** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/quality-nonconformance`)\n- Antigravity & OpenAI Codex (`.agents/skills/quality-nonconformance/SKILL.md`)\n- Cursor (`.cursor/rules/quality-nonconformance.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-355",
+    "name": "Quarkus Patterns",
+    "slug": "quarkus-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Quarkus Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Quarkus Patterns\n\nSpecialized engineering guidelines and best practices for **Quarkus Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Quarkus Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/quarkus-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/quarkus-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/quarkus-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-356",
+    "name": "Quarkus Security",
+    "slug": "quarkus-security",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Quarkus Security.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Quarkus Security\n\nSpecialized engineering guidelines and best practices for **Quarkus Security**.\n\n## Instructions for AI Agent:\n1. Apply the **Quarkus Security** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/quarkus-security`)\n- Antigravity & OpenAI Codex (`.agents/skills/quarkus-security/SKILL.md`)\n- Cursor (`.cursor/rules/quarkus-security.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-357",
+    "name": "Quarkus Tdd",
+    "slug": "quarkus-tdd",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Quarkus Tdd.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Quarkus Tdd\n\nSpecialized engineering guidelines and best practices for **Quarkus Tdd**.\n\n## Instructions for AI Agent:\n1. Apply the **Quarkus Tdd** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/quarkus-tdd`)\n- Antigravity & OpenAI Codex (`.agents/skills/quarkus-tdd/SKILL.md`)\n- Cursor (`.cursor/rules/quarkus-tdd.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-358",
+    "name": "Quarkus Verification",
+    "slug": "quarkus-verification",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Quarkus Verification.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Quarkus Verification\n\nSpecialized engineering guidelines and best practices for **Quarkus Verification**.\n\n## Instructions for AI Agent:\n1. Apply the **Quarkus Verification** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/quarkus-verification`)\n- Antigravity & OpenAI Codex (`.agents/skills/quarkus-verification/SKILL.md`)\n- Cursor (`.cursor/rules/quarkus-verification.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-359",
+    "name": "Ralphinho Rfc Pipeline",
+    "slug": "ralphinho-rfc-pipeline",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Ralphinho Rfc Pipeline.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Ralphinho Rfc Pipeline\n\nSpecialized engineering guidelines and best practices for **Ralphinho Rfc Pipeline**.\n\n## Instructions for AI Agent:\n1. Apply the **Ralphinho Rfc Pipeline** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/ralphinho-rfc-pipeline`)\n- Antigravity & OpenAI Codex (`.agents/skills/ralphinho-rfc-pipeline/SKILL.md`)\n- Cursor (`.cursor/rules/ralphinho-rfc-pipeline.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-360",
+    "name": "React Native Patterns",
+    "slug": "react-native-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for React Native Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# React Native Patterns\n\nSpecialized engineering guidelines and best practices for **React Native Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **React Native Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/react-native-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/react-native-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/react-native-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-361",
+    "name": "React Patterns",
+    "slug": "react-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for React Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# React Patterns\n\nSpecialized engineering guidelines and best practices for **React Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **React Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/react-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/react-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/react-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-362",
+    "name": "React Performance",
+    "slug": "react-performance",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for React Performance.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# React Performance\n\nSpecialized engineering guidelines and best practices for **React Performance**.\n\n## Instructions for AI Agent:\n1. Apply the **React Performance** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/react-performance`)\n- Antigravity & OpenAI Codex (`.agents/skills/react-performance/SKILL.md`)\n- Cursor (`.cursor/rules/react-performance.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-363",
+    "name": "React Testing",
+    "slug": "react-testing",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for React Testing.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# React Testing\n\nSpecialized engineering guidelines and best practices for **React Testing**.\n\n## Instructions for AI Agent:\n1. Apply the **React Testing** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/react-testing`)\n- Antigravity & OpenAI Codex (`.agents/skills/react-testing/SKILL.md`)\n- Cursor (`.cursor/rules/react-testing.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-364",
+    "name": "Recsys Pipeline Architect",
+    "slug": "recsys-pipeline-architect",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Recsys Pipeline Architect.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Recsys Pipeline Architect\n\nSpecialized engineering guidelines and best practices for **Recsys Pipeline Architect**.\n\n## Instructions for AI Agent:\n1. Apply the **Recsys Pipeline Architect** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/recsys-pipeline-architect`)\n- Antigravity & OpenAI Codex (`.agents/skills/recsys-pipeline-architect/SKILL.md`)\n- Cursor (`.cursor/rules/recsys-pipeline-architect.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-365",
+    "name": "Recursive Decision Ledger",
+    "slug": "recursive-decision-ledger",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Recursive Decision Ledger.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Recursive Decision Ledger\n\nSpecialized engineering guidelines and best practices for **Recursive Decision Ledger**.\n\n## Instructions for AI Agent:\n1. Apply the **Recursive Decision Ledger** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/recursive-decision-ledger`)\n- Antigravity & OpenAI Codex (`.agents/skills/recursive-decision-ledger/SKILL.md`)\n- Cursor (`.cursor/rules/recursive-decision-ledger.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-366",
+    "name": "Regex Vs Llm Structured Text",
+    "slug": "regex-vs-llm-structured-text",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Regex Vs Llm Structured Text.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Regex Vs Llm Structured Text\n\nSpecialized engineering guidelines and best practices for **Regex Vs Llm Structured Text**.\n\n## Instructions for AI Agent:\n1. Apply the **Regex Vs Llm Structured Text** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/regex-vs-llm-structured-text`)\n- Antigravity & OpenAI Codex (`.agents/skills/regex-vs-llm-structured-text/SKILL.md`)\n- Cursor (`.cursor/rules/regex-vs-llm-structured-text.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-367",
+    "name": "Remotion Video Creation",
+    "slug": "remotion-video-creation",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Remotion Video Creation.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Remotion Video Creation\n\nSpecialized engineering guidelines and best practices for **Remotion Video Creation**.\n\n## Instructions for AI Agent:\n1. Apply the **Remotion Video Creation** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/remotion-video-creation`)\n- Antigravity & OpenAI Codex (`.agents/skills/remotion-video-creation/SKILL.md`)\n- Cursor (`.cursor/rules/remotion-video-creation.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-368",
+    "name": "Repo Scan",
+    "slug": "repo-scan",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Repo Scan.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Repo Scan\n\nSpecialized engineering guidelines and best practices for **Repo Scan**.\n\n## Instructions for AI Agent:\n1. Apply the **Repo Scan** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/repo-scan`)\n- Antigravity & OpenAI Codex (`.agents/skills/repo-scan/SKILL.md`)\n- Cursor (`.cursor/rules/repo-scan.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-369",
+    "name": "Research Ops",
+    "slug": "research-ops",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Research Ops.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Research Ops\n\nSpecialized engineering guidelines and best practices for **Research Ops**.\n\n## Instructions for AI Agent:\n1. Apply the **Research Ops** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/research-ops`)\n- Antigravity & OpenAI Codex (`.agents/skills/research-ops/SKILL.md`)\n- Cursor (`.cursor/rules/research-ops.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-370",
+    "name": "Returns Reverse Logistics",
+    "slug": "returns-reverse-logistics",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Returns Reverse Logistics.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Returns Reverse Logistics\n\nSpecialized engineering guidelines and best practices for **Returns Reverse Logistics**.\n\n## Instructions for AI Agent:\n1. Apply the **Returns Reverse Logistics** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/returns-reverse-logistics`)\n- Antigravity & OpenAI Codex (`.agents/skills/returns-reverse-logistics/SKILL.md`)\n- Cursor (`.cursor/rules/returns-reverse-logistics.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-371",
+    "name": "Rules Distill",
+    "slug": "rules-distill",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Rules Distill.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Rules Distill\n\nSpecialized engineering guidelines and best practices for **Rules Distill**.\n\n## Instructions for AI Agent:\n1. Apply the **Rules Distill** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/rules-distill`)\n- Antigravity & OpenAI Codex (`.agents/skills/rules-distill/SKILL.md`)\n- Cursor (`.cursor/rules/rules-distill.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-372",
+    "name": "Rust Testing",
+    "slug": "rust-testing",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Rust Testing.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Rust Testing\n\nSpecialized engineering guidelines and best practices for **Rust Testing**.\n\n## Instructions for AI Agent:\n1. Apply the **Rust Testing** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/rust-testing`)\n- Antigravity & OpenAI Codex (`.agents/skills/rust-testing/SKILL.md`)\n- Cursor (`.cursor/rules/rust-testing.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-373",
+    "name": "Safety Guard",
+    "slug": "safety-guard",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Safety Guard.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Safety Guard\n\nSpecialized engineering guidelines and best practices for **Safety Guard**.\n\n## Instructions for AI Agent:\n1. Apply the **Safety Guard** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/safety-guard`)\n- Antigravity & OpenAI Codex (`.agents/skills/safety-guard/SKILL.md`)\n- Cursor (`.cursor/rules/safety-guard.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-374",
+    "name": "Santa Method",
+    "slug": "santa-method",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Santa Method.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Santa Method\n\nSpecialized engineering guidelines and best practices for **Santa Method**.\n\n## Instructions for AI Agent:\n1. Apply the **Santa Method** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/santa-method`)\n- Antigravity & OpenAI Codex (`.agents/skills/santa-method/SKILL.md`)\n- Cursor (`.cursor/rules/santa-method.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-375",
+    "name": "Scientific Db Pubmed Database",
+    "slug": "scientific-db-pubmed-database",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Scientific Db Pubmed Database.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Scientific Db Pubmed Database\n\nSpecialized engineering guidelines and best practices for **Scientific Db Pubmed Database**.\n\n## Instructions for AI Agent:\n1. Apply the **Scientific Db Pubmed Database** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/scientific-db-pubmed-database`)\n- Antigravity & OpenAI Codex (`.agents/skills/scientific-db-pubmed-database/SKILL.md`)\n- Cursor (`.cursor/rules/scientific-db-pubmed-database.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-376",
+    "name": "Scientific Db Uspto Database",
+    "slug": "scientific-db-uspto-database",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Scientific Db Uspto Database.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Scientific Db Uspto Database\n\nSpecialized engineering guidelines and best practices for **Scientific Db Uspto Database**.\n\n## Instructions for AI Agent:\n1. Apply the **Scientific Db Uspto Database** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/scientific-db-uspto-database`)\n- Antigravity & OpenAI Codex (`.agents/skills/scientific-db-uspto-database/SKILL.md`)\n- Cursor (`.cursor/rules/scientific-db-uspto-database.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-377",
+    "name": "Scientific Pkg Gget",
+    "slug": "scientific-pkg-gget",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Scientific Pkg Gget.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Scientific Pkg Gget\n\nSpecialized engineering guidelines and best practices for **Scientific Pkg Gget**.\n\n## Instructions for AI Agent:\n1. Apply the **Scientific Pkg Gget** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/scientific-pkg-gget`)\n- Antigravity & OpenAI Codex (`.agents/skills/scientific-pkg-gget/SKILL.md`)\n- Cursor (`.cursor/rules/scientific-pkg-gget.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-378",
+    "name": "Scientific Thinking Literature Review",
+    "slug": "scientific-thinking-literature-review",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Scientific Thinking Literature Review.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Scientific Thinking Literature Review\n\nSpecialized engineering guidelines and best practices for **Scientific Thinking Literature Review**.\n\n## Instructions for AI Agent:\n1. Apply the **Scientific Thinking Literature Review** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/scientific-thinking-literature-review`)\n- Antigravity & OpenAI Codex (`.agents/skills/scientific-thinking-literature-review/SKILL.md`)\n- Cursor (`.cursor/rules/scientific-thinking-literature-review.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-379",
+    "name": "Scientific Thinking Scholar Evaluation",
+    "slug": "scientific-thinking-scholar-evaluation",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Scientific Thinking Scholar Evaluation.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Scientific Thinking Scholar Evaluation\n\nSpecialized engineering guidelines and best practices for **Scientific Thinking Scholar Evaluation**.\n\n## Instructions for AI Agent:\n1. Apply the **Scientific Thinking Scholar Evaluation** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/scientific-thinking-scholar-evaluation`)\n- Antigravity & OpenAI Codex (`.agents/skills/scientific-thinking-scholar-evaluation/SKILL.md`)\n- Cursor (`.cursor/rules/scientific-thinking-scholar-evaluation.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-380",
+    "name": "Security Bounty Hunter",
+    "slug": "security-bounty-hunter",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Security Bounty Hunter.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Security Bounty Hunter\n\nSpecialized engineering guidelines and best practices for **Security Bounty Hunter**.\n\n## Instructions for AI Agent:\n1. Apply the **Security Bounty Hunter** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/security-bounty-hunter`)\n- Antigravity & OpenAI Codex (`.agents/skills/security-bounty-hunter/SKILL.md`)\n- Cursor (`.cursor/rules/security-bounty-hunter.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-381",
+    "name": "Security Review",
+    "slug": "security-review",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Security Review.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Security Review\n\nSpecialized engineering guidelines and best practices for **Security Review**.\n\n## Instructions for AI Agent:\n1. Apply the **Security Review** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/security-review`)\n- Antigravity & OpenAI Codex (`.agents/skills/security-review/SKILL.md`)\n- Cursor (`.cursor/rules/security-review.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-382",
+    "name": "Seo",
+    "slug": "seo",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Seo.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Seo\n\nSpecialized engineering guidelines and best practices for **Seo**.\n\n## Instructions for AI Agent:\n1. Apply the **Seo** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/seo`)\n- Antigravity & OpenAI Codex (`.agents/skills/seo/SKILL.md`)\n- Cursor (`.cursor/rules/seo.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-383",
+    "name": "Skill Comply",
+    "slug": "skill-comply",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Skill Comply.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Skill Comply\n\nSpecialized engineering guidelines and best practices for **Skill Comply**.\n\n## Instructions for AI Agent:\n1. Apply the **Skill Comply** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/skill-comply`)\n- Antigravity & OpenAI Codex (`.agents/skills/skill-comply/SKILL.md`)\n- Cursor (`.cursor/rules/skill-comply.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-384",
+    "name": "Skill Scout",
+    "slug": "skill-scout",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Skill Scout.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Skill Scout\n\nSpecialized engineering guidelines and best practices for **Skill Scout**.\n\n## Instructions for AI Agent:\n1. Apply the **Skill Scout** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/skill-scout`)\n- Antigravity & OpenAI Codex (`.agents/skills/skill-scout/SKILL.md`)\n- Cursor (`.cursor/rules/skill-scout.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-385",
+    "name": "Skill Stocktake",
+    "slug": "skill-stocktake",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Skill Stocktake.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Skill Stocktake\n\nSpecialized engineering guidelines and best practices for **Skill Stocktake**.\n\n## Instructions for AI Agent:\n1. Apply the **Skill Stocktake** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/skill-stocktake`)\n- Antigravity & OpenAI Codex (`.agents/skills/skill-stocktake/SKILL.md`)\n- Cursor (`.cursor/rules/skill-stocktake.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-386",
+    "name": "Social Graph Ranker",
+    "slug": "social-graph-ranker",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Social Graph Ranker.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Social Graph Ranker\n\nSpecialized engineering guidelines and best practices for **Social Graph Ranker**.\n\n## Instructions for AI Agent:\n1. Apply the **Social Graph Ranker** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/social-graph-ranker`)\n- Antigravity & OpenAI Codex (`.agents/skills/social-graph-ranker/SKILL.md`)\n- Cursor (`.cursor/rules/social-graph-ranker.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-387",
+    "name": "Social Publisher",
+    "slug": "social-publisher",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Social Publisher.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Social Publisher\n\nSpecialized engineering guidelines and best practices for **Social Publisher**.\n\n## Instructions for AI Agent:\n1. Apply the **Social Publisher** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/social-publisher`)\n- Antigravity & OpenAI Codex (`.agents/skills/social-publisher/SKILL.md`)\n- Cursor (`.cursor/rules/social-publisher.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-388",
+    "name": "Springboot Patterns",
+    "slug": "springboot-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Springboot Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Springboot Patterns\n\nSpecialized engineering guidelines and best practices for **Springboot Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Springboot Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/springboot-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/springboot-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/springboot-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-389",
+    "name": "Springboot Security",
+    "slug": "springboot-security",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Springboot Security.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Springboot Security\n\nSpecialized engineering guidelines and best practices for **Springboot Security**.\n\n## Instructions for AI Agent:\n1. Apply the **Springboot Security** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/springboot-security`)\n- Antigravity & OpenAI Codex (`.agents/skills/springboot-security/SKILL.md`)\n- Cursor (`.cursor/rules/springboot-security.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-390",
+    "name": "Springboot Tdd",
+    "slug": "springboot-tdd",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Springboot Tdd.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Springboot Tdd\n\nSpecialized engineering guidelines and best practices for **Springboot Tdd**.\n\n## Instructions for AI Agent:\n1. Apply the **Springboot Tdd** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/springboot-tdd`)\n- Antigravity & OpenAI Codex (`.agents/skills/springboot-tdd/SKILL.md`)\n- Cursor (`.cursor/rules/springboot-tdd.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-391",
+    "name": "Springboot Verification",
+    "slug": "springboot-verification",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Springboot Verification.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Springboot Verification\n\nSpecialized engineering guidelines and best practices for **Springboot Verification**.\n\n## Instructions for AI Agent:\n1. Apply the **Springboot Verification** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/springboot-verification`)\n- Antigravity & OpenAI Codex (`.agents/skills/springboot-verification/SKILL.md`)\n- Cursor (`.cursor/rules/springboot-verification.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-392",
+    "name": "Swift Actor Persistence",
+    "slug": "swift-actor-persistence",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Swift Actor Persistence.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Swift Actor Persistence\n\nSpecialized engineering guidelines and best practices for **Swift Actor Persistence**.\n\n## Instructions for AI Agent:\n1. Apply the **Swift Actor Persistence** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/swift-actor-persistence`)\n- Antigravity & OpenAI Codex (`.agents/skills/swift-actor-persistence/SKILL.md`)\n- Cursor (`.cursor/rules/swift-actor-persistence.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-393",
+    "name": "Swift Concurrency 6 2",
+    "slug": "swift-concurrency-6-2",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Swift Concurrency 6 2.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Swift Concurrency 6 2\n\nSpecialized engineering guidelines and best practices for **Swift Concurrency 6 2**.\n\n## Instructions for AI Agent:\n1. Apply the **Swift Concurrency 6 2** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/swift-concurrency-6-2`)\n- Antigravity & OpenAI Codex (`.agents/skills/swift-concurrency-6-2/SKILL.md`)\n- Cursor (`.cursor/rules/swift-concurrency-6-2.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-394",
+    "name": "Swift Protocol Di Testing",
+    "slug": "swift-protocol-di-testing",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Swift Protocol Di Testing.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Swift Protocol Di Testing\n\nSpecialized engineering guidelines and best practices for **Swift Protocol Di Testing**.\n\n## Instructions for AI Agent:\n1. Apply the **Swift Protocol Di Testing** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/swift-protocol-di-testing`)\n- Antigravity & OpenAI Codex (`.agents/skills/swift-protocol-di-testing/SKILL.md`)\n- Cursor (`.cursor/rules/swift-protocol-di-testing.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-395",
+    "name": "Swiftui Patterns",
+    "slug": "swiftui-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Swiftui Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Swiftui Patterns\n\nSpecialized engineering guidelines and best practices for **Swiftui Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Swiftui Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/swiftui-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/swiftui-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/swiftui-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-396",
+    "name": "Taste",
+    "slug": "taste",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Taste.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Taste\n\nSpecialized engineering guidelines and best practices for **Taste**.\n\n## Instructions for AI Agent:\n1. Apply the **Taste** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/taste`)\n- Antigravity & OpenAI Codex (`.agents/skills/taste/SKILL.md`)\n- Cursor (`.cursor/rules/taste.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-397",
+    "name": "Tasteforge Video",
+    "slug": "tasteforge-video",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Tasteforge Video.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Tasteforge Video\n\nSpecialized engineering guidelines and best practices for **Tasteforge Video**.\n\n## Instructions for AI Agent:\n1. Apply the **Tasteforge Video** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/tasteforge-video`)\n- Antigravity & OpenAI Codex (`.agents/skills/tasteforge-video/SKILL.md`)\n- Cursor (`.cursor/rules/tasteforge-video.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-398",
+    "name": "Team Agent Orchestration",
+    "slug": "team-agent-orchestration",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Team Agent Orchestration.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Team Agent Orchestration\n\nSpecialized engineering guidelines and best practices for **Team Agent Orchestration**.\n\n## Instructions for AI Agent:\n1. Apply the **Team Agent Orchestration** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/team-agent-orchestration`)\n- Antigravity & OpenAI Codex (`.agents/skills/team-agent-orchestration/SKILL.md`)\n- Cursor (`.cursor/rules/team-agent-orchestration.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-399",
+    "name": "Team Builder",
+    "slug": "team-builder",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Team Builder.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Team Builder\n\nSpecialized engineering guidelines and best practices for **Team Builder**.\n\n## Instructions for AI Agent:\n1. Apply the **Team Builder** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/team-builder`)\n- Antigravity & OpenAI Codex (`.agents/skills/team-builder/SKILL.md`)\n- Cursor (`.cursor/rules/team-builder.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-400",
+    "name": "Terminal Opener",
+    "slug": "terminal-opener",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Terminal Opener.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Terminal Opener\n\nSpecialized engineering guidelines and best practices for **Terminal Opener**.\n\n## Instructions for AI Agent:\n1. Apply the **Terminal Opener** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/terminal-opener`)\n- Antigravity & OpenAI Codex (`.agents/skills/terminal-opener/SKILL.md`)\n- Cursor (`.cursor/rules/terminal-opener.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-401",
+    "name": "Terminal Ops",
+    "slug": "terminal-ops",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Terminal Ops.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Terminal Ops\n\nSpecialized engineering guidelines and best practices for **Terminal Ops**.\n\n## Instructions for AI Agent:\n1. Apply the **Terminal Ops** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/terminal-ops`)\n- Antigravity & OpenAI Codex (`.agents/skills/terminal-ops/SKILL.md`)\n- Cursor (`.cursor/rules/terminal-ops.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-402",
+    "name": "Tinystruct Patterns",
+    "slug": "tinystruct-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Tinystruct Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Tinystruct Patterns\n\nSpecialized engineering guidelines and best practices for **Tinystruct Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Tinystruct Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/tinystruct-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/tinystruct-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/tinystruct-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-403",
+    "name": "Token Budget Advisor",
+    "slug": "token-budget-advisor",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Token Budget Advisor.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Token Budget Advisor\n\nSpecialized engineering guidelines and best practices for **Token Budget Advisor**.\n\n## Instructions for AI Agent:\n1. Apply the **Token Budget Advisor** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/token-budget-advisor`)\n- Antigravity & OpenAI Codex (`.agents/skills/token-budget-advisor/SKILL.md`)\n- Cursor (`.cursor/rules/token-budget-advisor.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-404",
+    "name": "Ui Demo",
+    "slug": "ui-demo",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Ui Demo.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Ui Demo\n\nSpecialized engineering guidelines and best practices for **Ui Demo**.\n\n## Instructions for AI Agent:\n1. Apply the **Ui Demo** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/ui-demo`)\n- Antigravity & OpenAI Codex (`.agents/skills/ui-demo/SKILL.md`)\n- Cursor (`.cursor/rules/ui-demo.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-405",
+    "name": "Ui To Vue",
+    "slug": "ui-to-vue",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Ui To Vue.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Ui To Vue\n\nSpecialized engineering guidelines and best practices for **Ui To Vue**.\n\n## Instructions for AI Agent:\n1. Apply the **Ui To Vue** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/ui-to-vue`)\n- Antigravity & OpenAI Codex (`.agents/skills/ui-to-vue/SKILL.md`)\n- Cursor (`.cursor/rules/ui-to-vue.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-406",
+    "name": "Uncloud",
+    "slug": "uncloud",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Uncloud.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Uncloud\n\nSpecialized engineering guidelines and best practices for **Uncloud**.\n\n## Instructions for AI Agent:\n1. Apply the **Uncloud** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/uncloud`)\n- Antigravity & OpenAI Codex (`.agents/skills/uncloud/SKILL.md`)\n- Cursor (`.cursor/rules/uncloud.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-407",
+    "name": "Unified Notifications Ops",
+    "slug": "unified-notifications-ops",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Unified Notifications Ops.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Unified Notifications Ops\n\nSpecialized engineering guidelines and best practices for **Unified Notifications Ops**.\n\n## Instructions for AI Agent:\n1. Apply the **Unified Notifications Ops** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/unified-notifications-ops`)\n- Antigravity & OpenAI Codex (`.agents/skills/unified-notifications-ops/SKILL.md`)\n- Cursor (`.cursor/rules/unified-notifications-ops.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-408",
+    "name": "Videodb",
+    "slug": "videodb",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Videodb.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Videodb\n\nSpecialized engineering guidelines and best practices for **Videodb**.\n\n## Instructions for AI Agent:\n1. Apply the **Videodb** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/videodb`)\n- Antigravity & OpenAI Codex (`.agents/skills/videodb/SKILL.md`)\n- Cursor (`.cursor/rules/videodb.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-409",
+    "name": "Visa Doc Translate",
+    "slug": "visa-doc-translate",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Visa Doc Translate.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Visa Doc Translate\n\nSpecialized engineering guidelines and best practices for **Visa Doc Translate**.\n\n## Instructions for AI Agent:\n1. Apply the **Visa Doc Translate** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/visa-doc-translate`)\n- Antigravity & OpenAI Codex (`.agents/skills/visa-doc-translate/SKILL.md`)\n- Cursor (`.cursor/rules/visa-doc-translate.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-410",
+    "name": "Vite Patterns",
+    "slug": "vite-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Vite Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Vite Patterns\n\nSpecialized engineering guidelines and best practices for **Vite Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Vite Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/vite-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/vite-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/vite-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-411",
+    "name": "Vue Patterns",
+    "slug": "vue-patterns",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Vue Patterns.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Vue Patterns\n\nSpecialized engineering guidelines and best practices for **Vue Patterns**.\n\n## Instructions for AI Agent:\n1. Apply the **Vue Patterns** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/vue-patterns`)\n- Antigravity & OpenAI Codex (`.agents/skills/vue-patterns/SKILL.md`)\n- Cursor (`.cursor/rules/vue-patterns.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-412",
+    "name": "Windows Desktop E2e",
+    "slug": "windows-desktop-e2e",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Windows Desktop E2e.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Windows Desktop E2e\n\nSpecialized engineering guidelines and best practices for **Windows Desktop E2e**.\n\n## Instructions for AI Agent:\n1. Apply the **Windows Desktop E2e** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/windows-desktop-e2e`)\n- Antigravity & OpenAI Codex (`.agents/skills/windows-desktop-e2e/SKILL.md`)\n- Cursor (`.cursor/rules/windows-desktop-e2e.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
+  },
+  {
+    "id": "skill-413",
+    "name": "Workspace Surface Audit",
+    "slug": "workspace-surface-audit",
+    "description": "Specialized engineering patterns, best practices, and automated workflow for Workspace Surface Audit.",
+    "frameworks": [
+      "Cross-Platform",
+      "Agentic",
+      "CLI",
+      "TypeScript"
+    ],
+    "content": "# Workspace Surface Audit\n\nSpecialized engineering guidelines and best practices for **Workspace Surface Audit**.\n\n## Instructions for AI Agent:\n1. Apply the **Workspace Surface Audit** pattern and conventions when working in this domain.\n2. Verify all modifications with relevant test suites and static analysis tools.\n3. Keep implementation clean, modular, and well-documented.\n\n## Supported Harnesses:\n- Claude Code (`/workspace-surface-audit`)\n- Antigravity & OpenAI Codex (`.agents/skills/workspace-surface-audit/SKILL.md`)\n- Cursor (`.cursor/rules/workspace-surface-audit.mdc`)",
+    "createdAt": "2026-08-21T20:50:00.000Z"
   }
 ];
 

@@ -11,12 +11,13 @@ interface ExportSkillProps {
   description?: string
 }
 
-type Editor = "claude-cmd" | "agent-skill" | "cursor-mdc" | "claude" | "windsurf" | "cline" | "copilot" | "cursor-legacy"
+type Editor = "cursor-mdc" | "claude-cmd" | "continue" | "copilot-prompt" | "agent-skill" | "windsurf" | "cline" | "claude" | "cursor-legacy"
 
 interface EditorOption {
   id: Editor
   name: string
   filename: string
+  triggerHint: string
   displayPath: (slug: string) => string
   formatContent: (slug: string, content: string, description?: string) => string
 }
@@ -27,9 +28,26 @@ function toCommandName(slug: string): string {
 
 const EDITORS: EditorOption[] = [
   {
+    id: "cursor-mdc",
+    name: "Cursor IDE (@rule)",
+    filename: ".mdc",
+    triggerHint: "Type @rule-name in Cursor Chat",
+    displayPath: (slug) => `.cursor/rules/${toCommandName(slug)}.mdc`,
+    formatContent: (slug, content, description) => `---
+description: ${description || "AI Agent Rule & Guideline"}
+globs: *
+alwaysApply: true
+---
+
+# ${slug}
+
+${content}`
+  },
+  {
     id: "claude-cmd",
-    name: "Claude Slash Command (/...)",
+    name: "Claude Code (/command)",
     filename: ".md",
+    triggerHint: "Type /command-name in Claude CLI",
     displayPath: (slug) => `.claude/commands/${toCommandName(slug)}.md`,
     formatContent: (slug, content, description) => `# /${toCommandName(slug)}
 
@@ -45,9 +63,39 @@ When this command is triggered:
 ${content}`
   },
   {
+    id: "continue",
+    name: "Continue.dev (/command)",
+    filename: ".prompt",
+    triggerHint: "Type /command-name in Continue sidebar",
+    displayPath: (slug) => `.continue/prompts/${toCommandName(slug)}.prompt`,
+    formatContent: (slug, content, description) => `temperature: 0.2
+description: ${description || "AI Agent Skill"}
+---
+# ${slug} Directive
+{{{ input }}}
+
+---
+Guidelines:
+${content}`
+  },
+  {
+    id: "copilot-prompt",
+    name: "GitHub Copilot (/prompt)",
+    filename: ".prompt.md",
+    triggerHint: "Type /prompt-name in Copilot Chat",
+    displayPath: (slug) => `.github/prompts/${toCommandName(slug)}.prompt.md`,
+    formatContent: (slug, content, description) => `---
+name: ${toCommandName(slug)}
+description: ${description || "AI Agent Skill"}
+---
+
+${content}`
+  },
+  {
     id: "agent-skill",
-    name: "Universal Agent (Codex/Antigravity)",
+    name: "Antigravity / Codex (SKILL.md)",
     filename: "SKILL.md",
+    triggerHint: "Auto-loaded by Agentic Engine",
     displayPath: (slug) => `.agents/skills/${slug}/SKILL.md`,
     formatContent: (slug, content, description) => `---
 name: ${slug}
@@ -57,50 +105,34 @@ description: ${description || "AI Agent Skill"}
 ${content}`
   },
   {
-    id: "cursor-mdc",
-    name: "Cursor (.mdc)",
-    filename: ".mdc",
-    displayPath: (slug) => `.cursor/rules/${slug}.mdc`,
-    formatContent: (slug, content, description) => `---
-description: ${description || "AI Agent Rule & Guideline"}
-globs: *
-alwaysApply: true
----
-
-${content}`
-  },
-  {
-    id: "claude",
-    name: "Claude Code (CLAUDE.md)",
-    filename: "CLAUDE.md",
-    displayPath: () => "CLAUDE.md",
-    formatContent: (slug, content) => `\n## Project Skill: ${slug}\n${content}\n`
-  },
-  {
     id: "windsurf",
-    name: "Windsurf",
-    filename: ".windsurfrules",
-    displayPath: () => ".windsurfrules",
+    name: "Windsurf Cascade",
+    filename: ".md",
+    triggerHint: "Auto-read by Cascade Agent",
+    displayPath: (slug) => `.windsurf/workflows/${toCommandName(slug)}.md`,
     formatContent: (_, content) => content
   },
   {
     id: "cline",
     name: "Cline / Roo Code",
     filename: ".clinerules",
+    triggerHint: "Directives in .clinerules",
     displayPath: () => ".clinerules",
     formatContent: (_, content) => content
   },
   {
-    id: "copilot",
-    name: "GitHub Copilot",
-    filename: "copilot-instructions.md",
-    displayPath: () => ".github/copilot-instructions.md",
-    formatContent: (_, content) => content
+    id: "claude",
+    name: "CLAUDE.md (Root)",
+    filename: "CLAUDE.md",
+    triggerHint: "Read by Claude Code on init",
+    displayPath: () => "CLAUDE.md",
+    formatContent: (slug, content) => `\n## Project Skill: ${slug}\n${content}\n`
   },
   {
     id: "cursor-legacy",
-    name: "Cursor Legacy (.cursorrules)",
+    name: "Legacy .cursorrules",
     filename: ".cursorrules",
+    triggerHint: "Root level legacy rule",
     displayPath: () => ".cursorrules",
     formatContent: (_, content) => content
   }
@@ -162,10 +194,17 @@ export function ExportSkill({ slug, content, description }: ExportSkillProps) {
 
       {/* Action Bar */}
       <div className="flex items-center justify-between px-6 py-3 bg-[var(--surface)] border-b border-[var(--border)]/50 flex-wrap gap-2">
-        <div className="flex items-center text-xs font-mono text-[var(--muted)]">
-          {t("targetFile")} <span className="ml-2 px-2.5 py-1 bg-[var(--background)] rounded text-[var(--primary)] font-semibold border border-[var(--border)]">
-            {displayPath}
-          </span>
+        <div className="flex items-center gap-3 text-xs font-mono text-[var(--muted)] flex-wrap">
+          <div>
+            {t("targetFile")} <span className="ml-1.5 px-2 py-0.5 bg-[var(--background)] rounded text-[var(--foreground)] font-semibold border border-[var(--border)]">
+              {displayPath}
+            </span>
+          </div>
+          {activeEditor.triggerHint && (
+            <div className="px-2 py-0.5 rounded bg-[var(--surface-hover)] border border-[var(--border)] text-[var(--primary)] font-medium">
+              💡 {activeEditor.triggerHint}
+            </div>
+          )}
         </div>
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={handleCopy} className="h-8">
