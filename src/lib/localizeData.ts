@@ -1,4 +1,4 @@
-﻿import { Category, Tool, Collection } from "@/types"
+import { Category, Tool, Collection } from "@/types"
 
 export const CATEGORY_TRANSLATIONS_ID: Record<string, { name?: string; description: string }> = {
   "ai-ide": {
@@ -477,8 +477,22 @@ export const TOOL_TRANSLATIONS_ID: Record<string, {
     problem: "Banyak founder dan developer menghabiskan waktu berbulan-bulan membuat produk tanpa memvalidasi apakah ada pasar dan calon pembeli nyata.",
     solution: "Memindai sinyal pasar publik dan masalah konsumen untuk menghasilkan peluang micro-SaaS terverifikasi, batasan MVP, dan jalur monetisasi.",
     keyFeatures: ["Penemuan ide startup berbasis bukti permintaan", "Ekstraksi masalah & sinyal kebutuhan pembeli", "Rekomendasi batasan ruang lingkup MVP", "Analisis jalur monetisasi & pendapatan"]
+  },
+  "ecc": {
+    description: "Sistem optimasi performa harness agen yang menyediakan 280+ skill AI lintas platform, insting, persistensi memori sesi, runtime hooks, dan pemindaian keamanan AgentShield untuk Claude Code, Codex, Antigravity, Cursor, dan lainnya.",
+    problem: "Asisten koding AI sering kehilangan konteks sesi, kurang memiliki disiplin rekayasa perangkat lunak spesifik domain (TDD, refactoring aman, audit keamanan ketat), dan terkunci pada satu platform.",
+    solution: "Menyediakan ekosistem terpadu berisi 280+ skill modular, persistensi memori continuous learning, manajemen context budget proaktif, dan audit keamanan AgentShield yang bekerja di seluruh lingkungan koding AI.",
+    challenge: "Menyelaraskan definisi tools, algoritma pemadatan konteks, dan model perizinan di berbagai CLI agent AI yang berbeda.",
+    targetUser: "Software engineer, arsitek AI agent, dan tim teknis yang membangun alur kerja koding otonom lintas berbagai harness AI.",
+    keyFeatures: [
+      "280+ AI skills teruji untuk arsitektur, testing, keamanan, dan DevOps",
+      "AgentShield: pemindaian proaktif terhadap prompt injection, kebocoran secret, dan hook berbahaya",
+      "Sistem memori terpadu & continuous learning yang mengumpulkan insting codebase antar sesi",
+      "Pengoptimal context budget untuk mencegah degradasi token pada sesi panjang",
+      "Adapter lintas platform untuk Claude Code, Codex, Antigravity, Cursor, dan Zed"
+    ],
+    impact: "Membekali AI agent dengan insting rekayasa standar dan batasan keamanan yang kuat, meningkatkan tingkat keberhasilan pengerjaan tugas."
   }
-
 }
 
 export const PRICING_TRANSLATIONS_ID: Record<string, string> = {

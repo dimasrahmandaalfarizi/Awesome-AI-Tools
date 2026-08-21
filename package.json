@@ -32,6 +32,7 @@
     "cmdk": "^1.1.1",
     "commander": "^15.0.0",
     "framer-motion": "^12.43.0",
+    "jszip": "^3.10.1",
     "lucide-react": "^1.27.0",
     "next": "16.2.12",
     "next-intl": "^4.13.4",
@@ -44,6 +45,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/jszip": "^3.4.0",
     "@types/node": "^20",
     "@types/prompts": "^2.4.9",
     "@types/react": "^19",
