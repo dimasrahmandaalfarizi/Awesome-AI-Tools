@@ -11,7 +11,7 @@ interface ExportSkillProps {
   description?: string
 }
 
-type Editor = "cursor-mdc" | "claude" | "windsurf" | "cline" | "copilot" | "cursor-legacy"
+type Editor = "claude-cmd" | "agent-skill" | "cursor-mdc" | "claude" | "windsurf" | "cline" | "copilot" | "cursor-legacy"
 
 interface EditorOption {
   id: Editor
@@ -21,7 +21,41 @@ interface EditorOption {
   formatContent: (slug: string, content: string, description?: string) => string
 }
 
+function toCommandName(slug: string): string {
+  return slug.replace(/^skill-/, "").replace(/[^a-zA-Z0-9_-]/g, "-").toLowerCase()
+}
+
 const EDITORS: EditorOption[] = [
+  {
+    id: "claude-cmd",
+    name: "Claude Slash Command (/...)",
+    filename: ".md",
+    displayPath: (slug) => `.claude/commands/${toCommandName(slug)}.md`,
+    formatContent: (slug, content, description) => `# /${toCommandName(slug)}
+
+${description || "AI Agent Workflow Rule"}
+
+## Instructions for AI Agent:
+When this command is triggered:
+1. Follow the guidelines and patterns below strictly.
+2. Maintain high verification standards without hallucinating APIs.
+
+---
+
+${content}`
+  },
+  {
+    id: "agent-skill",
+    name: "Universal Agent (Codex/Antigravity)",
+    filename: "SKILL.md",
+    displayPath: (slug) => `.agents/skills/${slug}/SKILL.md`,
+    formatContent: (slug, content, description) => `---
+name: ${slug}
+description: ${description || "AI Agent Skill"}
+---
+
+${content}`
+  },
   {
     id: "cursor-mdc",
     name: "Cursor (.mdc)",
@@ -37,7 +71,7 @@ ${content}`
   },
   {
     id: "claude",
-    name: "Claude Code",
+    name: "Claude Code (CLAUDE.md)",
     filename: "CLAUDE.md",
     displayPath: () => "CLAUDE.md",
     formatContent: (slug, content) => `\n## Project Skill: ${slug}\n${content}\n`
@@ -65,7 +99,7 @@ ${content}`
   },
   {
     id: "cursor-legacy",
-    name: "Cursor Legacy",
+    name: "Cursor Legacy (.cursorrules)",
     filename: ".cursorrules",
     displayPath: () => ".cursorrules",
     formatContent: (_, content) => content

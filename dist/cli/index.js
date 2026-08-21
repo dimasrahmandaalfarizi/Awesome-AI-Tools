@@ -1168,23 +1168,1789 @@ var AI_SKILLS = [
     ],
     "content": "# Multi-Agent Swarm Orchestration Protocol\n1. Implement hierarchical supervisor agents to route tasks to domain specialists.\n2. Use majority voting and debate consensus algorithms for high-stakes decisions.\n3. Isolate subagent context windows to prevent token budget depletion.\n4. Provide deterministic checkpointing and rollback capabilities on agent failure.",
     "createdAt": "2026-08-19T07:57:39.635Z"
+  },
+  {
+    "id": "skill-86",
+    "name": "TDD Workflow",
+    "slug": "tdd-workflow",
+    "description": "Complete test-driven development workflow: plan \u2192 RED (failing test) \u2192 GREEN (minimal impl) \u2192 REFACTOR \u2192 verify.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# TDD Workflow\n\nComplete test-driven development workflow: plan \u2192 RED (failing test) \u2192 GREEN (minimal impl) \u2192 REFACTOR \u2192 verify.\n\n## Use Case\nBuilding any feature where correctness is critical. Start with a failing test, implement the minimum to pass, then clean up.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **TDD Workflow** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-87",
+    "name": "Context Budget",
+    "slug": "context-budget",
+    "description": "Monitor and manage LLM context window usage to avoid degradation. Track token consumption, trigger compaction at 70%, and save session state before limits are hit.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Context Budget\n\nMonitor and manage LLM context window usage to avoid degradation. Track token consumption, trigger compaction at 70%, and save session state before limits are hit.\n\n## Use Case\nLong coding sessions, large codebases, or complex multi-step tasks where context window pressure builds up.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Context Budget** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-88",
+    "name": "Continuous Learning",
+    "slug": "continuous-learning",
+    "description": "Automatically capture and persist learnings from each coding session. Extract patterns, mistakes, and insights into a reusable memory file.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Memory"
+    ],
+    "content": "# Continuous Learning\n\nAutomatically capture and persist learnings from each coding session. Extract patterns, mistakes, and insights into a reusable memory file.\n\n## Use Case\nLong-running projects where agent needs to accumulate knowledge about codebase conventions and gotchas.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Continuous Learning** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-89",
+    "name": "Search First",
+    "slug": "search-first",
+    "description": "Always search and read existing code before writing new code. Prevents duplication and respects existing architecture.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Search First\n\nAlways search and read existing code before writing new code. Prevents duplication and respects existing architecture.\n\n## Use Case\nAny coding task in an existing codebase. Prevents creating duplicate functions/classes.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Search First** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-90",
+    "name": "Code Review Fresh Context",
+    "slug": "code-review-fresh-context",
+    "description": "Review code from a completely fresh perspective with zero author assumptions. Catches logic bugs, security gaps, and maintainability issues.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Code Review"
+    ],
+    "content": "# Code Review Fresh Context\n\nReview code from a completely fresh perspective with zero author assumptions. Catches logic bugs, security gaps, and maintainability issues.\n\n## Use Case\nAfter implementing a feature. Run an unbiased secondary agent pass without historical baggage.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Code Review Fresh Context** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-91",
+    "name": "Build Fix",
+    "slug": "build-fix",
+    "description": "Systematically diagnose and repair broken builds, CI failures, and compilation errors by analyzing full error logs before editing.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Build Fix\n\nSystematically diagnose and repair broken builds, CI failures, and compilation errors by analyzing full error logs before editing.\n\n## Use Case\nCI failures, compiler errors, or broken dependencies preventing execution.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Build Fix** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-92",
+    "name": "Refactor Clean",
+    "slug": "refactor-clean",
+    "description": "Clean up technical debt, dead code, and bloated functions without altering runtime behavior. Verified by automated tests.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Refactor Clean\n\nClean up technical debt, dead code, and bloated functions without altering runtime behavior. Verified by automated tests.\n\n## Use Case\nPost-feature cleanup, eliminating legacy hacks, improving naming and modularity.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Refactor Clean** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-93",
+    "name": "Save Session",
+    "slug": "save-session",
+    "description": "Snapshot current work state before ending a session: completed items, pending tasks, design choices, and context summary.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Memory"
+    ],
+    "content": "# Save Session\n\nSnapshot current work state before ending a session: completed items, pending tasks, design choices, and context summary.\n\n## Use Case\nEnding an agent session to ensure seamless resumption in the next session.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Save Session** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-94",
+    "name": "Resume Session",
+    "slug": "resume-session",
+    "description": "Load and reconstruct context from a saved session state without re-reading the entire codebase.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Memory"
+    ],
+    "content": "# Resume Session\n\nLoad and reconstruct context from a saved session state without re-reading the entire codebase.\n\n## Use Case\nStarting a new agent turn on an existing project to immediately continue pending work.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Resume Session** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-95",
+    "name": "Learn Eval",
+    "slug": "learn-eval",
+    "description": "Evaluate lessons learned in the current session: what succeeded, what failed, and record anti-patterns to avoid.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Learning"
+    ],
+    "content": "# Learn Eval\n\nEvaluate lessons learned in the current session: what succeeded, what failed, and record anti-patterns to avoid.\n\n## Use Case\nContinuous self-improvement loop for autonomous coding agents.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Learn Eval** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-96",
+    "name": "Security Scan",
+    "slug": "security-scan",
+    "description": "AgentShield security audit: scan for prompt injections, secret leaks, vulnerable dependencies, and insecure MCP configs.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Cursor"
+    ],
+    "content": "# Security Scan\n\nAgentShield security audit: scan for prompt injections, secret leaks, vulnerable dependencies, and insecure MCP configs.\n\n## Use Case\nPre-deployment checks and PR reviews to prevent malicious injections or leaked keys.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n- Cursor\n\n## Core Engineering Rules\n1. Apply the **Security Scan** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-97",
+    "name": "Plan First",
+    "slug": "plan-first",
+    "description": "Formulate a concrete, atomic plan before making code modifications. Align on architecture and edge cases upfront.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Plan First\n\nFormulate a concrete, atomic plan before making code modifications. Align on architecture and edge cases upfront.\n\n## Use Case\nAny non-trivial task requiring multi-file edits or database migrations.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Plan First** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-98",
+    "name": "Verification Loop",
+    "slug": "verification-loop",
+    "description": "Rigorous post-implementation verification: run test suites, check edge cases, inspect UI states, and validate acceptance criteria.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Verification Loop\n\nRigorous post-implementation verification: run test suites, check edge cases, inspect UI states, and validate acceptance criteria.\n\n## Use Case\nThe closing phase of plan-implement-verify loop ensuring 100% working delivery.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Verification Loop** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-99",
+    "name": "Unified Memory",
+    "slug": "unified-memory",
+    "description": "Single persistent memory store for project facts, architectural decisions, and agent guidelines shared across tools.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Memory"
+    ],
+    "content": "# Unified Memory\n\nSingle persistent memory store for project facts, architectural decisions, and agent guidelines shared across tools.\n\n## Use Case\nMulti-agent coordination and long-term project development.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Unified Memory** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-100",
+    "name": "Agent Introspection Debugging",
+    "slug": "agent-introspection-debugging",
+    "description": "Debug agent failure modes by evaluating its own reasoning chain, tool inputs, and decision deviations.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Debugging"
+    ],
+    "content": "# Agent Introspection Debugging\n\nDebug agent failure modes by evaluating its own reasoning chain, tool inputs, and decision deviations.\n\n## Use Case\nWhen an agent gets stuck in infinite loops or generates suboptimal solutions.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Agent Introspection Debugging** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-101",
+    "name": "Deep Research",
+    "slug": "deep-research",
+    "description": "Multi-source research workflow: fetch documentation, synthesize technical tradeoffs, and verify contradictory claims.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Deep Research\n\nMulti-source research workflow: fetch documentation, synthesize technical tradeoffs, and verify contradictory claims.\n\n## Use Case\nAdopting unfamiliar frameworks, debugging obscure SDK quirks, or designing system architecture.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Deep Research** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-102",
+    "name": "Documentation Lookup",
+    "slug": "documentation-lookup",
+    "description": "Fetch live official API specifications and library guides before coding to avoid outdated hallucinations.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Documentation Lookup\n\nFetch live official API specifications and library guides before coding to avoid outdated hallucinations.\n\n## Use Case\nWorking with rapidly changing libraries (Next.js 15, Tailwind v4, Bun, LangChain).\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Documentation Lookup** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-103",
+    "name": "Eval Harness",
+    "slug": "eval-harness",
+    "description": "Automated benchmark evaluation harness: run prompt test suites, compute assertion accuracy, and score model consistency.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Evaluation"
+    ],
+    "content": "# Eval Harness\n\nAutomated benchmark evaluation harness: run prompt test suites, compute assertion accuracy, and score model consistency.\n\n## Use Case\nBuilding and testing enterprise LLM features with quantitative quality metrics.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Eval Harness** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-104",
+    "name": "Benchmark Methodology",
+    "slug": "benchmark-methodology",
+    "description": "Statistically rigorous benchmarking: warmup cycles, memory heap inspection, latency percentiles (p50/p95/p99).",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Benchmark Methodology\n\nStatistically rigorous benchmarking: warmup cycles, memory heap inspection, latency percentiles (p50/p95/p99).\n\n## Use Case\nPerformance optimization comparisons and latency bottleneck diagnosis.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Benchmark Methodology** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-105",
+    "name": "MCP Server Patterns",
+    "slug": "mcp-server-patterns",
+    "description": "Production MCP (Model Context Protocol) server engineering: tool definition, Zod schema validation, stdio/SSE transports, and error recovery.",
+    "frameworks": [
+      "Claude Code",
+      "Antigravity",
+      "Codex",
+      "MCP"
+    ],
+    "content": "# MCP Server Patterns\n\nProduction MCP (Model Context Protocol) server engineering: tool definition, Zod schema validation, stdio/SSE transports, and error recovery.\n\n## Use Case\nBuilding custom MCP tools for Claude Code, Antigravity, and OpenAI Codex.\n\n## Supported Platforms\n- Claude Code\n- Antigravity\n- Codex\n\n## Core Engineering Rules\n1. Apply the **MCP Server Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-106",
+    "name": "API Design",
+    "slug": "api-design",
+    "description": "RESTful & RPC API design standards: predictable URI naming, idempotency keys, RFC 7807 error responses, and semantic versioning.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# API Design\n\nRESTful & RPC API design standards: predictable URI naming, idempotency keys, RFC 7807 error responses, and semantic versioning.\n\n## Use Case\nDesigning backend contracts that scale cleanly across frontend, mobile, and third-party consumers.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **API Design** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-107",
+    "name": "Backend Patterns",
+    "slug": "backend-patterns",
+    "description": "Clean backend architecture: layered domain services, repository pattern, database transaction boundaries, and structured logging.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Backend Patterns\n\nClean backend architecture: layered domain services, repository pattern, database transaction boundaries, and structured logging.\n\n## Use Case\nEnterprise server development in Node.js, Go, Python, Rust, and Java.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Backend Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-108",
+    "name": "Frontend Patterns",
+    "slug": "frontend-patterns",
+    "description": "Component composition, server-side data fetching, atomic UI design, accessibility, and state management in React/Next.js.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Frontend Patterns\n\nComponent composition, server-side data fetching, atomic UI design, accessibility, and state management in React/Next.js.\n\n## Use Case\nModern web frontend application development.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Frontend Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-109",
+    "name": "Coding Standards",
+    "slug": "coding-standards",
+    "description": "Universal clean code principles: single responsibility, small functions, strict type discipline, and self-documenting naming.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Coding Standards\n\nUniversal clean code principles: single responsibility, small functions, strict type discipline, and self-documenting naming.\n\n## Use Case\nEstablishing high code quality baselines for AI coding assistants across any language.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Coding Standards** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-110",
+    "name": "E2E Testing",
+    "slug": "e2e-testing",
+    "description": "End-to-end browser automation with Playwright and Cypress: test isolation, realistic authentication mocks, and visual diff checks.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# E2E Testing\n\nEnd-to-end browser automation with Playwright and Cypress: test isolation, realistic authentication mocks, and visual diff checks.\n\n## Use Case\nCritical user checkout, onboarding, and auth flow test automation.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **E2E Testing** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-111",
+    "name": "MLE Workflow",
+    "slug": "mle-workflow",
+    "description": "Machine learning engineering pipeline: data ingestion, feature validation, model tracking (MLflow/W&B), and containerized deployment.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# MLE Workflow\n\nMachine learning engineering pipeline: data ingestion, feature validation, model tracking (MLflow/W&B), and containerized deployment.\n\n## Use Case\nProductionizing ML models with reproducible training and automated evaluation.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **MLE Workflow** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-112",
+    "name": "Agent Sort",
+    "slug": "agent-sort",
+    "description": "Task routing taxonomy for multi-agent systems: categorizes tasks by complexity and assigns to specialized agents.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Multi-Agent"
+    ],
+    "content": "# Agent Sort\n\nTask routing taxonomy for multi-agent systems: categorizes tasks by complexity and assigns to specialized agents.\n\n## Use Case\nDispatching tasks dynamically in multi-agent orchestration systems.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Agent Sort** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-113",
+    "name": "Dmux Workflows",
+    "slug": "dmux-workflows",
+    "description": "Parallel agent execution using terminal multiplexer sessions: run concurrent refactoring, testing, and documentation jobs.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Parallel"
+    ],
+    "content": "# Dmux Workflows\n\nParallel agent execution using terminal multiplexer sessions: run concurrent refactoring, testing, and documentation jobs.\n\n## Use Case\nScaling productivity by executing independent tasks across multiple concurrent agent processes.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Dmux Workflows** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-114",
+    "name": "Strategic Compact",
+    "slug": "strategic-compact",
+    "description": "Context summarization algorithm that discards ephemeral tool outputs while preserving high-level architectural goals.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Context"
+    ],
+    "content": "# Strategic Compact\n\nContext summarization algorithm that discards ephemeral tool outputs while preserving high-level architectural goals.\n\n## Use Case\nPreventing context bloat and hallucination during massive refactoring sessions.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Strategic Compact** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-115",
+    "name": "Plan Canvas",
+    "slug": "plan-canvas",
+    "description": "Visual system modeling canvas: maps bounded contexts, API endpoints, entity relationships, and execution phases before coding.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Plan Canvas\n\nVisual system modeling canvas: maps bounded contexts, API endpoints, entity relationships, and execution phases before coding.\n\n## Use Case\nComplex system design and multi-service migration architecture.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Plan Canvas** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-116",
+    "name": "Agent Architecture Audit",
+    "slug": "agent-architecture-audit",
+    "description": "Comprehensive audit of agent prompt configs, tool permissions, memory adapters, and safety boundaries.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Agent"
+    ],
+    "content": "# Agent Architecture Audit\n\nComprehensive audit of agent prompt configs, tool permissions, memory adapters, and safety boundaries.\n\n## Use Case\nOptimizing agent harnesses and fixing reliability bottlenecks.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Agent Architecture Audit** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-117",
+    "name": "Agent Eval",
+    "slug": "agent-eval",
+    "description": "Automated benchmark evaluation measuring agent task completion, tool call accuracy, and context efficiency.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Agent"
+    ],
+    "content": "# Agent Eval\n\nAutomated benchmark evaluation measuring agent task completion, tool call accuracy, and context efficiency.\n\n## Use Case\nTracking agent quality regressions during system updates.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Agent Eval** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-118",
+    "name": "Agent Harness Construction",
+    "slug": "agent-harness-construction",
+    "description": "Build custom agent harnesses with CLI hooks, skill discovery, persistent scratchpads, and MCP client bridges.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Cursor"
+    ],
+    "content": "# Agent Harness Construction\n\nBuild custom agent harnesses with CLI hooks, skill discovery, persistent scratchpads, and MCP client bridges.\n\n## Use Case\nCreating tailored developer agent environments for proprietary internal codebases.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n- Cursor\n\n## Core Engineering Rules\n1. Apply the **Agent Harness Construction** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-119",
+    "name": "Agent Payment X402",
+    "slug": "agent-payment-x402",
+    "description": "Autonomous agent micro-transactions using the X402 HTTP 402 payment standard for API metering and compute credits.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Payments"
+    ],
+    "content": "# Agent Payment X402\n\nAutonomous agent micro-transactions using the X402 HTTP 402 payment standard for API metering and compute credits.\n\n## Use Case\nAutonomous agents paying for third-party compute, APIs, and data streams on demand.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Agent Payment X402** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-120",
+    "name": "Agent Self Evaluation",
+    "slug": "agent-self-evaluation",
+    "description": "Pre-delivery self-audit: checks output against acceptance criteria, verifies types, and tests for regressions.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Self-Review"
+    ],
+    "content": "# Agent Self Evaluation\n\nPre-delivery self-audit: checks output against acceptance criteria, verifies types, and tests for regressions.\n\n## Use Case\nHigh-stakes autonomous task execution where human review is minimal.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Agent Self Evaluation** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-121",
+    "name": "Agentic Engineering",
+    "slug": "agentic-engineering",
+    "description": "Software engineering designed for agent collaboration: deterministic tools, structured outputs, and observable side-effects.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Agentic Engineering\n\nSoftware engineering designed for agent collaboration: deterministic tools, structured outputs, and observable side-effects.\n\n## Use Case\nBuilding codebases that are easy for both humans and AI agents to navigate and modify.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Agentic Engineering** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-122",
+    "name": "Agentic OS",
+    "slug": "agentic-os",
+    "description": "Process scheduling, inter-agent messaging, memory locks, and sandboxed compute environments for multi-agent swarms.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "OS"
+    ],
+    "content": "# Agentic OS\n\nProcess scheduling, inter-agent messaging, memory locks, and sandboxed compute environments for multi-agent swarms.\n\n## Use Case\nManaging swarms of agents operating concurrently on shared infrastructure.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Agentic OS** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-123",
+    "name": "AI First Engineering",
+    "slug": "ai-first-engineering",
+    "description": "Architecting software from day one around AI agents, generative APIs, vector indexes, and semantic search.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# AI First Engineering\n\nArchitecting software from day one around AI agents, generative APIs, vector indexes, and semantic search.\n\n## Use Case\nCreating modern AI-native SaaS products and development platforms.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **AI First Engineering** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-124",
+    "name": "AI Regression Testing",
+    "slug": "ai-regression-testing",
+    "description": "Regression test suites detecting behavioral shifts and output degradations across foundation model upgrades.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Testing"
+    ],
+    "content": "# AI Regression Testing\n\nRegression test suites detecting behavioral shifts and output degradations across foundation model upgrades.\n\n## Use Case\nProtecting production LLM pipelines when updating models from 4o to 5 or Sonnet 3.5 to 3.7.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **AI Regression Testing** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-125",
+    "name": "Android Clean Architecture",
+    "slug": "android-clean-architecture",
+    "description": "Android Clean Architecture with Jetpack Compose, Kotlin Coroutines/Flow, Hilt dependency injection, and Room DB.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Android Clean Architecture\n\nAndroid Clean Architecture with Jetpack Compose, Kotlin Coroutines/Flow, Hilt dependency injection, and Room DB.\n\n## Use Case\nScalable, testable, enterprise-ready Android application development.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Android Clean Architecture** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-126",
+    "name": "Angular Developer",
+    "slug": "angular-developer",
+    "description": "Angular 18+ development with Signals, Standalone Components, deferrable views, and NgRx state management.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Angular Developer\n\nAngular 18+ development with Signals, Standalone Components, deferrable views, and NgRx state management.\n\n## Use Case\nModern enterprise single-page applications with reactive change detection.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Angular Developer** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-127",
+    "name": "API Connector Builder",
+    "slug": "api-connector-builder",
+    "description": "Type-safe API client generation from OpenAPI/Swagger specs with exponential backoff retries and token refresh.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# API Connector Builder\n\nType-safe API client generation from OpenAPI/Swagger specs with exponential backoff retries and token refresh.\n\n## Use Case\nIntegrating third-party SaaS APIs into backend microservices.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **API Connector Builder** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-128",
+    "name": "Architecture Decision Records",
+    "slug": "architecture-decision-records",
+    "description": "ADR methodology: documenting technical context, decision drivers, considered options, and trade-offs.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Architecture Decision Records\n\nADR methodology: documenting technical context, decision drivers, considered options, and trade-offs.\n\n## Use Case\nPreserving institutional knowledge and design rationale for long-term codebase evolution.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Architecture Decision Records** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-129",
+    "name": "Article Writing",
+    "slug": "article-writing",
+    "description": "Technical writing framework: clear introductions, pedagogical code snippets, diagram references, and SEO optimization.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Article Writing\n\nTechnical writing framework: clear introductions, pedagogical code snippets, diagram references, and SEO optimization.\n\n## Use Case\nPublishing developer engineering blogs, changelogs, and tutorials.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Article Writing** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-130",
+    "name": "Automation Audit Ops",
+    "slug": "automation-audit-ops",
+    "description": "Audit and optimize CI/CD pipelines, cron jobs, and webhook automation for execution time, cost, and reliability.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Automation"
+    ],
+    "content": "# Automation Audit Ops\n\nAudit and optimize CI/CD pipelines, cron jobs, and webhook automation for execution time, cost, and reliability.\n\n## Use Case\nDevOps infrastructure review and pipeline latency reduction.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Automation Audit Ops** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-131",
+    "name": "Autonomous Agent Harness",
+    "slug": "autonomous-agent-harness",
+    "description": "End-to-end harness for non-interactive autonomous task execution with safety circuit breakers and rollbacks.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Autonomous"
+    ],
+    "content": "# Autonomous Agent Harness\n\nEnd-to-end harness for non-interactive autonomous task execution with safety circuit breakers and rollbacks.\n\n## Use Case\nOvernight batch issue fixing and automated dependency upgrades.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Autonomous Agent Harness** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-132",
+    "name": "Autonomous Loops",
+    "slug": "autonomous-loops",
+    "description": "Self-correcting execution loops: plan \u2192 execute \u2192 inspect error \u2192 adjust approach \u2192 verify outcome.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Autonomous"
+    ],
+    "content": "# Autonomous Loops\n\nSelf-correcting execution loops: plan \u2192 execute \u2192 inspect error \u2192 adjust approach \u2192 verify outcome.\n\n## Use Case\nAutonomous bug hunting and automated test repair.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Autonomous Loops** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-133",
+    "name": "Benchmark Optimization Loop",
+    "slug": "benchmark-optimization-loop",
+    "description": "Continuous profiling loop that benchmarks code, flags hot functions, applies refactors, and measures gains.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Benchmark Optimization Loop\n\nContinuous profiling loop that benchmarks code, flags hot functions, applies refactors, and measures gains.\n\n## Use Case\nData-driven performance tuning for high-load systems.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Benchmark Optimization Loop** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-134",
+    "name": "Blueprint",
+    "slug": "blueprint",
+    "description": "Full-stack project generator: sets up Next.js/Turborepo, Prisma/Drizzle, Tailwind CSS, and GitHub Actions.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Blueprint\n\nFull-stack project generator: sets up Next.js/Turborepo, Prisma/Drizzle, Tailwind CSS, and GitHub Actions.\n\n## Use Case\nBootstrapping production-ready SaaS projects in minutes.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Blueprint** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-135",
+    "name": "Brand Discovery",
+    "slug": "brand-discovery",
+    "description": "Brand positioning framework: defining tone of voice, audience personas, visual guidelines, and value propositions.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Brand Discovery\n\nBrand positioning framework: defining tone of voice, audience personas, visual guidelines, and value propositions.\n\n## Use Case\nCrafting distinct developer tool identity and landing page messaging.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Brand Discovery** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-136",
+    "name": "Brand Voice",
+    "slug": "brand-voice",
+    "description": "Enforcing consistent brand voice, tone guidelines, and vocabulary across all documentation and UI copy.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Brand Voice\n\nEnforcing consistent brand voice, tone guidelines, and vocabulary across all documentation and UI copy.\n\n## Use Case\nConsistent marketing copy and technical documentation generation.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Brand Voice** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-137",
+    "name": "Browser QA",
+    "slug": "browser-qa",
+    "description": "Visual regression and interactive browser QA using automated DOM assertions and snapshot comparisons.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Browser QA\n\nVisual regression and interactive browser QA using automated DOM assertions and snapshot comparisons.\n\n## Use Case\nValidating complex responsive web UIs across multiple viewport sizes.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Browser QA** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-138",
+    "name": "Bun Runtime",
+    "slug": "bun-runtime",
+    "description": "High-performance JavaScript/TypeScript development using Bun's native bundler, test runner, and HTTP server.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Bun Runtime\n\nHigh-performance JavaScript/TypeScript development using Bun's native bundler, test runner, and HTTP server.\n\n## Use Case\nUltra-fast microservices, scripts, and build tooling replacing Node.js.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Bun Runtime** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-139",
+    "name": "Canary Watch",
+    "slug": "canary-watch",
+    "description": "Automated canary deployment verification: monitors error rate spikes, latency changes, and initiates rollbacks.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Canary"
+    ],
+    "content": "# Canary Watch\n\nAutomated canary deployment verification: monitors error rate spikes, latency changes, and initiates rollbacks.\n\n## Use Case\nZero-downtime production releases with automated blast-radius containment.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Canary Watch** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-140",
+    "name": "ClickHouse IO",
+    "slug": "clickhouse-io",
+    "description": "Columnar analytical queries, MergeTree engine optimization, and high-throughput real-time ingestion with ClickHouse.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# ClickHouse IO\n\nColumnar analytical queries, MergeTree engine optimization, and high-throughput real-time ingestion with ClickHouse.\n\n## Use Case\nBig data analytics, time-series metrics, and observability data stores.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **ClickHouse IO** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-141",
+    "name": "Code Tour",
+    "slug": "code-tour",
+    "description": "Interactive codebase walkthrough generator: annotates key entrypoints, state flows, and core business logic.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Code Tour\n\nInteractive codebase walkthrough generator: annotates key entrypoints, state flows, and core business logic.\n\n## Use Case\nRapid onboarding for new team members and developer orientation.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Code Tour** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-142",
+    "name": "Codebase Onboarding",
+    "slug": "codebase-onboarding",
+    "description": "Systematic repo exploration: maps package structures, dependency graphs, and environment configurations.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Codebase Onboarding\n\nSystematic repo exploration: maps package structures, dependency graphs, and environment configurations.\n\n## Use Case\nFirst session on unfamiliar codebases to build mental context before making edits.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Codebase Onboarding** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-143",
+    "name": "Code Health MCP",
+    "slug": "codehealth-mcp",
+    "description": "MCP tool exposing real-time metrics for cyclomatic complexity, test coverage, and code churn to AI agents.",
+    "frameworks": [
+      "Claude Code",
+      "Antigravity",
+      "MCP",
+      "Code Quality"
+    ],
+    "content": "# Code Health MCP\n\nMCP tool exposing real-time metrics for cyclomatic complexity, test coverage, and code churn to AI agents.\n\n## Use Case\nEnabling AI agents to check code health scores during refactoring tasks.\n\n## Supported Platforms\n- Claude Code\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Code Health MCP** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-144",
+    "name": "Compose Multiplatform Patterns",
+    "slug": "compose-multiplatform-patterns",
+    "description": "Kotlin Multiplatform (KMP) shared UI development across Android, iOS, Desktop, and Web using Jetpack Compose.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Compose Multiplatform Patterns\n\nKotlin Multiplatform (KMP) shared UI development across Android, iOS, Desktop, and Web using Jetpack Compose.\n\n## Use Case\nCross-platform mobile and desktop apps sharing 90%+ code.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Compose Multiplatform Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-145",
+    "name": "Config GC",
+    "slug": "config-gc",
+    "description": "Garbage collection for stale configuration: removes dead environment variables, abandoned feature flags, and orphaned secrets.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Config GC\n\nGarbage collection for stale configuration: removes dead environment variables, abandoned feature flags, and orphaned secrets.\n\n## Use Case\nCleaning accumulated technical debt in long-running projects.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Config GC** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-146",
+    "name": "Connections Optimizer",
+    "slug": "connections-optimizer",
+    "description": "Database connection pool tuning, PgBouncer setup, idle connection timeouts, and connection leak diagnostics.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Connections Optimizer\n\nDatabase connection pool tuning, PgBouncer setup, idle connection timeouts, and connection leak diagnostics.\n\n## Use Case\nPreventing database connection exhaustion in serverless architectures.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Connections Optimizer** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-147",
+    "name": "Content Hash Cache Pattern",
+    "slug": "content-hash-cache-pattern",
+    "description": "Immutable static asset caching with sha256 content hashing, long cache-control headers, and instant CDN invalidation.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Content Hash Cache Pattern\n\nImmutable static asset caching with sha256 content hashing, long cache-control headers, and instant CDN invalidation.\n\n## Use Case\nMaximizing web frontend cache hit ratios and CDN performance.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Content Hash Cache Pattern** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-148",
+    "name": "Continuous Agent Loop",
+    "slug": "continuous-agent-loop",
+    "description": "Background task queue processor where agents poll, execute, verify, and report without user interaction.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Loop"
+    ],
+    "content": "# Continuous Agent Loop\n\nBackground task queue processor where agents poll, execute, verify, and report without user interaction.\n\n## Use Case\nAutomating background GitHub issue resolution and pull request triage.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Continuous Agent Loop** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-149",
+    "name": "Contract First Development",
+    "slug": "contract-first",
+    "description": "Schema-first development with OpenAPI, Protobuf, or GraphQL before writing server or client implementations.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Contract First Development\n\nSchema-first development with OpenAPI, Protobuf, or GraphQL before writing server or client implementations.\n\n## Use Case\nDecoupling frontend and backend teams to work in parallel against locked contracts.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Contract First Development** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-150",
+    "name": "Cost-Aware LLM Pipeline",
+    "slug": "cost-aware-llm-pipeline",
+    "description": "Multi-tier LLM routing: dispatches simple queries to light models (Flash/Haiku) and complex reasoning to Pro/Opus.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Cost-Aware LLM Pipeline\n\nMulti-tier LLM routing: dispatches simple queries to light models (Flash/Haiku) and complex reasoning to Pro/Opus.\n\n## Use Case\nCutting production AI costs by 70% while maintaining high output quality.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Cost-Aware LLM Pipeline** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-151",
+    "name": "Cost Tracking",
+    "slug": "cost-tracking",
+    "description": "Real-time token counting, API credit monitoring, and granular cost attribution per user/feature.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Cost"
+    ],
+    "content": "# Cost Tracking\n\nReal-time token counting, API credit monitoring, and granular cost attribution per user/feature.\n\n## Use Case\nSaaS financial predictability and unit economics tracking for AI features.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Cost Tracking** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-152",
+    "name": "Council Multi-Model",
+    "slug": "council-multi-model",
+    "description": "Ensemble decision framework querying multiple model families (Claude, GPT, Gemini) to reach balanced consensus.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Multi-Model"
+    ],
+    "content": "# Council Multi-Model\n\nEnsemble decision framework querying multiple model families (Claude, GPT, Gemini) to reach balanced consensus.\n\n## Use Case\nHigh-stakes architectural reviews, security audits, and complex trade-off analysis.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Council Multi-Model** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-153",
+    "name": "C++ Coding Standards",
+    "slug": "cpp-coding-standards",
+    "description": "Modern C++20/23 patterns: RAII memory safety, smart pointers, concept constraints, and zero-cost abstractions.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# C++ Coding Standards\n\nModern C++20/23 patterns: RAII memory safety, smart pointers, concept constraints, and zero-cost abstractions.\n\n## Use Case\nHigh-performance systems programming in modern C++.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **C++ Coding Standards** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-154",
+    "name": "C++ Testing",
+    "slug": "cpp-testing",
+    "description": "Modern C++ test automation with GoogleTest, Catch2, doctest, and address sanitizers in CI.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# C++ Testing\n\nModern C++ test automation with GoogleTest, Catch2, doctest, and address sanitizers in CI.\n\n## Use Case\nUnit and integration testing for systems software and embedded systems.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **C++ Testing** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-155",
+    "name": "Crosspost",
+    "slug": "crosspost",
+    "description": "Cross-platform technical content syndication adapted for X/Twitter, LinkedIn, Dev.to, and Hacker News.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Crosspost\n\nCross-platform technical content syndication adapted for X/Twitter, LinkedIn, Dev.to, and Hacker News.\n\n## Use Case\nDeveloper marketing and content distribution across developer communities.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Crosspost** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-156",
+    "name": "C# Testing",
+    "slug": "csharp-testing",
+    "description": ".NET 8/9 testing with xUnit, FluentAssertions, Moq, and WebApplicationFactory integration tests.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# C# Testing\n\n.NET 8/9 testing with xUnit, FluentAssertions, Moq, and WebApplicationFactory integration tests.\n\n## Use Case\nEnterprise C# .NET Core backend API test suites.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **C# Testing** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-157",
+    "name": "Database Migration",
+    "slug": "database-migration",
+    "description": "Zero-downtime database migrations: expand-and-contract patterns, backwards-compatible schemas, and rollbacks.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Database Migration\n\nZero-downtime database migrations: expand-and-contract patterns, backwards-compatible schemas, and rollbacks.\n\n## Use Case\nProduction schema alterations on high-traffic PostgreSQL and MySQL databases.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Database Migration** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-158",
+    "name": "Docker Patterns",
+    "slug": "docker-patterns",
+    "description": "Multi-stage Docker builds, Alpine/distroless minimal containers, rootless security, and layer caching.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Docker Patterns\n\nMulti-stage Docker builds, Alpine/distroless minimal containers, rootless security, and layer caching.\n\n## Use Case\nCreating fast, secure, production-ready container images.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Docker Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-159",
+    "name": "Feature Flags",
+    "slug": "feature-flags",
+    "description": "Server-side and client-side feature flag integration with gradual rollouts, canary groups, and instant killswitches.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Feature Flags\n\nServer-side and client-side feature flag integration with gradual rollouts, canary groups, and instant killswitches.\n\n## Use Case\nDecoupling software deployment from feature release.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Feature Flags** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-160",
+    "name": "Git Workflow",
+    "slug": "git-workflow",
+    "description": "Structured Git conventions: Conventional Commits, trunk-based development, atomic PRs, and branch protection rules.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Git Workflow\n\nStructured Git conventions: Conventional Commits, trunk-based development, atomic PRs, and branch protection rules.\n\n## Use Case\nMaintaining a clean, bisectable git history and reliable CI triggers.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Git Workflow** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-161",
+    "name": "GraphQL Patterns",
+    "slug": "graphql-patterns",
+    "description": "GraphQL schema design, DataLoader N+1 query prevention, cursor-based pagination, and schema stitching.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# GraphQL Patterns\n\nGraphQL schema design, DataLoader N+1 query prevention, cursor-based pagination, and schema stitching.\n\n## Use Case\nBuilding flexible, strongly-typed API layers for web and mobile clients.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **GraphQL Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-162",
+    "name": "Helm Charts",
+    "slug": "helm-charts",
+    "description": "Kubernetes application packaging with Helm 3: templated manifests, values.yaml hierarchies, and release lifecycle hooks.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Helm Charts\n\nKubernetes application packaging with Helm 3: templated manifests, values.yaml hierarchies, and release lifecycle hooks.\n\n## Use Case\nDeploying multi-service applications across dev, staging, and production Kubernetes clusters.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Helm Charts** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-163",
+    "name": "Infrastructure as Code",
+    "slug": "infrastructure-as-code",
+    "description": "Declarative cloud infrastructure using Terraform, OpenTofu, and Pulumi with remote state locking and drift detection.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Infrastructure as Code\n\nDeclarative cloud infrastructure using Terraform, OpenTofu, and Pulumi with remote state locking and drift detection.\n\n## Use Case\nReproducible, version-controlled cloud infrastructure across AWS, GCP, and Azure.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Infrastructure as Code** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-164",
+    "name": "Integration Testing",
+    "slug": "integration-testing",
+    "description": "Integration testing using Testcontainers for real PostgreSQL, Redis, and Kafka instances during automated test runs.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Integration Testing\n\nIntegration testing using Testcontainers for real PostgreSQL, Redis, and Kafka instances during automated test runs.\n\n## Use Case\nTesting real service interactions without fragile in-memory mocks.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Integration Testing** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-165",
+    "name": "Kubernetes Patterns",
+    "slug": "kubernetes-patterns",
+    "description": "Production Kubernetes resilience: PodDisruptionBudgets, resource limits, readiness probes, and HPA autoscaling.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Kubernetes Patterns\n\nProduction Kubernetes resilience: PodDisruptionBudgets, resource limits, readiness probes, and HPA autoscaling.\n\n## Use Case\nOperating reliable, auto-healing container workloads in Kubernetes.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Kubernetes Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-166",
+    "name": "LLM Caching",
+    "slug": "llm-caching",
+    "description": "Semantic caching with Redis vector similarity and exact prompt caching (Anthropic Prompt Caching) to cut latency.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# LLM Caching\n\nSemantic caching with Redis vector similarity and exact prompt caching (Anthropic Prompt Caching) to cut latency.\n\n## Use Case\nAccelerating repetitive LLM agent queries and lowering API billing.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **LLM Caching** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-167",
+    "name": "LLM Evaluation",
+    "slug": "llm-evaluation",
+    "description": "Systematic evaluation of LLM applications using automated assertions, LLM-as-a-judge, and ground-truth test datasets.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "LLM"
+    ],
+    "content": "# LLM Evaluation\n\nSystematic evaluation of LLM applications using automated assertions, LLM-as-a-judge, and ground-truth test datasets.\n\n## Use Case\nEnsuring production LLM output accuracy, safety, and formatting compliance.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **LLM Evaluation** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-168",
+    "name": "Load Testing",
+    "slug": "load-testing",
+    "description": "High-concurrency load testing with k6: virtual user ramp-ups, latency threshold assertions, and bottleneck discovery.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Load Testing\n\nHigh-concurrency load testing with k6: virtual user ramp-ups, latency threshold assertions, and bottleneck discovery.\n\n## Use Case\nStress-testing APIs and database backends before product launches.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Load Testing** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-169",
+    "name": "Microservices Patterns",
+    "slug": "microservices-patterns",
+    "description": "Distributed systems patterns: Saga distributed transactions, Circuit Breakers, Outbox event publishing, and API Gateways.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Microservices Patterns\n\nDistributed systems patterns: Saga distributed transactions, Circuit Breakers, Outbox event publishing, and API Gateways.\n\n## Use Case\nBuilding resilient distributed microservices without distributed lock deadlocks.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Microservices Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-170",
+    "name": "Mobile Testing",
+    "slug": "mobile-testing",
+    "description": "Mobile app test automation with Maestro, Detox, and Appium across iOS Simulator and Android Emulator.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Mobile Testing\n\nMobile app test automation with Maestro, Detox, and Appium across iOS Simulator and Android Emulator.\n\n## Use Case\nAutomated regression testing for React Native, Flutter, and native mobile apps.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Mobile Testing** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-171",
+    "name": "Monitoring Alerting",
+    "slug": "monitoring-alerting",
+    "description": "SLO-driven alerting with Prometheus, Grafana, and PagerDuty: multi-window multi-burn-rate alert rules.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Monitoring Alerting\n\nSLO-driven alerting with Prometheus, Grafana, and PagerDuty: multi-window multi-burn-rate alert rules.\n\n## Use Case\nEliminating alert fatigue and catching real production user degradation early.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Monitoring Alerting** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-172",
+    "name": "Next.js Turbopack",
+    "slug": "nextjs-turbopack",
+    "description": "Next.js 15+ App Router optimization: Server Components, Turbopack incremental bundling, and streaming SSR.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Next.js Turbopack\n\nNext.js 15+ App Router optimization: Server Components, Turbopack incremental bundling, and streaming SSR.\n\n## Use Case\nHigh-performance React full-stack applications with sub-second page loads.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Next.js Turbopack** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-173",
+    "name": "Observability Patterns",
+    "slug": "observability-patterns",
+    "description": "OpenTelemetry unified telemetry: structured JSON logs, trace context propagation, and metric collection.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Observability Patterns\n\nOpenTelemetry unified telemetry: structured JSON logs, trace context propagation, and metric collection.\n\n## Use Case\nEnd-to-end distributed system diagnostics and performance bottleneck identification.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Observability Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-174",
+    "name": "OpenAPI Spec",
+    "slug": "openapi-spec",
+    "description": "Writing and validating OpenAPI 3.1 specifications with complete request/response schemas and examples.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# OpenAPI Spec\n\nWriting and validating OpenAPI 3.1 specifications with complete request/response schemas and examples.\n\n## Use Case\nContract-first API documentation and automated SDK generation.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **OpenAPI Spec** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-175",
+    "name": "Performance Profiling",
+    "slug": "performance-profiling",
+    "description": "Application profiling with flamegraphs, V8 heap snapshots, Node.js clinic, and Linux perf tools.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Performance Profiling\n\nApplication profiling with flamegraphs, V8 heap snapshots, Node.js clinic, and Linux perf tools.\n\n## Use Case\nDiagnosing CPU bottlenecks, memory leaks, and event loop lag.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Performance Profiling** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-176",
+    "name": "PostgreSQL Optimization",
+    "slug": "postgres-optimization",
+    "description": "Postgres performance tuning: EXPLAIN ANALYZE interpretation, BRIN/GIN indexing, table partitioning, and autovacuum tuning.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# PostgreSQL Optimization\n\nPostgres performance tuning: EXPLAIN ANALYZE interpretation, BRIN/GIN indexing, table partitioning, and autovacuum tuning.\n\n## Use Case\nScaling PostgreSQL databases to hundreds of millions of rows.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **PostgreSQL Optimization** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-177",
+    "name": "Product Capability",
+    "slug": "product-capability",
+    "description": "Product capability mapping: feature matrix definition, user journey mapping, and value driver prioritization.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Product Capability\n\nProduct capability mapping: feature matrix definition, user journey mapping, and value driver prioritization.\n\n## Use Case\nAligning software architecture directly with business product roadmaps.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Product Capability** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-178",
+    "name": "Prompt Engineering",
+    "slug": "prompt-engineering",
+    "description": "Advanced prompt design: Chain-of-Thought, few-shot demonstration exemplars, XML output tagging, and persona framing.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Prompt Engineering\n\nAdvanced prompt design: Chain-of-Thought, few-shot demonstration exemplars, XML output tagging, and persona framing.\n\n## Use Case\nMaximizing reasoning consistency and structured output compliance from LLMs.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Prompt Engineering** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-179",
+    "name": "Python Testing",
+    "slug": "python-testing",
+    "description": "Modern Python testing with pytest: fixtures, parametrize, test isolation, coverage.py, and type checking with mypy.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Python Testing\n\nModern Python testing with pytest: fixtures, parametrize, test isolation, coverage.py, and type checking with mypy.\n\n## Use Case\nComprehensive test suites for Python web apps, CLI tools, and data pipelines.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Python Testing** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-180",
+    "name": "RAG Patterns",
+    "slug": "rag-patterns",
+    "description": "Advanced Retrieval-Augmented Generation: semantic chunking, Cohere re-ranking, hybrid vector + keyword search, and reciprocal rank fusion.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# RAG Patterns\n\nAdvanced Retrieval-Augmented Generation: semantic chunking, Cohere re-ranking, hybrid vector + keyword search, and reciprocal rank fusion.\n\n## Use Case\nBuilding accurate question-answering systems on top of private documentation.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **RAG Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-181",
+    "name": "Redis Patterns",
+    "slug": "redis-patterns",
+    "description": "Redis design patterns: distributed locks (Redlock), rate limit token buckets, sorted sets for leaderboards, and pub/sub streams.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Redis Patterns\n\nRedis design patterns: distributed locks (Redlock), rate limit token buckets, sorted sets for leaderboards, and pub/sub streams.\n\n## Use Case\nHigh-speed caching and ephemeral distributed state synchronization.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Redis Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-182",
+    "name": "Rust Patterns",
+    "slug": "rust-patterns",
+    "description": "Idiomatic Rust development: ownership patterns, Tokio async concurrency, error handling with thiserror/anyhow, and trait abstractions.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Rust Patterns\n\nIdiomatic Rust development: ownership patterns, Tokio async concurrency, error handling with thiserror/anyhow, and trait abstractions.\n\n## Use Case\nMemory-safe, high-performance systems and backend services in Rust.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Rust Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-183",
+    "name": "Serverless Patterns",
+    "slug": "serverless-patterns",
+    "description": "Event-driven serverless architecture on AWS Lambda, Vercel, and Cloudflare Workers with cold start minimization.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Serverless Patterns\n\nEvent-driven serverless architecture on AWS Lambda, Vercel, and Cloudflare Workers with cold start minimization.\n\n## Use Case\nCost-effective, automatically scaling microservices and background job processors.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Serverless Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-184",
+    "name": "SLO Implementation",
+    "slug": "slo-implementation",
+    "description": "Quantifying service reliability: defining SLIs (Service Level Indicators), SLO targets (99.9%), and managing error budgets.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# SLO Implementation\n\nQuantifying service reliability: defining SLIs (Service Level Indicators), SLO targets (99.9%), and managing error budgets.\n\n## Use Case\nSite Reliability Engineering (SRE) practices for production applications.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **SLO Implementation** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-185",
+    "name": "SQL Optimization",
+    "slug": "sql-optimization",
+    "description": "Query tuning: removing N+1 queries, writing efficient window functions, CTE optimization, and index design.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# SQL Optimization\n\nQuery tuning: removing N+1 queries, writing efficient window functions, CTE optimization, and index design.\n\n## Use Case\nEliminating database query bottlenecks in relational databases.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **SQL Optimization** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-186",
+    "name": "System Design",
+    "slug": "system-design",
+    "description": "Architectural blueprinting: capacity estimation, data sharding, caching layers, load balancing, and failure domains.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# System Design\n\nArchitectural blueprinting: capacity estimation, data sharding, caching layers, load balancing, and failure domains.\n\n## Use Case\nDesigning large-scale distributed systems that scale to millions of users.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **System Design** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-187",
+    "name": "Terraform Patterns",
+    "slug": "terraform-patterns",
+    "description": "Reusable Terraform modules, state locking with DynamoDB, secret injection, and plan validation in CI.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Terraform Patterns\n\nReusable Terraform modules, state locking with DynamoDB, secret injection, and plan validation in CI.\n\n## Use Case\nStandardizing enterprise cloud infrastructure deployment across environments.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Terraform Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-188",
+    "name": "Token Optimization",
+    "slug": "token-optimization",
+    "description": "Prompt token pruning, structured JSON outputs, schema-guided generation, and prompt compression techniques.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Token Optimization\n\nPrompt token pruning, structured JSON outputs, schema-guided generation, and prompt compression techniques.\n\n## Use Case\nMaximizing available context space and lowering agent operational token overhead.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Token Optimization** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-189",
+    "name": "TypeScript Patterns",
+    "slug": "typescript-patterns",
+    "description": "Advanced TypeScript type gymnastics: conditional types, discriminated unions, template literals, and branded types.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# TypeScript Patterns\n\nAdvanced TypeScript type gymnastics: conditional types, discriminated unions, template literals, and branded types.\n\n## Use Case\nWriting rock-solid type-safe libraries, SDKs, and enterprise application logic.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **TypeScript Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-190",
+    "name": "Unit Testing",
+    "slug": "unit-testing",
+    "description": "Test isolation, AAA (Arrange-Act-Assert) pattern, test doubles (mocks/stubs/spies), and boundary value analysis.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Unit Testing\n\nTest isolation, AAA (Arrange-Act-Assert) pattern, test doubles (mocks/stubs/spies), and boundary value analysis.\n\n## Use Case\nFoundational automated testing providing instant developer feedback.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Unit Testing** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-191",
+    "name": "Vector Database",
+    "slug": "vector-database",
+    "description": "Vector indexing with pgvector, Pinecone, Qdrant, and Weaviate: HNSW vs IVF index trade-offs and metadata filtering.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Vector Database\n\nVector indexing with pgvector, Pinecone, Qdrant, and Weaviate: HNSW vs IVF index trade-offs and metadata filtering.\n\n## Use Case\nHigh-throughput semantic similarity search and AI recommendation engines.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Vector Database** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-192",
+    "name": "Video Editing",
+    "slug": "video-editing",
+    "description": "Automated video post-processing using FFmpeg pipelines: clipping, subtitling, transcoding, and thumbnail generation.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Video"
+    ],
+    "content": "# Video Editing\n\nAutomated video post-processing using FFmpeg pipelines: clipping, subtitling, transcoding, and thumbnail generation.\n\n## Use Case\nProgrammatic video rendering and content production pipelines.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Video Editing** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-193",
+    "name": "Vulnerability Scanning",
+    "slug": "vulnerability-scanning",
+    "description": "Automated vulnerability detection with Semgrep, Snyk, Trivy, and npm audit integrated into CI pipelines.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Vulnerability Scanning\n\nAutomated vulnerability detection with Semgrep, Snyk, Trivy, and npm audit integrated into CI pipelines.\n\n## Use Case\nPreventing known CVEs and security regressions from reaching production.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Vulnerability Scanning** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-194",
+    "name": "Web Performance",
+    "slug": "web-performance",
+    "description": "Core Web Vitals optimization: reducing LCP with image optimization, eliminating CLS, and optimizing INP.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Web Performance\n\nCore Web Vitals optimization: reducing LCP with image optimization, eliminating CLS, and optimizing INP.\n\n## Use Case\nImproving user conversion rates and Google SEO rankings through faster page speeds.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Web Performance** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-195",
+    "name": "WebSocket Patterns",
+    "slug": "websocket-patterns",
+    "description": "Bidirectional WebSocket communication: heartbeat keepalives, reconnection backoff, and horizontal scaling with Redis Pub/Sub.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# WebSocket Patterns\n\nBidirectional WebSocket communication: heartbeat keepalives, reconnection backoff, and horizontal scaling with Redis Pub/Sub.\n\n## Use Case\nBuilding real-time collaboration apps, live chats, and streaming dashboards.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **WebSocket Patterns** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-196",
+    "name": "Workflow Automation",
+    "slug": "workflow-automation",
+    "description": "Reliable event-driven business workflows with Temporal, Inngest, and n8n with built-in retries and state checkpoints.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Workflow Automation\n\nReliable event-driven business workflows with Temporal, Inngest, and n8n with built-in retries and state checkpoints.\n\n## Use Case\nMission-critical background billing, user onboarding, and third-party integrations.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Workflow Automation** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-197",
+    "name": "X API Integration",
+    "slug": "x-api",
+    "description": "Twitter/X API v2 integration: OAuth 2.0 PKCE, programmatic posting, media uploads, and rate limit management.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# X API Integration\n\nTwitter/X API v2 integration: OAuth 2.0 PKCE, programmatic posting, media uploads, and rate limit management.\n\n## Use Case\nBuilding social media automation tools, bots, and developer publishing pipelines.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Zed\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **X API Integration** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-198",
+    "name": "Zero Trust Security",
+    "slug": "zero-trust-security",
+    "description": "Zero Trust architecture: mTLS service-to-service authentication, least-privilege IAM, and continuous session verification.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Cursor",
+      "Antigravity"
+    ],
+    "content": "# Zero Trust Security\n\nZero Trust architecture: mTLS service-to-service authentication, least-privilege IAM, and continuous session verification.\n\n## Use Case\nHardening cloud infrastructure against lateral movement attacks.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Cursor\n- Antigravity\n- Copilot\n\n## Core Engineering Rules\n1. Apply the **Zero Trust Security** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-199",
+    "name": "Exa Search",
+    "slug": "exa-search",
+    "description": "Neural web search API integration with Exa: retrieves semantically relevant developer docs and real-time facts.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Search"
+    ],
+    "content": "# Exa Search\n\nNeural web search API integration with Exa: retrieves semantically relevant developer docs and real-time facts.\n\n## Use Case\nEmpowering AI agents with grounded, real-time web search capabilities.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Exa Search** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-200",
+    "name": "AgentShield Security",
+    "slug": "agentshield-security",
+    "description": "AgentShield security scanner: protects agent configurations against prompt injection, hook tampering, and leaked credentials.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Security"
+    ],
+    "content": "# AgentShield Security\n\nAgentShield security scanner: protects agent configurations against prompt injection, hook tampering, and leaked credentials.\n\n## Use Case\nPre-flight security audits for AI agent configurations.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **AgentShield Security** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-201",
+    "name": "Hooks Runtime",
+    "slug": "hooks-runtime",
+    "description": "Agent execution hooks: pre-tool and post-tool lifecycle triggers for rule enforcement, telemetry, and input validation.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Hooks",
+      "Runtime"
+    ],
+    "content": "# Hooks Runtime\n\nAgent execution hooks: pre-tool and post-tool lifecycle triggers for rule enforcement, telemetry, and input validation.\n\n## Use Case\nCustomizing and monitoring agent execution flows deterministically.\n\n## Supported Platforms\n- Claude Code\n- Codex\n\n## Core Engineering Rules\n1. Apply the **Hooks Runtime** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
+  },
+  {
+    "id": "skill-202",
+    "name": "Memory Persistence",
+    "slug": "memory-persistence",
+    "description": "Cross-session memory persistence: extracts facts, decisions, and codebase quirks into structured markdown journals.",
+    "frameworks": [
+      "Claude Code",
+      "Codex",
+      "Antigravity",
+      "Memory"
+    ],
+    "content": "# Memory Persistence\n\nCross-session memory persistence: extracts facts, decisions, and codebase quirks into structured markdown journals.\n\n## Use Case\nMaintaining long-term context across multiple independent agent turns.\n\n## Supported Platforms\n- Claude Code\n- Codex\n- Antigravity\n\n## Core Engineering Rules\n1. Apply the **Memory Persistence** pattern systematically before making code changes.\n2. Validate outputs across supported AI harnesses (Claude Code, Codex, Antigravity, Cursor).\n3. Prevent context pollution and maintain strict verification standards.",
+    "createdAt": "2026-08-21T19:50:00.000Z"
   }
 ];
 
 // src/cli/index.ts
 var program = new import_commander.Command();
-program.name("awesome-ai-tools").description("CLI to instantly apply AI skills & rules to your local projects").version("0.2.0");
-program.command("list").description("List all available AI skills").action(() => {
-  console.log("\n\u{1F680} Available AI Agent Skills:\n");
+program.name("awesome-ai-tools").description("CLI to instantly install 200+ cross-platform AI skills & slash commands (ECC-style) to your projects").version("0.3.0");
+function toCommandName(slug) {
+  return slug.replace(/^skill-/, "").replace(/[^a-zA-Z0-9_-]/g, "-").toLowerCase();
+}
+program.command("list").description("List all available AI skills and their slash command triggers").action(() => {
+  console.log("\n\u{1F680} Available AI Agent Skills & Slash Commands:\n");
   AI_SKILLS.forEach((skill) => {
-    console.log(`- \x1B[36m${skill.name}\x1B[0m (\x1B[33m${skill.slug}\x1B[0m)`);
+    const cmd = toCommandName(skill.slug);
+    console.log(`- \x1B[36m${skill.name}\x1B[0m (\x1B[35m/${cmd}\x1B[0m)`);
     console.log(`  ${skill.description}`);
     console.log(`  Frameworks: ${skill.frameworks.join(", ")}
 `);
   });
-  console.log("Run 'npx awesome-ai-tools add <slug>' to apply a skill to your project.\n");
+  console.log("Run 'npx awesome-ai-tools init' to install ALL slash commands into your project.");
+  console.log("Or run 'npx awesome-ai-tools add <slug>' to add a single skill.\n");
 });
-program.command("add").description("Add a specific AI skill to your project").argument("<slug>", "The slug of the skill to add (e.g., nextjs-16-react-19-architect)").option("-e, --editor <type>", "Target editor (cursor, cursor-legacy, claude, windsurf, cline, copilot)").action(async (slug, options) => {
+program.command("init").description("Install all 200+ AI skills and slash commands to your local project (ECC Flow)").option("-t, --target <type>", "Target platforms (all, claude, agents, cursor)").action(async (options) => {
+  let target = options.target;
+  if (!target) {
+    const response = await (0, import_prompts.default)({
+      type: "select",
+      name: "target",
+      message: "Select which AI Harness formats to generate:",
+      choices: [
+        {
+          title: "Full Suite: Claude Commands (/.claude/commands) + Universal Agents (.agents/skills) + Cursor Rules",
+          value: "all",
+          description: "Recommended (Works in Claude Code, Codex, Antigravity, Cursor & Zed)"
+        },
+        {
+          title: "Claude Code Slash Commands (.claude/commands/*.md)",
+          value: "claude",
+          description: "Enables all /command triggers directly in Claude Code CLI"
+        },
+        {
+          title: "Universal Agent Skills (.agents/skills/*/SKILL.md)",
+          value: "agents",
+          description: "Standard for Antigravity, Codex, and OpenAI agents"
+        },
+        {
+          title: "Cursor MDC Rules (.cursor/rules/*.mdc)",
+          value: "cursor",
+          description: "Modern rules format for Cursor editor"
+        }
+      ]
+    });
+    target = response.target;
+  }
+  if (!target) {
+    console.log("\nOperation cancelled.\n");
+    process.exit(0);
+  }
+  const cwd = process.cwd();
+  let totalGenerated = 0;
+  console.log("\n\u2699\uFE0F  Scaffolding AI skills & slash commands...\n");
+  if (target === "all" || target === "claude") {
+    const claudeCmdDir = import_path.default.join(cwd, ".claude", "commands");
+    if (!import_fs.default.existsSync(claudeCmdDir)) {
+      import_fs.default.mkdirSync(claudeCmdDir, { recursive: true });
+    }
+    AI_SKILLS.forEach((skill) => {
+      const cmdName = toCommandName(skill.slug);
+      const filePath = import_path.default.join(claudeCmdDir, `${cmdName}.md`);
+      const fileContent = `# /${cmdName} \u2014 ${skill.name}
+
+${skill.description}
+
+## Instructions for AI Agent:
+When this command is triggered:
+1. Apply the **${skill.name}** pattern and guidelines immediately.
+2. Ensure all changes adhere strictly to the rules below without hallucination.
+
+---
+
+${skill.content}
+`;
+      import_fs.default.writeFileSync(filePath, fileContent, "utf8");
+    });
+    console.log(`\u2705 Generated \x1B[32m${AI_SKILLS.length} Slash Commands\x1B[0m in \x1B[36m.claude/commands/\x1B[0m (access via /<command_name>)`);
+    totalGenerated += AI_SKILLS.length;
+  }
+  if (target === "all" || target === "agents") {
+    const agentsSkillsDir = import_path.default.join(cwd, ".agents", "skills");
+    AI_SKILLS.forEach((skill) => {
+      const skillDir = import_path.default.join(agentsSkillsDir, skill.slug);
+      if (!import_fs.default.existsSync(skillDir)) {
+        import_fs.default.mkdirSync(skillDir, { recursive: true });
+      }
+      const filePath = import_path.default.join(skillDir, "SKILL.md");
+      const fileContent = `---
+name: ${skill.name}
+description: ${skill.description}
+frameworks: [${skill.frameworks.join(", ")}]
+---
+
+${skill.content}
+`;
+      import_fs.default.writeFileSync(filePath, fileContent, "utf8");
+    });
+    console.log(`\u2705 Generated \x1B[32m${AI_SKILLS.length} Universal Skills\x1B[0m in \x1B[36m.agents/skills/\x1B[0m (Antigravity & Codex)`);
+    totalGenerated += AI_SKILLS.length;
+  }
+  if (target === "all" || target === "cursor") {
+    const cursorRulesDir = import_path.default.join(cwd, ".cursor", "rules");
+    if (!import_fs.default.existsSync(cursorRulesDir)) {
+      import_fs.default.mkdirSync(cursorRulesDir, { recursive: true });
+    }
+    AI_SKILLS.forEach((skill) => {
+      const filePath = import_path.default.join(cursorRulesDir, `${skill.slug}.mdc`);
+      const fileContent = `---
+description: ${skill.description}
+globs: *
+alwaysApply: false
+---
+
+${skill.content}
+`;
+      import_fs.default.writeFileSync(filePath, fileContent, "utf8");
+    });
+    console.log(`\u2705 Generated \x1B[32m${AI_SKILLS.length} MDC Rules\x1B[0m in \x1B[36m.cursor/rules/\x1B[0m (Cursor)`);
+    totalGenerated += AI_SKILLS.length;
+  }
+  const agentsMdPath = import_path.default.join(cwd, "AGENTS.md");
+  const agentsMdContent = `# Project AI Agent Guidelines & Slash Commands
+
+This repository is equipped with **Awesome AI Tools & ECC Skills Suite** (${AI_SKILLS.length} active skills).
+
+## Available Slash Commands in Claude Code:
+${AI_SKILLS.map((s) => `- \`/${toCommandName(s.slug)}\` : **${s.name}** \u2014 ${s.description}`).join("\n")}
+
+## Quick Start
+Type any slash command in your AI coding assistant prompt (e.g. \`/tdd-workflow\`, \`/plan-first\`, \`/security-scan\`) to activate specific engineering modes.
+`;
+  import_fs.default.writeFileSync(agentsMdPath, agentsMdContent, "utf8");
+  console.log(`\u2705 Generated master \x1B[32mAGENTS.md\x1B[0m index in project root.`);
+  console.log(`
+\u{1F389} \x1B[32mSetup Complete!\x1B[0m Total ${totalGenerated} files generated.`);
+  console.log("You can now open Claude Code, Antigravity, or Cursor and type slash commands like \x1B[35m/tdd-workflow\x1B[0m or \x1B[35m/plan-first\x1B[0m!\n");
+});
+program.command("add").description("Add a specific AI skill / command to your project").argument("<slug>", "The slug of the skill to add (e.g., tdd-workflow)").option("-e, --editor <type>", "Target editor (claude-cmd, cursor, claude, windsurf, cline, copilot)").action(async (slug, options) => {
   const skill = AI_SKILLS.find((s) => s.slug === slug);
   if (!skill) {
     console.error(`
@@ -1193,18 +2959,20 @@ program.command("add").description("Add a specific AI skill to your project").ar
     process.exit(1);
   }
   let editor = options.editor;
+  const cmdName = toCommandName(skill.slug);
   if (!editor) {
     const response = await (0, import_prompts.default)({
       type: "select",
       name: "editor",
-      message: "Which AI Editor / Assistant are you using?",
+      message: "Which format would you like to install?",
       choices: [
-        { title: "Cursor (.cursor/rules/<slug>.mdc) [Recommended]", value: "cursor", description: "Creates modern multi-file MDC rule" },
-        { title: "Claude Code (CLAUDE.md)", value: "claude", description: "Appends to project CLAUDE.md guidelines" },
+        { title: `Claude Slash Command (/.claude/commands/${cmdName}.md) [Recommended]`, value: "claude-cmd", description: `Enables /${cmdName} directly in Claude Code CLI` },
+        { title: "Universal Agent Skill (.agents/skills/<slug>/SKILL.md)", value: "agent-skill", description: "Standard for Antigravity, Codex & OpenAI" },
+        { title: "Cursor MDC Rule (.cursor/rules/<slug>.mdc)", value: "cursor", description: "Creates modern multi-file MDC rule" },
+        { title: "Append to CLAUDE.md", value: "claude", description: "Appends to project CLAUDE.md guidelines" },
         { title: "Windsurf (.windsurfrules)", value: "windsurf", description: "Creates or appends to .windsurfrules" },
         { title: "Cline / Roo Code (.clinerules)", value: "cline", description: "Creates or appends to .clinerules" },
-        { title: "GitHub Copilot (.github/copilot-instructions.md)", value: "copilot", description: "Creates repository custom instructions" },
-        { title: "Cursor Legacy (.cursorrules)", value: "cursor-legacy", description: "Single-file legacy .cursorrules" }
+        { title: "GitHub Copilot (.github/copilot-instructions.md)", value: "copilot", description: "Creates repository custom instructions" }
       ]
     });
     editor = response.editor;
@@ -1216,6 +2984,43 @@ program.command("add").description("Add a specific AI skill to your project").ar
   let targetPath = "";
   let fileContent = skill.content;
   switch (editor) {
+    case "claude-cmd": {
+      const cmdDir = import_path.default.join(process.cwd(), ".claude", "commands");
+      if (!import_fs.default.existsSync(cmdDir)) {
+        import_fs.default.mkdirSync(cmdDir, { recursive: true });
+      }
+      targetPath = import_path.default.join(cmdDir, `${cmdName}.md`);
+      fileContent = `# /${cmdName} \u2014 ${skill.name}
+
+${skill.description}
+
+## Instructions for AI Agent:
+When this command is invoked:
+1. Follow the **${skill.name}** pattern and guidelines strictly.
+2. Adhere to all verification and quality rules below.
+
+---
+
+${skill.content}
+`;
+      break;
+    }
+    case "agent-skill": {
+      const skillDir = import_path.default.join(process.cwd(), ".agents", "skills", slug);
+      if (!import_fs.default.existsSync(skillDir)) {
+        import_fs.default.mkdirSync(skillDir, { recursive: true });
+      }
+      targetPath = import_path.default.join(skillDir, "SKILL.md");
+      fileContent = `---
+name: ${skill.name}
+description: ${skill.description}
+frameworks: [${skill.frameworks.join(", ")}]
+---
+
+${skill.content}
+`;
+      break;
+    }
     case "cursor": {
       const rulesDir = import_path.default.join(process.cwd(), ".cursor", "rules");
       if (!import_fs.default.existsSync(rulesDir)) {
@@ -1232,13 +3037,10 @@ ${skill.content}
 `;
       break;
     }
-    case "cursor-legacy":
-      targetPath = import_path.default.join(process.cwd(), ".cursorrules");
-      break;
     case "claude":
       targetPath = import_path.default.join(process.cwd(), "CLAUDE.md");
       fileContent = `
-## Skill: ${skill.name}
+## Skill: ${skill.name} (Trigger: /${cmdName})
 ${skill.content}
 `;
       break;
@@ -1257,17 +3059,21 @@ ${skill.content}
       break;
     }
     default:
-      console.error("\n\u274C Error: Unsupported editor type.");
+      console.error("\n\u274C Error: Unsupported format type.");
       process.exit(1);
   }
   const relativeTarget = import_path.default.relative(process.cwd(), targetPath) || import_path.default.basename(targetPath);
   try {
     if (import_fs.default.existsSync(targetPath)) {
-      if (editor === "cursor") {
+      if (editor === "cursor" || editor === "claude-cmd" || editor === "agent-skill") {
         import_fs.default.writeFileSync(targetPath, fileContent, "utf8");
         console.log(`
-\u2705 Updated rule file: \x1B[32m${relativeTarget}\x1B[0m
+\u2705 Updated: \x1B[32m${relativeTarget}\x1B[0m
 `);
+        if (editor === "claude-cmd") {
+          console.log(`\u{1F4A1} You can now type \x1B[35m/${cmdName}\x1B[0m in Claude Code CLI!
+`);
+        }
       } else {
         const { action } = await (0, import_prompts.default)({
           type: "select",
@@ -1287,20 +3093,24 @@ ${skill.content}
         if (action === "overwrite") {
           import_fs.default.writeFileSync(targetPath, fileContent, "utf8");
           console.log(`
-\u2705 Overwrote \x1B[32m${relativeTarget}\x1B[0m with '${skill.name}' skill rules.
+\u2705 Overwrote \x1B[32m${relativeTarget}\x1B[0m with '${skill.name}' rules.
 `);
         } else {
           import_fs.default.appendFileSync(targetPath, "\n\n" + fileContent, "utf8");
           console.log(`
-\u2705 Appended '${skill.name}' skill rules to \x1B[32m${relativeTarget}\x1B[0m.
+\u2705 Appended '${skill.name}' rules to \x1B[32m${relativeTarget}\x1B[0m.
 `);
         }
       }
     } else {
       import_fs.default.writeFileSync(targetPath, fileContent, "utf8");
       console.log(`
-\u2705 Created \x1B[32m${relativeTarget}\x1B[0m with '${skill.name}' rules.
+\u2705 Created \x1B[32m${relativeTarget}\x1B[0m
 `);
+      if (editor === "claude-cmd") {
+        console.log(`\u{1F4A1} You can now type \x1B[35m/${cmdName}\x1B[0m in Claude Code CLI!
+`);
+      }
     }
   } catch (error) {
     console.error(`
