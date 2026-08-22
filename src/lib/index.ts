@@ -3,9 +3,13 @@ export * from '../types';
 
 // Export all data
 export { CATEGORIES, TAGS, TOOLS, COLLECTIONS, AI_SKILLS, AI_AGENTS } from '../data/mock';
+export { COMPOSITE_WORKFLOWS } from '../data/workflows';
+export { HOOK_SCRIPTS, INSTINCTS_TEMPLATE } from '../data/hooks';
+export { scanWorkspace } from './scanner';
 
 // Helper functions
 import { AI_SKILLS, AI_AGENTS, TOOLS, CATEGORIES } from '../data/mock';
+import { COMPOSITE_WORKFLOWS } from '../data/workflows';
 import type { AiSkill, AiAgent, Tool, Category } from '../types';
 
 export function getAllAgents(): AiAgent[] {

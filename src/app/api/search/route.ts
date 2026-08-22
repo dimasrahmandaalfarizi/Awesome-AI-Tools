@@ -1,3 +1,4 @@
+import { checkRateLimit, sanitizeSearchQuery } from "@/lib/security"
 import { NextRequest, NextResponse } from "next/server"
 
 export interface SearchResult {
@@ -116,7 +117,11 @@ async function searchDDGInstant(query: string): Promise<SearchResult[]> {
 }
 
 export async function GET(req: NextRequest) {
-  const q = req.nextUrl.searchParams.get("q")?.trim()
+  const rateLimitRes = checkRateLimit(req, "search", { limit: 60, windowMs: 60000 })
+  if (rateLimitRes) return rateLimitRes
+
+  const rawQ = req.nextUrl.searchParams.get("q") || ""
+  const q = sanitizeSearchQuery(rawQ, 200)
   if (!q) {
     return NextResponse.json({ error: "Missing query parameter q" }, { status: 400 })
   }

@@ -1,6 +1,7 @@
-﻿import { NextRequest, NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { TOOLS, CATEGORIES } from "@/data/mock"
 import { Tool } from "@/types"
+import { checkRateLimit, sanitizeSearchQuery } from "@/lib/security"
 
 interface ScoredResult {
   tool: Tool
@@ -33,11 +34,16 @@ const INTENT_MAPPINGS: Record<string, string[]> = {
 }
 
 export async function POST(req: NextRequest) {
+  // Rate Limiting Protection (80 req/min)
+  const rateLimitResponse = checkRateLimit(req, "semantic-search", { limit: 80, windowMs: 60000 })
+  if (rateLimitResponse) return rateLimitResponse
+
   try {
-    const { query, locale = "id" } = await req.json()
+    const { query: rawQuery, locale = "id" } = await req.json()
     const isId = locale === "id"
 
-    if (!query || typeof query !== "string" || !query.trim()) {
+    const query = sanitizeSearchQuery(rawQuery, 200)
+    if (!query) {
       return NextResponse.json({ results: [] })
     }
 

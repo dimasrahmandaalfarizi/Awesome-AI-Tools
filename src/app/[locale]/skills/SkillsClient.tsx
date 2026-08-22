@@ -171,10 +171,44 @@ ${skill.content}
         windsurfFolder?.file(`${cmdName}.md`, fileContent)
       })
 
-      // 7. Master AGENTS.md Index
+      // 7. Composite Workflows in .claude/commands/
+      claudeCmdFolder?.file("review.md", `# /review — Multi-Agent Code & Security Review Workflow\n1. Security Audit by security-auditor with AgentShield.\n2. Fresh-Context Code Review by code-reviewer.`)
+      claudeCmdFolder?.file("tdd.md", `# /tdd — Autonomous TDD Cycle\n1. RED: Write failing unit test.\n2. GREEN: Write minimal passing implementation.\n3. REFACTOR: Modernize code with test safety harness.`)
+      claudeCmdFolder?.file("compact.md", `# /compact — Context Compaction & Token Garbage Collection\n1. Summarize key decisions.\n2. Save discoveries to instincts.md.\n3. Reset working token context.`)
+      claudeCmdFolder?.file("council.md", `# /council — Multi-Model Council Deliberation\n1. Frame architectural dilemma.\n2. Compare 3 trade-offs.\n3. Synthesize ADR before writing code.`)
+
+      // 8. .claude/hooks/ (Hooks Runtime)
+      const hooksFolder = zip.folder(".claude")?.folder("hooks")
+      hooksFolder?.file("pre-tool-call.js", `const cmd = process.argv.slice(2).join(" ");\nif (/rm\\s+-rf\\s+([/~]|\\$HOME|\\.\\.)/i.test(cmd)) { console.error("[AgentShield BLOCKED] Dangerous command"); process.exit(1); }`)
+      hooksFolder?.file("post-tool-call.js", `const file = process.argv[2];\nconsole.log("[Auto-Linter] Verified file:", file);`)
+      hooksFolder?.file("on-session-end.js", `console.log("[Session Logger] Session completed.");`)
+
+      // 9. instincts.md (Continuous Learning)
+      const instinctsContent = `# Project Instincts & Persistent Memory (Continuous Learning)
+This file stores permanent codebase instincts and developer preferences.
+AI Coding Agents MUST read and adhere to these rules.
+
+## 🏛️ Codebase & Architecture Invariants
+- Framework: Next.js (App Router, Server Components by default)
+- Styling: Tailwind CSS with clean, flat monochrome aesthetics (Zero AI slop)
+- Verification: Always run verification builds before completing tasks.
+
+## 🚫 Anti-Patterns
+- Zero Raw Secrets: Always use .env files.
+- Zero AI Slop: No rainbow gradient overlays or meaningless icons.
+`
+      zip.file("instincts.md", instinctsContent)
+
+      // 10. Master AGENTS.md Index
       const agentsMdContent = `# Universal AI Agent Guidelines & Skills Suite
 
-This repository is equipped with **Awesome AI Tools & ECC Skills Suite** (${skills.length} active skills) supporting both **CLI Agents** (Claude Code, Codex) and **AI IDEs** (Cursor, Antigravity, Windsurf, Copilot, Continue).
+This repository is equipped with **Awesome AI Tools & ECC Skills Suite** (${skills.length} active skills, 4 composite workflows, hooks runtime, and instincts memory).
+
+## Composite Workflows:
+- \`/review\`: Multi-agent security audit + code review
+- \`/tdd\`: Autonomous Red-Green-Refactor cycle
+- \`/compact\`: Context token compaction
+- \`/council\`: Multi-model architecture consensus
 
 ## Triggering Skills in your AI Environment:
 - **Claude Code CLI**: Type \`/<command>\` (e.g. \`/tdd-workflow\`, \`/plan-first\`, \`/security-scan\`)

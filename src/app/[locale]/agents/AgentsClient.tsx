@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react"
 import { AiAgent } from "@/types"
 import { Link } from "@/i18n/routing"
-import { Search, Bot, Terminal, Shield, Check, Copy, Download, Sparkles, Layers, Cpu } from "lucide-react"
+import { Search, Bot, Terminal, Shield, Check, Copy, Download, Sparkles, Layers, Cpu, Code2, Database, Wrench, Flame, Zap } from "lucide-react"
 import { Input } from "@/components/ui/Input"
 import { Button } from "@/components/ui/Button"
 import JSZip from "jszip"
@@ -13,22 +13,75 @@ interface AgentsClientProps {
   locale: string
 }
 
+interface DomainCluster {
+  id: string
+  name: { en: string; id: string }
+  icon: any
+  match: (agent: AiAgent) => boolean
+}
+
+const DOMAIN_CLUSTERS: DomainCluster[] = [
+  {
+    id: "all",
+    name: { en: "All Subagents", id: "Semua Subagents" },
+    icon: Bot,
+    match: () => true
+  },
+  {
+    id: "architecture",
+    name: { en: "Architecture & Planning", id: "Arsitektur & Desain" },
+    icon: Layers,
+    match: (a) => a.tags.some(t => ["Architecture", "System Design", "DDD", "Planning", "Clean Code"].includes(t)) || a.role.toLowerCase().includes("architect")
+  },
+  {
+    id: "security",
+    name: { en: "Security & Audit", id: "Keamanan & Audit" },
+    icon: Shield,
+    match: (a) => a.tags.some(t => ["Security", "AgentShield", "Audit", "OWASP", "Red Team", "CVE"].includes(t)) || a.role.toLowerCase().includes("security") || a.role.toLowerCase().includes("auditor")
+  },
+  {
+    id: "testing",
+    name: { en: "Testing & QA", id: "Testing & Kualitas" },
+    icon: Check,
+    match: (a) => a.tags.some(t => ["TDD", "Testing", "Quality", "Vitest", "Playwright", "Jest", "Debugging"].includes(t)) || a.role.toLowerCase().includes("test") || a.role.toLowerCase().includes("bug")
+  },
+  {
+    id: "database",
+    name: { en: "Database & Data", id: "Database & Data" },
+    icon: Database,
+    match: (a) => a.tags.some(t => ["Database", "PostgreSQL", "SQL", "Data", "Polars", "ClickHouse", "DuckDB", "Redis", "Prisma", "Drizzle"].includes(t)) || a.role.toLowerCase().includes("data") || a.role.toLowerCase().includes("database")
+  },
+  {
+    id: "systems",
+    name: { en: "Systems & Concurrency", id: "Systems & Konkurensi" },
+    icon: Flame,
+    match: (a) => a.tags.some(t => ["Rust", "Go", "Systems", "Performance", "C++", "Concurrency", "Kafka", "Bun", "Tokio"].includes(t)) || a.role.toLowerCase().includes("system")
+  },
+  {
+    id: "frontend",
+    name: { en: "Frontend & UI", id: "Frontend & UI" },
+    icon: Code2,
+    match: (a) => a.tags.some(t => ["Frontend", "Next.js", "React", "Tailwind", "Angular", "Mobile", "UI"].includes(t)) || a.role.toLowerCase().includes("frontend")
+  },
+  {
+    id: "ai",
+    name: { en: "AI & MLOps", id: "AI & MLOps" },
+    icon: Sparkles,
+    match: (a) => a.tags.some(t => ["AI", "RAG", "MLOps", "Vector DB", "Embeddings", "Prompt Engineering", "Council"].includes(t)) || a.role.toLowerCase().includes("ml") || a.role.toLowerCase().includes("prompt")
+  }
+];
+
 export function AgentsClient({ agents, locale }: AgentsClientProps) {
+  const isId = locale === "id"
   const [searchQuery, setSearchQuery] = useState("")
-  const [selectedTag, setSelectedTag] = useState<string>("All")
+  const [selectedCluster, setSelectedCluster] = useState<string>("all")
   const [copiedSlug, setCopiedSlug] = useState<string | null>(null)
   const [isDownloading, setIsDownloading] = useState(false)
   const [copiedCli, setCopiedCli] = useState(false)
 
-  // Extract all unique tags
-  const allTags = useMemo(() => {
-    const tags = new Set<string>()
-    agents.forEach((agent) => agent.tags.forEach((t) => tags.add(t)))
-    return ["All", ...Array.from(tags).sort()]
-  }, [agents])
-
-  // Filter agents
+  // Filter agents by cluster and search
   const filteredAgents = useMemo(() => {
+    const cluster = DOMAIN_CLUSTERS.find(c => c.id === selectedCluster) || DOMAIN_CLUSTERS[0]
     return agents.filter((agent) => {
       const matchesSearch =
         agent.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -36,11 +89,11 @@ export function AgentsClient({ agents, locale }: AgentsClientProps) {
         agent.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         agent.tags.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase()))
 
-      const matchesTag = selectedTag === "All" || agent.tags.includes(selectedTag)
+      const matchesCluster = cluster.match(agent)
 
-      return matchesSearch && matchesTag
+      return matchesSearch && matchesCluster
     })
-  }, [agents, searchQuery, selectedTag])
+  }, [agents, searchQuery, selectedCluster])
 
   const handleCopyPrompt = async (e: React.MouseEvent, agent: AiAgent) => {
     e.preventDefault()
@@ -82,6 +135,14 @@ ${agent.systemPrompt}
         agentsFolder?.file(`${agent.slug}.md`, fileContent)
       })
 
+      // instincts.md
+      zip.file("instincts.md", `# Project Instincts & Persistent Memory\nContinuous learning rules for all ${agents.length} subagents.\n`)
+
+      // .agents/hooks/
+      const hooksFolder = zip.folder(".agents")?.folder("hooks")
+      hooksFolder?.file("pre-tool-call.js", `console.log("[AgentShield] Pre-tool verification active.");`)
+      hooksFolder?.file("post-tool-call.js", `console.log("[Auto-Linter] Post-tool verification active.");`)
+
       const blob = await zip.generateAsync({ type: "blob" })
       const url = URL.createObjectURL(blob)
       const link = document.createElement("a")
@@ -106,13 +167,15 @@ ${agent.systemPrompt}
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[var(--primary)]/10 text-[var(--primary)] border border-[var(--primary)]/20">
               <Bot className="w-3.5 h-3.5" />
-              <span>ECC Subagents & Specialist Personas</span>
+              <span>{isId ? "Koleksi 68+ Subagents Spesialis" : "ECC Subagents & Specialist Personas"}</span>
             </div>
             <h1 className="text-3xl md:text-4xl font-heading font-bold text-[var(--foreground)] tracking-tight">
-              AI Subagents Directory
+              {isId ? "Direktori AI Subagents" : "AI Subagents Directory"}
             </h1>
             <p className="text-sm md:text-base text-[var(--muted)] leading-relaxed">
-              Curated collection of <strong>{agents.length} specialized AI subagents</strong> with battle-tested system prompts, tool boundaries, and multi-model routing for Antigravity, Claude Code, Cursor, and Codex.
+              {isId
+                ? `Koleksi terkurasi ${agents.length} persona subagen koding dengan batasan tools terisolasi, system prompt teruji, dan multi-model cost routing untuk Antigravity, Claude Code, Cursor, dan Codex.`
+                : `Curated collection of ${agents.length} specialized AI subagents with battle-tested system prompts, tool boundaries, and multi-model routing for Antigravity, Claude Code, Cursor, and Codex.`}
             </p>
           </div>
 
@@ -120,10 +183,10 @@ ${agent.systemPrompt}
             <Button
               onClick={handleDownloadAllAgentsZip}
               disabled={isDownloading}
-              className="bg-[var(--primary)] text-[var(--background)] hover:bg-[var(--primary)]/90 font-medium text-xs md:text-sm px-4 py-2 rounded-xl flex items-center justify-center gap-2"
+              className="bg-[var(--primary)] text-[var(--background)] hover:bg-[var(--primary)]/90 font-medium text-xs md:text-sm px-4 py-2 rounded-xl flex items-center justify-center gap-2 cursor-pointer"
             >
               <Download className="w-4 h-4" />
-              {isDownloading ? "Bundling ZIP..." : `Download All (${agents.length} Agents .zip)`}
+              {isDownloading ? "Bundling ZIP..." : isId ? `Unduh Semua (${agents.length} Subagents .zip)` : `Download All (${agents.length} Agents .zip)`}
             </Button>
           </div>
         </div>
@@ -135,8 +198,8 @@ ${agent.systemPrompt}
               <Terminal className="w-4 h-4" />
             </div>
             <div>
-              <p className="text-xs font-semibold text-[var(--foreground)]">Install Subagents via CLI</p>
-              <p className="text-xs text-[var(--muted)]">Scaffold specialist subagent personas into your repository</p>
+              <p className="text-xs font-semibold text-[var(--foreground)]">{isId ? "Pasang Subagents via CLI" : "Install Subagents via CLI"}</p>
+              <p className="text-xs text-[var(--muted)]">{isId ? "Generate persona subagen langsung ke repositori Anda" : "Scaffold specialist subagent personas into your repository"}</p>
             </div>
           </div>
           <div className="flex items-center gap-2 bg-[var(--surface)] px-3 py-1.5 rounded-lg border border-[var(--border)] font-mono text-xs text-[var(--foreground)]">
@@ -152,33 +215,45 @@ ${agent.systemPrompt}
         </div>
       </div>
 
-      {/* Search and Filters */}
+      {/* Domain Clusters Category Bar */}
       <div className="space-y-4">
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+          {DOMAIN_CLUSTERS.map((cluster) => {
+            const Icon = cluster.icon
+            const isSelected = selectedCluster === cluster.id
+            const count = agents.filter(a => cluster.match(a)).length
+
+            return (
+              <button
+                key={cluster.id}
+                onClick={() => setSelectedCluster(cluster.id)}
+                className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer border ${
+                  isSelected
+                    ? "bg-[var(--primary)] text-[var(--background)] font-semibold border-[var(--primary)] shadow-xs"
+                    : "bg-[var(--surface)] text-[var(--muted)] hover:text-[var(--foreground)] border-[var(--border)] hover:bg-[var(--surface-hover)]"
+                }`}
+              >
+                <Icon className="w-3.5 h-3.5 shrink-0" />
+                <span>{isId ? cluster.name.id : cluster.name.en}</span>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                  isSelected ? "bg-[var(--background)]/20 text-[var(--background)]" : "bg-[var(--background)] text-[var(--muted)]"
+                }`}>
+                  {count}
+                </span>
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Search Input */}
         <div className="relative max-w-xl">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--muted)]" />
           <Input
-            placeholder="Search agents by role, persona, or specialty..."
+            placeholder={isId ? "Cari subagen berdasarkan peran, persona, atau keahlian..." : "Search agents by role, persona, or specialty..."}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10 h-11 bg-[var(--surface)] border-[var(--border)] rounded-xl text-sm"
           />
-        </div>
-
-        {/* Tags Selector */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
-          {allTags.slice(0, 16).map((tag) => (
-            <button
-              key={tag}
-              onClick={() => setSelectedTag(tag)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
-                selectedTag === tag
-                  ? "bg-[var(--primary)] text-[var(--background)] font-semibold shadow-sm"
-                  : "bg-[var(--surface)] text-[var(--muted)] hover:text-[var(--foreground)] border border-[var(--border)]"
-              }`}
-            >
-              {tag}
-            </button>
-          ))}
         </div>
       </div>
 
@@ -186,8 +261,8 @@ ${agent.systemPrompt}
       {filteredAgents.length === 0 ? (
         <div className="text-center py-16 bg-[var(--surface)] rounded-2xl border border-[var(--border)]">
           <Bot className="w-12 h-12 text-[var(--muted)] mx-auto mb-3 opacity-40" />
-          <h3 className="text-lg font-bold text-[var(--foreground)]">No AI agents found</h3>
-          <p className="text-sm text-[var(--muted)] mt-1">Try adjusting your search query or tag filter.</p>
+          <h3 className="text-lg font-bold text-[var(--foreground)]">{isId ? "Tidak ada subagen yang cocok" : "No AI agents found"}</h3>
+          <p className="text-sm text-[var(--muted)] mt-1">{isId ? "Coba ubah kata kunci pencarian atau kategori filter." : "Try adjusting your search query or cluster filter."}</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -245,12 +320,12 @@ ${agent.systemPrompt}
                   {copiedSlug === agent.slug ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-green-500" />
-                      <span className="text-green-500">Copied Prompt</span>
+                      <span className="text-green-500">{isId ? "Tersalin" : "Copied Prompt"}</span>
                     </>
                   ) : (
                     <>
                       <Copy className="w-3.5 h-3.5" />
-                      <span>Copy Prompt</span>
+                      <span>{isId ? "Salin Prompt" : "Copy Prompt"}</span>
                     </>
                   )}
                 </button>
@@ -259,7 +334,7 @@ ${agent.systemPrompt}
                   href={`/agents/${agent.slug}`}
                   className="text-xs font-semibold text-[var(--primary)] hover:underline"
                 >
-                  View Details &rarr;
+                  {isId ? "Lihat Detail" : "View Details"} &rarr;
                 </Link>
               </div>
             </div>

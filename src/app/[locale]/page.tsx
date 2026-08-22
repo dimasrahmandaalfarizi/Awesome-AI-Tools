@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion, type Variants } from "framer-motion"
-import { ArrowRight, Star, ExternalLink } from "lucide-react"
+import { ArrowRight, Star, ExternalLink, Bot, Shield, Terminal, Sparkles, Layers, Cpu, Code2, Download, Check, Copy } from "lucide-react"
 import { Link } from "@/i18n/routing"
 import { Navbar } from "@/components/layouts/Navbar"
 import { Footer } from "@/components/layouts/Footer"
@@ -11,7 +11,7 @@ import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/comp
 import { Badge } from "@/components/ui/Badge"
 import { BookmarkButton } from "@/components/ui/BookmarkButton"
 import { ToolLogo } from "@/components/ui/ToolLogo"
-import { CATEGORIES, TOOLS } from "@/data/mock"
+import { CATEGORIES, TOOLS, AI_SKILLS, AI_AGENTS } from "@/data/mock"
 import { getLocalizedCategory, getLocalizedTool } from "@/lib/localizeData"
 import { useTranslations, useLocale } from "next-intl"
 
@@ -38,169 +38,143 @@ const cardVariants: Variants = {
 type CodeLine = {
   id: string
   jsx: React.ReactNode
-  /** extra bottom margin class */
   mb?: string
 }
 
 const CODE_LINES: CodeLine[] = [
   {
     id: "c1",
-    jsx: <span className="text-gray-500">{"// 1. Install via NPM"}</span>,
+    jsx: <span className="text-gray-500">{"// 1. Scaffold 413 skills & 68 subagents into your project"}</span>,
   },
   {
-    id: "npm",
+    id: "init",
     jsx: (
       <span className="font-semibold text-gray-100">
-        <span className="text-pink-400">npm</span> install awesome-ai-tools
+        <span className="text-pink-400">npx</span> awesome-ai-tools init
       </span>
     ),
-    mb: "mb-5",
+    mb: "mb-4",
   },
   {
     id: "c2",
-    jsx: <span className="text-gray-500">{"// 2. Import and use the data"}</span>,
+    jsx: <span className="text-gray-500">{"// 2. Audit repository security with AgentShield"}</span>,
   },
   {
-    id: "import",
+    id: "scan",
     jsx: (
-      <span>
-        <span className="text-purple-400">import</span>
-        {" { getAllSkills, getAllTools } "}
-        <span className="text-purple-400">from</span>{" "}
-        <span className="text-green-300">&apos;awesome-ai-tools&apos;</span>;
+      <span className="font-semibold text-gray-100">
+        <span className="text-pink-400">npx</span> awesome-ai-tools scan
       </span>
     ),
-    mb: "mb-5",
+    mb: "mb-4",
   },
   {
-    id: "skills",
-    jsx: (
-      <span>
-        <span className="text-purple-400">const</span> skills ={" "}
-        <span className="text-blue-300">getAllSkills</span>();
-      </span>
-    ),
+    id: "c3",
+    jsx: <span className="text-gray-500">{"// 3. Trigger skills in Claude Code, Continue, or Cursor"}</span>,
   },
   {
-    id: "tools",
+    id: "trigger",
     jsx: (
       <span>
-        <span className="text-purple-400">const</span> tools ={" "}
-        <span className="text-blue-300">getAllTools</span>();
-      </span>
-    ),
-    mb: "mb-5",
-  },
-  {
-    id: "log",
-    jsx: (
-      <span>
-        <span className="text-blue-300">console</span>.
-        <span className="text-blue-300">log</span>(
-        <span className="text-green-300">`Loaded </span>
-        <span className="text-purple-400">{"${"}</span>
-        skills.length
-        <span className="text-purple-400">{"}"}</span>
-        <span className="text-green-300"> AI workflows!`</span>);
+        <span className="text-purple-400">/tdd-workflow</span>
+        {"  |  "}
+        <span className="text-amber-400">@security-auditor</span>
+        {"  |  "}
+        <span className="text-green-300">/review</span>
       </span>
     ),
   },
 ]
 
-// ─── TypewriterCodeBlock Component ──────────────────────────────────────────
-
 function TypewriterCodeBlock() {
-  const [visibleCount, setVisibleCount] = useState(0)
-  const [cursorOn, setCursorOn] = useState(true)
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const [renderedCount, setRenderedCount] = useState(0)
 
-  // Reveal lines one by one
   useEffect(() => {
-    if (visibleCount >= CODE_LINES.length) return
-    const timer = setTimeout(() => setVisibleCount((n) => n + 1), 260)
-    return () => clearTimeout(timer)
-  }, [visibleCount])
-
-  // Blinking cursor
-  useEffect(() => {
-    intervalRef.current = setInterval(() => setCursorOn((v) => !v), 500)
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current)
-    }
-  }, [])
-
-  const isDone = visibleCount >= CODE_LINES.length
+    if (renderedCount >= CODE_LINES.length) return
+    const timeout = setTimeout(() => {
+      setRenderedCount((prev) => prev + 1)
+    }, 450)
+    return () => clearTimeout(timeout)
+  }, [renderedCount])
 
   return (
-    <div className="p-5 md:p-6 overflow-x-auto text-sm md:text-base font-mono text-gray-300 leading-relaxed min-h-[200px]">
-      {CODE_LINES.slice(0, visibleCount).map((line, i) => {
-        const isCurrentLine = i === visibleCount - 1 && !isDone
-        return (
-          <div key={line.id} className={`min-h-[1.6em] ${line.mb ?? ""}`}>
+    <pre className="p-5 font-mono text-xs md:text-sm text-gray-200 overflow-x-auto min-h-[170px]">
+      <code>
+        {CODE_LINES.slice(0, renderedCount).map((line) => (
+          <div key={line.id} className={line.mb ?? ""}>
             {line.jsx}
-            {isCurrentLine && (
-              <span
-                className="inline-block w-[2px] h-[1.1em] bg-gray-300 ml-0.5 align-middle transition-opacity duration-75"
-                style={{ opacity: cursorOn ? 1 : 0 }}
-              />
-            )}
           </div>
-        )
-      })}
-      {/* Cursor stays at end after all lines rendered */}
-      {isDone && (
-        <span
-          className="inline-block w-[2px] h-[1.1em] bg-gray-300 align-middle transition-opacity duration-75"
-          style={{ opacity: cursorOn ? 1 : 0 }}
-        />
-      )}
-    </div>
+        ))}
+      </code>
+    </pre>
   )
 }
 
-// ─── Page Component ──────────────────────────────────────────────────────────
-
-export default function Home() {
+export default function HomePage() {
   const t = useTranslations("Home")
   const locale = useLocale()
-  const featuredTools = TOOLS.filter((t) => t.featured)
-    .slice(0, 6)
-    .map((t) => getLocalizedTool(t, locale))
+  const isId = locale === "id"
+  const [copiedCli, setCopiedCli] = useState(false)
+
+  const featuredTools = TOOLS.filter((t) => t.featured).map((t) => getLocalizedTool(t, locale))
+
+  const handleCopyCli = async () => {
+    try {
+      await navigator.clipboard.writeText("npx awesome-ai-tools init")
+      setCopiedCli(true)
+      setTimeout(() => setCopiedCli(false), 2000)
+    } catch (err) {
+      console.error("Failed to copy CLI command:", err)
+    }
+  }
 
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 bg-[var(--background)]">
         {/* Hero Section */}
-        <section className="relative overflow-hidden pt-24 pb-32">
-          <div className="absolute inset-0 -z-10 bg-[var(--background)]" />
-
-          <div className="container mx-auto px-4 text-center">
+        <section className="relative overflow-hidden pt-20 pb-16 md:pt-28 md:pb-24 border-b border-[var(--border)]">
+          <div className="container mx-auto px-4 relative z-10 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="max-w-3xl mx-auto space-y-8"
+              className="max-w-3xl mx-auto space-y-6"
             >
-              <Badge
-                variant="secondary"
-                className="px-3 py-1 mb-6 text-sm border-[var(--border)] border bg-[var(--surface)] text-[var(--foreground)]"
-              >
-                <Star className="w-3.5 h-3.5 mr-2 text-[var(--warning)] fill-[var(--warning)]" />
-                {t("heroBadge")}
+              <Badge variant="outline" className="px-3.5 py-1.5 text-xs font-semibold rounded-full border-[var(--primary)] text-[var(--primary)]">
+                <Sparkles className="w-3.5 h-3.5 mr-1.5 inline" />
+                {isId ? "1.000+ Alat AI • 413 Skills • 68 Subagents • AgentShield" : "1,000+ AI Tools • 413 Skills • 68 Subagents • AgentShield"}
               </Badge>
 
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-balance">
-                {t("heroTitle")} <br />
-                <span className="text-[var(--primary)]">{t("heroTitleHighlight")}</span>
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[var(--foreground)] font-heading leading-tight">
+                {t("heroTitle")}{" "}
+                <span className="text-[var(--primary)]">
+                  {t("heroTitleHighlight")}
+                </span>
               </h1>
 
-              <p className="text-lg md:text-xl text-[var(--muted)] text-balance max-w-2xl mx-auto">
+              <p className="text-base md:text-lg text-[var(--muted)] max-w-2xl mx-auto leading-relaxed">
                 {t("heroDescription")}
               </p>
 
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                <Button size="lg" className="w-full sm:w-auto bg-[var(--primary)] text-[var(--background)] hover:bg-[var(--primary)]/90 text-sm font-semibold rounded-xl" asChild>
+                  <Link href="/skills">
+                    {isId ? "Jelajahi 413 AI Skills" : "Explore 413 AI Skills"}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="w-full sm:w-auto text-sm font-semibold rounded-xl" asChild>
+                  <Link href="/agents">
+                    <Bot className="w-4 h-4 mr-2" />
+                    {isId ? "Direktori Subagents (68)" : "Subagents Directory (68)"}
+                  </Link>
+                </Button>
+              </div>
+
               {/* Typewriter Code Snippet */}
-              <div className="max-w-2xl mx-auto mt-12 text-left bg-[#0d1117] rounded-xl overflow-hidden border border-[#30363d] shadow-2xl">
+              <div className="max-w-2xl mx-auto mt-10 text-left bg-[#0d1117] rounded-xl overflow-hidden border border-[#30363d] shadow-2xl">
                 {/* Window chrome */}
                 <div className="flex items-center justify-between px-4 py-3 bg-[#161b22] border-b border-[#30363d]">
                   <div className="flex space-x-2">
@@ -208,13 +182,119 @@ export default function Home() {
                     <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                     <div className="w-3 h-3 rounded-full bg-green-500/80" />
                   </div>
-                  <div className="text-xs font-mono text-gray-400">awesome-ai-tools</div>
-                  <div className="w-12" />
+                  <div className="text-xs font-mono text-gray-400">awesome-ai-tools cli</div>
+                  <button
+                    onClick={handleCopyCli}
+                    className="text-xs font-mono text-gray-400 hover:text-white flex items-center gap-1 cursor-pointer transition-colors"
+                  >
+                    {copiedCli ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    <span>{copiedCli ? "Copied" : "Copy"}</span>
+                  </button>
                 </div>
 
                 <TypewriterCodeBlock />
               </div>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Ecosystem 4-Pillar Showcase */}
+        <section className="container mx-auto px-4 py-16 border-b border-[var(--border)]">
+          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight font-heading text-[var(--foreground)]">
+              {isId ? "Ekosistem Terpadu untuk AI Developer" : "Unified Ecosystem for AI Developers"}
+            </h2>
+            <p className="text-xs md:text-sm text-[var(--muted)]">
+              {isId
+                ? "Semua yang Anda butuhkan untuk membangun, mengaudit, dan menjalankan agen koding otonom di semua AI IDE & CLI."
+                : "Everything you need to build, audit, and orchestrate autonomous AI coding agents across all AI IDEs."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {/* Pillar 1: Skills */}
+            <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--primary)]/50 transition-all flex flex-col justify-between group">
+              <div className="space-y-3">
+                <div className="p-3 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--primary)] w-fit">
+                  <Terminal className="w-5 h-5" />
+                </div>
+                <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">
+                  413 AI Skills Suite
+                </h3>
+                <p className="text-xs text-[var(--muted)] leading-relaxed">
+                  {isId
+                    ? "Koleksi aturan modular lengkap (TDD, clean architecture, security, framework best practices) siap dipicu via /command dan @rules."
+                    : "Comprehensive modular prompt rules enforcing TDD, clean architecture, and framework standards across every editor."}
+                </p>
+              </div>
+              <Link href="/skills" className="text-xs font-semibold text-[var(--primary)] hover:underline pt-4 mt-4 border-t border-[var(--border)]/60 flex items-center justify-between">
+                <span>{isId ? "Buka Katalog Skills" : "Explore Skills"}</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Pillar 2: Subagents */}
+            <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--primary)]/50 transition-all flex flex-col justify-between group">
+              <div className="space-y-3">
+                <div className="p-3 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--primary)] w-fit">
+                  <Bot className="w-5 h-5" />
+                </div>
+                <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">
+                  68+ AI Subagents
+                </h3>
+                <p className="text-xs text-[var(--muted)] leading-relaxed">
+                  {isId
+                    ? "Persona spesialis (Architect, TDD Driver, Security Auditor, DBA, SRE) dengan system prompt teruji dan batasan alat terisolasi."
+                    : "Specialist personas (Architect, TDD Driver, Security Auditor, DBA) with isolated tool permissions and cost routing."}
+                </p>
+              </div>
+              <Link href="/agents" className="text-xs font-semibold text-[var(--primary)] hover:underline pt-4 mt-4 border-t border-[var(--border)]/60 flex items-center justify-between">
+                <span>{isId ? "Buka Direktori Agen" : "Browse Subagents"}</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Pillar 3: AgentShield */}
+            <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--primary)]/50 transition-all flex flex-col justify-between group">
+              <div className="space-y-3">
+                <div className="p-3 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--primary)] w-fit">
+                  <Shield className="w-5 h-5" />
+                </div>
+                <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">
+                  AgentShield Security
+                </h3>
+                <p className="text-xs text-[var(--muted)] leading-relaxed">
+                  {isId
+                    ? "Engine audit 4 lapisan: mendeteksi kebocoran API key, celah prompt injection, dan script hook berbahaya di repositori Anda."
+                    : "4-layer security scanner auditing secret leaks, adversarial prompt injections, and dangerous command hooks."}
+                </p>
+              </div>
+              <Link href="/docs/agentshield-security" className="text-xs font-semibold text-[var(--primary)] hover:underline pt-4 mt-4 border-t border-[var(--border)]/60 flex items-center justify-between">
+                <span>{isId ? "Pelajari Keamanan" : "Security Guide"}</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Pillar 4: Router */}
+            <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--primary)]/50 transition-all flex flex-col justify-between group">
+              <div className="space-y-3">
+                <div className="p-3 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--primary)] w-fit">
+                  <Cpu className="w-5 h-5" />
+                </div>
+                <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">
+                  Zero-Cost AI Router
+                </h3>
+                <p className="text-xs text-[var(--muted)] leading-relaxed">
+                  {isId
+                    ? "Proxy lokal kompatibel OpenAI dengan dynamic model remapping untuk menghubungkan Cursor ke Ollama gratis."
+                    : "OpenAI-compatible local proxy router remapping paid models to free local Ollama instances with streaming SSE."}
+                </p>
+              </div>
+              <Link href="/router" className="text-xs font-semibold text-[var(--primary)] hover:underline pt-4 mt-4 border-t border-[var(--border)]/60 flex items-center justify-between">
+                <span>{isId ? "Buka AI Router" : "Open Router"}</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
         </section>
 

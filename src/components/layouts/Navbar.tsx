@@ -46,6 +46,9 @@ export function Navbar() {
             <Link href="/router" className="hover:text-[var(--primary)] transition-colors">
               {t("router")}
             </Link>
+            <Link href="/security" className="hover:text-emerald-500 transition-colors flex items-center gap-1">
+              <span>{t("security")}</span>
+            </Link>
             <Link href="/chat" className="hover:text-[var(--foreground)] transition-colors">
               {t("aiChat")}
             </Link>
@@ -150,6 +153,14 @@ export function Navbar() {
               className="hover:text-[var(--primary)] transition-colors py-3 border-b border-[var(--border)]/30"
             >
               {t("router")}
+            </Link>
+            <Link
+              href="/security"
+              onClick={() => setIsOpen(false)}
+              className="hover:text-emerald-500 transition-colors py-3 border-b border-[var(--border)]/30 flex items-center justify-between"
+            >
+              <span>{t("security")}</span>
+              <span className="text-[10px] font-mono font-bold bg-emerald-500/10 text-emerald-500 px-2 py-0.5 rounded-full border border-emerald-500/20">Active</span>
             </Link>
             <Link
               href="/chat"
