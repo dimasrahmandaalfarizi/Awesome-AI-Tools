@@ -34,6 +34,8 @@ import {
   Lock
 } from "lucide-react"
 import { useLocale } from "next-intl"
+import { ChatMessageRenderer } from "@/components/features/ChatMessageRenderer"
+import "katex/dist/katex.min.css"
 
 interface Message {
   id: string
@@ -782,9 +784,16 @@ export default function ChatPage() {
                           ? "bg-red-950/30 border-red-900/50 text-red-300"
                           : "bg-[var(--surface)] border-[var(--border)] text-[var(--foreground)]"
                       }`}>
-                        <div className="whitespace-pre-wrap font-sans leading-relaxed">
-                          {msg.content}
-                        </div>
+                        {isUser ? (
+                          <div className="text-[13px] leading-relaxed whitespace-pre-wrap">
+                            {msg.content}
+                          </div>
+                        ) : (
+                          <ChatMessageRenderer
+                            content={msg.content}
+                            isStreaming={isLoading && msg.content === "" && msg === currentMessages[currentMessages.length - 1]}
+                          />
+                        )}
 
                         {!isUser && msg.content && (
                           <div className="flex items-center justify-between pt-2 mt-2 border-t border-[var(--border)]/50 text-[11px] text-[var(--muted)]">
@@ -794,7 +803,7 @@ export default function ChatPage() {
                               {msg.content.includes("```") && (
                                 <button
                                   onClick={() => {
-                                    const match = msg.content.match(/\`\`\`([a-zA-Z0-9_-]+)?\n([\s\S]*?)\`\`\`/)
+                                    const match = msg.content.match(/```([a-zA-Z0-9_-]+)?\n([\s\S]*?)```/)
                                     if (match) {
                                       setActiveArtifact({
                                         title: "Code Artifact",
