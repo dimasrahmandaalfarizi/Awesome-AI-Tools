@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { Navbar } from "@/components/layouts/Navbar"
-import { Footer } from "@/components/layouts/Footer"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { 
@@ -25,13 +24,16 @@ import {
   X, 
   Terminal, 
   Cpu, 
-  ChevronDown, 
   Sliders, 
   Sparkles,
-  ExternalLink
+  Zap,
+  ArrowRight,
+  Database,
+  Search,
+  CheckCircle2,
+  Lock
 } from "lucide-react"
-import { useLocale, useTranslations } from "next-intl"
-import { Link } from "@/i18n/routing"
+import { useLocale } from "next-intl"
 
 interface Message {
   id: string
@@ -68,6 +70,45 @@ const CLOUD_MODELS = [
   { id: "deepseek-r1", name: "DeepSeek R1 (Reasoning)" },
   { id: "gpt-4o", name: "GPT-4o (OpenAI)" },
   { id: "claude-3-5-sonnet", name: "Claude 3.5 Sonnet" }
+]
+
+const ARCHITECTURE_CAPABILITIES = [
+  {
+    persona: "architect",
+    titleEn: "Software Architecture & Fullstack Code",
+    titleId: "Arsitektur Software & Fullstack Code",
+    promptEn: "Write a production-grade rate-limiting middleware in TypeScript with Redis sliding window.",
+    promptId: "Buat middleware rate-limiting standar produksi dengan TypeScript dan Redis sliding window.",
+    icon: Code2,
+    badge: "Clean Code / TDD"
+  },
+  {
+    persona: "security",
+    titleEn: "Cybersecurity & Vulnerability Audit",
+    titleId: "Audit Keamanan & Kerentanan OWASP",
+    promptEn: "Audit an authentication flow for Broken Object Level Authorization (BOLA) and injection risks.",
+    promptId: "Audit alur autentikasi untuk mendeteksi celah BOLA dan risiko injeksi OWASP.",
+    icon: Shield,
+    badge: "OWASP / NIST"
+  },
+  {
+    persona: "stack",
+    titleEn: "AI Ecosystem & Tools Matching",
+    titleId: "Rekomendasi AI Stack & MCP Servers",
+    promptEn: "Recommend the best tools and Claude skills to build an autonomous multi-agent coding pipeline.",
+    promptId: "Rekomendasikan tools dan Claude skills terbaik untuk membuat pipeline multi-agen koding.",
+    icon: Layers,
+    badge: "205 Tools / 587 Skills"
+  },
+  {
+    persona: "general",
+    titleEn: "Deep Analytical Reasoning & QA",
+    titleId: "Penalaran Analitis & Tanya Jawab",
+    promptEn: "Explain the mathematical difference between Transformer Multi-Head Attention and FlashAttention.",
+    promptId: "Jelaskan perbedaan matematis antara Transformer Multi-Head Attention dan FlashAttention.",
+    icon: Bot,
+    badge: "Universal Intelligence"
+  }
 ]
 
 const STORAGE_KEY = "awesome_ai_chat_sessions_v2"
@@ -237,16 +278,21 @@ export default function ChatPage() {
     reader.onload = (event) => {
       const content = event.target?.result as string
       if (content) {
-        setAttachedContext(`[Attached File: ${file.name}]\n\`\`\`\n${content.slice(0, 10000)}\n\`\`\``)
+        setAttachedContext(`[Attached File: ${file.name}]\n```\n${content.slice(0, 10000)}\n````)
       }
     }
     reader.readAsText(file)
   }
 
   // Send Message Handler
-  const handleSendMessage = async (textToSend?: string) => {
+  const handleSendMessage = async (textToSend?: string, overridePersona?: string) => {
     const query = (textToSend || input).trim()
     if (!query || isLoading) return
+
+    const activeP = overridePersona || selectedPersona
+    if (overridePersona) {
+      setSelectedPersona(overridePersona)
+    }
 
     let finalPrompt = query
     if (attachedContext) {
@@ -285,7 +331,7 @@ export default function ChatPage() {
           ...s,
           title: sessionTitle,
           messages: updatedMessages,
-          persona: selectedPersona
+          persona: activeP
         }
       }
       return s
@@ -305,7 +351,7 @@ export default function ChatPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: payloadMessages,
-          persona: selectedPersona,
+          persona: activeP,
           provider: providerMode,
           model: selectedModel,
           customApiKey: customApiKey || undefined,
@@ -373,7 +419,7 @@ export default function ChatPage() {
       const codeMatch = fullContent.match(/\`\`\`([a-zA-Z0-9_-]+)?\n([\s\S]*?)\`\`\`/)
       if (codeMatch && codeMatch[2]?.length > 120) {
         setActiveArtifact({
-          title: "Code Artifact",
+          title: "Synthesized Artifact",
           language: codeMatch[1] || "typescript",
           code: codeMatch[2].trim()
         })
@@ -434,6 +480,24 @@ export default function ChatPage() {
       setCopiedCode(blockId)
       setTimeout(() => setCopiedCode(null), 2000)
     } catch {}
+  }
+
+  // Download artifact as a file
+  const handleDownloadArtifact = () => {
+    if (!activeArtifact) return
+    const ext = activeArtifact.language === "python" ? "py" : 
+                activeArtifact.language === "json" ? "json" :
+                activeArtifact.language === "html" ? "html" :
+                activeArtifact.language === "markdown" ? "md" : "ts"
+    const blob = new Blob([activeArtifact.code], { type: "text/plain" })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement("a")
+    a.href = url
+    a.download = `artifact-${Date.now()}.${ext}`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
   }
 
   return (
@@ -608,40 +672,78 @@ export default function ChatPage() {
             {/* Chat Messages View */}
             <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
               {currentMessages.length === 0 ? (
-                <div className="max-w-xl mx-auto my-12 text-center space-y-6">
-                  <div className="p-3 rounded-2xl bg-[var(--surface)] border border-[var(--border)] w-fit mx-auto text-[var(--foreground)]">
-                    <Bot className="w-8 h-8" />
-                  </div>
+                <div className="max-w-2xl mx-auto my-8 space-y-6">
                   
-                  <div className="space-y-2">
-                    <h2 className="text-xl md:text-2xl font-bold tracking-tight text-[var(--foreground)] font-heading">
-                      {isId ? "Universal AI Assistant" : "Universal AI Assistant"}
+                  {/* Hero Header */}
+                  <div className="text-center space-y-3">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] text-xs font-mono text-[var(--muted)]">
+                      <Cpu className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>Universal General AI Architecture Engine</span>
+                    </div>
+
+                    <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[var(--foreground)] font-heading">
+                      {isId ? "Universal General AI Assistant" : "Universal General AI Assistant"}
                     </h2>
-                    <p className="text-xs md:text-sm text-[var(--muted)] leading-relaxed">
+                    <p className="text-xs md:text-sm text-[var(--muted)] max-w-lg mx-auto leading-relaxed">
                       {isId
-                        ? "Didukung oleh AI Lokal (Ollama) dan model cloud cerdas. Siap membantu koding, pemikiran analitis, audit keamanan, dan rekomendasi stack."
-                        : "Powered by Local Ollama and intelligent cloud models. Ready to assist with coding, reasoning, security auditing, and stack architecture."}
+                        ? "Asisten AI multi-provider berstandar industrial. Mampu melakukan penalaran umum, rekayasa software fullstack, audit keamanan OWASP, dan rekomendasi stack secara instan."
+                        : "Production-grade multi-provider AI assistant. Capable of analytical reasoning, fullstack software engineering, OWASP security auditing, and intelligent ecosystem matching."}
                     </p>
                   </div>
 
-                  {/* Starter Prompt Cards */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-left pt-2">
-                    <button
-                      onClick={() => handleSendMessage(isId ? "Bagaimana cara membuat REST API yang aman di Next.js App Router?" : "How do I build a secure REST API with Next.js App Router?")}
-                      className="p-3 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-all text-xs text-[var(--foreground)] cursor-pointer"
-                    >
-                      <div className="font-semibold">{isId ? "Buat Secure API" : "Build Secure API"}</div>
-                      <div className="text-[11px] text-[var(--muted)] mt-1">{isId ? "Next.js App Router + Zod schema validation" : "Next.js App Router + Zod validation"}</div>
-                    </button>
+                  {/* Architecture Capability Matrix Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                    {ARCHITECTURE_CAPABILITIES.map((cap, idx) => {
+                      const Icon = cap.icon
+                      return (
+                        <button
+                          key={idx}
+                          onClick={() => handleSendMessage(isId ? cap.promptId : cap.promptEn, cap.persona)}
+                          className="p-4 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--foreground)]/50 hover:bg-[var(--surface-hover)] transition-all text-left group cursor-pointer space-y-2.5"
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="w-7 h-7 rounded-lg bg-[var(--background)] border border-[var(--border)] flex items-center justify-center text-[var(--foreground)]">
+                              <Icon className="w-3.5 h-3.5" />
+                            </div>
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--background)] border border-[var(--border)] text-[var(--muted)]">
+                              {cap.badge}
+                            </span>
+                          </div>
 
-                    <button
-                      onClick={() => handleSendMessage(isId ? "Rekomendasikan AI stack terbaik untuk membangun Agen Otonom." : "Recommend the best AI stack for building Autonomous Agents.")}
-                      className="p-3 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-all text-xs text-[var(--foreground)] cursor-pointer"
-                    >
-                      <div className="font-semibold">{isId ? "Rekomendasi AI Stack" : "AI Stack Consultant"}</div>
-                      <div className="text-[11px] text-[var(--muted)] mt-1">{isId ? "MCP servers, Qdrant, dan Claude Code skills" : "MCP servers, Qdrant, and Agent skills"}</div>
-                    </button>
+                          <div>
+                            <div className="text-xs font-semibold text-[var(--foreground)] group-hover:text-white transition-colors">
+                              {isId ? cap.titleId : cap.titleEn}
+                            </div>
+                            <div className="text-[11px] text-[var(--muted)] mt-1 line-clamp-2 leading-relaxed">
+                              {isId ? cap.promptId : cap.promptEn}
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-1 text-[11px] font-mono text-[var(--muted)] group-hover:text-[var(--foreground)] transition-colors pt-1">
+                            <span>Execute prompt</span>
+                            <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
+                          </div>
+                        </button>
+                      )
+                    })}
                   </div>
+
+                  {/* Architecture Badges Footer */}
+                  <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] font-mono text-[var(--muted)] pt-4 border-t border-[var(--border)]/50">
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>Zero-Key Web Fallback</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Zap className="w-3.5 h-3.5 text-amber-400" />
+                      <span>Local Ollama Ready</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Lock className="w-3.5 h-3.5 text-blue-400" />
+                      <span>Privacy-First Storage</span>
+                    </div>
+                  </div>
+
                 </div>
               ) : (
                 currentMessages.map((msg) => {
@@ -672,13 +774,35 @@ export default function ChatPage() {
                         {!isUser && msg.content && (
                           <div className="flex items-center justify-between pt-2 mt-2 border-t border-[var(--border)]/50 text-[11px] text-[var(--muted)]">
                             <span className="font-mono">{selectedPersona.toUpperCase()}</span>
-                            <button
-                              onClick={() => handleCopyCode(msg.content, msg.id)}
-                              className="flex items-center gap-1 hover:text-[var(--foreground)] transition-colors cursor-pointer font-mono"
-                            >
-                              {copiedCode === msg.id ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
-                              <span>{copiedCode === msg.id ? "Copied" : "Copy Response"}</span>
-                            </button>
+                            <div className="flex items-center gap-3">
+                              {/* Open in canvas if contains code */}
+                              {msg.content.includes("```") && (
+                                <button
+                                  onClick={() => {
+                                    const match = msg.content.match(/\`\`\`([a-zA-Z0-9_-]+)?\n([\s\S]*?)\`\`\`/)
+                                    if (match) {
+                                      setActiveArtifact({
+                                        title: "Code Artifact",
+                                        language: match[1] || "typescript",
+                                        code: match[2].trim()
+                                      })
+                                    }
+                                  }}
+                                  className="flex items-center gap-1 hover:text-[var(--foreground)] transition-colors cursor-pointer font-mono"
+                                >
+                                  <Maximize2 className="w-3 h-3" />
+                                  <span>Canvas</span>
+                                </button>
+                              )}
+
+                              <button
+                                onClick={() => handleCopyCode(msg.content, msg.id)}
+                                className="flex items-center gap-1 hover:text-[var(--foreground)] transition-colors cursor-pointer font-mono"
+                              >
+                                {copiedCode === msg.id ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                                <span>{copiedCode === msg.id ? "Copied" : "Copy"}</span>
+                              </button>
+                            </div>
                           </div>
                         )}
                       </div>
@@ -777,6 +901,14 @@ export default function ChatPage() {
                 </div>
 
                 <div className="flex items-center gap-1">
+                  <button
+                    onClick={handleDownloadArtifact}
+                    className="p-1.5 rounded-md hover:bg-[var(--surface-hover)] text-[var(--muted)] hover:text-[var(--foreground)] transition-colors cursor-pointer"
+                    title="Download File"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                  </button>
+
                   <button
                     onClick={() => handleCopyCode(activeArtifact.code, "artifact")}
                     className="p-1.5 rounded-md hover:bg-[var(--surface-hover)] text-[var(--muted)] hover:text-[var(--foreground)] transition-colors cursor-pointer"
