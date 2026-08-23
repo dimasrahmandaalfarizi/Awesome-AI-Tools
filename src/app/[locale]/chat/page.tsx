@@ -556,7 +556,7 @@ export default function ChatPage() {
             </div>
 
             {/* Sessions List */}
-            <div className="flex-1 overflow-y-auto p-2 space-y-1 no-scrollbar">
+            <div className="flex-1 overflow-y-auto overflow-x-hidden p-2 space-y-1 custom-scrollbar">
               <div className="px-2 py-1 text-[11px] font-mono font-medium text-[var(--muted)] uppercase tracking-wider">
                 {isId ? "Riwayat Percakapan" : "Chat History"} ({sessions.length})
               </div>
@@ -712,8 +712,8 @@ export default function ChatPage() {
               </div>
             </div>
 
-            {/* Chat Messages View */}
-            <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
+            {/* Chat Messages View - isolated scroll container */}
+            <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 md:p-6 space-y-6 custom-scrollbar">
               {currentMessages.length === 0 ? (
                 <div className="max-w-2xl mx-auto my-8 space-y-6">
                   
@@ -979,7 +979,7 @@ export default function ChatPage() {
                 </div>
               </div>
 
-              <div className="flex-1 overflow-auto p-4 font-mono text-xs bg-[#09090b] text-gray-200 leading-relaxed no-scrollbar">
+              <div className="flex-1 overflow-auto p-4 font-mono text-xs bg-[#09090b] text-gray-200 leading-relaxed custom-scrollbar">
                 <pre className="whitespace-pre-wrap">{activeArtifact.code}</pre>
               </div>
             </aside>
