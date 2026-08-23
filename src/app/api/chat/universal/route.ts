@@ -188,7 +188,24 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // ── Flow D: No engine available – honest guidance ─────────────────────────
+    // ── Flow D: LLM7 — free, no API key, no registration ─────────────────────
+    // llm7.io accepts "unused" as API key token and is completely free
+    try {
+      const resp = await callOpenAICompatible({
+        baseUrl: "https://api.llm7.io/v1",
+        apiKey: "unused",
+        model: "DeepSeek-V4-Flash-0731",
+        systemPrompt: SYSTEM_PERSONAS[persona] ?? SYSTEM_PERSONAS.general,
+        messages,
+        temperature,
+        label: "LLM7 (free)",
+      })
+      if (resp) return resp
+    } catch {
+      // LLM7 unavailable, show honest offline message
+    }
+
+    // ── Flow E: No engine available – honest guidance ─────────────────────────
     return streamOfflineNotice()
   } catch (err: unknown) {
     console.error("[Universal Chat Error]:", err)
