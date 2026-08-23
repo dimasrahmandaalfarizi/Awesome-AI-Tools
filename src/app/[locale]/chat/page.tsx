@@ -4,7 +4,32 @@ import * as React from "react"
 import { Navbar } from "@/components/layouts/Navbar"
 import { Footer } from "@/components/layouts/Footer"
 import { Button } from "@/components/ui/Button"
-import { Send, RefreshCw, Copy, Check, Trash2 } from "lucide-react"
+import { Input } from "@/components/ui/Input"
+import { 
+  Send, 
+  RefreshCw, 
+  Copy, 
+  Check, 
+  Trash2, 
+  Plus, 
+  MessageSquare, 
+  Download, 
+  Settings, 
+  Bot, 
+  Code2, 
+  Shield, 
+  Layers, 
+  FileText, 
+  Paperclip, 
+  Maximize2, 
+  X, 
+  Terminal, 
+  Cpu, 
+  ChevronDown, 
+  Sliders, 
+  Sparkles,
+  ExternalLink
+} from "lucide-react"
 import { useLocale, useTranslations } from "next-intl"
 import { Link } from "@/i18n/routing"
 
@@ -16,60 +41,225 @@ interface Message {
   isError?: boolean
 }
 
+interface ChatSession {
+  id: string
+  title: string
+  createdAt: number
+  messages: Message[]
+  persona: string
+}
+
+interface Artifact {
+  title: string
+  language: string
+  code: string
+}
+
+const PERSONAS = [
+  { id: "general", name: "General AI", desc: "Complex reasoning, writing, math & general QA", icon: Bot },
+  { id: "architect", name: "Software Architect", desc: "Fullstack architecture, clean code & TDD", icon: Code2 },
+  { id: "security", name: "Cybersecurity Auditor", desc: "OWASP audit, vulnerability review & hardening", icon: Shield },
+  { id: "stack", name: "Stack Consultant", desc: "205 Tools & 587 Skills ecosystem matching", icon: Layers },
+  { id: "writer", name: "Technical Writer", desc: "Specs, documentation, ADRs & user guides", icon: FileText }
+]
+
+const CLOUD_MODELS = [
+  { id: "deepseek-v3", name: "DeepSeek V3 (Cloud Fast)" },
+  { id: "deepseek-r1", name: "DeepSeek R1 (Reasoning)" },
+  { id: "gpt-4o", name: "GPT-4o (OpenAI)" },
+  { id: "claude-3-5-sonnet", name: "Claude 3.5 Sonnet" }
+]
+
+const STORAGE_KEY = "awesome_ai_chat_sessions_v2"
+const SETTINGS_KEY = "awesome_ai_chat_settings_v2"
+
 export default function ChatPage() {
   const locale = useLocale()
   const isId = locale === "id"
 
-  const [messages, setMessages] = React.useState<Message[]>([])
+  // Sessions state
+  const [sessions, setSessions] = React.useState<ChatSession[]>([])
+  const [activeSessionId, setActiveSessionId] = React.useState<string>("")
+  const [sidebarOpen, setSidebarOpen] = React.useState(true)
+
+  // Current chat state
   const [input, setInput] = React.useState("")
   const [isLoading, setIsLoading] = React.useState(false)
+  const [selectedPersona, setSelectedPersona] = React.useState<string>("general")
   
+  // Model & Provider state
+  const [providerMode, setProviderMode] = React.useState<"auto" | "ollama" | "byok">("auto")
+  const [selectedModel, setSelectedModel] = React.useState<string>("deepseek-v3")
   const [ollamaOnline, setOllamaOnline] = React.useState<boolean | null>(null)
-  const [models, setModels] = React.useState<string[]>([])
-  const [selectedModel, setSelectedModel] = React.useState<string>("")
-  const [isCheckingStatus, setIsCheckingStatus] = React.useState(false)
+  const [ollamaModels, setOllamaModels] = React.useState<string[]>([])
+  
+  // BYOK Settings state
+  const [settingsOpen, setSettingsOpen] = React.useState(false)
+  const [customApiKey, setCustomApiKey] = React.useState("")
+  const [customBaseUrl, setCustomBaseUrl] = React.useState("")
+
+  // Side-by-Side Artifacts Drawer state
+  const [activeArtifact, setActiveArtifact] = React.useState<Artifact | null>(null)
   const [copiedCode, setCopiedCode] = React.useState<string | null>(null)
 
+  // Attachment state
+  const [attachedContext, setAttachedContext] = React.useState<string | null>(null)
+  const fileInputRef = React.useRef<HTMLInputElement>(null)
   const messagesEndRef = React.useRef<HTMLDivElement>(null)
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
 
+  // Load sessions from localStorage
+  React.useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY)
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setSessions(parsed)
+          setActiveSessionId(parsed[0].id)
+          setSelectedPersona(parsed[0].persona || "general")
+          return
+        }
+      }
+      // Initialize default session
+      const defaultId = Date.now().toString()
+      const newSession: ChatSession = {
+        id: defaultId,
+        title: isId ? "Percakapan Baru" : "New Chat",
+        createdAt: Date.now(),
+        messages: [],
+        persona: "general"
+      }
+      setSessions([newSession])
+      setActiveSessionId(defaultId)
+    } catch (e) {
+      console.error("Error loading chat sessions:", e)
+    }
+  }, [isId])
+
+  // Load BYOK settings
+  React.useEffect(() => {
+    try {
+      const saved = localStorage.getItem(SETTINGS_KEY)
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        if (parsed.apiKey) setCustomApiKey(parsed.apiKey)
+        if (parsed.baseUrl) setCustomBaseUrl(parsed.baseUrl)
+      }
+    } catch {}
+  }, [])
+
+  // Check Ollama status
   const checkOllamaStatus = React.useCallback(async () => {
-    setIsCheckingStatus(true)
     try {
       const res = await fetch("/api/ollama/models")
       const data = await res.json()
       setOllamaOnline(data.online === true)
-      if (data.models && Array.isArray(data.models)) {
-        setModels(data.models)
-        if (data.models.length > 0 && !selectedModel) {
+      if (data.models && Array.isArray(data.models) && data.models.length > 0) {
+        setOllamaModels(data.models)
+        if (providerMode === "ollama") {
           setSelectedModel(data.models[0])
         }
       }
-    } catch (e) {
+    } catch {
       setOllamaOnline(false)
-    } finally {
-      setIsCheckingStatus(false)
     }
-  }, [selectedModel])
+  }, [providerMode])
 
   React.useEffect(() => {
     checkOllamaStatus()
   }, [checkOllamaStatus])
 
+  // Save sessions to localStorage
+  const saveSessions = (updatedSessions: ChatSession[]) => {
+    setSessions(updatedSessions)
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedSessions))
+    } catch {}
+  }
+
+  // Get active session
+  const currentSession = sessions.find(s => s.id === activeSessionId) || sessions[0]
+  const currentMessages = currentSession?.messages || []
+
+  // Scroll to bottom on new messages
   React.useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }, [messages, isLoading])
+  }, [currentMessages, isLoading])
 
+  // New Chat Handler
+  const handleNewChat = () => {
+    const newId = Date.now().toString()
+    const newSession: ChatSession = {
+      id: newId,
+      title: isId ? "Percakapan Baru" : "New Chat",
+      createdAt: Date.now(),
+      messages: [],
+      persona: selectedPersona
+    }
+    const updated = [newSession, ...sessions]
+    saveSessions(updated)
+    setActiveSessionId(newId)
+    setActiveArtifact(null)
+  }
+
+  // Delete Session Handler
+  const handleDeleteSession = (e: React.MouseEvent, idToDelete: string) => {
+    e.stopPropagation()
+    const remaining = sessions.filter(s => s.id !== idToDelete)
+    if (remaining.length === 0) {
+      handleNewChat()
+    } else {
+      saveSessions(remaining)
+      if (activeSessionId === idToDelete) {
+        setActiveSessionId(remaining[0].id)
+      }
+    }
+  }
+
+  // Save BYOK Settings
+  const handleSaveSettings = () => {
+    try {
+      localStorage.setItem(SETTINGS_KEY, JSON.stringify({
+        apiKey: customApiKey,
+        baseUrl: customBaseUrl
+      }))
+    } catch {}
+    setSettingsOpen(false)
+  }
+
+  // File Upload Handler
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    const reader = new FileReader()
+    reader.onload = (event) => {
+      const content = event.target?.result as string
+      if (content) {
+        setAttachedContext(`[Attached File: ${file.name}]\n\`\`\`\n${content.slice(0, 10000)}\n\`\`\``)
+      }
+    }
+    reader.readAsText(file)
+  }
+
+  // Send Message Handler
   const handleSendMessage = async (textToSend?: string) => {
     const query = (textToSend || input).trim()
     if (!query || isLoading) return
+
+    let finalPrompt = query
+    if (attachedContext) {
+      finalPrompt = `${attachedContext}\n\n${query}`
+      setAttachedContext(null)
+    }
 
     setInput("")
     const userMsgId = Date.now().toString()
     const userMessage: Message = {
       id: userMsgId,
       role: "user",
-      content: query,
+      content: finalPrompt,
       timestamp: Date.now()
     }
 
@@ -81,343 +271,595 @@ export default function ChatPage() {
       timestamp: Date.now()
     }
 
-    setMessages(prev => [...prev, userMessage, initialAssistantMessage])
+    const updatedMessages = [...currentMessages, userMessage, initialAssistantMessage]
+    
+    // Auto-update session title if it's the first message
+    let sessionTitle = currentSession?.title || (isId ? "Percakapan Baru" : "New Chat")
+    if (currentMessages.length === 0) {
+      sessionTitle = query.slice(0, 32) + (query.length > 32 ? "..." : "")
+    }
+
+    const updatedSessions = sessions.map(s => {
+      if (s.id === activeSessionId) {
+        return {
+          ...s,
+          title: sessionTitle,
+          messages: updatedMessages,
+          persona: selectedPersona
+        }
+      }
+      return s
+    })
+
+    saveSessions(updatedSessions)
     setIsLoading(true)
 
     try {
-      const payloadMessages = [...messages, userMessage].map(m => ({
+      const payloadMessages = [...currentMessages, userMessage].map(m => ({
         role: m.role,
         content: m.content
       }))
 
-      const res = await fetch("/api/ollama/chat", {
+      const res = await fetch("/api/chat/universal", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: payloadMessages,
-          model: selectedModel || (models.length > 0 ? models[0] : "qwen2.5-coder:latest"),
-          stream: true
+          persona: selectedPersona,
+          provider: providerMode,
+          model: selectedModel,
+          customApiKey: customApiKey || undefined,
+          customBaseUrl: customBaseUrl || undefined
         })
       })
 
       if (!res.ok) {
-        let errMsg = "Terjadi kesalahan saat memanggil Ollama"
-        try {
-          const errData = await res.json()
-          errMsg = errData.error || errMsg
-        } catch { }
-        
-        setMessages(prev => prev.map(m => m.id === assistantMsgId ? {
-          ...m,
-          content: errMsg,
-          isError: true
-        } : m))
-        setIsLoading(false)
-        return
+        const errData = await res.json().catch(() => ({}))
+        throw new Error(errData.error || `HTTP error ${res.status}`)
       }
 
       const reader = res.body?.getReader()
       const decoder = new TextDecoder()
-      let accumulated = ""
+      let fullContent = ""
 
       if (reader) {
         while (true) {
           const { done, value } = await reader.read()
           if (done) break
-          const chunk = decoder.decode(value, { stream: true })
-          accumulated += chunk
-          setMessages(prev => prev.map(m => m.id === assistantMsgId ? {
-            ...m,
-            content: accumulated
-          } : m))
+          
+          const chunkStr = decoder.decode(value)
+          const lines = chunkStr.split("\n").filter(Boolean)
+          
+          for (const line of lines) {
+            if (line.startsWith("data: ")) {
+              const dataStr = line.replace("data: ", "").trim()
+              if (dataStr === "[DONE]") break
+              try {
+                const parsed = JSON.parse(dataStr)
+                const delta = parsed.choices?.[0]?.delta?.content || ""
+                if (delta) {
+                  fullContent += delta
+                  
+                  // Live update active session assistant message
+                  setSessions(prev => prev.map(s => {
+                    if (s.id === activeSessionId) {
+                      return {
+                        ...s,
+                        messages: s.messages.map(m => m.id === assistantMsgId ? { ...m, content: fullContent } : m)
+                      }
+                    }
+                    return s
+                  }))
+                }
+              } catch {}
+            }
+          }
         }
       }
+
+      // Persist final message to storage
+      const finalSessions = sessions.map(s => {
+        if (s.id === activeSessionId) {
+          return {
+            ...s,
+            messages: s.messages.map(m => m.id === assistantMsgId ? { ...m, content: fullContent } : m)
+          }
+        }
+        return s
+      })
+      saveSessions(finalSessions)
+
+      // Auto-detect artifacts for side-by-side drawer
+      const codeMatch = fullContent.match(/\`\`\`([a-zA-Z0-9_-]+)?\n([\s\S]*?)\`\`\`/)
+      if (codeMatch && codeMatch[2]?.length > 120) {
+        setActiveArtifact({
+          title: "Code Artifact",
+          language: codeMatch[1] || "typescript",
+          code: codeMatch[2].trim()
+        })
+      }
+
     } catch (err: any) {
-      setMessages(prev => prev.map(m => m.id === assistantMsgId ? {
-        ...m,
-        content: `Error koneksi: ${err.message || "Gagal menghubungkan ke server Ollama lokal."}`,
-        isError: true
-      } : m))
+      console.error("Chat Error:", err)
+      const errorSessions = sessions.map(s => {
+        if (s.id === activeSessionId) {
+          return {
+            ...s,
+            messages: s.messages.map(m => m.id === assistantMsgId ? {
+              ...m,
+              content: isId ? "Gagal memproses pesan. Silakan coba lagi atau periksa koneksi." : "Failed to process message. Please try again or check connection.",
+              isError: true
+            } : m)
+          }
+        }
+        return s
+      })
+      saveSessions(errorSessions)
     } finally {
       setIsLoading(false)
     }
   }
 
-  const copyToClipboard = (text: string, id: string) => {
-    navigator.clipboard.writeText(text)
-    setCopiedCode(id)
-    setTimeout(() => setCopiedCode(null), 2000)
+  // Export Transcript Handler
+  const handleExportChat = (format: "markdown" | "json") => {
+    if (!currentSession) return
+
+    let dataStr = ""
+    let mimeType = "text/plain"
+    let filename = `chat-export-${currentSession.id}.${format === "markdown" ? "md" : "json"}`
+
+    if (format === "markdown") {
+      dataStr = `# ${currentSession.title}\nPersona: ${currentSession.persona}\nDate: ${new Date(currentSession.createdAt).toLocaleString()}\n\n---\n\n` +
+        currentSession.messages.map(m => `### ${m.role.toUpperCase()}:\n${m.content}\n`).join("\n---\n\n")
+      mimeType = "text/markdown"
+    } else {
+      dataStr = JSON.stringify(currentSession, null, 2)
+      mimeType = "application/json"
+    }
+
+    const blob = new Blob([dataStr], { type: mimeType })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement("a")
+    a.href = url
+    a.download = filename
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
   }
 
-  const quickPrompts = isId ? [
-    { title: "Rekomendasi AI IDE Terbaik", prompt: "Rekomendasikan AI IDE dan Code Editor terbaik dari katalog Awesome AI Tools dan jelaskan keunggulannya." },
-    { title: "Cara Koneksi Ollama ke Cursor", prompt: "Bagaimana cara menghubungkan model Ollama lokal ke editor Cursor AI atau Roo Code?" },
-    { title: "Katalog Tools Open-Source", prompt: "Sebutkan daftar alat AI terbaik yang gratis dan open-source di katalog ini." },
-    { title: "Panduan MCP", prompt: "Jelaskan apa itu Model Context Protocol (MCP) dan server MCP apa saja yang tersedia di Awesome AI Tools?" }
-  ] : [
-    { title: "Best AI IDEs", prompt: "Recommend the best AI IDEs and code editors from the catalog and explain their strengths." },
-    { title: "Connect Ollama to Cursor", prompt: "How do I connect local Ollama models to Cursor AI or Roo Code?" },
-    { title: "Free & Open Source Tools", prompt: "List the best free and open-source AI tools in this catalog." },
-    { title: "Guide to MCP", prompt: "Explain Model Context Protocol (MCP) and what popular MCP servers are in this catalog." }
-  ]
-
-  const renderFormattedText = (text: string) => {
-    const parts = text.split(/(```[\s\S]*?```)/g)
-
-    return parts.map((part, index) => {
-      if (part.startsWith("```") && part.endsWith("```")) {
-        const lines = part.slice(3, -3).trim().split("\n")
-        const language = lines[0].trim() || "bash"
-        const code = lines.slice(language ? 1 : 0).join("\n")
-        const codeId = `code-main-${index}`
-
-        return (
-          <div key={index} className="my-3 rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-950 font-mono text-xs">
-            <div className="flex items-center justify-between px-4 py-2 bg-zinc-900 border-b border-zinc-800 text-xs text-zinc-400">
-              <span className="font-semibold">{language}</span>
-              <button
-                onClick={() => copyToClipboard(code, codeId)}
-                className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer"
-              >
-                {copiedCode === codeId ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-zinc-300" />
-                    <span className="text-zinc-300">Copied</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>Copy</span>
-                  </>
-                )}
-              </button>
-            </div>
-            <pre className="p-4 text-zinc-100 overflow-x-auto selection:bg-zinc-800 leading-relaxed">
-              <code>{code}</code>
-            </pre>
-          </div>
-        )
-      }
-
-      return (
-        <div key={index} className="whitespace-pre-wrap leading-relaxed text-sm">
-          {part}
-        </div>
-      )
-    })
+  const handleCopyCode = async (codeText: string, blockId: string) => {
+    try {
+      await navigator.clipboard.writeText(codeText)
+      setCopiedCode(blockId)
+      setTimeout(() => setCopiedCode(null), 2000)
+    } catch {}
   }
 
   return (
     <>
       <Navbar />
-      <main className="flex-1 min-h-[calc(100vh-14rem)] flex flex-col bg-[var(--background)]">
-        <div className="container mx-auto px-4 py-8 max-w-4xl flex-1 flex flex-col">
+      <main className="flex-1 bg-[var(--background)] flex flex-col h-[calc(100vh-64px)] overflow-hidden">
+        <div className="flex flex-1 h-full overflow-hidden">
           
-          {/* Header */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-5 border-b border-[var(--border)]">
-            <div>
-              <div className="flex items-center gap-2.5">
-                <h1 className="text-xl font-bold tracking-tight">AI Copilot</h1>
-                <span className="text-xs px-2 py-0.5 rounded border border-[var(--border)] text-[var(--muted)] font-mono">
-                  {ollamaOnline ? (selectedModel || "Ollama Online") : "Ollama Offline"}
-                </span>
-              </div>
-              <p className="text-xs text-[var(--muted)] mt-1">
-                {isId
-                  ? "Asisten AI lokal terhubung langsung ke Ollama (localhost:11434)."
-                  : "Local AI assistant connected directly to Ollama (localhost:11434)."}
-              </p>
+          {/* 1. Multi-Session History Sidebar */}
+          <aside className={`${sidebarOpen ? "w-72" : "w-0"} transition-all duration-200 border-r border-[var(--border)] bg-[var(--surface)] flex flex-col shrink-0 overflow-hidden`}>
+            <div className="p-3 border-b border-[var(--border)] flex items-center justify-between gap-2">
+              <Button 
+                onClick={handleNewChat}
+                className="flex-1 bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--foreground)]/90 h-9 rounded-lg text-xs font-medium flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>{isId ? "Percakapan Baru" : "New Chat"}</span>
+              </Button>
+
+              <button 
+                onClick={() => setSidebarOpen(false)}
+                className="p-2 rounded-lg text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)] cursor-pointer"
+                title="Collapse Sidebar"
+              >
+                <X className="w-4 h-4" />
+              </button>
             </div>
 
-            {/* Controls */}
-            <div className="flex items-center gap-2 flex-wrap">
-              {models.length > 0 ? (
+            {/* Sessions List */}
+            <div className="flex-1 overflow-y-auto p-2 space-y-1 no-scrollbar">
+              <div className="px-2 py-1 text-[11px] font-mono font-medium text-[var(--muted)] uppercase tracking-wider">
+                {isId ? "Riwayat Percakapan" : "Chat History"} ({sessions.length})
+              </div>
+              
+              {sessions.map((session) => {
+                const isActive = session.id === activeSessionId
+                return (
+                  <div
+                    key={session.id}
+                    onClick={() => {
+                      setActiveSessionId(session.id)
+                      setSelectedPersona(session.persona || "general")
+                      setActiveArtifact(null)
+                    }}
+                    className={`group flex items-center justify-between p-2.5 rounded-lg text-xs transition-all cursor-pointer border ${
+                      isActive
+                        ? "bg-[var(--background)] border-[var(--border)] text-[var(--foreground)] font-semibold shadow-xs"
+                        : "border-transparent text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 truncate pr-2">
+                      <MessageSquare className="w-3.5 h-3.5 shrink-0 opacity-60" />
+                      <span className="truncate">{session.title}</span>
+                    </div>
+
+                    <button
+                      onClick={(e) => handleDeleteSession(e, session.id)}
+                      className="opacity-0 group-hover:opacity-100 p-1 hover:text-red-400 transition-opacity"
+                      title="Delete chat"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Sidebar Bottom Actions */}
+            <div className="p-3 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--muted)] bg-[var(--background)]">
+              <button 
+                onClick={() => handleExportChat("markdown")}
+                className="flex items-center gap-1 hover:text-[var(--foreground)] transition-colors cursor-pointer text-[11px] font-mono"
+              >
+                <Download className="w-3 h-3" />
+                <span>Export .md</span>
+              </button>
+              
+              <button 
+                onClick={() => setSettingsOpen(true)}
+                className="flex items-center gap-1 hover:text-[var(--foreground)] transition-colors cursor-pointer text-[11px] font-mono"
+              >
+                <Settings className="w-3 h-3" />
+                <span>Settings</span>
+              </button>
+            </div>
+          </aside>
+
+          {/* 2. Main Conversational Canvas */}
+          <section className="flex-1 flex flex-col h-full overflow-hidden bg-[var(--background)] relative">
+            
+            {/* Top Control Bar */}
+            <div className="px-4 py-2.5 border-b border-[var(--border)] bg-[var(--surface)] flex flex-wrap items-center justify-between gap-3 shrink-0">
+              
+              {/* Left Controls: Sidebar toggle & Persona Switcher */}
+              <div className="flex items-center gap-2">
+                {!sidebarOpen && (
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={() => setSidebarOpen(true)}
+                    className="h-8 px-2.5 rounded-lg text-xs cursor-pointer"
+                  >
+                    <MessageSquare className="w-3.5 h-3.5 mr-1" />
+                    <span>{isId ? "Riwayat" : "Chats"}</span>
+                  </Button>
+                )}
+
+                {/* Persona Switcher Tabs */}
+                <div className="flex items-center gap-1 overflow-x-auto no-scrollbar">
+                  {PERSONAS.map((p) => {
+                    const Icon = p.icon
+                    const isSelected = selectedPersona === p.id
+                    return (
+                      <button
+                        key={p.id}
+                        onClick={() => setSelectedPersona(p.id)}
+                        className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all whitespace-nowrap cursor-pointer border ${
+                          isSelected
+                            ? "bg-[var(--foreground)] text-[var(--background)] border-[var(--foreground)] font-semibold shadow-xs"
+                            : "bg-[var(--background)] text-[var(--muted)] border-[var(--border)] hover:text-[var(--foreground)]"
+                        }`}
+                        title={p.desc}
+                      >
+                        <Icon className="w-3 h-3 shrink-0" />
+                        <span>{p.name}</span>
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+
+              {/* Right Controls: Model Switcher & Status */}
+              <div className="flex items-center gap-2">
+                {/* Local Ollama Indicator */}
+                <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-[var(--background)] border border-[var(--border)] text-[11px] font-mono text-[var(--muted)]">
+                  <span className={`w-1.5 h-1.5 rounded-full ${ollamaOnline ? "bg-emerald-500 animate-pulse" : "bg-zinc-600"}`} />
+                  <span>{ollamaOnline ? "Ollama Online" : "Web Engine"}</span>
+                </div>
+
+                {/* Model Selector */}
                 <select
                   value={selectedModel}
                   onChange={(e) => setSelectedModel(e.target.value)}
-                  className="text-xs px-2.5 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--foreground)] font-mono focus:outline-hidden cursor-pointer"
+                  className="bg-[var(--background)] border border-[var(--border)] rounded-lg text-xs font-mono text-[var(--foreground)] px-2.5 py-1 h-8 focus:outline-none cursor-pointer"
                 >
-                  {models.map(m => (
-                    <option key={m} value={m}>
-                      {m}
-                    </option>
-                  ))}
+                  {ollamaOnline && ollamaModels.length > 0 && (
+                    <optgroup label="Local Ollama Models">
+                      {ollamaModels.map(m => (
+                        <option key={m} value={m}>{m} (Local)</option>
+                      ))}
+                    </optgroup>
+                  )}
+                  <optgroup label="Cloud & Free Models">
+                    {CLOUD_MODELS.map(m => (
+                      <option key={m.id} value={m.id}>{m.name}</option>
+                    ))}
+                  </optgroup>
                 </select>
-              ) : null}
 
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={checkOllamaStatus}
-                disabled={isCheckingStatus}
-              >
-                <RefreshCw className={`w-3.5 h-3.5 mr-1.5 ${isCheckingStatus ? "animate-spin" : ""}`} />
-                <span>{isId ? "Cek Status" : "Check Status"}</span>
-              </Button>
-
-              {messages.length > 0 && (
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => setMessages([])}
+                  onClick={() => setSettingsOpen(true)}
+                  className="h-8 px-2.5 rounded-lg text-xs cursor-pointer"
+                  title="Configure API Keys"
                 >
-                  <Trash2 className="w-3.5 h-3.5 mr-1.5" />
-                  <span>{isId ? "Hapus" : "Clear"}</span>
+                  <Settings className="w-3.5 h-3.5" />
                 </Button>
-              )}
+              </div>
             </div>
-          </div>
 
-          {/* Messages Container */}
-          <div className="flex-1 overflow-y-auto custom-scrollbar py-6 space-y-4 min-h-[380px]">
-            
-            {/* Warning if Ollama online but 0 models */}
-            {ollamaOnline && models.length === 0 && (
-              <div className="p-4 rounded-xl border border-[var(--border)] bg-[var(--surface)] space-y-2">
-                <p className="font-semibold text-xs">
-                  {isId ? "Belum ada model AI terpasang" : "No models installed yet"}
-                </p>
-                <p className="text-xs text-[var(--muted)]">
-                  {isId
-                    ? "Jalankan perintah berikut di terminal Anda:"
-                    : "Run this command in your terminal:"}
-                </p>
-                <div className="flex items-center justify-between p-2.5 rounded bg-zinc-950 text-zinc-100 font-mono text-xs border border-zinc-800">
-                  <code>ollama run qwen2.5-coder:1.5b</code>
+            {/* Chat Messages View */}
+            <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6">
+              {currentMessages.length === 0 ? (
+                <div className="max-w-xl mx-auto my-12 text-center space-y-6">
+                  <div className="p-3 rounded-2xl bg-[var(--surface)] border border-[var(--border)] w-fit mx-auto text-[var(--foreground)]">
+                    <Bot className="w-8 h-8" />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <h2 className="text-xl md:text-2xl font-bold tracking-tight text-[var(--foreground)] font-heading">
+                      {isId ? "Universal AI Assistant" : "Universal AI Assistant"}
+                    </h2>
+                    <p className="text-xs md:text-sm text-[var(--muted)] leading-relaxed">
+                      {isId
+                        ? "Didukung oleh AI Lokal (Ollama) dan model cloud cerdas. Siap membantu koding, pemikiran analitis, audit keamanan, dan rekomendasi stack."
+                        : "Powered by Local Ollama and intelligent cloud models. Ready to assist with coding, reasoning, security auditing, and stack architecture."}
+                    </p>
+                  </div>
+
+                  {/* Starter Prompt Cards */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-left pt-2">
+                    <button
+                      onClick={() => handleSendMessage(isId ? "Bagaimana cara membuat REST API yang aman di Next.js App Router?" : "How do I build a secure REST API with Next.js App Router?")}
+                      className="p-3 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-all text-xs text-[var(--foreground)] cursor-pointer"
+                    >
+                      <div className="font-semibold">{isId ? "Buat Secure API" : "Build Secure API"}</div>
+                      <div className="text-[11px] text-[var(--muted)] mt-1">{isId ? "Next.js App Router + Zod schema validation" : "Next.js App Router + Zod validation"}</div>
+                    </button>
+
+                    <button
+                      onClick={() => handleSendMessage(isId ? "Rekomendasikan AI stack terbaik untuk membangun Agen Otonom." : "Recommend the best AI stack for building Autonomous Agents.")}
+                      className="p-3 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--foreground)] hover:bg-[var(--surface-hover)] transition-all text-xs text-[var(--foreground)] cursor-pointer"
+                    >
+                      <div className="font-semibold">{isId ? "Rekomendasi AI Stack" : "AI Stack Consultant"}</div>
+                      <div className="text-[11px] text-[var(--muted)] mt-1">{isId ? "MCP servers, Qdrant, dan Claude Code skills" : "MCP servers, Qdrant, and Agent skills"}</div>
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                currentMessages.map((msg) => {
+                  const isUser = msg.role === "user"
+
+                  return (
+                    <div
+                      key={msg.id}
+                      className={`flex gap-3 max-w-3xl mx-auto ${isUser ? "justify-end" : "justify-start"}`}
+                    >
+                      {!isUser && (
+                        <div className="w-7 h-7 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center shrink-0 text-[var(--foreground)] mt-0.5">
+                          <Bot className="w-4 h-4" />
+                        </div>
+                      )}
+
+                      <div className={`space-y-2 rounded-2xl p-4 text-xs md:text-sm leading-relaxed max-w-[85%] border ${
+                        isUser
+                          ? "bg-[var(--foreground)] text-[var(--background)] border-[var(--foreground)] font-medium shadow-xs"
+                          : msg.isError
+                          ? "bg-red-950/30 border-red-900/50 text-red-300"
+                          : "bg-[var(--surface)] border-[var(--border)] text-[var(--foreground)]"
+                      }`}>
+                        <div className="whitespace-pre-wrap font-sans leading-relaxed">
+                          {msg.content}
+                        </div>
+
+                        {!isUser && msg.content && (
+                          <div className="flex items-center justify-between pt-2 mt-2 border-t border-[var(--border)]/50 text-[11px] text-[var(--muted)]">
+                            <span className="font-mono">{selectedPersona.toUpperCase()}</span>
+                            <button
+                              onClick={() => handleCopyCode(msg.content, msg.id)}
+                              className="flex items-center gap-1 hover:text-[var(--foreground)] transition-colors cursor-pointer font-mono"
+                            >
+                              {copiedCode === msg.id ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                              <span>{copiedCode === msg.id ? "Copied" : "Copy Response"}</span>
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )
+                })
+              )}
+
+              {isLoading && (
+                <div className="flex gap-3 max-w-3xl mx-auto justify-start">
+                  <div className="w-7 h-7 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center shrink-0 text-[var(--foreground)]">
+                    <Bot className="w-4 h-4 animate-spin" />
+                  </div>
+                  <div className="p-3.5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] text-xs text-[var(--muted)] font-mono flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>Thinking and synthesizing stream...</span>
+                  </div>
+                </div>
+              )}
+
+              <div ref={messagesEndRef} />
+            </div>
+
+            {/* Input Form Bar */}
+            <div className="p-4 border-t border-[var(--border)] bg-[var(--surface)] shrink-0">
+              <div className="max-w-3xl mx-auto space-y-2">
+                
+                {/* Attached context pill */}
+                {attachedContext && (
+                  <div className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs font-mono text-[var(--muted)]">
+                    <span className="truncate max-w-[280px]">File attachment attached</span>
+                    <button onClick={() => setAttachedContext(null)} className="hover:text-[var(--foreground)]">
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                )}
+
+                <div className="relative flex items-center gap-2 bg-[var(--background)] border border-[var(--border)] rounded-xl p-1.5 shadow-xs focus-within:border-[var(--foreground)]/40 transition-colors">
+                  
+                  {/* File attach button */}
+                  <input 
+                    type="file" 
+                    ref={fileInputRef} 
+                    onChange={handleFileUpload} 
+                    className="hidden" 
+                    accept=".txt,.md,.json,.ts,.js,.py"
+                  />
                   <button
-                    onClick={() => copyToClipboard("ollama run qwen2.5-coder:1.5b", "page-pull")}
-                    className="text-zinc-400 hover:text-white transition-colors"
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="p-2 rounded-lg text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface)] transition-colors cursor-pointer shrink-0"
+                    title="Attach Code or File"
                   >
-                    {copiedCode === "page-pull" ? <Check className="w-3.5 h-3.5 text-zinc-300" /> : <Copy className="w-3.5 h-3.5" />}
+                    <Paperclip className="w-4 h-4" />
+                  </button>
+
+                  <textarea
+                    ref={inputRef}
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault()
+                        handleSendMessage()
+                      }
+                    }}
+                    placeholder={isId ? "Tanyakan apapun seputar koding, security, atau arsitektur sistem... (Enter untuk kirim)" : "Ask anything about coding, security, or system architecture... (Enter to send)"}
+                    rows={1}
+                    className="flex-1 bg-transparent border-0 text-xs md:text-sm text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none resize-none py-2 px-1 max-h-32"
+                  />
+
+                  <Button
+                    onClick={() => handleSendMessage()}
+                    disabled={isLoading || !input.trim()}
+                    className="h-8 w-8 rounded-lg bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--foreground)]/90 flex items-center justify-center shrink-0 cursor-pointer disabled:opacity-40"
+                  >
+                    <Send className="w-3.5 h-3.5" />
+                  </Button>
+                </div>
+
+                <div className="flex items-center justify-between text-[11px] text-[var(--muted)] px-1 font-mono">
+                  <span>Shift + Enter for new line</span>
+                  <span>Zero-Cost Hybrid Routing</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 3. Side-by-Side Artifacts Canvas Drawer */}
+          {activeArtifact && (
+            <aside className="w-96 border-l border-[var(--border)] bg-[var(--surface)] flex flex-col shrink-0 overflow-hidden animate-in slide-in-from-right duration-200">
+              <div className="p-3.5 border-b border-[var(--border)] flex items-center justify-between bg-[var(--background)]">
+                <div className="flex items-center gap-2 text-xs font-mono font-semibold text-[var(--foreground)]">
+                  <Terminal className="w-3.5 h-3.5 text-[var(--muted)]" />
+                  <span>{activeArtifact.title} ({activeArtifact.language})</span>
+                </div>
+
+                <div className="flex items-center gap-1">
+                  <button
+                    onClick={() => handleCopyCode(activeArtifact.code, "artifact")}
+                    className="p-1.5 rounded-md hover:bg-[var(--surface-hover)] text-[var(--muted)] hover:text-[var(--foreground)] transition-colors cursor-pointer"
+                    title="Copy Code"
+                  >
+                    {copiedCode === "artifact" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                  </button>
+
+                  <button
+                    onClick={() => setActiveArtifact(null)}
+                    className="p-1.5 rounded-md hover:bg-[var(--surface-hover)] text-[var(--muted)] hover:text-[var(--foreground)] transition-colors cursor-pointer"
+                  >
+                    <X className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
-            )}
 
-            {/* Offline Alert */}
-            {ollamaOnline === false && (
-              <div className="p-4 rounded-xl border border-[var(--border)] bg-[var(--surface)] space-y-2">
-                <p className="font-semibold text-xs">
-                  {isId ? "Ollama tidak terdeteksi di localhost:11434" : "Ollama offline on localhost:11434"}
-                </p>
-                <p className="text-xs text-[var(--muted)]">
-                  {isId
-                    ? "Pastikan aplikasi Ollama sudah Anda buka di komputer."
-                    : "Make sure Ollama is open and running on your device."}
-                </p>
-                <Link
-                  href="/docs/ollama-setup"
-                  className="text-xs text-[var(--foreground)] underline inline-block"
-                >
-                  {isId ? "Panduan Setup Ollama" : "Ollama Setup Guide"}
-                </Link>
+              <div className="flex-1 overflow-auto p-4 font-mono text-xs bg-[#09090b] text-gray-200 leading-relaxed no-scrollbar">
+                <pre className="whitespace-pre-wrap">{activeArtifact.code}</pre>
               </div>
-            )}
-
-            {/* Empty State */}
-            {messages.length === 0 && (
-              <div className="py-8 space-y-4">
-                <div className="space-y-1">
-                  <h2 className="text-lg font-semibold">
-                    {isId ? "Asisten AI Lokal" : "Local AI Assistant"}
-                  </h2>
-                  <p className="text-xs text-[var(--muted)]">
-                    {isId
-                      ? "Didukung model Ollama lokal secara 100% privat dan offline."
-                      : "Powered by your local Ollama models privately and offline."}
-                  </p>
-                </div>
-
-                {/* Suggestions Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
-                  {quickPrompts.map((q, idx) => (
-                    <div
-                      key={idx}
-                      onClick={() => handleSendMessage(q.prompt)}
-                      className="p-3.5 rounded-lg border border-[var(--border)] hover:border-[var(--muted)] bg-[var(--surface)] hover:bg-[var(--surface)]/80 transition-colors cursor-pointer"
-                    >
-                      <p className="font-medium text-xs text-[var(--foreground)] mb-1">
-                        {q.title}
-                      </p>
-                      <p className="text-[11px] text-[var(--muted)] line-clamp-2">
-                        {q.prompt}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Messages Flow */}
-            {messages.map((m) => (
-              <div
-                key={m.id}
-                className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
-              >
-                <div
-                  className={`max-w-[85%] rounded-xl px-4 py-3 ${
-                    m.role === "user"
-                      ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950"
-                      : "bg-[var(--surface)] border border-[var(--border)] text-[var(--foreground)]"
-                  }`}
-                >
-                  {m.role === "user" ? (
-                    <p className="whitespace-pre-wrap leading-relaxed text-sm">{m.content}</p>
-                  ) : (
-                    <div>
-                      {m.content ? (
-                        renderFormattedText(m.content)
-                      ) : (
-                        <div className="flex items-center gap-1.5 py-1 text-[var(--muted)]">
-                          <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-bounce" />
-                          <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-bounce [animation-delay:0.2s]" />
-                          <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-bounce [animation-delay:0.4s]" />
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-            <div ref={messagesEndRef} />
-          </div>
-
-          {/* Input Box */}
-          <div className="pt-3 border-t border-[var(--border)]">
-            <div className="relative flex items-center rounded-xl border border-[var(--border)] bg-[var(--surface)]">
-              <textarea
-                ref={inputRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault()
-                    handleSendMessage()
-                  }
-                }}
-                rows={2}
-                placeholder={isId ? "Tulis pertanyaan ke Ollama... (Enter untuk kirim)" : "Ask local Ollama... (Enter to send)"}
-                className="w-full pl-3.5 pr-12 py-3 text-sm bg-transparent text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-hidden resize-none max-h-32"
-              />
-              <Button
-                type="button"
-                onClick={() => handleSendMessage()}
-                disabled={!input.trim() || isLoading}
-                size="sm"
-                className="absolute right-2 px-3 h-8"
-              >
-                <Send className="w-3.5 h-3.5" />
-              </Button>
-            </div>
-            <div className="flex items-center justify-between mt-2 px-1 text-[11px] text-[var(--muted)]">
-              <span>{isId ? "100% Offline & Privat" : "100% Offline & Private"}</span>
-              <span className="font-mono">{selectedModel || "Ollama"}</span>
-            </div>
-          </div>
+            </aside>
+          )}
 
         </div>
       </main>
-      <Footer />
+
+      {/* 4. BYOK Settings Modal */}
+      {settingsOpen && (
+        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
+              <div className="flex items-center gap-2">
+                <Settings className="w-4 h-4 text-[var(--foreground)]" />
+                <h3 className="text-base font-bold text-[var(--foreground)] font-heading">
+                  {isId ? "Pengaturan API Key Pribadi (Opsional)" : "Custom API Key Settings (Optional)"}
+                </h3>
+              </div>
+              <button onClick={() => setSettingsOpen(false)} className="text-[var(--muted)] hover:text-[var(--foreground)]">
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <p className="text-xs text-[var(--muted)] leading-relaxed">
+              {isId
+                ? "Secara default, chatbot dapat berjalan langsung dengan AI Lokal (Ollama) atau server gratis. Jika Anda ingin menggunakan API key pribadi (DeepSeek / OpenAI / OpenRouter), masukkan di bawah ini. Key tersimpan privat di browser Anda."
+                : "By default, the assistant works with Local Ollama or server routing. If you wish to bring your own API key (DeepSeek / OpenAI / OpenRouter), save it below. Stored privately in localStorage."}
+            </p>
+
+            <div className="space-y-3 font-mono text-xs">
+              <div className="space-y-1">
+                <label className="text-[var(--muted)]">API Key</label>
+                <Input
+                  type="password"
+                  placeholder="sk-..."
+                  value={customApiKey}
+                  onChange={(e) => setCustomApiKey(e.target.value)}
+                  className="bg-[var(--background)] border-[var(--border)] text-xs h-9 rounded-lg"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[var(--muted)]">Custom Base URL (Optional)</label>
+                <Input
+                  type="text"
+                  placeholder="https://api.deepseek.com/v1"
+                  value={customBaseUrl}
+                  onChange={(e) => setCustomBaseUrl(e.target.value)}
+                  className="bg-[var(--background)] border-[var(--border)] text-xs h-9 rounded-lg"
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center justify-end gap-2 pt-2 border-t border-[var(--border)]">
+              <Button variant="outline" size="sm" onClick={() => setSettingsOpen(false)} className="h-9 text-xs rounded-lg cursor-pointer">
+                {isId ? "Batal" : "Cancel"}
+              </Button>
+              <Button size="sm" onClick={handleSaveSettings} className="h-9 text-xs rounded-lg bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--foreground)]/90 cursor-pointer">
+                {isId ? "Simpan Pengaturan" : "Save Settings"}
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
