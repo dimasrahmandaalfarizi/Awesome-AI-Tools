@@ -278,7 +278,7 @@ export default function ChatPage() {
     reader.onload = (event) => {
       const content = event.target?.result as string
       if (content) {
-        setAttachedContext(`[Attached File: ${file.name}]\n```\n${content.slice(0, 10000)}\n````)
+        setAttachedContext("[Attached File: " + file.name + "]\n```\n" + content.slice(0, 10000) + "\n```")
       }
     }
     reader.readAsText(file)
