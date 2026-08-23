@@ -367,57 +367,67 @@ export default function ChatPage() {
       const reader = res.body?.getReader()
       const decoder = new TextDecoder()
       let fullContent = ""
+      let streamDone = false
 
       if (reader) {
-        while (true) {
+        while (!streamDone) {
           const { done, value } = await reader.read()
           if (done) break
-          
-          const chunkStr = decoder.decode(value)
-          const lines = chunkStr.split("\n").filter(Boolean)
-          
+
+          // SSE chunks can be split across reads — buffer and process line by line
+          const chunkStr = decoder.decode(value, { stream: true })
+          const lines = chunkStr.split("\n")
+
           for (const line of lines) {
-            if (line.startsWith("data: ")) {
-              const dataStr = line.replace("data: ", "").trim()
-              if (dataStr === "[DONE]") break
-              try {
-                const parsed = JSON.parse(dataStr)
-                const delta = parsed.choices?.[0]?.delta?.content || ""
-                if (delta) {
-                  fullContent += delta
-                  
-                  // Live update active session assistant message
-                  setSessions(prev => prev.map(s => {
-                    if (s.id === activeSessionId) {
-                      return {
-                        ...s,
-                        messages: s.messages.map(m => m.id === assistantMsgId ? { ...m, content: fullContent } : m)
-                      }
-                    }
-                    return s
-                  }))
-                }
-              } catch {}
+            const trimmed = line.trim()
+            if (!trimmed || !trimmed.startsWith("data: ")) continue
+            const dataStr = trimmed.slice(6).trim()
+            if (dataStr === "[DONE]") {
+              streamDone = true
+              break
             }
+            try {
+              const parsed = JSON.parse(dataStr)
+              const delta = parsed.choices?.[0]?.delta?.content ?? ""
+              if (delta) {
+                fullContent += delta
+                setSessions(prev => prev.map(s => {
+                  if (s.id === activeSessionId) {
+                    return {
+                      ...s,
+                      messages: s.messages.map(m =>
+                        m.id === assistantMsgId ? { ...m, content: fullContent } : m
+                      )
+                    }
+                  }
+                  return s
+                }))
+              }
+            } catch { /* partial JSON chunk — skip */ }
           }
         }
       }
 
-      // Persist final message to storage
-      const finalSessions = sessions.map(s => {
-        if (s.id === activeSessionId) {
-          return {
-            ...s,
-            messages: s.messages.map(m => m.id === assistantMsgId ? { ...m, content: fullContent } : m)
+      // Persist final message using functional update to avoid stale sessions closure
+      setSessions(prev => {
+        const persisted = prev.map(s => {
+          if (s.id === activeSessionId) {
+            return {
+              ...s,
+              messages: s.messages.map(m =>
+                m.id === assistantMsgId ? { ...m, content: fullContent } : m
+              )
+            }
           }
-        }
-        return s
+          return s
+        })
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(persisted)) } catch {}
+        return persisted
       })
-      saveSessions(finalSessions)
 
-      // Auto-detect artifacts for side-by-side drawer
-      const codeMatch = fullContent.match(/\`\`\`([a-zA-Z0-9_-]+)?\n([\s\S]*?)\`\`\`/)
-      if (codeMatch && codeMatch[2]?.length > 120) {
+      // Auto-detect code artifacts for side-by-side Canvas drawer
+      const codeMatch = fullContent.match(/```([a-zA-Z0-9_-]+)?\n([\s\S]*?)```/)
+      if (codeMatch && (codeMatch[2]?.length ?? 0) > 80) {
         setActiveArtifact({
           title: "Synthesized Artifact",
           language: codeMatch[1] || "typescript",
@@ -427,20 +437,25 @@ export default function ChatPage() {
 
     } catch (err: any) {
       console.error("Chat Error:", err)
-      const errorSessions = sessions.map(s => {
-        if (s.id === activeSessionId) {
-          return {
-            ...s,
-            messages: s.messages.map(m => m.id === assistantMsgId ? {
-              ...m,
-              content: isId ? "Gagal memproses pesan. Silakan coba lagi atau periksa koneksi." : "Failed to process message. Please try again or check connection.",
-              isError: true
-            } : m)
+      const errorMsg = isId
+        ? "Gagal memproses pesan. Silakan coba lagi atau periksa koneksi."
+        : "Failed to process message. Please try again or check connection."
+      setSessions(prev => {
+        const updated = prev.map(s => {
+          if (s.id === activeSessionId) {
+            return {
+              ...s,
+              messages: s.messages.map(m => m.id === assistantMsgId
+                ? { ...m, content: errorMsg, isError: true }
+                : m
+              )
+            }
           }
-        }
-        return s
+          return s
+        })
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(updated)) } catch {}
+        return updated
       })
-      saveSessions(errorSessions)
     } finally {
       setIsLoading(false)
     }

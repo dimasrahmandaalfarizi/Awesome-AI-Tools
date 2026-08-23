@@ -41,33 +41,44 @@ export async function POST(req: NextRequest) {
     const systemPrompt = SYSTEM_PERSONAS[persona] || SYSTEM_PERSONAS.general
     const lastUserMessage = messages[messages.length - 1]?.content || ""
 
-    // 2. Flow A: Custom BYOK Key or Cloud Provider
+    // 2. Flow A: Cloud Provider — try if explicit byok/cloud OR auto with server key
     const effectiveApiKey = customApiKey || process.env.DEEPSEEK_API_KEY || process.env.OPENROUTER_API_KEY || process.env.GROQ_API_KEY || process.env.OPENAI_API_KEY
     const effectiveBaseUrl = customBaseUrl || 
       (process.env.DEEPSEEK_API_KEY ? "https://api.deepseek.com/v1" : 
-      process.env.GROQ_API_KEY ? "https://api.groq.com/openai/v1" :
-      process.env.OPENROUTER_API_KEY ? "https://openrouter.ai/api/v1" : 
-      "https://api.openai.com/v1")
+       process.env.GROQ_API_KEY ? "https://api.groq.com/openai/v1" :
+       process.env.OPENROUTER_API_KEY ? "https://openrouter.ai/api/v1" : 
+       "https://api.openai.com/v1")
 
-    if ((provider === "byok" || provider === "cloud") && effectiveApiKey) {
+    const shouldTryCloud = provider === "byok" || provider === "cloud" || (provider === "auto" && !!effectiveApiKey)
+
+    if (shouldTryCloud && effectiveApiKey) {
       try {
+        const effectiveModel = customApiKey ? model :
+          (process.env.DEEPSEEK_API_KEY ? "deepseek-chat" :
+           process.env.GROQ_API_KEY ? "llama-3.3-70b-versatile" :
+           process.env.OPENROUTER_API_KEY ? "deepseek/deepseek-chat" : model)
+
         const payload = {
-          model: model || "deepseek-chat",
+          model: effectiveModel || "deepseek-chat",
           messages: [
             { role: "system", content: systemPrompt },
             ...messages
           ],
           temperature,
-          stream: true
+          stream: true,
+          max_tokens: 4096
         }
 
         const upstreamRes = await fetch(effectiveBaseUrl.replace(/\/+$/, "") + "/chat/completions", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + effectiveApiKey
+            "Authorization": "Bearer " + effectiveApiKey,
+            "HTTP-Referer": "https://awesome-ai-tools.dev",
+            "X-Title": "Awesome AI Tools"
           },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payload),
+          signal: AbortSignal.timeout(25000) // 25s cloud timeout
         })
 
         if (upstreamRes.ok && upstreamRes.body) {
@@ -75,30 +86,36 @@ export async function POST(req: NextRequest) {
             headers: {
               "Content-Type": "text/event-stream",
               "Cache-Control": "no-cache",
-              "Connection": "keep-alive"
+              "Connection": "keep-alive",
+              "X-Powered-By": "Awesome AI Tools Universal Engine"
             }
           })
         }
+
+        // Log non-ok cloud response for debugging
+        const errText = await upstreamRes.text().catch(() => "")
+        console.warn("[Universal Chat] Cloud provider returned", upstreamRes.status, errText.slice(0, 200))
       } catch (err) {
-        console.warn("[Universal Chat] Upstream provider failed, falling back to smart engine:", err)
+        console.warn("[Universal Chat] Cloud provider failed, falling back:", (err as Error).message)
       }
     }
 
     // 3. Flow B: Local Ollama Proxy
     if (provider === "ollama" || provider === "auto") {
       try {
+        const ollamaModel = model || "qwen2.5-coder:latest"
         const ollamaRes = await fetch("http://localhost:11434/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            model: model || "qwen2.5-coder:latest",
+            model: ollamaModel,
             messages: [
               { role: "system", content: systemPrompt },
               ...messages
             ],
             stream: true
           }),
-          signal: AbortSignal.timeout(3000) // 3s check
+          signal: AbortSignal.timeout(4000) // 4s check for local presence
         })
 
         if (ollamaRes.ok && ollamaRes.body) {
@@ -116,16 +133,19 @@ export async function POST(req: NextRequest) {
                     controller.close()
                     break
                   }
-                  const chunkStr = decoder.decode(value)
+                  const chunkStr = decoder.decode(value, { stream: true })
                   const lines = chunkStr.split("\n").filter(Boolean)
                   for (const line of lines) {
                     try {
                       const parsed = JSON.parse(line)
                       if (parsed.message?.content) {
-                        const ssePayload = {
-                          choices: [{ delta: { content: parsed.message.content } }]
-                        }
+                        const ssePayload = { choices: [{ delta: { content: parsed.message.content } }] }
                         controller.enqueue(encoder.encode("data: " + JSON.stringify(ssePayload) + "\n\n"))
+                      }
+                      if (parsed.done) {
+                        controller.enqueue(encoder.encode("data: [DONE]\n\n"))
+                        controller.close()
+                        return
                       }
                     } catch {}
                   }
@@ -145,7 +165,7 @@ export async function POST(req: NextRequest) {
           })
         }
       } catch (e) {
-        // Ollama not running locally, proceed to Flow C
+        // Ollama not running locally, proceed to Flow C (built-in smart fallback)
       }
     }
 
