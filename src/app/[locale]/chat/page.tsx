@@ -665,12 +665,12 @@ export default function ChatPage() {
                   onClick={() => setFusionMode(!fusionMode)}
                   className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono transition-all border cursor-pointer h-8 ${
                     fusionMode
-                      ? "bg-zinc-900 border-emerald-500/40 text-emerald-300 font-medium shadow-xs"
+                      ? "bg-emerald-50 text-emerald-800 border-emerald-300 dark:bg-zinc-900 dark:border-emerald-500/40 dark:text-emerald-300 font-medium shadow-xs"
                       : "bg-[var(--background)] border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)]"
                   }`}
                   title="Multi-Model Context Fusion: Combines Architecture, Security & Ecosystem tools RAG"
                 >
-                  <Layers className={`w-3.5 h-3.5 ${fusionMode ? "text-emerald-400" : "text-zinc-500"}`} />
+                  <Layers className={`w-3.5 h-3.5 ${fusionMode ? "text-emerald-600 dark:text-emerald-400" : "text-zinc-500"}`} />
                   <span>{fusionMode ? (isId ? "Context Fusion: Aktif" : "Context Fusion: ON") : (isId ? "Context Fusion: Mati" : "Context Fusion: OFF")}</span>
                 </button>
 
@@ -754,7 +754,7 @@ export default function ChatPage() {
                           </div>
 
                           <div>
-                            <div className="text-xs font-semibold text-[var(--foreground)] group-hover:text-white transition-colors">
+                            <div className="text-xs font-semibold text-[var(--foreground)] group-hover:text-[var(--foreground)] dark:group-hover:text-white transition-colors">
                               {isId ? cap.titleId : cap.titleEn}
                             </div>
                             <div className="text-[11px] text-[var(--muted)] mt-1 line-clamp-2 leading-relaxed">
@@ -834,7 +834,7 @@ export default function ChatPage() {
                               <div className="flex items-center gap-1.5 font-mono">
                                 <span>{selectedPersona.toUpperCase()}</span>
                                 {fusionMode && (
-                                  <span className="px-1.5 py-0.5 rounded bg-emerald-950/60 border border-emerald-800/40 text-[9px] text-emerald-400 font-medium tracking-tight">
+                                  <span className="px-1.5 py-0.5 rounded bg-emerald-50 border border-emerald-300 text-emerald-800 dark:bg-emerald-950/60 dark:border-emerald-800/40 dark:text-emerald-400 text-[9px] font-medium tracking-tight">
                                     FUSED CONTEXT
                                   </span>
                                 )}
