@@ -375,6 +375,7 @@ export default function ChatPage() {
       const decoder = new TextDecoder()
       let fullContent = ""
       let streamDone = false
+      let buffer = ""
 
       if (reader) {
         while (!streamDone) {
@@ -382,13 +383,15 @@ export default function ChatPage() {
           if (done) break
 
           // SSE chunks can be split across reads — buffer and process line by line
-          const chunkStr = decoder.decode(value, { stream: true })
-          const lines = chunkStr.split("\n")
+          buffer += decoder.decode(value, { stream: true })
+          const lines = buffer.split("\n")
+          // Retain any trailing partial line in the buffer
+          buffer = lines.pop() ?? ""
 
           for (const line of lines) {
             const trimmed = line.trim()
-            if (!trimmed || !trimmed.startsWith("data: ")) continue
-            const dataStr = trimmed.slice(6).trim()
+            if (!trimmed || !trimmed.startsWith("data:")) continue
+            const dataStr = trimmed.replace(/^data:\s*/, "")
             if (dataStr === "[DONE]") {
               streamDone = true
               break
@@ -410,7 +413,7 @@ export default function ChatPage() {
                   return s
                 }))
               }
-            } catch { /* partial JSON chunk — skip */ }
+            } catch { /* partial JSON chunk — handled by buffer */ }
           }
         }
       }

@@ -161,6 +161,7 @@ export async function POST(req: NextRequest) {
           const stream = new ReadableStream({
             async start(controller) {
               const reader = ollamaRes.body!.getReader()
+              let buffer = ""
               try {
                 while (true) {
                   const { done, value } = await reader.read()
@@ -169,10 +170,15 @@ export async function POST(req: NextRequest) {
                     controller.close()
                     break
                   }
-                  const text = decoder.decode(value, { stream: true })
-                  for (const line of text.split("\n").filter(Boolean)) {
+                  buffer += decoder.decode(value, { stream: true })
+                  const lines = buffer.split("\n")
+                  buffer = lines.pop() ?? ""
+
+                  for (const line of lines) {
+                    const trimmed = line.trim()
+                    if (!trimmed) continue
                     try {
-                      const parsed = JSON.parse(line)
+                      const parsed = JSON.parse(trimmed)
                       if (parsed.message?.content) {
                         controller.enqueue(
                           encoder.encode(
