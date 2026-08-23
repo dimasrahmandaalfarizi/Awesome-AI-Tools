@@ -343,7 +343,12 @@ export default function ChatPage() {
     setIsLoading(true)
 
     try {
-      const payloadMessages = [...currentMessages, userMessage].map(m => ({
+      // Filter valid conversational history (drop empty/error messages) and apply sliding context window (last 8 turns)
+      const validHistory = currentMessages
+        .filter(m => m && typeof m.content === "string" && m.content.trim().length > 0 && !m.isError)
+        .slice(-8)
+
+      const payloadMessages = [...validHistory, userMessage].map(m => ({
         role: m.role,
         content: m.content
       }))
@@ -763,88 +768,84 @@ export default function ChatPage() {
 
                 </div>
               ) : (
-                currentMessages.map((msg) => {
-                  const isUser = msg.role === "user"
+                currentMessages
+                  .filter((msg) => msg.content !== "" || isLoading)
+                  .map((msg) => {
+                    const isUser = msg.role === "user"
+                    const isStreamingThis = isLoading && msg.role === "assistant" && msg.content === ""
 
-                  return (
-                    <div
-                      key={msg.id}
-                      className={`flex gap-3 max-w-3xl mx-auto ${isUser ? "justify-end" : "justify-start"}`}
-                    >
-                      {!isUser && (
-                        <div className="w-7 h-7 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center shrink-0 text-[var(--foreground)] mt-0.5">
-                          <Bot className="w-4 h-4" />
-                        </div>
-                      )}
-
-                      <div className={`space-y-2 rounded-2xl p-4 text-xs md:text-sm leading-relaxed max-w-[85%] border ${
-                        isUser
-                          ? "bg-[var(--foreground)] text-[var(--background)] border-[var(--foreground)] font-medium shadow-xs"
-                          : msg.isError
-                          ? "bg-red-950/30 border-red-900/50 text-red-300"
-                          : "bg-[var(--surface)] border-[var(--border)] text-[var(--foreground)]"
-                      }`}>
-                        {isUser ? (
-                          <div className="text-[13px] leading-relaxed whitespace-pre-wrap">
-                            {msg.content}
+                    return (
+                      <div
+                        key={msg.id}
+                        className={`flex gap-3 max-w-3xl mx-auto ${isUser ? "justify-end" : "justify-start"}`}
+                      >
+                        {!isUser && (
+                          <div className="w-7 h-7 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center shrink-0 text-[var(--foreground)] mt-0.5">
+                            <Bot className={`w-4 h-4 ${isStreamingThis ? "animate-spin text-emerald-400" : ""}`} />
                           </div>
-                        ) : (
-                          <ChatMessageRenderer
-                            content={msg.content}
-                            isStreaming={isLoading && msg.content === "" && msg === currentMessages[currentMessages.length - 1]}
-                          />
                         )}
 
-                        {!isUser && msg.content && (
-                          <div className="flex items-center justify-between pt-2 mt-2 border-t border-[var(--border)]/50 text-[11px] text-[var(--muted)]">
-                            <span className="font-mono">{selectedPersona.toUpperCase()}</span>
-                            <div className="flex items-center gap-3">
-                              {/* Open in canvas if contains code */}
-                              {msg.content.includes("```") && (
+                        <div className={`space-y-2 rounded-2xl p-4 text-xs md:text-sm leading-relaxed max-w-[85%] border ${
+                          isUser
+                            ? "bg-[var(--foreground)] text-[var(--background)] border-[var(--foreground)] font-medium shadow-xs"
+                            : msg.isError
+                            ? "bg-red-950/30 border-red-900/50 text-red-300"
+                            : "bg-[var(--surface)] border-[var(--border)] text-[var(--foreground)]"
+                        }`}>
+                          {isUser ? (
+                            <div className="text-[13px] leading-relaxed whitespace-pre-wrap">
+                              {msg.content}
+                            </div>
+                          ) : isStreamingThis ? (
+                            <div className="flex items-center gap-2 text-xs font-mono text-[var(--muted)] py-0.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                              <span>Thinking & synthesizing stream...</span>
+                            </div>
+                          ) : (
+                            <ChatMessageRenderer
+                              content={msg.content}
+                              isStreaming={isLoading && msg === currentMessages[currentMessages.length - 1]}
+                            />
+                          )}
+
+                          {!isUser && msg.content && (
+                            <div className="flex items-center justify-between pt-2 mt-2 border-t border-[var(--border)]/50 text-[11px] text-[var(--muted)]">
+                              <span className="font-mono">{selectedPersona.toUpperCase()}</span>
+                              <div className="flex items-center gap-3">
+                                {/* Open in canvas if contains code */}
+                                {msg.content.includes("```") && (
+                                  <button
+                                    onClick={() => {
+                                      const match = msg.content.match(/```([a-zA-Z0-9_-]+)?\n([\s\S]*?)```/)
+                                      if (match) {
+                                        setActiveArtifact({
+                                          title: "Code Artifact",
+                                          language: match[1] || "typescript",
+                                          code: match[2].trim()
+                                        })
+                                      }
+                                    }}
+                                    className="flex items-center gap-1 hover:text-[var(--foreground)] transition-colors cursor-pointer font-mono"
+                                  >
+                                    <Maximize2 className="w-3 h-3" />
+                                    <span>Canvas</span>
+                                  </button>
+                                )}
+
                                 <button
-                                  onClick={() => {
-                                    const match = msg.content.match(/```([a-zA-Z0-9_-]+)?\n([\s\S]*?)```/)
-                                    if (match) {
-                                      setActiveArtifact({
-                                        title: "Code Artifact",
-                                        language: match[1] || "typescript",
-                                        code: match[2].trim()
-                                      })
-                                    }
-                                  }}
+                                  onClick={() => handleCopyCode(msg.content, msg.id)}
                                   className="flex items-center gap-1 hover:text-[var(--foreground)] transition-colors cursor-pointer font-mono"
                                 >
-                                  <Maximize2 className="w-3 h-3" />
-                                  <span>Canvas</span>
+                                  {copiedCode === msg.id ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                                  <span>{copiedCode === msg.id ? "Copied" : "Copy"}</span>
                                 </button>
-                              )}
-
-                              <button
-                                onClick={() => handleCopyCode(msg.content, msg.id)}
-                                className="flex items-center gap-1 hover:text-[var(--foreground)] transition-colors cursor-pointer font-mono"
-                              >
-                                {copiedCode === msg.id ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
-                                <span>{copiedCode === msg.id ? "Copied" : "Copy"}</span>
-                              </button>
+                              </div>
                             </div>
-                          </div>
-                        )}
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  )
-                })
-              )}
-
-              {isLoading && (
-                <div className="flex gap-3 max-w-3xl mx-auto justify-start">
-                  <div className="w-7 h-7 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center shrink-0 text-[var(--foreground)]">
-                    <Bot className="w-4 h-4 animate-spin" />
-                  </div>
-                  <div className="p-3.5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] text-xs text-[var(--muted)] font-mono flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span>Thinking and synthesizing stream...</span>
-                  </div>
-                </div>
+                    )
+                  })
               )}
 
               <div ref={messagesEndRef} />

@@ -76,6 +76,29 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing or invalid messages array" }, { status: 400 })
     }
 
+    // ── Sanitize & Sliding Window Context Management ─────────────────────────
+    // 1. Filter out empty/whitespace-only messages that break strict LLM endpoints
+    // 2. Limit conversational turns to the most recent 10 turns (sliding window)
+    // 3. Truncate oversized individual messages to prevent context exhaustion
+    const sanitizedMessages = messages
+      .filter((m: any) => m && typeof m.content === "string" && m.content.trim().length > 0)
+      .slice(-10)
+      .map((m: any) => {
+        const rawContent = m.content.trim()
+        const truncatedContent =
+          rawContent.length > 6000
+            ? rawContent.slice(0, 6000) + "\n\n[Context truncated to fit token limits]"
+            : rawContent
+        return {
+          role: m.role === "assistant" || m.role === "system" ? m.role : "user",
+          content: truncatedContent,
+        }
+      })
+
+    if (sanitizedMessages.length === 0) {
+      return NextResponse.json({ error: "No valid message content provided" }, { status: 400 })
+    }
+
     const systemPrompt = SYSTEM_PERSONAS[persona] ?? SYSTEM_PERSONAS.general
 
     // ── Flow A: BYOK – user provided their own key in Settings modal ──────────
@@ -87,7 +110,7 @@ export async function POST(req: NextRequest) {
         apiKey: customApiKey,
         model: targetModel,
         systemPrompt,
-        messages,
+        messages: sanitizedMessages,
         temperature,
         label: "BYOK",
       })
@@ -107,7 +130,7 @@ export async function POST(req: NextRequest) {
           apiKey,
           model: targetModel,
           systemPrompt,
-          messages,
+          messages: sanitizedMessages,
           temperature,
           label: prov.name,
           extraHeaders: (prov as any).extraHeaders,
@@ -125,7 +148,7 @@ export async function POST(req: NextRequest) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             model: ollamaModel,
-            messages: [{ role: "system", content: systemPrompt }, ...messages],
+            messages: [{ role: "system", content: systemPrompt }, ...sanitizedMessages],
             stream: true,
           }),
           signal: AbortSignal.timeout(5000),
@@ -196,7 +219,7 @@ export async function POST(req: NextRequest) {
         apiKey: "unused",
         model: "DeepSeek-V4-Flash-0731",
         systemPrompt: SYSTEM_PERSONAS[persona] ?? SYSTEM_PERSONAS.general,
-        messages,
+        messages: sanitizedMessages,
         temperature,
         label: "LLM7 (free)",
       })
