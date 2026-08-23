@@ -141,6 +141,9 @@ export default function ChatPage() {
   const [customApiKey, setCustomApiKey] = React.useState("")
   const [customBaseUrl, setCustomBaseUrl] = React.useState("")
 
+  // Multi-Model Context Fusion state
+  const [fusionMode, setFusionMode] = React.useState<boolean>(true)
+
   // Side-by-Side Artifacts Drawer state
   const [activeArtifact, setActiveArtifact] = React.useState<Artifact | null>(null)
   const [copiedCode, setCopiedCode] = React.useState<string | null>(null)
@@ -362,7 +365,8 @@ export default function ChatPage() {
           provider: providerMode,
           model: selectedModel,
           customApiKey: customApiKey || undefined,
-          customBaseUrl: customBaseUrl || undefined
+          customBaseUrl: customBaseUrl || undefined,
+          fusionMode: fusionMode,
         })
       })
 
@@ -656,6 +660,20 @@ export default function ChatPage() {
 
               {/* Right Controls: Model Switcher & Status */}
               <div className="flex items-center gap-2">
+                {/* Multi-Model Context Fusion Toggle */}
+                <button
+                  onClick={() => setFusionMode(!fusionMode)}
+                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono transition-all border cursor-pointer h-8 ${
+                    fusionMode
+                      ? "bg-zinc-900 border-emerald-500/40 text-emerald-300 font-medium shadow-xs"
+                      : "bg-[var(--background)] border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)]"
+                  }`}
+                  title="Multi-Model Context Fusion: Combines Architecture, Security & Ecosystem tools RAG"
+                >
+                  <Layers className={`w-3.5 h-3.5 ${fusionMode ? "text-emerald-400" : "text-zinc-500"}`} />
+                  <span>{fusionMode ? (isId ? "Context Fusion: Aktif" : "Context Fusion: ON") : (isId ? "Context Fusion: Mati" : "Context Fusion: OFF")}</span>
+                </button>
+
                 {/* Local Ollama Indicator */}
                 <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-[var(--background)] border border-[var(--border)] text-[11px] font-mono text-[var(--muted)]">
                   <span className={`w-1.5 h-1.5 rounded-full ${ollamaOnline ? "bg-emerald-500 animate-pulse" : "bg-zinc-600"}`} />
@@ -813,7 +831,14 @@ export default function ChatPage() {
 
                           {!isUser && msg.content && (
                             <div className="flex items-center justify-between pt-2 mt-2 border-t border-[var(--border)]/50 text-[11px] text-[var(--muted)]">
-                              <span className="font-mono">{selectedPersona.toUpperCase()}</span>
+                              <div className="flex items-center gap-1.5 font-mono">
+                                <span>{selectedPersona.toUpperCase()}</span>
+                                {fusionMode && (
+                                  <span className="px-1.5 py-0.5 rounded bg-emerald-950/60 border border-emerald-800/40 text-[9px] text-emerald-400 font-medium tracking-tight">
+                                    FUSED CONTEXT
+                                  </span>
+                                )}
+                              </div>
                               <div className="flex items-center gap-3">
                                 {/* Open in canvas if contains code */}
                                 {msg.content.includes("```") && (

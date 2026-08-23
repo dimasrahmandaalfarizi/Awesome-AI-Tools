@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server"
 import { checkRateLimit } from "@/lib/security"
+import { TOOLS, AI_SKILLS } from "@/data/mock"
 
 // ── System Personas ───────────────────────────────────────────────────────────
 const SYSTEM_PERSONAS: Record<string, string> = {
   general:
-    "You are an elite, highly capable General AI Assistant. You excel at complex reasoning, mathematical problem solving, structured analysis, articulate writing, and technical synthesis. Be concise, direct, and factually accurate. Avoid conversational fluff, excessive disclaimers, or emoji. Provide code snippets using clean markdown fences when helpful.",
+    "You are an elite, highly capable General AI Assistant. You excel at complex reasoning, mathematical problem solving, structured analysis, articulate writing, and technical synthesis. Be concise, direct, and factually accurate. Avoid conversational fluff, excessive disclaimers, or emoji. Provide complete code snippets using clean markdown fences when helpful.",
   architect:
     "You are a Principal Software Architect and Lead Fullstack Engineer. You design resilient, high-performance software systems following Clean Architecture, Domain-Driven Design (DDD), and Test-Driven Development (TDD). Always prioritize type safety, strict contracts, and zero runtime surprises. Provide complete, production-grade implementations — no placeholders.",
   security:
@@ -13,6 +14,43 @@ const SYSTEM_PERSONAS: Record<string, string> = {
     "You are an expert AI Stack & Tools Consultant. Recommend specific tools, MCP servers, local inference runners (vLLM, Ollama), vector databases (Qdrant, Chroma, Pgvector), and agent skills to solve user requirements. Be specific — name exact tools, versions, and configuration patterns.",
   writer:
     "You are a Senior Technical Writer and Documentation Architect. You create crystal-clear API specifications, Architecture Decision Records (ADRs), READMEs, and technical user guides. Prioritize clarity, logical hierarchy, and actionable examples.",
+}
+
+// ── Dynamic Context Fusion & Grounding Engine ────────────────────────────────
+function buildFusedSystemPrompt(persona: string, lastUserQuery: string, fusionMode: boolean = true): string {
+  const basePersona = SYSTEM_PERSONAS[persona] ?? SYSTEM_PERSONAS.general
+  const q = (lastUserQuery || "").toLowerCase()
+
+  // Match relevant tools from the Awesome AI Tools directory
+  const matchedTools = TOOLS.filter(t => 
+    q.includes(t.name.toLowerCase()) || 
+    t.tags.some(tag => q.includes(tag.toLowerCase())) ||
+    (t.categoryId && q.includes(t.categoryId.toLowerCase()))
+  ).slice(0, 4)
+
+  // Match relevant agent skills
+  const matchedSkills = AI_SKILLS.filter(s =>
+    q.includes(s.name.toLowerCase()) ||
+    s.frameworks.some(f => q.includes(f.toLowerCase())) ||
+    q.includes(s.slug.toLowerCase())
+  ).slice(0, 4)
+
+  let contextSnippet = ""
+  if (matchedTools.length > 0) {
+    contextSnippet += `\n[Verified Ecosystem Tools]:\n` + matchedTools.map(t => `- ${t.name} (${t.categoryId}): ${t.description}`).join("\n")
+  }
+  if (matchedSkills.length > 0) {
+    contextSnippet += `\n[Agent Skills Directory]:\n` + matchedSkills.map(s => `- /${s.slug.replace(/^skill-/, "")}: ${s.name} — ${s.description}`).join("\n")
+  }
+
+  const fusionDirectives = fusionMode ? `
+[MULTI-MODEL CONTEXT FUSION DIRECTIVES]:
+- Synthesize responses with multi-domain depth: (1) Robust Architecture & Complete Production Code, (2) Security & Edge-Case Validation, (3) Ecosystem Tooling recommendations.
+- When writing code, provide COMPLETE, copy-pasteable, type-safe implementations without placeholders or elided lines.
+- Always use proper Markdown structure, and use KaTeX math notation for formulas and calculations.
+` : ""
+
+  return `${basePersona}\n${contextSnippet}\n${fusionDirectives}`
 }
 
 // ── Free cloud providers (priority order) ─────────────────────────────────────
@@ -70,6 +108,7 @@ export async function POST(req: NextRequest) {
       customApiKey,
       customBaseUrl,
       temperature = 0.7,
+      fusionMode = true,
     } = body
 
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
@@ -99,7 +138,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "No valid message content provided" }, { status: 400 })
     }
 
-    const systemPrompt = SYSTEM_PERSONAS[persona] ?? SYSTEM_PERSONAS.general
+    const lastUserQuery = sanitizedMessages[sanitizedMessages.length - 1]?.content || ""
+    const systemPrompt = buildFusedSystemPrompt(persona, lastUserQuery, fusionMode)
 
     // ── Flow A: BYOK – user provided their own key in Settings modal ──────────
     if ((provider === "byok" || provider === "cloud") && customApiKey) {
@@ -235,7 +275,6 @@ export async function POST(req: NextRequest) {
     }
 
     // ── Flow E: Dynamic Contextual Synthesis Engine (Zero-Downtime Fallback) ──
-    const lastUserQuery = sanitizedMessages[sanitizedMessages.length - 1]?.content || ""
     return streamContextualResponse(lastUserQuery, persona)
   } catch (err: unknown) {
     console.error("[Universal Chat Error]:", err)
