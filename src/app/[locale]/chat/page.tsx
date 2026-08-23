@@ -530,13 +530,12 @@ export default function ChatPage() {
   }
 
   return (
-    <>
+    <div className="fixed inset-0 flex flex-col bg-[var(--background)] overflow-hidden">
       <Navbar />
-      <main className="flex-1 bg-[var(--background)] flex flex-col h-[calc(100vh-64px)] overflow-hidden">
-        <div className="flex flex-1 h-full overflow-hidden">
-          
-          {/* 1. Multi-Session History Sidebar */}
-          <aside className={`${sidebarOpen ? "w-72" : "w-0"} transition-all duration-200 border-r border-[var(--border)] bg-[var(--surface)] flex flex-col shrink-0 overflow-hidden`}>
+      <div className="flex-1 flex overflow-hidden min-h-0 w-full">
+        
+        {/* 1. Multi-Session History Sidebar */}
+        <aside className={`${sidebarOpen ? "w-72" : "w-0"} transition-all duration-200 border-r border-[var(--border)] bg-[var(--surface)] flex flex-col shrink-0 overflow-hidden h-full min-h-0`}>
             <div className="p-3 border-b border-[var(--border)] flex items-center justify-between gap-2">
               <Button 
                 onClick={handleNewChat}
@@ -556,7 +555,7 @@ export default function ChatPage() {
             </div>
 
             {/* Sessions List */}
-            <div className="flex-1 overflow-y-auto overflow-x-hidden p-2 space-y-1 custom-scrollbar">
+            <div className="flex-1 overflow-y-auto overflow-x-hidden p-2 space-y-1 custom-scrollbar min-h-0">
               <div className="px-2 py-1 text-[11px] font-mono font-medium text-[var(--muted)] uppercase tracking-wider">
                 {isId ? "Riwayat Percakapan" : "Chat History"} ({sessions.length})
               </div>
@@ -615,7 +614,7 @@ export default function ChatPage() {
           </aside>
 
           {/* 2. Main Conversational Canvas */}
-          <section className="flex-1 flex flex-col h-full overflow-hidden bg-[var(--background)] relative">
+          <section className="flex-1 flex flex-col h-full overflow-hidden bg-[var(--background)] relative min-h-0">
             
             {/* Top Control Bar */}
             <div className="px-4 py-2.5 border-b border-[var(--border)] bg-[var(--surface)] flex flex-wrap items-center justify-between gap-3 shrink-0">
@@ -713,7 +712,7 @@ export default function ChatPage() {
             </div>
 
             {/* Chat Messages View - isolated scroll container */}
-            <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 md:p-6 space-y-6 custom-scrollbar">
+            <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 md:p-6 space-y-6 custom-scrollbar min-h-0">
               {currentMessages.length === 0 ? (
                 <div className="max-w-2xl mx-auto my-8 space-y-6">
                   
@@ -986,7 +985,6 @@ export default function ChatPage() {
           )}
 
         </div>
-      </main>
 
       {/* 4. BYOK Settings Modal */}
       {settingsOpen && (
@@ -1045,6 +1043,6 @@ export default function ChatPage() {
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }
