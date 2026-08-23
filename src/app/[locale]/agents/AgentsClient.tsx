@@ -162,17 +162,17 @@ ${agent.systemPrompt}
   return (
     <div className="space-y-8">
       {/* Hero Header */}
-      <div className="p-6 md:p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm space-y-6">
+      <div className="p-6 md:p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-xs space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[var(--primary)]/10 text-[var(--primary)] border border-[var(--primary)]/20">
-              <Bot className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-[var(--surface-hover)] border border-[var(--border)] text-[var(--muted)]">
+              <Bot className="w-3.5 h-3.5 text-[var(--foreground)]" />
               <span>{isId ? "Koleksi 68+ Subagents Spesialis" : "ECC Subagents & Specialist Personas"}</span>
             </div>
-            <h1 className="text-3xl md:text-4xl font-heading font-bold text-[var(--foreground)] tracking-tight">
+            <h1 className="text-2xl md:text-3xl font-heading font-bold text-[var(--foreground)] tracking-tight">
               {isId ? "Direktori AI Subagents" : "AI Subagents Directory"}
             </h1>
-            <p className="text-sm md:text-base text-[var(--muted)] leading-relaxed">
+            <p className="text-xs md:text-sm text-[var(--muted)] leading-relaxed">
               {isId
                 ? `Koleksi terkurasi ${agents.length} persona subagen koding dengan batasan tools terisolasi, system prompt teruji, dan multi-model cost routing untuk Antigravity, Claude Code, Cursor, dan Codex.`
                 : `Curated collection of ${agents.length} specialized AI subagents with battle-tested system prompts, tool boundaries, and multi-model routing for Antigravity, Claude Code, Cursor, and Codex.`}
@@ -183,7 +183,7 @@ ${agent.systemPrompt}
             <Button
               onClick={handleDownloadAllAgentsZip}
               disabled={isDownloading}
-              className="bg-[var(--primary)] text-[var(--background)] hover:bg-[var(--primary)]/90 font-medium text-xs md:text-sm px-4 py-2 rounded-xl flex items-center justify-center gap-2 cursor-pointer"
+              className="bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--foreground)]/90 font-medium text-xs md:text-sm px-4 py-2 rounded-lg flex items-center justify-center gap-2 cursor-pointer h-10 transition-all"
             >
               <Download className="w-4 h-4" />
               {isDownloading ? "Bundling ZIP..." : isId ? `Unduh Semua (${agents.length} Subagents .zip)` : `Download All (${agents.length} Agents .zip)`}
@@ -192,24 +192,24 @@ ${agent.systemPrompt}
         </div>
 
         {/* Quick CLI Bar */}
-        <div className="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-[var(--surface)] text-[var(--primary)] border border-[var(--border)]">
-              <Terminal className="w-4 h-4" />
+        <div className="p-3.5 rounded-xl bg-[var(--background)] border border-[var(--border)] flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs">
+          <div className="flex items-center gap-2.5">
+            <div className="p-1.5 rounded-md bg-[var(--surface)] text-[var(--foreground)] border border-[var(--border)]">
+              <Terminal className="w-3.5 h-3.5" />
             </div>
             <div>
-              <p className="text-xs font-semibold text-[var(--foreground)]">{isId ? "Pasang Subagents via CLI" : "Install Subagents via CLI"}</p>
-              <p className="text-xs text-[var(--muted)]">{isId ? "Generate persona subagen langsung ke repositori Anda" : "Scaffold specialist subagent personas into your repository"}</p>
+              <p className="font-semibold text-[var(--foreground)]">{isId ? "Pasang Subagents via CLI" : "Install Subagents via CLI"}</p>
+              <p className="text-[11px] text-[var(--muted)]">{isId ? "Generate persona subagen langsung ke repositori Anda" : "Scaffold specialist subagent personas into your repository"}</p>
             </div>
           </div>
-          <div className="flex items-center gap-2 bg-[var(--surface)] px-3 py-1.5 rounded-lg border border-[var(--border)] font-mono text-xs text-[var(--foreground)]">
+          <div className="flex items-center gap-2 bg-[var(--surface)] px-3 py-1.5 rounded-lg border border-[var(--border)] text-[var(--foreground)]">
             <span>npx awesome-ai-tools init</span>
             <button
               onClick={handleCopyCli}
-              className="p-1 hover:text-[var(--primary)] transition-colors cursor-pointer"
+              className="p-1 hover:text-[var(--foreground)] transition-colors cursor-pointer"
               title="Copy Command"
             >
-              {copiedCli ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
+              {copiedCli ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
             </button>
           </div>
         </div>
@@ -229,14 +229,14 @@ ${agent.systemPrompt}
                 onClick={() => setSelectedCluster(cluster.id)}
                 className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer border ${
                   isSelected
-                    ? "bg-[var(--primary)] text-[var(--background)] font-semibold border-[var(--primary)] shadow-xs"
+                    ? "bg-[var(--foreground)] text-[var(--background)] font-bold border-[var(--foreground)] shadow-xs"
                     : "bg-[var(--surface)] text-[var(--muted)] hover:text-[var(--foreground)] border-[var(--border)] hover:bg-[var(--surface-hover)]"
                 }`}
               >
                 <Icon className="w-3.5 h-3.5 shrink-0" />
                 <span>{isId ? cluster.name.id : cluster.name.en}</span>
                 <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
-                  isSelected ? "bg-[var(--background)]/20 text-[var(--background)]" : "bg-[var(--background)] text-[var(--muted)]"
+                  isSelected ? "bg-[var(--background)]/20 text-[var(--background)]" : "bg-[var(--background)] text-[var(--muted)] border border-[var(--border)]"
                 }`}>
                   {count}
                 </span>

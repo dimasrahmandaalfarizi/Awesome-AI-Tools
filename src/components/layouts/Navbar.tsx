@@ -33,26 +33,41 @@ export function Navbar() {
           <Link href="/" className="font-heading font-bold text-lg sm:text-xl tracking-tight hover:opacity-90 transition-opacity shrink-0">
             Awesome AI <span className="text-[var(--primary)]">Tools</span>
           </Link>
-          <nav className="hidden lg:flex items-center gap-5 text-sm font-medium text-[var(--muted)]">
-            <Link href="/categories" className="hover:text-[var(--foreground)] transition-colors">
+          <nav className="hidden lg:flex items-center gap-5 text-sm font-medium">
+            <Link 
+              href="/categories" 
+              className={`transition-colors ${pathname.startsWith("/categories") ? "text-[var(--foreground)] font-semibold" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+            >
               {t("categories")}
             </Link>
-            <Link href="/skills" className="hover:text-[var(--primary)] transition-colors">
+            <Link 
+              href="/skills" 
+              className={`transition-colors ${pathname.startsWith("/skills") ? "text-[var(--primary)] font-semibold" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+            >
               {t("skills")}
             </Link>
-            <Link href="/agents" className="hover:text-[var(--primary)] transition-colors font-semibold text-[var(--foreground)]">
+            <Link 
+              href="/agents" 
+              className={`transition-colors ${pathname.startsWith("/agents") ? "text-[var(--primary)] font-semibold" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+            >
               {t("agents")}
             </Link>
-            <Link href="/router" className="hover:text-[var(--primary)] transition-colors">
+            <Link 
+              href="/router" 
+              className={`transition-colors ${pathname.startsWith("/router") ? "text-[var(--primary)] font-semibold" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+            >
               {t("router")}
             </Link>
-            <Link href="/security" className="hover:text-emerald-500 transition-colors flex items-center gap-1">
-              <span>{t("security")}</span>
-            </Link>
-            <Link href="/chat" className="hover:text-[var(--foreground)] transition-colors">
+            <Link 
+              href="/chat" 
+              className={`transition-colors ${pathname.startsWith("/chat") ? "text-[var(--foreground)] font-semibold" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+            >
               {t("aiChat")}
             </Link>
-            <Link href="/stack" className="flex items-center gap-1.5 hover:text-[var(--foreground)] transition-colors">
+            <Link 
+              href="/stack" 
+              className={`flex items-center gap-1.5 transition-colors ${pathname.startsWith("/stack") ? "text-[var(--foreground)] font-semibold" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+            >
               <span>{t("stack")}</span>
               {count > 0 && (
                 <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono font-bold bg-[var(--primary)]/15 text-[var(--primary)]">
@@ -60,10 +75,16 @@ export function Navbar() {
                 </span>
               )}
             </Link>
-            <Link href="/docs/quickstart" className="hover:text-[var(--foreground)] transition-colors">
+            <Link 
+              href="/docs/quickstart" 
+              className={`transition-colors ${pathname.startsWith("/docs") ? "text-[var(--foreground)] font-semibold" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+            >
               {t("docs")}
             </Link>
-            <Link href="/compare" className="hover:text-[var(--foreground)] transition-colors">
+            <Link 
+              href="/compare" 
+              className={`transition-colors ${pathname.startsWith("/compare") ? "text-[var(--foreground)] font-semibold" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+            >
               {t("compare")}
             </Link>
           </nav>
@@ -153,14 +174,6 @@ export function Navbar() {
               className="hover:text-[var(--primary)] transition-colors py-3 border-b border-[var(--border)]/30"
             >
               {t("router")}
-            </Link>
-            <Link
-              href="/security"
-              onClick={() => setIsOpen(false)}
-              className="hover:text-emerald-500 transition-colors py-3 border-b border-[var(--border)]/30 flex items-center justify-between"
-            >
-              <span>{t("security")}</span>
-              <span className="text-[10px] font-mono font-bold bg-emerald-500/10 text-emerald-500 px-2 py-0.5 rounded-full border border-emerald-500/20">Active</span>
             </Link>
             <Link
               href="/chat"

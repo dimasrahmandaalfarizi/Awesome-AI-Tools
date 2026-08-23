@@ -20,7 +20,7 @@ export default function StackPage() {
   const locale = useLocale()
   const isId = locale === "id"
   const tNav = useTranslations("Navbar")
-  const { bookmarks, clearBookmarks, count } = useBookmarks()
+  const { bookmarks, clearBookmarks, setBookmarkList, count } = useBookmarks()
 
   const [activeTab, setActiveTab] = React.useState<"cursor" | "claude" | "skills" | "mcp" | "markdown">("cursor")
   const [copied, setCopied] = React.useState(false)
@@ -62,6 +62,46 @@ export default function StackPage() {
 
     return matched.length > 0 ? matched.slice(0, 6) : AI_AGENTS.slice(0, 4)
   }, [savedTools])
+
+  
+  // 1-Click Project Presets
+  const STACK_PRESETS = [
+    {
+      id: "nextjs-saas",
+      title: isId ? "Fullstack Next.js SaaS" : "Fullstack Next.js SaaS",
+      desc: isId ? "Next.js App Router, Cursor, v0 UI, Postgres MCP, GitHub & Langfuse" : "Next.js, Cursor, v0 UI, Postgres MCP, GitHub & Langfuse",
+      icon: Layers,
+      slugs: ["cursor", "deepseek-v3", "v0-vercel", "postgresql-mcp", "github-mcp", "langfuse-observability"]
+    },
+    {
+      id: "autonomous-agent",
+      title: isId ? "Autonomous AI Agent" : "Autonomous AI Agent",
+      desc: isId ? "Cline / Roo Code, Claude 3.5 Sonnet, LangGraph, Qdrant & Memory MCP" : "Cline / Roo Code, Claude 3.5 Sonnet, LangGraph, Qdrant & Memory MCP",
+      icon: Bot,
+      slugs: ["cline-agent", "claude-3-5-sonnet", "langgraph", "qdrant-vector-db", "memory-mcp", "sentry-mcp"]
+    },
+    {
+      id: "local-offline",
+      title: isId ? "100% Offline / Local AI" : "100% Offline / Local AI",
+      desc: isId ? "Ollama, LM Studio, vLLM, Qwen 2.5 Coder, SQLite MCP & ChromaDB" : "Ollama, LM Studio, vLLM, Qwen 2.5 Coder, SQLite MCP & ChromaDB",
+      icon: Cpu,
+      slugs: ["ollama", "lm-studio", "vllm-inference", "qwen-2-5-coder-32b", "sqlite-mcp", "chromadb"]
+    },
+    {
+      id: "mobile-crossplatform",
+      title: isId ? "Mobile & Fast Backend" : "Mobile & Fast Backend",
+      desc: isId ? "Windsurf, Supermaven, Gemini Flash, Fetch MCP & Pgvector" : "Windsurf, Supermaven, Gemini Flash, Fetch MCP & Pgvector",
+      icon: ExternalLink,
+      slugs: ["windsurf-editor", "supermaven", "gemini-1-5-flash", "fetch-mcp", "pgvector"]
+    }
+  ];
+
+  const handleApplyPreset = (presetSlugs: string[]) => {
+    const matchedToolIds = TOOLS.filter(t => presetSlugs.includes(t.slug)).map(t => t.id);
+    if (matchedToolIds.length > 0) {
+      setBookmarkList(matchedToolIds);
+    }
+  };
 
   // Generate .cursorrules content
   const generateCursorRules = () => {
@@ -130,7 +170,7 @@ ${savedTools.map(t => `### ${t.name}
   const generateMarkdown = () => {
     if (savedTools.length === 0) return ""
 
-    return `## 🛠️ My AI Developer Stack
+    return `## My AI Developer Stack
 
 ${savedTools.map(t => `- **${t.name}**: ${t.description} [${t.website}](${t.website})`).join("\n")}
 
@@ -247,6 +287,56 @@ ${savedTools.map(t => `- **${t.name}**: ${t.description} [${t.website}](${t.webs
                 </Button>
               </div>
             )}
+          </div>
+
+          
+          {/* 1-Click Stack Presets Wizard */}
+          <div className="p-5 rounded-2xl border border-[var(--border)] bg-[var(--surface)] space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-[var(--primary)]" />
+                  <span>{isId ? "Stack Builder Wizard (1-Klik Preset)" : "Stack Builder Wizard (1-Click Presets)"}</span>
+                </h2>
+                <p className="text-xs text-[var(--muted)]">
+                  {isId 
+                    ? "Pilih template proyek untuk mengisi otomatis stack dengan alat, MCP servers, dan aturan IDE yang optimal."
+                    : "Pick a project template to auto-populate your stack with tailored tools, MCP servers, and IDE rules."}
+                </p>
+              </div>
+              <span className="text-[11px] font-mono text-[var(--muted)]">
+                {isId ? "Siap diekspor ke .zip" : "Ready for 1-click ZIP bundle"}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              {STACK_PRESETS.map((preset) => {
+                const Icon = preset.icon
+                return (
+                  <button
+                    key={preset.id}
+                    onClick={() => handleApplyPreset(preset.slugs)}
+                    className="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] hover:border-[var(--foreground)] hover:bg-[var(--surface)] text-left transition-all group cursor-pointer flex flex-col justify-between space-y-2"
+                  >
+                    <div className="space-y-2">
+                      <div className="p-1.5 rounded-lg bg-[var(--surface)] text-[var(--foreground)] border border-[var(--border)] w-fit">
+                        <Icon className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="text-xs font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">
+                        {preset.title}
+                      </div>
+                      <div className="text-[11px] text-[var(--muted)] line-clamp-2 leading-relaxed">
+                        {preset.desc}
+                      </div>
+                    </div>
+                    <div className="text-[10px] font-mono text-[var(--muted)] group-hover:text-[var(--foreground)] pt-1 flex items-center gap-1">
+                      <span>{isId ? "Terapkan Preset" : "Apply Preset"}</span>
+                      <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </button>
+                )
+              })}
+            </div>
           </div>
 
           {/* Empty State */}

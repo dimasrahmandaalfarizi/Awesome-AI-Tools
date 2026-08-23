@@ -1,12 +1,12 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { Link } from "@/i18n/routing"
 import { Badge } from "@/components/ui/Badge"
 import { Input } from "@/components/ui/Input"
 import { Button } from "@/components/ui/Button"
-import { useTranslations } from "next-intl"
-import { Terminal, Download, Copy, Check, Sparkles } from "lucide-react"
+import { useTranslations, useLocale } from "next-intl"
+import { Terminal, Download, Copy, Check, Search, Shield, Layers, Code2, Bot, Database, Zap, Cpu, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react"
 import JSZip from "jszip"
 import type { AiSkill } from "@/types"
 
@@ -18,34 +18,122 @@ function toCommandName(slug: string): string {
   return slug.replace(/^skill-/, "").replace(/[^a-zA-Z0-9_-]/g, "-").toLowerCase()
 }
 
+// 8 Professional Domain Clusters for 587 Skills
+const DOMAIN_CLUSTERS = [
+  { id: "all", labelEn: "All Skills", labelId: "Semua Skills", icon: Layers },
+  { id: "cybersecurity", labelEn: "Cybersecurity & Audit", labelId: "Keamanan & Audit", icon: Shield },
+  { id: "architecture", labelEn: "Architecture & Planning", labelId: "Arsitektur & Desain", icon: Cpu },
+  { id: "testing", labelEn: "Testing & QA", labelId: "Pengujian & QA", icon: CheckCircle2 },
+  { id: "frontend", labelEn: "Frontend & UI", labelId: "Frontend & Desain", icon: Code2 },
+  { id: "ai-agents", labelEn: "AI & Multi-Agent", labelId: "AI & Agen Otonom", icon: Bot },
+  { id: "database-cloud", labelEn: "Database & Cloud DevOps", labelId: "Database & Cloud", icon: Database },
+  { id: "performance", labelEn: "Performance & SRE", labelId: "Performa & Sistem", icon: Zap }
+]
+
+function matchesCluster(skill: AiSkill, clusterId: string): boolean {
+  if (clusterId === "all") return true
+  const text = (skill.name + " " + skill.slug + " " + skill.description + " " + skill.frameworks.join(" ")).toLowerCase()
+
+  switch (clusterId) {
+    case "cybersecurity":
+      return text.includes("cyber") || text.includes("security") || text.includes("mitre") || 
+             text.includes("owasp") || text.includes("audit") || text.includes("vulnerability") || 
+             text.includes("forensic") || text.includes("exploit") || text.includes("nist") || 
+             text.includes("threat") || text.includes("hardening") || text.includes("smart-contract")
+    case "architecture":
+      return text.includes("architect") || text.includes("plan") || text.includes("spec") || 
+             text.includes("refactor") || text.includes("clean-code") || text.includes("design") || 
+             text.includes("adr") || text.includes("review") || text.includes("ddd")
+    case "testing":
+      return text.includes("test") || text.includes("tdd") || text.includes("qa") || 
+             text.includes("playwright") || text.includes("fuzz") || text.includes("e2e")
+    case "frontend":
+      return text.includes("front") || text.includes("react") || text.includes("next") || 
+             text.includes("tailwind") || text.includes("ui") || text.includes("css") || 
+             text.includes("animat") || text.includes("figma") || text.includes("svelte")
+    case "ai-agents":
+      return text.includes("agent") || text.includes("prompt") || text.includes("llm") || 
+             text.includes("memory") || text.includes("rag") || text.includes("eval") || 
+             text.includes("langchain") || text.includes("crew")
+    case "database-cloud":
+      return text.includes("data") || text.includes("sql") || text.includes("postgres") || 
+             text.includes("docker") || text.includes("kuber") || text.includes("aws") || 
+             text.includes("azure") || text.includes("cloud") || text.includes("terraform")
+    case "performance":
+      return text.includes("perf") || text.includes("optimiz") || text.includes("trace") || 
+             text.includes("sre") || text.includes("observ") || text.includes("monitor") || 
+             text.includes("async") || text.includes("concurren")
+    default:
+      return true
+  }
+}
+
+// Popular Quick Target Tools
+const POPULAR_TOOLS = [
+  "All",
+  "Claude Code",
+  "Cursor",
+  "Antigravity",
+  "TypeScript",
+  "Python",
+  "Next.js",
+  "Cybersecurity",
+  "DevOps"
+]
+
+const ITEMS_PER_PAGE = 24
+
 export function SkillsClient({ skills }: SkillsClientProps) {
   const t = useTranslations("Skills")
+  const locale = useLocale()
+  const isId = locale === "id"
+
   const [searchQuery, setSearchQuery] = useState("")
-  const [selectedFramework, setSelectedFramework] = useState<string>("All")
+  const [selectedCluster, setSelectedCluster] = useState("all")
+  const [selectedToolTag, setSelectedToolTag] = useState("All")
+  const [currentPage, setCurrentPage] = useState(1)
   const [copiedCmd, setCopiedCmd] = useState<string | null>(null)
   const [isDownloading, setIsDownloading] = useState(false)
   const [cliCopied, setCliCopied] = useState(false)
 
-  const allFrameworks = useMemo(() => {
-    const frameworks = new Set<string>()
-    skills.forEach(s => s.frameworks.forEach(fw => frameworks.add(fw)))
-    return ["All", ...Array.from(frameworks).sort()]
-  }, [skills])
+  // Reset pagination on filter change
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [searchQuery, selectedCluster, selectedToolTag])
 
+  // Filter skills
   const filteredSkills = useMemo(() => {
+    const q = searchQuery.toLowerCase().trim()
     return skills.filter(skill => {
-      const matchesSearch = 
-        skill.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        skill.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        toCommandName(skill.slug).includes(searchQuery.toLowerCase().replace(/^\//, ""))
-      
-      const matchesFramework = 
-        selectedFramework === "All" || 
-        skill.frameworks.includes(selectedFramework)
+      // 1. Cluster filter
+      if (!matchesCluster(skill, selectedCluster)) return false
 
-      return matchesSearch && matchesFramework
+      // 2. Tool tag filter
+      if (selectedToolTag !== "All") {
+        const text = (skill.name + " " + skill.slug + " " + skill.description + " " + skill.frameworks.join(" ")).toLowerCase()
+        if (!text.includes(selectedToolTag.toLowerCase())) return false
+      }
+
+      // 3. Search query
+      if (q) {
+        const cmd = toCommandName(skill.slug)
+        const matchesName = skill.name.toLowerCase().includes(q)
+        const matchesDesc = skill.description.toLowerCase().includes(q)
+        const matchesCmd = cmd.includes(q.replace(/^\//, ""))
+        const matchesFw = skill.frameworks.some(f => f.toLowerCase().includes(q))
+        if (!matchesName && !matchesDesc && !matchesCmd && !matchesFw) return false
+      }
+
+      return true
     })
-  }, [skills, searchQuery, selectedFramework])
+  }, [skills, searchQuery, selectedCluster, selectedToolTag])
+
+  // Paginated skills
+  const totalPages = Math.ceil(filteredSkills.length / ITEMS_PER_PAGE) || 1
+  const paginatedSkills = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE
+    return filteredSkills.slice(start, start + ITEMS_PER_PAGE)
+  }, [filteredSkills, currentPage])
 
   const handleCopyCli = async () => {
     try {
@@ -126,101 +214,21 @@ ${skill.content}
         cursorRulesFolder?.file(`${cmdName}.mdc`, fileContent)
       })
 
-      // 4. .continue/prompts folder (Continue.dev /command)
-      const continueFolder = zip.folder(".continue")?.folder("prompts")
-      skills.forEach((skill) => {
-        const cmdName = toCommandName(skill.slug)
-        const fileContent = `temperature: 0.2
-description: ${skill.description}
----
-# ${skill.name} Directive
-{{{ input }}}
-
----
-Guidelines:
-${skill.content}
-`
-        continueFolder?.file(`${cmdName}.prompt`, fileContent)
-      })
-
-      // 5. .github/prompts folder (GitHub Copilot /prompt)
-      const copilotFolder = zip.folder(".github")?.folder("prompts")
-      skills.forEach((skill) => {
-        const cmdName = toCommandName(skill.slug)
-        const fileContent = `---
-name: ${cmdName}
-description: ${skill.description}
----
-
-${skill.content}
-`
-        copilotFolder?.file(`${cmdName}.prompt.md`, fileContent)
-      })
-
-      // 6. .windsurf/workflows folder (Windsurf Cascade)
-      const windsurfFolder = zip.folder(".windsurf")?.folder("workflows")
-      skills.forEach((skill) => {
-        const cmdName = toCommandName(skill.slug)
-        const fileContent = `# Windsurf Workflow: ${skill.name}
-
-${skill.description}
-
-## Rules:
-${skill.content}
-`
-        windsurfFolder?.file(`${cmdName}.md`, fileContent)
-      })
-
-      // 7. Composite Workflows in .claude/commands/
-      claudeCmdFolder?.file("review.md", `# /review — Multi-Agent Code & Security Review Workflow\n1. Security Audit by security-auditor with AgentShield.\n2. Fresh-Context Code Review by code-reviewer.`)
-      claudeCmdFolder?.file("tdd.md", `# /tdd — Autonomous TDD Cycle\n1. RED: Write failing unit test.\n2. GREEN: Write minimal passing implementation.\n3. REFACTOR: Modernize code with test safety harness.`)
-      claudeCmdFolder?.file("compact.md", `# /compact — Context Compaction & Token Garbage Collection\n1. Summarize key decisions.\n2. Save discoveries to instincts.md.\n3. Reset working token context.`)
-      claudeCmdFolder?.file("council.md", `# /council — Multi-Model Council Deliberation\n1. Frame architectural dilemma.\n2. Compare 3 trade-offs.\n3. Synthesize ADR before writing code.`)
-
-      // 8. .claude/hooks/ (Hooks Runtime)
-      const hooksFolder = zip.folder(".claude")?.folder("hooks")
-      hooksFolder?.file("pre-tool-call.js", `const cmd = process.argv.slice(2).join(" ");\nif (/rm\\s+-rf\\s+([/~]|\\$HOME|\\.\\.)/i.test(cmd)) { console.error("[AgentShield BLOCKED] Dangerous command"); process.exit(1); }`)
-      hooksFolder?.file("post-tool-call.js", `const file = process.argv[2];\nconsole.log("[Auto-Linter] Verified file:", file);`)
-      hooksFolder?.file("on-session-end.js", `console.log("[Session Logger] Session completed.");`)
-
-      // 9. instincts.md (Continuous Learning)
+      // 4. instincts.md (Continuous Learning)
       const instinctsContent = `# Project Instincts & Persistent Memory (Continuous Learning)
 This file stores permanent codebase instincts and developer preferences.
 AI Coding Agents MUST read and adhere to these rules.
 
-## 🏛️ Codebase & Architecture Invariants
+## Codebase & Architecture Invariants
 - Framework: Next.js (App Router, Server Components by default)
 - Styling: Tailwind CSS with clean, flat monochrome aesthetics (Zero AI slop)
 - Verification: Always run verification builds before completing tasks.
 
-## 🚫 Anti-Patterns
+## Anti-Patterns
 - Zero Raw Secrets: Always use .env files.
-- Zero AI Slop: No rainbow gradient overlays or meaningless icons.
+- Zero AI Slop: No rainbow gradient overlays, decorative emojis, or meaningless icons.
 `
       zip.file("instincts.md", instinctsContent)
-
-      // 10. Master AGENTS.md Index
-      const agentsMdContent = `# Universal AI Agent Guidelines & Skills Suite
-
-This repository is equipped with **Awesome AI Tools & ECC Skills Suite** (${skills.length} active skills, 4 composite workflows, hooks runtime, and instincts memory).
-
-## Composite Workflows:
-- \`/review\`: Multi-agent security audit + code review
-- \`/tdd\`: Autonomous Red-Green-Refactor cycle
-- \`/compact\`: Context token compaction
-- \`/council\`: Multi-model architecture consensus
-
-## Triggering Skills in your AI Environment:
-- **Claude Code CLI**: Type \`/<command>\` (e.g. \`/tdd-workflow\`, \`/plan-first\`, \`/security-scan\`)
-- **Cursor IDE**: Mention \`@<command>\` or rules apply based on context
-- **Continue.dev**: Type \`/<command>\` in the Continue sidebar
-- **GitHub Copilot**: Type \`/<command>\` in Copilot Chat
-- **Antigravity / Codex**: Automatically read from \`.agents/skills/\`
-
-## Available Skills:
-${skills.map(s => `- \`/${toCommandName(s.slug)}\` (\`@${toCommandName(s.slug)}\`): **${s.name}** — ${s.description}`).join("\n")}
-`
-      zip.file("AGENTS.md", agentsMdContent)
 
       const blob = await zip.generateAsync({ type: "blob" })
       const url = URL.createObjectURL(blob)
@@ -241,18 +249,20 @@ ${skills.map(s => `- \`/${toCommandName(s.slug)}\` (\`@${toCommandName(s.slug)}\
   return (
     <div className="space-y-8">
       {/* ECC Flow Interactive Hero Banner */}
-      <div className="p-6 md:p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm space-y-6">
+      <div className="p-6 md:p-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-xs space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[var(--surface-hover)] border border-[var(--border)] text-[var(--foreground)]">
               <Terminal className="w-3.5 h-3.5 text-[var(--primary)]" />
               <span>ECC Universal Flow: Install Once, Works Everywhere</span>
             </div>
-            <h2 className="text-2xl font-bold tracking-tight text-[var(--foreground)]">
-              Access all {skills.length} Skills via <span className="font-mono text-[var(--primary)]">/slash-commands</span>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight font-heading text-[var(--foreground)]">
+              {isId ? `Akses ${skills.length} Skills via` : `Access all ${skills.length} Skills via`} <span className="font-mono text-[var(--primary)]">/slash-commands</span>
             </h2>
-            <p className="text-sm text-[var(--muted)] leading-relaxed">
-              Install the complete skill suite into your local workspace. Once added, you can instantly trigger any engineering mode directly in your AI coding terminal by typing <code className="font-mono px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)]">/tdd-workflow</code>, <code className="font-mono px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)]">/plan-first</code>, <code className="font-mono px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)]">/security-scan</code>, and more.
+            <p className="text-xs md:text-sm text-[var(--muted)] leading-relaxed">
+              {isId 
+                ? `Pasang seluruh skill AI ke workspace lokal Anda. Pemicu instan di terminal koding dengan mengetik /tdd-workflow, /security-audit, /plan-first, dan lainnya.`
+                : `Install the complete skill suite into your local workspace. Once added, you can instantly trigger any engineering mode directly in your AI coding terminal by typing /tdd-workflow, /security-audit, /plan-first, and more.`}
             </p>
           </div>
 
@@ -260,10 +270,10 @@ ${skills.map(s => `- \`/${toCommandName(s.slug)}\` (\`@${toCommandName(s.slug)}\
             <Button 
               onClick={handleDownloadZip}
               disabled={isDownloading}
-              className="w-full bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--foreground)]/90 h-10 font-medium text-sm transition-all"
+              className="w-full bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--foreground)]/90 h-10 font-medium text-xs md:text-sm rounded-xl cursor-pointer transition-all"
             >
               <Download className="w-4 h-4 mr-2" />
-              {isDownloading ? "Bundling ZIP..." : `Download All (${skills.length} Skills .zip)`}
+              {isDownloading ? "Bundling ZIP..." : isId ? `Unduh Semua (${skills.length} Skills .zip)` : `Download All (${skills.length} Skills .zip)`}
             </Button>
             <div className="text-[11px] text-center text-[var(--muted)] font-mono">
               Generates .claude/commands & .agents/skills
@@ -282,115 +292,223 @@ ${skills.map(s => `- \`/${toCommandName(s.slug)}\` (\`@${toCommandName(s.slug)}\
             variant="outline" 
             size="sm" 
             onClick={handleCopyCli}
-            className="h-8 px-3 text-xs w-full sm:w-auto shrink-0"
+            className="h-8 px-3 text-xs w-full sm:w-auto shrink-0 rounded-lg cursor-pointer"
           >
             {cliCopied ? <Check className="w-3.5 h-3.5 mr-1.5 text-green-500" /> : <Copy className="w-3.5 h-3.5 mr-1.5" />}
-            {cliCopied ? "Copied" : "Copy Command"}
+            {cliCopied ? (isId ? "Tersalin" : "Copied") : (isId ? "Salin Perintah" : "Copy Command")}
           </Button>
         </div>
       </div>
 
-      {/* Search and Filters */}
-      <div className="flex flex-col gap-4 bg-[var(--surface)] p-4 rounded-xl border border-[var(--border)]">
-        <div className="w-full max-w-md">
-          <Input 
-            type="search" 
-            placeholder={t("searchPlaceholder")} 
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full"
-          />
+      {/* 8 Domain Clusters Filter Tabs */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between text-xs font-semibold text-[var(--muted)] uppercase tracking-wider px-1">
+          <span>{isId ? "Klaster Domain Kategori" : "Domain Clusters"}</span>
+          <span className="font-mono text-[var(--primary)]">{filteredSkills.length} {isId ? "Skills Ditemukan" : "Skills Matched"}</span>
         </div>
-        
-        <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4 w-full">
-          <span className="text-sm text-[var(--muted)] whitespace-nowrap sm:mt-1.5 font-medium">
-            {t("filterByTool")}
-          </span>
-          <div className="flex flex-wrap gap-2">
-            {allFrameworks.map(fw => (
-              <button
-                key={fw}
-                onClick={() => setSelectedFramework(fw)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-                  selectedFramework === fw 
-                    ? "bg-[var(--foreground)] text-[var(--background)]" 
-                    : "bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--foreground)]"
-                }`}
-              >
-                {fw === "All" ? t("all") : fw}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
 
-      {/* Grid */}
-      {filteredSkills.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSkills.map(skill => {
-            const cmdName = toCommandName(skill.slug)
-            const isCmdCopied = copiedCmd === cmdName
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+          {DOMAIN_CLUSTERS.map((cluster) => {
+            const Icon = cluster.icon
+            const isSelected = selectedCluster === cluster.id
+            const label = isId ? cluster.labelId : cluster.labelEn
 
             return (
-              <Link 
-                key={skill.id} 
-                href={`/skills/${skill.slug}`}
-                className="group relative flex flex-col p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--foreground)] transition-all hover:shadow-sm"
+              <button
+                key={cluster.id}
+                onClick={() => setSelectedCluster(cluster.id)}
+                className={`px-3.5 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-all flex items-center gap-2 cursor-pointer shrink-0 border ${
+                  isSelected
+                    ? "bg-[var(--foreground)] text-[var(--background)] border-[var(--foreground)] shadow-xs font-bold"
+                    : "bg-[var(--surface)] text-[var(--muted)] border-[var(--border)] hover:text-[var(--foreground)] hover:border-[var(--muted)]"
+                }`}
               >
-                {/* Header & Command Trigger */}
-                <div className="flex items-start justify-between gap-2 mb-3">
-                  <h3 className="font-bold text-base text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors leading-snug">
-                    {skill.name}
-                  </h3>
-                  <button
-                    onClick={(e) => handleCopySlashCommand(e, cmdName)}
-                    title={`Copy /${cmdName}`}
-                    className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-[11px] font-mono font-medium bg-[var(--background)] border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--foreground)] transition-colors shrink-0"
-                  >
-                    {isCmdCopied ? <Check className="w-3 h-3 text-green-500" /> : <Terminal className="w-3 h-3 text-[var(--primary)]" />}
-                    <span>/{cmdName}</span>
-                  </button>
-                </div>
-
-                <p className="text-[var(--muted)] text-sm mb-6 flex-1 line-clamp-3 leading-relaxed">
-                  {skill.description}
-                </p>
-
-                <div className="mt-auto pt-4 border-t border-[var(--border)]">
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {skill.frameworks.slice(0, 3).map(fw => (
-                      <Badge key={fw} variant="secondary" className="text-[11px] font-normal">{fw}</Badge>
-                    ))}
-                    {skill.frameworks.length > 3 && (
-                      <Badge variant="outline" className="text-[11px] font-normal text-[var(--muted)]">
-                        +{skill.frameworks.length - 3}
-                      </Badge>
-                    )}
-                  </div>
-                  <div className="flex items-center justify-between text-xs text-[var(--muted)]">
-                    <span>{t("byAuthor")} {skill.author || "ECC / Community"}</span>
-                    <span className="font-mono text-[11px] text-[var(--primary)] group-hover:underline">View details →</span>
-                  </div>
-                </div>
-              </Link>
+                <Icon className="w-3.5 h-3.5 shrink-0" />
+                <span>{label}</span>
+              </button>
             )
           })}
         </div>
+      </div>
+
+      {/* Search Input and Secondary Tool Filter */}
+      <div className="p-4 rounded-2xl border border-[var(--border)] bg-[var(--surface)] flex flex-col md:flex-row items-center justify-between gap-4">
+        {/* Search Bar */}
+        <div className="relative w-full md:max-w-md">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--muted)]" />
+          <Input 
+            type="search" 
+            placeholder={isId ? "Cari nama skill, /slash-command, atau aturan..." : "Search skill name, /slash-command, or rule..."}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10 h-10 text-xs md:text-sm bg-[var(--background)] border-[var(--border)] rounded-xl w-full"
+          />
+        </div>
+
+        {/* Secondary Tool Tag Filter */}
+        <div className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto no-scrollbar">
+          {POPULAR_TOOLS.map((tool) => (
+            <button
+              key={tool}
+              onClick={() => setSelectedToolTag(tool)}
+              className={`px-2.5 py-1 rounded-lg text-[11px] font-mono transition-colors whitespace-nowrap cursor-pointer shrink-0 border ${
+                selectedToolTag === tool
+                  ? "bg-[var(--primary)]/15 text-[var(--primary)] border-[var(--primary)]/30 font-semibold"
+                  : "bg-[var(--background)] text-[var(--muted)] border-[var(--border)] hover:text-[var(--foreground)]"
+              }`}
+            >
+              {tool}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Skills Grid */}
+      {paginatedSkills.length > 0 ? (
+        <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {paginatedSkills.map((skill) => {
+              const cmdName = toCommandName(skill.slug)
+              const isCmdCopied = copiedCmd === cmdName
+
+              return (
+                <div 
+                  key={skill.id}
+                  className="group relative flex flex-col p-5 rounded-2xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--primary)]/50 transition-all hover:shadow-xs justify-between space-y-4"
+                >
+                  <div className="space-y-2.5">
+                    {/* Header & Command Trigger */}
+                    <div className="flex items-start justify-between gap-2">
+                      <Link href={`/skills/${skill.slug}`} className="hover:text-[var(--primary)] transition-colors">
+                        <h3 className="font-bold text-sm text-[var(--foreground)] leading-snug">
+                          {skill.name}
+                        </h3>
+                      </Link>
+                      <button
+                        onClick={(e) => handleCopySlashCommand(e, cmdName)}
+                        title={`Copy /${cmdName}`}
+                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-mono font-medium bg-[var(--background)] border border-[var(--border)] text-[var(--muted)] hover:text-[var(--primary)] hover:border-[var(--primary)]/40 transition-colors shrink-0 cursor-pointer"
+                      >
+                        {isCmdCopied ? <Check className="w-3 h-3 text-green-500" /> : <Terminal className="w-3 h-3 text-[var(--primary)]" />}
+                        <span>/{cmdName}</span>
+                      </button>
+                    </div>
+
+                    <p className="text-[var(--muted)] text-xs line-clamp-3 leading-relaxed">
+                      {skill.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-[var(--border)]/50 space-y-2.5">
+                    <div className="flex flex-wrap gap-1">
+                      {skill.frameworks.slice(0, 3).map((fw) => (
+                        <span key={fw} className="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--background)] border border-[var(--border)] text-[var(--muted)]">
+                          {fw}
+                        </span>
+                      ))}
+                      {skill.frameworks.length > 3 && (
+                        <span className="text-[10px] font-mono px-1.5 py-0.5 rounded text-[var(--muted)]">
+                          +{skill.frameworks.length - 3}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="flex items-center justify-between text-[11px] text-[var(--muted)] pt-1">
+                      <span className="truncate max-w-[140px]">{skill.author || "ECC / Community"}</span>
+                      <Link href={`/skills/${skill.slug}`} className="font-semibold text-[var(--primary)] hover:underline">
+                        {isId ? "Lihat Detail →" : "View Rule →"}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Clean Numbered Pagination */}
+          {totalPages > 1 && (
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[var(--border)]">
+              <div className="text-xs text-[var(--muted)] font-mono">
+                {isId ? "Menampilkan" : "Showing"} <span className="text-[var(--foreground)] font-bold">{(currentPage - 1) * ITEMS_PER_PAGE + 1} - {Math.min(currentPage * ITEMS_PER_PAGE, filteredSkills.length)}</span> {isId ? "dari" : "of"} <span className="text-[var(--foreground)] font-bold">{filteredSkills.length}</span> Skills
+              </div>
+
+              <div className="flex items-center gap-1.5">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled={currentPage === 1}
+                  onClick={() => {
+                    setCurrentPage(p => Math.max(1, p - 1))
+                    window.scrollTo({ top: 350, behavior: "smooth" })
+                  }}
+                  className="h-8 px-2.5 text-xs rounded-lg cursor-pointer"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </Button>
+
+                {/* Page Numbers */}
+                {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                  let pageNum = i + 1
+                  if (totalPages > 5) {
+                    if (currentPage > 3 && currentPage < totalPages - 2) {
+                      pageNum = currentPage - 2 + i
+                    } else if (currentPage >= totalPages - 2) {
+                      pageNum = totalPages - 4 + i
+                    }
+                  }
+
+                  return (
+                    <button
+                      key={pageNum}
+                      onClick={() => {
+                        setCurrentPage(pageNum)
+                        window.scrollTo({ top: 350, behavior: "smooth" })
+                      }}
+                      className={`w-8 h-8 rounded-lg text-xs font-mono transition-colors cursor-pointer flex items-center justify-center ${
+                        currentPage === pageNum
+                          ? "bg-[var(--foreground)] text-[var(--background)] font-bold shadow-xs"
+                          : "bg-[var(--surface)] text-[var(--muted)] border border-[var(--border)] hover:text-[var(--foreground)]"
+                      }`}
+                    >
+                      {pageNum}
+                    </button>
+                  )
+                })}
+
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled={currentPage === totalPages}
+                  onClick={() => {
+                    setCurrentPage(p => Math.min(totalPages, p + 1))
+                    window.scrollTo({ top: 350, behavior: "smooth" })
+                  }}
+                  className="h-8 px-2.5 text-xs rounded-lg cursor-pointer"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
       ) : (
-        <div className="text-center py-20 border border-dashed border-[var(--border)] rounded-2xl bg-[var(--surface)]/30">
-          <p className="text-[var(--muted)] text-lg">{t("noSkills")}</p>
-          <button 
+        <div className="text-center py-16 border border-dashed border-[var(--border)] rounded-2xl bg-[var(--surface)]/30 space-y-3">
+          <Layers className="w-8 h-8 mx-auto text-[var(--muted)] opacity-50" />
+          <p className="text-[var(--muted)] text-sm">{isId ? "Tidak ada skill yang cocok dengan filter yang dipilih." : "No skills found matching your filters."}</p>
+          <Button 
+            variant="link"
+            size="sm"
             onClick={() => {
               setSearchQuery("")
-              setSelectedFramework("All")
+              setSelectedCluster("all")
+              setSelectedToolTag("All")
             }}
-            className="mt-4 text-[var(--primary)] hover:underline"
+            className="text-xs text-[var(--primary)]"
           >
-            {t("clearFilters")}
-          </button>
+            {isId ? "Reset Filter" : "Clear Filters"}
+          </Button>
         </div>
       )}
     </div>
   )
 }
-

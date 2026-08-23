@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "../ui/Button"
-import { Copy, Download, Check } from "lucide-react"
+import { Copy, Download, Check, Terminal } from "lucide-react"
 import { useTranslations } from "next-intl"
 
 interface ExportSkillProps {
@@ -201,8 +201,9 @@ export function ExportSkill({ slug, content, description }: ExportSkillProps) {
             </span>
           </div>
           {activeEditor.triggerHint && (
-            <div className="px-2 py-0.5 rounded bg-[var(--surface-hover)] border border-[var(--border)] text-[var(--primary)] font-medium">
-              💡 {activeEditor.triggerHint}
+            <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[var(--surface-hover)] border border-[var(--border)] text-[var(--foreground)] font-medium">
+              <Terminal className="w-3 h-3 text-[var(--muted)]" />
+              <span>{activeEditor.triggerHint}</span>
             </div>
           )}
         </div>
