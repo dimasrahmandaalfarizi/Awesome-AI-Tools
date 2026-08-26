@@ -45,8 +45,8 @@ export const DOC_SECTIONS: DocSection[] = [
         tab: "guide",
         title: { en: "5-Minute Quickstart", id: "Panduan Cepat 5 Menit" },
         lead: {
-          en: "Set up the full Awesome AI Tools suite: scaffold 413 skills, 68 subagents, and run local AI models in under 5 minutes.",
-          id: "Siapkan ekosistem Awesome AI Tools: pasang 413 skills, 68 subagents, dan jalankan model AI lokal dalam 5 menit."
+          en: "Set up the full Awesome AI Tools suite: scaffold 2,558 skills, 136 subagents, and run local AI models in under 5 minutes.",
+          id: "Siapkan ekosistem Awesome AI Tools: pasang 2.558 skills, 136 subagents, dan jalankan model AI lokal dalam 5 menit."
         },
         toc: [
           { id: "1-install-cli", title: { en: "1. Install CLI & Skills Suite", id: "1. Pasang CLI & Suite Skills" } },
@@ -62,8 +62,8 @@ export const DOC_SECTIONS: DocSection[] = [
         tab: "guide",
         title: { en: "Welcome & Ecosystem Overview", id: "Selamat Datang & Gambaran Ekosistem" },
         lead: {
-          en: "The unified developer platform combining 1,000+ AI Tools catalog, 413 AI Skills, 68 Subagents, and AgentShield security.",
-          id: "Platform pengembang terpadu yang menggabungkan 1.000+ Alat AI, 413 AI Skills, 68 Subagents, dan keamanan AgentShield."
+          en: "The unified developer platform combining 200+ AI Tools catalog, 2,558 AI Skills, 136 Subagents, 1,600+ Public APIs, and AgentShield security.",
+          id: "Platform pengembang terpadu yang menggabungkan 200+ Alat AI, 2.558 AI Skills, 136 Subagents, 1.600+ Public APIs, dan keamanan AgentShield."
         },
         toc: [
           { id: "overview", title: { en: "Ecosystem Architecture", id: "Arsitektur Ekosistem" } },
@@ -114,7 +114,7 @@ export const DOC_SECTIONS: DocSection[] = [
         slug: "skills-guide",
         section: { en: "AI Skills & Agents", id: "AI Skills & Agents" },
         tab: "guide",
-        title: { en: "Using 413+ AI Skills", id: "Panduan Menggunakan 413+ AI Skills" },
+        title: { en: "Using 2,558+ AI Skills Suite", id: "Panduan Menggunakan 2.558+ AI Skills Suite" },
         lead: {
           en: "How modular skill rules enforce TDD, clean architecture, security guardrails, and framework-specific patterns.",
           id: "Cara aturan modular skill menegakkan TDD, clean architecture, guardrail keamanan, dan pola framework."
@@ -132,8 +132,8 @@ export const DOC_SECTIONS: DocSection[] = [
         tab: "guide",
         title: { en: "Specialist AI Subagents", id: "Panduan AI Subagents Spesialis" },
         lead: {
-          en: "Deploy 68+ specialized personas (Architect, TDD Driver, Security Auditor, DBA) with isolated tool boundaries.",
-          id: "Gunakan 68+ persona spesialis (Architect, TDD Driver, Security Auditor, DBA) dengan batasan tool terisolasi."
+          en: "Deploy 136+ specialized personas (Architect, TDD Driver, Security Auditor, DBA) with isolated tool boundaries.",
+          id: "Gunakan 136+ persona spesialis (Architect, TDD Driver, Security Auditor, DBA) dengan batasan tool terisolasi."
         },
         toc: [
           { id: "subagents-overview", title: { en: "Why Specialized Subagents?", id: "Mengapa Subagents Spesialis?" } },
@@ -200,8 +200,8 @@ export const DOC_SECTIONS: DocSection[] = [
         tab: "integrations",
         title: { en: "Claude Code CLI", id: "Integrasi Claude Code CLI" },
         lead: {
-          en: "Equip Anthropic's Claude Code terminal agent with 413 custom slash commands and CLAUDE.md index.",
-          id: "Lengkapi agen terminal Claude Code dari Anthropic dengan 413 slash commands dan indeks CLAUDE.md."
+          en: "Equip Anthropic's Claude Code terminal agent with 2,558 custom slash commands and CLAUDE.md index.",
+          id: "Lengkapi agen terminal Claude Code dari Anthropic dengan 2.558 slash commands dan indeks CLAUDE.md."
         },
         toc: [
           { id: "commands-folder", title: { en: ".claude/commands/ Architecture", id: "Arsitektur .claude/commands/" } },

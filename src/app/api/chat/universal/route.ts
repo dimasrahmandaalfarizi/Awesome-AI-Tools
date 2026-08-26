@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { checkRateLimit } from "@/lib/security"
 import { TOOLS, AI_SKILLS } from "@/data/mock"
+import { PUBLIC_APIS } from "@/data/apis"
 
 // ── System Personas ───────────────────────────────────────────────────────────
 const SYSTEM_PERSONAS: Record<string, string> = {
@@ -28,12 +29,19 @@ function buildFusedSystemPrompt(persona: string, lastUserQuery: string, fusionMo
     (t.categoryId && q.includes(t.categoryId.toLowerCase()))
   ).slice(0, 4)
 
-  // Match relevant agent skills
+  // Match relevant agent skills from 2,558 skills
   const matchedSkills = AI_SKILLS.filter(s =>
     q.includes(s.name.toLowerCase()) ||
     s.frameworks.some(f => q.includes(f.toLowerCase())) ||
     q.includes(s.slug.toLowerCase())
   ).slice(0, 4)
+
+  // Match relevant free & public APIs from 1,600+ APIs
+  const matchedApis = PUBLIC_APIS.filter(a =>
+    q.includes(a.name.toLowerCase()) ||
+    (a.category && q.includes(a.category.toLowerCase())) ||
+    (a.description && a.description.toLowerCase().split(" ").some(w => w.length > 4 && q.includes(w)))
+  ).slice(0, 3)
 
   let contextSnippet = ""
   if (matchedTools.length > 0) {
@@ -41,6 +49,9 @@ function buildFusedSystemPrompt(persona: string, lastUserQuery: string, fusionMo
   }
   if (matchedSkills.length > 0) {
     contextSnippet += `\n[Agent Skills Directory]:\n` + matchedSkills.map(s => `- /${s.slug.replace(/^skill-/, "")}: ${s.name} — ${s.description}`).join("\n")
+  }
+  if (matchedApis.length > 0) {
+    contextSnippet += `\n[Verified Public APIs]:\n` + matchedApis.map(a => `- ${a.name} (${a.category}): ${a.description} [Auth: ${a.auth}, HTTPS: ${a.https ? "Yes" : "No"}, Link: ${a.link}]`).join("\n")
   }
 
   const fusionDirectives = fusionMode ? `
