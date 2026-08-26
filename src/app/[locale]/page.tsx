@@ -44,43 +44,43 @@ type CodeLine = {
 const CODE_LINES: CodeLine[] = [
   {
     id: "c1",
-    jsx: <span className="text-gray-500">{"// 1. Scaffold 413 skills & 68 subagents into your project"}</span>,
+    jsx: <span className="text-zinc-500 dark:text-zinc-400">{"// 1. Scaffold 2,558+ skills & 136 subagents into your project"}</span>,
   },
   {
     id: "init",
     jsx: (
-      <span className="font-semibold text-gray-100">
-        <span className="text-pink-400">npx</span> awesome-ai-tools init
+      <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+        <span className="text-pink-600 dark:text-pink-400">npx</span> awesome-ai-tools init
       </span>
     ),
     mb: "mb-4",
   },
   {
     id: "c2",
-    jsx: <span className="text-gray-500">{"// 2. Audit repository security with AgentShield"}</span>,
+    jsx: <span className="text-zinc-500 dark:text-zinc-400">{"// 2. Audit repository security with AgentShield"}</span>,
   },
   {
     id: "scan",
     jsx: (
-      <span className="font-semibold text-gray-100">
-        <span className="text-pink-400">npx</span> awesome-ai-tools scan
+      <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+        <span className="text-pink-600 dark:text-pink-400">npx</span> awesome-ai-tools scan
       </span>
     ),
     mb: "mb-4",
   },
   {
     id: "c3",
-    jsx: <span className="text-gray-500">{"// 3. Trigger skills in Claude Code, Continue, or Cursor"}</span>,
+    jsx: <span className="text-zinc-500 dark:text-zinc-400">{"// 3. Trigger skills in Claude Code, Continue, or Cursor"}</span>,
   },
   {
     id: "trigger",
     jsx: (
-      <span>
-        <span className="text-purple-400">/tdd-workflow</span>
-        {"  |  "}
-        <span className="text-amber-400">@security-auditor</span>
-        {"  |  "}
-        <span className="text-green-300">/review</span>
+      <span className="font-medium">
+        <span className="text-purple-600 dark:text-purple-400">/tdd-workflow</span>
+        <span className="text-zinc-400 dark:text-zinc-600">{"  |  "}</span>
+        <span className="text-amber-600 dark:text-amber-400">@security-auditor</span>
+        <span className="text-zinc-400 dark:text-zinc-600">{"  |  "}</span>
+        <span className="text-emerald-600 dark:text-emerald-400">/review</span>
       </span>
     ),
   },
@@ -98,7 +98,7 @@ function TypewriterCodeBlock() {
   }, [renderedCount])
 
   return (
-    <pre className="p-5 font-mono text-xs md:text-sm text-gray-200 overflow-x-auto min-h-[170px]">
+    <pre className="p-5 font-mono text-xs md:text-sm text-zinc-900 dark:text-zinc-100 overflow-x-auto min-h-[170px] bg-[var(--surface)]">
       <code>
         {CODE_LINES.slice(0, renderedCount).map((line) => (
           <div key={line.id} className={line.mb ?? ""}>
@@ -143,12 +143,12 @@ export default function HomePage() {
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono font-medium rounded-full bg-[var(--surface)] border border-[var(--border)] text-[var(--muted)]">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span>{isId ? "205 Tools • 587 AI Skills • 68 Subagents • AgentShield" : "205 Tools • 587 AI Skills • 68 Subagents • AgentShield"}</span>
+                <span>{`${TOOLS.length} Tools • ${AI_SKILLS.length.toLocaleString()} AI Skills • ${AI_AGENTS.length} Subagents • 1,700+ APIs`}</span>
               </div>
 
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[var(--foreground)] font-heading leading-tight">
                 {t("heroTitle")}{" "}
-                <span className="text-[var(--foreground)] underline decoration-[var(--border)] underline-offset-8">
+                <span className="text-[var(--foreground)] underline decoration-[var(--border)] dark:decoration-zinc-700 underline-offset-8">
                   {t("heroTitleHighlight")}
                 </span>
               </h1>
@@ -161,14 +161,14 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                 <Button size="lg" className="w-full sm:w-auto bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--foreground)]/90 text-xs md:text-sm font-medium rounded-lg cursor-pointer h-10 px-5" asChild>
                   <Link href="/skills">
-                    {isId ? "Jelajahi 587 AI Skills" : "Explore 587 AI Skills"}
+                    {isId ? `Jelajahi ${AI_SKILLS.length.toLocaleString()} AI Skills` : `Explore ${AI_SKILLS.length.toLocaleString()} AI Skills`}
                     <ArrowRight className="ml-2 h-3.5 w-3.5" />
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="w-full sm:w-auto text-xs md:text-sm font-medium rounded-lg cursor-pointer h-10 px-5" asChild>
                   <Link href="/agents">
                     <Bot className="w-3.5 h-3.5 mr-2 text-[var(--muted)]" />
-                    {isId ? "Direktori Subagents (68)" : "Subagents Directory (68)"}
+                    {isId ? `Direktori Subagents (${AI_AGENTS.length})` : `Subagents Directory (${AI_AGENTS.length})`}
                   </Link>
                 </Button>
               </div>
@@ -176,18 +176,18 @@ export default function HomePage() {
               {/* Typewriter Code Snippet */}
               <div className="max-w-2xl mx-auto mt-10 text-left bg-[var(--surface)] rounded-xl overflow-hidden border border-[var(--border)] shadow-xs">
                 {/* Window chrome */}
-                <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--background)] border-b border-[var(--border)]">
+                <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--surface-hover)] border-b border-[var(--border)]">
                   <div className="flex space-x-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-400/80 border border-red-500/30" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-400/80 border border-amber-500/30" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/80 border border-emerald-500/30" />
                   </div>
                   <div className="text-[11px] font-mono text-[var(--muted)]">awesome-ai-tools init</div>
                   <button
                     onClick={handleCopyCli}
                     className="text-xs font-mono text-[var(--muted)] hover:text-[var(--foreground)] flex items-center gap-1 cursor-pointer transition-colors"
                   >
-                    {copiedCli ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedCli ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedCli ? "Copied" : "Copy"}</span>
                   </button>
                 </div>
@@ -219,7 +219,7 @@ export default function HomePage() {
                   <Terminal className="w-5 h-5" />
                 </div>
                 <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">
-                  587+ AI Skills Suite
+                  {`${AI_SKILLS.length.toLocaleString()}+ AI Skills Suite`}
                 </h3>
                 <p className="text-xs text-[var(--muted)] leading-relaxed">
                   {isId
@@ -240,7 +240,7 @@ export default function HomePage() {
                   <Bot className="w-5 h-5" />
                 </div>
                 <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">
-                  68+ AI Subagents
+                  {`${AI_AGENTS.length}+ AI Subagents`}
                 </h3>
                 <p className="text-xs text-[var(--muted)] leading-relaxed">
                   {isId
@@ -362,7 +362,7 @@ export default function HomePage() {
                       <Badge variant={tool.isOpenSource ? "accent" : "secondary"}>
                         {tool.isOpenSource ? t("openSource") : tool.pricing}
                       </Badge>
-                      <div className="text-xs text-[var(--muted)] bg-[var(--background)] px-2 py-1 rounded-full border border-[var(--border)]">
+                      <div className="text-[11px] font-mono font-medium text-[var(--muted)] bg-[var(--surface-hover)] px-2.5 py-0.5 rounded-md border border-[var(--border)]">
                         {(() => {
                           const cat = CATEGORIES.find((c) => c.id === tool.categoryId)
                           return cat ? getLocalizedCategory(cat, locale).name : ""
@@ -380,22 +380,22 @@ export default function HomePage() {
                     <CardDescription className="line-clamp-2 mt-3">{tool.description}</CardDescription>
                   </CardHeader>
                   <CardFooter className="mt-auto pt-6 flex justify-between items-center border-t border-[var(--border)]/50">
-                    <div className="flex gap-2">
+                    <div className="flex flex-wrap gap-1.5">
                       {tool.tags.map((tag) => (
-                        <span key={tag} className="text-xs text-[var(--muted)]">
+                        <span key={tag} className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-[var(--surface-hover)] text-[var(--muted)] border border-[var(--border)]">
                           #{tag}
                         </span>
                       ))}
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 shrink-0">
                       <BookmarkButton toolId={tool.id} toolName={tool.name} size="sm" />
                       <a
                         href={tool.website}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-[var(--muted)] hover:text-[var(--primary)] transition-colors"
+                        className="text-[var(--muted)] hover:text-[var(--primary)] transition-colors p-1 rounded-md hover:bg-[var(--surface-hover)]"
                       >
-                        <ExternalLink className="h-5 w-5" />
+                        <ExternalLink className="h-4 w-4" />
                       </a>
                     </div>
                   </CardFooter>

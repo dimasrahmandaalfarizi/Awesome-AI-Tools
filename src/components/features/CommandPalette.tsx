@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { Command } from "cmdk"
-import { Search, Monitor, Moon, Sun, ArrowRight, Laptop, Sparkles, Box, Wrench, Server, BookOpen, Layers } from "lucide-react"
+import { Search, Monitor, Moon, Sun, ArrowRight, Laptop, Sparkles, Box, Wrench, Server, BookOpen, Layers, Globe } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useTheme } from "@/components/providers/ThemeProvider"
 import { useTranslations, useLocale } from "next-intl"
@@ -89,6 +89,16 @@ export function CommandPalette() {
                   <span className="font-medium">{tNav("skills")}</span>
                 </div>
                 <span className="text-[11px] text-[var(--muted)]">{t("skillsDesc")}</span>
+              </Command.Item>
+              <Command.Item 
+                onSelect={() => runCommand(() => router.push("/apis"))}
+                className="flex items-center justify-between px-3 py-2.5 text-sm rounded-lg cursor-pointer hover:bg-[var(--primary)]/10 hover:text-[var(--primary)] aria-selected:bg-[var(--primary)]/10 aria-selected:text-[var(--primary)] transition-colors"
+              >
+                <div className="flex items-center gap-2.5">
+                  <Globe className="w-4 h-4 text-emerald-400" />
+                  <span className="font-medium">{tNav("apis")}</span>
+                </div>
+                <span className="text-[11px] text-[var(--muted)]">1,600+ Open APIs Directory</span>
               </Command.Item>
               <Command.Item 
                 onSelect={() => runCommand(() => router.push("/compare"))}
