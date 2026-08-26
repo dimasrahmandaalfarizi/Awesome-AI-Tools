@@ -57,8 +57,8 @@ export default function proxy(req: NextRequest) {
     }
   }
 
-  // 3. Skip i18n for /api routes, static files, and icons
-  if (pathname.startsWith('/api') || pathname.startsWith('/_next') || pathname.includes('.')) {
+  // 3. Skip i18n for backend /api/ routes, static files, and icons (ensure /apis UI page is not skipped)
+  if (pathname.startsWith('/api/') || pathname === '/api' || pathname.startsWith('/_next') || pathname.includes('.')) {
     const response = NextResponse.next();
     
     // Add Security Headers to API response
