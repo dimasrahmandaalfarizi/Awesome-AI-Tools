@@ -284,7 +284,7 @@ function SearchContent() {
         {(activeTypeTab === "all" || activeTypeTab === "tools") && (
           <div className="space-y-4">
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-2">
-              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2 tracking-tight">
                 <Wrench className="w-4 h-4 text-[var(--primary)]" />
                 <span>Developer Tools ({filteredTools.length})</span>
               </h2>
@@ -305,7 +305,7 @@ function SearchContent() {
                       <div className="flex items-center gap-2.5 mt-1">
                         <ToolLogo name={tool.name} website={tool.website} logo={tool.logo} size="sm" />
                         <Link href={`/tools/${tool.slug}`} className="hover:text-[var(--primary)] transition-colors">
-                          <CardTitle className="text-sm font-bold">{tool.name}</CardTitle>
+                          <CardTitle className="text-sm font-bold tracking-tight">{tool.name}</CardTitle>
                         </Link>
                       </div>
                       <CardDescription className="text-xs line-clamp-2">
@@ -340,7 +340,7 @@ function SearchContent() {
         {(activeTypeTab === "all" || activeTypeTab === "skills") && (
           <div className="space-y-4 pt-4">
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-2">
-              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2 tracking-tight">
                 <Code className="w-4 h-4 text-emerald-500" />
                 <span>AI Agent Skills ({filteredSkills.length})</span>
               </h2>
@@ -357,7 +357,7 @@ function SearchContent() {
                       <span className="text-xs font-mono font-bold text-[var(--foreground)]">/{skill.slug}</span>
                       <span className="text-[10px] text-[var(--muted)]">{skill.author || "Community"}</span>
                     </div>
-                    <h3 className="text-sm font-bold text-[var(--foreground)]">{skill.name}</h3>
+                    <h3 className="text-sm font-bold text-[var(--foreground)] tracking-tight">{skill.name}</h3>
                     <p className="text-xs text-[var(--muted)] line-clamp-2 leading-relaxed">{skill.description}</p>
                   </div>
                   <div className="flex items-center justify-between pt-2 border-t border-[var(--border)]/40 text-[11px]">
@@ -377,7 +377,7 @@ function SearchContent() {
         {(activeTypeTab === "all" || activeTypeTab === "agents") && (
           <div className="space-y-4 pt-4">
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-2">
-              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2 tracking-tight">
                 <Bot className="w-4 h-4 text-indigo-500" />
                 <span>Specialized AI Subagents ({filteredAgents.length})</span>
               </h2>
@@ -396,7 +396,7 @@ function SearchContent() {
                       </span>
                       <span className="text-[10px] text-[var(--muted)]">{agent.recommendedModel}</span>
                     </div>
-                    <h3 className="text-sm font-bold text-[var(--foreground)]">{agent.name}</h3>
+                    <h3 className="text-sm font-bold text-[var(--foreground)] tracking-tight">{agent.name}</h3>
                     <p className="text-xs text-[var(--muted)] line-clamp-2 leading-relaxed">{agent.description}</p>
                   </div>
                   <div className="flex items-center justify-between pt-2 border-t border-[var(--border)]/40 text-[11px]">
@@ -416,7 +416,7 @@ function SearchContent() {
         {(activeTypeTab === "all" || activeTypeTab === "apis") && (
           <div className="space-y-4 pt-4">
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-2">
-              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2 tracking-tight">
                 <Globe className="w-4 h-4 text-emerald-400" />
                 <span>Public APIs ({filteredApis.length})</span>
               </h2>
@@ -437,7 +437,7 @@ function SearchContent() {
                         {api.auth === "No" || api.auth === "None" ? "Free / No Auth" : api.auth}
                       </span>
                     </div>
-                    <h3 className="text-sm font-bold text-[var(--foreground)]">{api.name}</h3>
+                    <h3 className="text-sm font-bold text-[var(--foreground)] tracking-tight">{api.name}</h3>
                     <p className="text-xs text-[var(--muted)] line-clamp-2 leading-relaxed">{api.description}</p>
                   </div>
                   <div className="flex items-center justify-between pt-2 border-t border-[var(--border)]/40 text-[11px]">

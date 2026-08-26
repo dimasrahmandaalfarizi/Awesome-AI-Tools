@@ -98,7 +98,7 @@
     "editorSetup": "Editor Setup",
     "step1": "1. Select your preferred provider on the left and click Save.",
     "step2": "2. In your editor (Cursor, Roo Code, Cline), set the OpenAI Base URL to:",
-    "proTipTitle": "💡 Pro Tip:",
+    "proTipTitle": "Pro Tip:",
     "proTipDesc": "You can leave the API Key field in Cursor/Cline blank or enter any dummy string. The router will automatically inject your real configured provider key and headers!",
     "deepseekBadge": "Recommended / Ultra Cheap",
     "deepseekDesc": "DeepSeek-V3 & DeepSeek-R1 models with fast reasoning and very low cost.",

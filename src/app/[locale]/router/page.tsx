@@ -160,7 +160,7 @@ export default function RouterDashboard() {
             {/* Configuration Column */}
             <div className="md:col-span-2 space-y-6">
               <Card className="p-6 md:p-8 border-[var(--border)] bg-[var(--surface)] shadow-sm">
-                <h2 className="text-xl font-semibold mb-6 flex items-center gap-2 border-b border-[var(--border)] pb-4">
+                <h2 className="text-xl font-semibold mb-6 flex items-center gap-2 border-b border-[var(--border)] pb-4 tracking-tight">
                   <Key className="w-5 h-5 text-[var(--primary)]" />
                   {t("selectProvider")}
                 </h2>
@@ -198,7 +198,7 @@ export default function RouterDashboard() {
 
                   {/* Dynamic Key Input based on provider */}
                   <div className="pt-4 border-t border-[var(--border)] space-y-4">
-                    <h3 className="text-sm font-semibold text-[var(--foreground)]">
+                    <h3 className="text-sm font-semibold text-[var(--foreground)] tracking-tight">
                       {t("credentialsFor")} {PROVIDERS.find(p => p.id === activeProvider)?.name}
                     </h3>
 
@@ -277,7 +277,7 @@ export default function RouterDashboard() {
             {/* Quick Setup Instructions Column */}
             <div className="md:col-span-1 space-y-6">
               <Card className="p-6 border-[var(--border)] bg-[var(--surface)] shadow-sm sticky top-20">
-                <h2 className="font-bold mb-4 text-base border-b border-[var(--border)] pb-3 flex items-center gap-2">
+                <h2 className="font-bold mb-4 text-base border-b border-[var(--border)] pb-3 flex items-center gap-2 tracking-tight">
                   <Terminal className="w-4 h-4 text-[var(--primary)]" />
                   {t("editorSetup")}
                 </h2>

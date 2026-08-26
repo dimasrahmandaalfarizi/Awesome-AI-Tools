@@ -18,10 +18,11 @@ export function Footer() {
             </p>
           </div>
           <div>
-            <h4 className="font-semibold mb-4 text-sm">{t("explore")}</h4>
+            <h4 className="font-semibold mb-4 text-sm tracking-tight">{t("explore")}</h4>
             <ul className="space-y-2 text-sm text-[var(--muted)]">
               <li><Link href="/categories" className="hover:text-[var(--primary)] transition-colors">{tNav("categories")}</Link></li>
               <li><Link href="/skills" className="hover:text-[var(--primary)] transition-colors">{tNav("skills")}</Link></li>
+              <li><Link href="/apis" className="hover:text-[var(--primary)] transition-colors">{tNav("apis")}</Link></li>
               <li><Link href="/router" className="hover:text-[var(--primary)] transition-colors">{tNav("router")}</Link></li>
               <li><Link href="/docs/quickstart" className="hover:text-[var(--primary)] transition-colors">{tNav("docs")}</Link></li>
               <li><Link href="/collections" className="hover:text-[var(--primary)] transition-colors">{tNav("collections")}</Link></li>
@@ -29,7 +30,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold mb-4 text-sm">{t("community")}</h4>
+            <h4 className="font-semibold mb-4 text-sm tracking-tight">{t("community")}</h4>
             <ul className="space-y-2 text-sm text-[var(--muted)]">
               <li><a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-[var(--primary)] transition-colors">{t("github")}</a></li>
               <li><a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-[var(--primary)] transition-colors">{t("submit")}</a></li>

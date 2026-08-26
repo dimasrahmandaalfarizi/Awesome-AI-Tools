@@ -96,7 +96,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
               {/* Screenshot Preview */}
               {tool.screenshotUrl && (
                 <div>
-                  <h2 className="text-2xl font-bold mb-6">{t("preview")}</h2>
+                  <h2 className="text-2xl font-bold mb-6 tracking-tight">{t("preview")}</h2>
                   <div className="w-full aspect-video bg-[var(--surface)]/50 border border-[var(--border)] rounded-2xl overflow-hidden relative group shadow-sm">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img 
@@ -112,18 +112,18 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
               {/* Problem & Solution */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <h2 className="text-xl font-bold mb-4 text-[var(--muted)]">{t("problem")}</h2>
+                  <h2 className="text-xl font-bold mb-4 text-[var(--muted)] tracking-tight">{t("problem")}</h2>
                   <p className="text-lg leading-relaxed">{tool.problem || t("infoNotAvailable")}</p>
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold mb-4 text-[var(--primary)]">{t("solution")}</h2>
+                  <h2 className="text-xl font-bold mb-4 text-[var(--primary)] tracking-tight">{t("solution")}</h2>
                   <p className="text-lg leading-relaxed">{tool.solution || t("infoNotAvailable")}</p>
                 </div>
               </div>
 
               {/* Challenge */}
               <div>
-                <h2 className="text-2xl font-bold mb-6">{t("challenge")}</h2>
+                <h2 className="text-2xl font-bold mb-6 tracking-tight">{t("challenge")}</h2>
                 <div className="prose prose-invert max-w-none text-[var(--muted)] text-lg leading-relaxed">
                   <p>{tool.challenge || t("infoNotAvailable")}</p>
                 </div>
@@ -132,7 +132,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
               {/* Key Features & Tech Choices */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8">
-                  <h2 className="text-xl font-bold mb-6">{t("keyFeatures")}</h2>
+                  <h2 className="text-xl font-bold mb-6 tracking-tight">{t("keyFeatures")}</h2>
                   <ul className="space-y-4">
                     {(tool.keyFeatures || []).map((feature, i) => (
                       <li key={`feature-${i}`} className="flex items-start gap-3">
@@ -148,7 +148,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
                 <div className="space-y-8">
                   <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8">
-                    <h2 className="text-xl font-bold mb-6">{t("techChoices")}</h2>
+                    <h2 className="text-xl font-bold mb-6 tracking-tight">{t("techChoices")}</h2>
                     <div className="flex flex-wrap gap-2">
                       {(tool.techChoices || []).map((tech, i) => (
                         <span key={`tech-${i}`} className="px-3 py-1 bg-[var(--background)] border border-[var(--border)] rounded-full text-sm font-medium text-[var(--muted)]">
@@ -162,7 +162,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
                   </div>
 
                   <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8">
-                    <h2 className="text-xl font-bold mb-4">{t("targetUser")}</h2>
+                    <h2 className="text-xl font-bold mb-4 tracking-tight">{t("targetUser")}</h2>
                     <p className="text-[var(--muted)]">{tool.targetUser || t("generalDevelopers")}</p>
                   </div>
                 </div>
@@ -170,7 +170,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
               {/* Impact */}
               <div className="border-t border-[var(--border)] pt-12">
-                <h2 className="text-2xl font-bold mb-6">{t("impact")}</h2>
+                <h2 className="text-2xl font-bold mb-6 tracking-tight">{t("impact")}</h2>
                 <p className="text-xl leading-relaxed text-[var(--muted)] italic border-l-4 border-[var(--primary)] pl-6">
                   "{tool.impact || "The impact of this tool is currently being measured by the community."}"
                 </p>
@@ -178,7 +178,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
               {/* Guide / How to Use */}
               {tool.guide && tool.guide.length > 0 && (
                 <div className="border-t border-[var(--border)] pt-12">
-                  <h2 className="text-2xl font-bold mb-8">{t("howToUse")}</h2>
+                  <h2 className="text-2xl font-bold mb-8 tracking-tight">{t("howToUse")}</h2>
                   <div className="space-y-6">
                     {tool.guide.map((step) => (
                       <div key={step.step} className="flex gap-6">
@@ -186,7 +186,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
                           {step.step}
                         </div>
                         <div className="pt-1.5">
-                          <h3 className="font-bold text-lg mb-2">{step.title}</h3>
+                          <h3 className="font-bold text-lg mb-2 tracking-tight">{step.title}</h3>
                           <p className="text-[var(--muted)] leading-relaxed">{step.description}</p>
                         </div>
                       </div>
@@ -199,7 +199,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
             <div className="space-y-8">
               <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-sm">
-                <h3 className="font-semibold mb-6 text-lg">{t("quickDetails")}</h3>
+                <h3 className="font-semibold mb-6 text-lg tracking-tight">{t("quickDetails")}</h3>
                 <dl className="space-y-4 text-sm">
                   <div className="flex justify-between border-b border-[var(--border)] pb-3">
                     <dt className="text-[var(--muted)] flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></div> {t("pricing")}</dt>
@@ -217,7 +217,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
               </div>
 
               <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--background)]">
-                <h3 className="font-semibold mb-4">{t("alternatives")}</h3>
+                <h3 className="font-semibold mb-4 tracking-tight">{t("alternatives")}</h3>
                 <div className="space-y-4">
                   {TOOLS.filter(t => t.categoryId === tool.categoryId && t.id !== tool.id).slice(0, 3).map(alt => (
                     <Link key={alt.id} href={`/tools/${alt.slug}`} className="flex items-center gap-3 group">

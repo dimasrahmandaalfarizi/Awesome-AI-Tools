@@ -380,7 +380,7 @@ AI Coding Agents MUST read and adhere to these rules.
                     {/* Header & Command Trigger */}
                     <div className="flex items-start justify-between gap-2">
                       <Link href={`/skills/${skill.slug}`} className="hover:text-[var(--primary)] transition-colors">
-                        <h3 className="font-bold text-sm text-[var(--foreground)] leading-snug">
+                        <h3 className="font-bold text-sm text-[var(--foreground)] leading-snug tracking-tight">
                           {skill.name}
                         </h3>
                       </Link>

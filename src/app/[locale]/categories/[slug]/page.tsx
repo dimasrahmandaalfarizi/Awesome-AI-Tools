@@ -48,7 +48,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                   <div className="flex items-center gap-3 mt-1">
                     <ToolLogo name={tool.name} website={tool.website} logo={tool.logo} size="md" />
                     <Link href={`/tools/${tool.slug}`} className="hover:underline">
-                      <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-colors">{tool.name}</CardTitle>
+                      <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-colors tracking-tight">{tool.name}</CardTitle>
                     </Link>
                   </div>
                   <CardDescription className="line-clamp-2 mt-3">

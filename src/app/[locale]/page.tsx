@@ -218,7 +218,7 @@ export default function HomePage() {
                 <div className="p-3 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--primary)] w-fit">
                   <Terminal className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">
+                <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors tracking-tight">
                   {`${AI_SKILLS.length.toLocaleString()}+ AI Skills Suite`}
                 </h3>
                 <p className="text-xs text-[var(--muted)] leading-relaxed">
@@ -239,7 +239,7 @@ export default function HomePage() {
                 <div className="p-3 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--primary)] w-fit">
                   <Bot className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">
+                <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors tracking-tight">
                   {`${AI_AGENTS.length}+ AI Subagents`}
                 </h3>
                 <p className="text-xs text-[var(--muted)] leading-relaxed">
@@ -260,7 +260,7 @@ export default function HomePage() {
                 <div className="p-3 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--primary)] w-fit">
                   <Shield className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">
+                <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors tracking-tight">
                   AgentShield Security
                 </h3>
                 <p className="text-xs text-[var(--muted)] leading-relaxed">
@@ -281,7 +281,7 @@ export default function HomePage() {
                 <div className="p-3 rounded-xl bg-[var(--background)] border border-[var(--border)] text-[var(--primary)] w-fit">
                   <Cpu className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">
+                <h3 className="text-lg font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors tracking-tight">
                   Zero-Cost AI Router
                 </h3>
                 <p className="text-xs text-[var(--muted)] leading-relaxed">
@@ -324,7 +324,7 @@ export default function HomePage() {
                   <Link href={`/categories/${category.slug}`}>
                     <Card className="hover:border-[var(--primary)]/50 transition-colors cursor-pointer h-full group">
                       <CardHeader>
-                        <CardTitle className="group-hover:text-[var(--primary)] transition-colors">
+                        <CardTitle className="group-hover:text-[var(--primary)] transition-colors tracking-tight">
                           {category.name}
                         </CardTitle>
                         <CardDescription>{category.description}</CardDescription>
@@ -372,7 +372,7 @@ export default function HomePage() {
                     <div className="flex items-center gap-3 mt-1">
                       <ToolLogo name={tool.name} website={tool.website} logo={tool.logo} size="md" />
                       <Link href={`/tools/${tool.slug}`} className="hover:underline">
-                        <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-colors">
+                        <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-colors tracking-tight">
                           {tool.name}
                         </CardTitle>
                       </Link>

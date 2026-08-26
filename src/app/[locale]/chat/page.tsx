@@ -993,7 +993,7 @@ export default function ChatPage() {
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
               <div className="flex items-center gap-2">
                 <Settings className="w-4 h-4 text-[var(--foreground)]" />
-                <h3 className="text-base font-bold text-[var(--foreground)] font-heading">
+                <h3 className="text-base font-bold text-[var(--foreground)] font-heading tracking-tight">
                   {isId ? "Pengaturan API Key Pribadi (Opsional)" : "Custom API Key Settings (Optional)"}
                 </h3>
               </div>

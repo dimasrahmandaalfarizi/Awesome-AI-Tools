@@ -157,7 +157,7 @@ export function DocsContent({ doc }: DocsContentProps) {
           </section>
 
           <section id="next-steps" className="pt-6 border-t border-zinc-200 dark:border-zinc-800/80 space-y-3">
-            <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">
+            <h3 className="text-lg font-semibold text-zinc-900 dark:text-white tracking-tight">
               {isId ? "Langkah Selanjutnya" : "Next steps"}
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">

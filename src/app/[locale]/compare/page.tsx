@@ -167,7 +167,7 @@ export default function ComparePage() {
           <div className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface)] space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
-                <h2 className="text-lg font-bold text-[var(--foreground)] flex items-center gap-2">
+                <h2 className="text-lg font-bold text-[var(--foreground)] flex items-center gap-2 tracking-tight">
                   <Zap className="w-4 h-4 text-[var(--primary)]" />
                   <span>{isId ? "Matrix Benchmark Model Coding 2026" : "2026 Developer AI Models Benchmark"}</span>
                 </h2>
@@ -222,7 +222,7 @@ export default function ComparePage() {
                 <Calculator className="w-5 h-5" />
               </div>
               <div>
-                <h2 className="text-lg font-bold text-[var(--foreground)]">
+                <h2 className="text-lg font-bold text-[var(--foreground)] tracking-tight">
                   {isId ? "Kalkulator Penghematan Biaya Token AI" : "AI Token Cost Savings Calculator"}
                 </h2>
                 <p className="text-xs text-[var(--muted)]">
@@ -307,7 +307,7 @@ export default function ComparePage() {
           {/* Section 3: Developer Tools Side-by-Side Comparison */}
           <div className="space-y-6 pt-4 border-t border-[var(--border)]">
             <div>
-              <h2 className="text-xl font-bold text-[var(--foreground)]">{t("title")}</h2>
+              <h2 className="text-xl font-bold text-[var(--foreground)] tracking-tight">{t("title")}</h2>
               <p className="text-xs text-[var(--muted)]">{t("description")}</p>
             </div>
 
@@ -332,7 +332,7 @@ export default function ComparePage() {
                           <div className="mb-3">
                             <ToolLogo name={tool.name} website={tool.website} logo={tool.logo} size="lg" />
                           </div>
-                          <h3 className="text-base font-bold mb-2 text-center">{tool.name}</h3>
+                          <h3 className="text-base font-bold mb-2 text-center tracking-tight">{tool.name}</h3>
                           <Button variant="outline" size="sm" onClick={() => setIsSelectingFor(index)} className="text-xs h-8">
                             {t("changeTool")}
                           </Button>
@@ -405,7 +405,7 @@ export default function ComparePage() {
           <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
             <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl w-full max-w-2xl max-h-[80vh] overflow-y-auto p-6 shadow-2xl">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-bold">{t("selectTool")}</h2>
+                <h2 className="text-xl font-bold tracking-tight">{t("selectTool")}</h2>
                 <button onClick={() => setIsSelectingFor(null)} className="p-1.5 hover:bg-[var(--background)] rounded-full text-[var(--muted)] hover:text-[var(--foreground)]">
                   <X className="h-5 w-5" />
                 </button>

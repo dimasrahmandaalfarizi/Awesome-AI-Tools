@@ -66,7 +66,7 @@ ${agent.systemPrompt}
               <Bot className="w-8 h-8" />
             </div>
             <div>
-              <h1 className="text-2xl md:text-3xl font-heading font-bold text-[var(--foreground)]">
+              <h1 className="text-2xl md:text-3xl font-heading font-bold text-[var(--foreground)] tracking-tight">
                 {agent.name}
               </h1>
               <p className="text-sm text-[var(--muted)] font-medium mt-0.5">{agent.role}</p>

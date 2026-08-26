@@ -24,20 +24,20 @@ program
   .command("list")
   .description("List all available AI skills, subagents, and composite workflows")
   .action(() => {
-    console.log("\n⚡ Available Composite Workflows:\n");
+    console.log("\n[*] Available Composite Workflows:\n");
     COMPOSITE_WORKFLOWS.forEach((wf) => {
       console.log(`- \x1b[35m${wf.command}\x1b[0m — \x1b[1m${wf.name}\x1b[0m`);
       console.log(`  ${wf.description}\n`);
     });
 
-    console.log(`\n🚀 Available AI Agent Skills (${AI_SKILLS.length} Skills):\n`);
+    console.log(`\n[*] Available AI Agent Skills (${AI_SKILLS.length} Skills):\n`);
     AI_SKILLS.slice(0, 10).forEach((skill) => {
       const cmd = toCommandName(skill.slug);
       console.log(`- \x1b[36m${skill.name}\x1b[0m (/\x1b[35m${cmd}\x1b[0m | @\x1b[33m${cmd}\x1b[0m)`);
     });
     console.log(`... and ${AI_SKILLS.length - 10} more skills available.\n`);
 
-    console.log("\n🤖 Available AI Subagents (68+ Personas):\n");
+    console.log(`\n[*] Available AI Subagents (${AI_AGENTS.length}+ Personas):\n`);
     AI_AGENTS.slice(0, 10).forEach((agent) => {
       console.log(`- \x1b[32m${agent.name}\x1b[0m [Role: ${agent.role}]`);
     });
@@ -50,18 +50,18 @@ program
   .option("-d, --dir <path>", "Target directory to scan", ".")
   .action((options) => {
     const targetDir = path.resolve(process.cwd(), options.dir);
-    console.log(`\n🛡️  Running AgentShield Security Scan on [36m${targetDir}[0m...\n`);
+    console.log(`\n[*] Running AgentShield Security Scan on \x1b[36m${targetDir}\x1b[0m...\n`);
 
     const report = scanWorkspace(targetDir);
 
     console.log("=================================================");
-    console.log(`📊 AgentShield Security Report — Grade: [1m${report.grade}[0m (Score: ${report.score}/100)`);
-    console.log(`📁 Total Files Scanned: ${report.totalFilesScanned}`);
-    console.log(`🚨 Critical: [31m${report.summary.critical}[0m | High: [33m${report.summary.high}[0m | Medium: [34m${report.summary.medium}[0m | Low: [37m${report.summary.low}[0m`);
+    console.log(`[+] AgentShield Security Report — Grade: \x1b[1m${report.grade}\x1b[0m (Score: ${report.score}/100)`);
+    console.log(`[i] Total Files Scanned: ${report.totalFilesScanned}`);
+    console.log(`[!] Critical: \x1b[31m${report.summary.critical}\x1b[0m | High: \x1b[33m${report.summary.high}\x1b[0m | Medium: \x1b[34m${report.summary.medium}\x1b[0m | Low: \x1b[37m${report.summary.low}\x1b[0m`);
     console.log("=================================================\n");
 
     if (report.findings.length === 0) {
-      console.log("\x1b[32m🎉 Clean Workspace! No security risks, prompt injections, or leaked secrets found.\x1b[0m\n");
+      console.log("\x1b[32m[+] Clean Workspace! No security risks, prompt injections, or leaked secrets found.\x1b[0m\n");
       return;
     }
 
@@ -92,7 +92,7 @@ program
     const newEntry = `\n- [${timestamp}] ${rule}\n`;
     fs.appendFileSync(instinctsPath, newEntry, "utf8");
 
-    console.log(`\n🧠 \x1b[32mInstinct Saved!\x1b[0m Added to \x1b[36minstincts.md\x1b[0m:`);
+    console.log(`\n[+] \x1b[32mInstinct Saved!\x1b[0m Added to \x1b[36minstincts.md\x1b[0m:`);
     console.log(`   "\x1b[33m${rule}\x1b[0m"\n`);
     console.log("All future AI Agent sessions will strictly adhere to this rule.\n");
   });
@@ -111,7 +111,7 @@ program
         message: "Select your AI IDE / CLI environment to configure:",
         choices: [
           { 
-            title: "🌟 All-in-One Universal Suite (Skills + Subagents + Hooks + Instincts + Workflows)", 
+            title: "All-in-One Universal Suite (Skills + Subagents + Hooks + Instincts + Workflows)", 
             value: "all", 
             description: "Generates full structure for every AI coding environment" 
           },
@@ -163,13 +163,13 @@ program
     const cwd = process.cwd();
     let totalGenerated = 0;
 
-    console.log(`\n⚙️  Scaffolding ${AI_SKILLS.length} skills, ${AI_AGENTS.length} subagents, hooks & instincts...\n`);
+    console.log(`\n[*] Scaffolding ${AI_SKILLS.length} skills, ${AI_AGENTS.length} subagents, hooks & instincts...\n`);
 
     // 1. Instincts.md (Permanent Memory)
     const instinctsPath = path.join(cwd, "instincts.md");
     if (!fs.existsSync(instinctsPath)) {
       fs.writeFileSync(instinctsPath, INSTINCTS_TEMPLATE, "utf8");
-      console.log("✅ Created \x1b[32minstincts.md\x1b[0m (Continuous Learning & Memory)");
+      console.log("[+] Created \x1b[32minstincts.md\x1b[0m (Continuous Learning & Memory)");
       totalGenerated++;
     }
 
@@ -182,7 +182,7 @@ program
       fs.writeFileSync(path.join(claudeHooksDir, "post-tool-call.js"), HOOK_SCRIPTS.postToolCall, "utf8");
       fs.writeFileSync(path.join(claudeHooksDir, "on-session-end.js"), HOOK_SCRIPTS.onSessionEnd, "utf8");
 
-      console.log("✅ Installed \x1b[32mAgent Hooks Runtime\x1b[0m in \x1b[36m.claude/hooks/\x1b[0m (Pre-Tool Safety & Auto-Linter)");
+      console.log("[+] Installed \x1b[32mAgent Hooks Runtime\x1b[0m in \x1b[36m.claude/hooks/\x1b[0m (Pre-Tool Safety & Auto-Linter)");
       totalGenerated += 3;
     }
 
@@ -196,7 +196,7 @@ program
         fs.writeFileSync(filePath, wf.content, "utf8");
       });
 
-      console.log(`✅ Generated \x1b[32m${COMPOSITE_WORKFLOWS.length} Composite Workflows\x1b[0m in \x1b[36m.claude/commands/\x1b[0m (/review, /tdd, /compact, /council)`);
+      console.log(`[+] Generated \x1b[32m${COMPOSITE_WORKFLOWS.length} Composite Workflows\x1b[0m in \x1b[36m.claude/commands/\x1b[0m (/review, /tdd, /compact, /council)`);
       totalGenerated += COMPOSITE_WORKFLOWS.length;
     }
 
@@ -224,7 +224,7 @@ ${skill.content}
         fs.writeFileSync(filePath, fileContent, "utf8");
       });
 
-      console.log(`✅ Generated \x1b[32m${AI_SKILLS.length} Slash Commands\x1b[0m in \x1b[36m.claude/commands/\x1b[0m`);
+      console.log(`[+] Generated \x1b[32m${AI_SKILLS.length} Slash Commands\x1b[0m in \x1b[36m.claude/commands/\x1b[0m`);
       totalGenerated += AI_SKILLS.length;
     }
 
@@ -249,7 +249,7 @@ ${skill.content}
         fs.writeFileSync(filePath, fileContent, "utf8");
       });
 
-      console.log(`✅ Generated \x1b[32m${AI_SKILLS.length} MDC Rules\x1b[0m in \x1b[36m.cursor/rules/\x1b[0m`);
+      console.log(`[+] Generated \x1b[32m${AI_SKILLS.length} MDC Rules\x1b[0m in \x1b[36m.cursor/rules/\x1b[0m`);
       totalGenerated += AI_SKILLS.length;
     }
 
@@ -286,7 +286,7 @@ ${agent.systemPrompt}
         fs.writeFileSync(filePath, fileContent, "utf8");
       });
 
-      console.log(`✅ Generated \x1b[32m${AI_SKILLS.length} Skills\x1b[0m + \x1b[32m${AI_AGENTS.length} Subagents\x1b[0m in \x1b[36m.agents/\x1b[0m`);
+      console.log(`[+] Generated \x1b[32m${AI_SKILLS.length} Skills\x1b[0m + \x1b[32m${AI_AGENTS.length} Subagents\x1b[0m in \x1b[36m.agents/\x1b[0m`);
       totalGenerated += AI_SKILLS.length + AI_AGENTS.length;
     }
 
@@ -308,9 +308,9 @@ ${COMPOSITE_WORKFLOWS.map(w => `- \`${w.command}\`: **${w.name}** — ${w.descri
 Memory & rules are stored in \`instincts.md\`. Add new rules via \`npx awesome-ai-tools learn "<rule>"\`.
 `;
     fs.writeFileSync(agentsMdPath, agentsMdContent, "utf8");
-    console.log(`✅ Generated master \x1b[32mAGENTS.md\x1b[0m index in project root.`);
+    console.log(`[+] Generated master \x1b[32mAGENTS.md\x1b[0m index in project root.`);
 
-    console.log(`\n🎉 \x1b[32mSetup Complete!\x1b[0m Total ${totalGenerated} configuration files generated.`);
+    console.log(`\n[+] \x1b[32mSetup Complete!\x1b[0m Total ${totalGenerated} configuration files generated.\n`);
   });
 
 program.parse();

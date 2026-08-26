@@ -46,7 +46,7 @@ export default async function SkillPage({ params }: { params: Promise<{ slug: st
             <ExportSkill slug={skill.slug} content={skill.content} description={skill.description} />
             
             <div className="mt-12 p-6 rounded-2xl bg-[var(--primary)]/5 border border-[var(--primary)]/20">
-              <h3 className="font-bold text-lg mb-2 text-[var(--primary)]">{t("howToUse")}</h3>
+              <h3 className="font-bold text-lg mb-2 text-[var(--primary)] tracking-tight">{t("howToUse")}</h3>
               <ul className="space-y-3 text-sm text-[var(--muted)]">
                 <li>• <strong>{t("cursorModern")}:</strong> {t("cursorModernDesc", { filename: `${skill.slug}.mdc` })}</li>
                 <li>• <strong>{t("claudeCode")}:</strong> {t("claudeCodeDesc")}</li>

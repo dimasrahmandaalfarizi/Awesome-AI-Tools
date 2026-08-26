@@ -98,7 +98,7 @@
     "editorSetup": "Pengaturan Editor",
     "step1": "1. Pilih provider yang diinginkan di sebelah kiri dan klik Simpan.",
     "step2": "2. Di editor Anda (Cursor, Roo Code, Cline), atur OpenAI Base URL ke:",
-    "proTipTitle": "💡 Tips Pro:",
+    "proTipTitle": "Tips Pro:",
     "proTipDesc": "Anda dapat mengosongkan bidang API Key di Cursor/Cline atau mengisi teks sembarang. Router akan secara otomatis menyuntikkan kunci provider dan header asli yang telah Anda konfigurasikan!",
     "deepseekBadge": "Direkomendasikan / Sangat Hemat",
     "deepseekDesc": "Model DeepSeek-V3 & DeepSeek-R1 dengan penalaran cepat dan biaya super murah.",
