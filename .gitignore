@@ -45,3 +45,9 @@ next-env.d.ts
 proxy-config.json
 .claude/session_log.md
 *.local.json
+
+# AI Skills & Subagents (heavy — 2,582 files, install locally via npx awesome-ai-tools)
+.agents/
+
+# Generated skill bundle JSONs (run scripts/bundle-skills.mjs locally to regenerate)
+public/data/skills/
