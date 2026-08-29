@@ -190,24 +190,19 @@ export default function ChatPage() {
       const saved = localStorage.getItem(STORAGE_KEY)
       if (saved) {
         const parsed = JSON.parse(saved)
-        if (Array.isArray(parsed) && parsed.length > 0) {
+        if (Array.isArray(parsed)) {
           setSessions(parsed)
-          setActiveSessionId(parsed[0].id)
-          setSelectedPersona(parsed[0].persona || "general")
+          if (parsed.length > 0) {
+            setActiveSessionId(parsed[0].id)
+            setSelectedPersona(parsed[0].persona || "general")
+          } else {
+            setActiveSessionId("")
+          }
           return
         }
       }
-      // Initialize default session
-      const defaultId = Date.now().toString()
-      const newSession: ChatSession = {
-        id: defaultId,
-        title: isId ? "Percakapan Baru" : "New Chat",
-        createdAt: Date.now(),
-        messages: [],
-        persona: "general"
-      }
-      setSessions([newSession])
-      setActiveSessionId(defaultId)
+      setSessions([])
+      setActiveSessionId("")
     } catch (e) {
       console.error("Error loading chat sessions:", e)
     }
@@ -255,7 +250,7 @@ export default function ChatPage() {
   }
 
   // Get active session
-  const currentSession = sessions.find(s => s.id === activeSessionId) || sessions[0]
+  const currentSession = sessions.find(s => s.id === activeSessionId) || (sessions.length > 0 ? sessions[0] : null)
   const currentMessages = currentSession?.messages || []
 
   // Scroll to bottom on new messages
@@ -265,6 +260,12 @@ export default function ChatPage() {
 
   // New Chat Handler
   const handleNewChat = () => {
+    const existingActive = sessions.find(s => s.id === activeSessionId)
+    if (existingActive && existingActive.messages.length === 0) {
+      setActiveArtifact(null)
+      return
+    }
+
     const newId = Date.now().toString()
     const newSession: ChatSession = {
       id: newId,
@@ -273,7 +274,8 @@ export default function ChatPage() {
       messages: [],
       persona: selectedPersona
     }
-    const updated = [newSession, ...sessions]
+    const filtered = sessions.filter(s => s.messages.length > 0)
+    const updated = [newSession, ...filtered]
     saveSessions(updated)
     setActiveSessionId(newId)
     setActiveArtifact(null)
@@ -283,13 +285,15 @@ export default function ChatPage() {
   const handleDeleteSession = (e: React.MouseEvent, idToDelete: string) => {
     e.stopPropagation()
     const remaining = sessions.filter(s => s.id !== idToDelete)
-    if (remaining.length === 0) {
-      handleNewChat()
-    } else {
-      saveSessions(remaining)
-      if (activeSessionId === idToDelete) {
+    saveSessions(remaining)
+    if (activeSessionId === idToDelete) {
+      if (remaining.length > 0) {
         setActiveSessionId(remaining[0].id)
+        setSelectedPersona(remaining[0].persona || "general")
+      } else {
+        setActiveSessionId("")
       }
+      setActiveArtifact(null)
     }
   }
 
@@ -360,17 +364,35 @@ export default function ChatPage() {
       sessionTitle = query.slice(0, 32) + (query.length > 32 ? "..." : "")
     }
 
-    const updatedSessions = sessions.map(s => {
-      if (s.id === activeSessionId) {
-        return {
-          ...s,
-          title: sessionTitle,
-          messages: updatedMessages,
-          persona: activeP
-        }
+    const targetSessionId = activeSessionId || Date.now().toString()
+    if (!activeSessionId) {
+      setActiveSessionId(targetSessionId)
+    }
+
+    const sessionExists = sessions.some(s => s.id === targetSessionId)
+    let updatedSessions: ChatSession[]
+    if (!sessionExists) {
+      const newSession: ChatSession = {
+        id: targetSessionId,
+        title: sessionTitle,
+        createdAt: Date.now(),
+        messages: updatedMessages,
+        persona: activeP
       }
-      return s
-    })
+      updatedSessions = [newSession, ...sessions]
+    } else {
+      updatedSessions = sessions.map(s => {
+        if (s.id === targetSessionId) {
+          return {
+            ...s,
+            title: sessionTitle,
+            messages: updatedMessages,
+            persona: activeP
+          }
+        }
+        return s
+      })
+    }
 
     saveSessions(updatedSessions)
     setIsLoading(true)
@@ -436,7 +458,7 @@ export default function ChatPage() {
               if (delta) {
                 fullContent += delta
                 setSessions(prev => prev.map(s => {
-                  if (s.id === activeSessionId) {
+                  if (s.id === targetSessionId) {
                     return {
                       ...s,
                       messages: s.messages.map(m =>
@@ -455,7 +477,7 @@ export default function ChatPage() {
       // Persist final message using functional update to avoid stale sessions closure
       setSessions(prev => {
         const persisted = prev.map(s => {
-          if (s.id === activeSessionId) {
+          if (s.id === targetSessionId) {
             return {
               ...s,
               messages: s.messages.map(m =>
@@ -486,7 +508,7 @@ export default function ChatPage() {
         : "Failed to process message. Please try again or check connection."
       setSessions(prev => {
         const updated = prev.map(s => {
-          if (s.id === activeSessionId) {
+          if (s.id === targetSessionId) {
             return {
               ...s,
               messages: s.messages.map(m => m.id === assistantMsgId
@@ -590,37 +612,45 @@ export default function ChatPage() {
                 {isId ? "Riwayat Percakapan" : "Chat History"} ({sessions.length})
               </div>
               
-              {sessions.map((session) => {
-                const isActive = session.id === activeSessionId
-                return (
-                  <div
-                    key={session.id}
-                    onClick={() => {
-                      setActiveSessionId(session.id)
-                      setSelectedPersona(session.persona || "general")
-                      setActiveArtifact(null)
-                    }}
-                    className={`group flex items-center justify-between p-2.5 rounded-lg text-xs transition-all cursor-pointer border ${
-                      isActive
-                        ? "bg-[var(--background)] border-[var(--border)] text-[var(--foreground)] font-semibold shadow-xs"
-                        : "border-transparent text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)]"
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 truncate pr-2">
-                      <MessageSquare className="w-3.5 h-3.5 shrink-0 opacity-60" />
-                      <span className="truncate">{session.title}</span>
-                    </div>
-
-                    <button
-                      onClick={(e) => handleDeleteSession(e, session.id)}
-                      className="opacity-0 group-hover:opacity-100 p-1 hover:text-red-400 transition-opacity"
-                      title="Delete chat"
+              {sessions.length === 0 ? (
+                <div className="py-8 px-3 text-center text-xs text-[var(--muted)]">
+                  <MessageSquare className="w-5 h-5 mx-auto mb-2 opacity-30" />
+                  <p>{isId ? "Belum ada riwayat chat" : "No chat history yet"}</p>
+                </div>
+              ) : (
+                sessions.map((session) => {
+                  const isActive = session.id === activeSessionId
+                  return (
+                    <div
+                      key={session.id}
+                      onClick={() => {
+                        setActiveSessionId(session.id)
+                        setSelectedPersona(session.persona || "general")
+                        setActiveArtifact(null)
+                      }}
+                      className={`group flex items-center justify-between p-2.5 rounded-lg text-xs transition-all cursor-pointer border ${
+                        isActive
+                          ? "bg-[var(--background)] border-[var(--border)] text-[var(--foreground)] font-semibold shadow-xs"
+                          : "border-transparent text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)]"
+                      }`}
                     >
-                      <Trash2 className="w-3 h-3" />
-                    </button>
-                  </div>
-                )
-              })}
+                      <div className="flex items-center gap-2 truncate pr-2 min-w-0">
+                        <MessageSquare className="w-3.5 h-3.5 shrink-0 opacity-60" />
+                        <span className="truncate">{session.title}</span>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={(e) => handleDeleteSession(e, session.id)}
+                        className="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-[var(--surface)] hover:text-rose-500 text-[var(--muted)] transition-all shrink-0 cursor-pointer"
+                        title={isId ? "Hapus riwayat chat (X)" : "Delete chat (X)"}
+                      >
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  )
+                })
+              )}
             </div>
 
             {/* Sidebar Bottom Actions */}
