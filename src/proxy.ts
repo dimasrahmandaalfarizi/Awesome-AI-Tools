@@ -66,6 +66,7 @@ export default function proxy(req: NextRequest) {
     response.headers.set('X-Frame-Options', 'SAMEORIGIN');
     response.headers.set('X-XSS-Protection', '1; mode=block');
     response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+    response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
     
     return response;
   }

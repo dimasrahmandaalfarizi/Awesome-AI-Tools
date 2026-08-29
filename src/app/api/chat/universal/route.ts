@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { checkRateLimit } from "@/lib/security"
+import { checkRateLimit, validateSafeUrl, validatePayloadSize } from "@/lib/security"
 import { TOOLS, AI_SKILLS } from "@/data/mock"
 import { PUBLIC_APIS } from "@/data/apis"
 
@@ -110,7 +110,23 @@ export async function POST(req: NextRequest) {
   if (rateLimitResponse) return rateLimitResponse
 
   try {
-    const body = await req.json()
+    const rawBody = await req.text()
+
+    // 1. Payload Size Limitation (Max 4MB) to prevent ReDoS / memory exhaustion
+    if (!validatePayloadSize(rawBody, 4 * 1024 * 1024)) {
+      return NextResponse.json(
+        { error: "Payload too large. Maximum request body size is 4MB." },
+        { status: 413 }
+      )
+    }
+
+    let body: any = {}
+    try {
+      body = JSON.parse(rawBody)
+    } catch {
+      return NextResponse.json({ error: "Invalid JSON payload" }, { status: 400 })
+    }
+
     const {
       messages,
       persona = "general",
@@ -155,6 +171,16 @@ export async function POST(req: NextRequest) {
     // ── Flow A: BYOK – user provided their own key in Settings modal ──────────
     if ((provider === "byok" || provider === "cloud") && customApiKey) {
       const baseUrl = (customBaseUrl || "https://api.openai.com/v1").replace(/\/+$/, "")
+
+      // SSRF Defense: Validate customBaseUrl
+      const urlCheck = validateSafeUrl(baseUrl)
+      if (!urlCheck.isValid) {
+        return NextResponse.json(
+          { error: `Forbidden Custom Base URL: ${urlCheck.reason}` },
+          { status: 403 }
+        )
+      }
+
       const targetModel = model || "gpt-4o-mini"
       const resp = await callOpenAICompatible({
         baseUrl,

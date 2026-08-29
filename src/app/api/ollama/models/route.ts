@@ -1,6 +1,10 @@
-﻿import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
+import { checkRateLimit } from "@/lib/security"
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const rateLimitResponse = checkRateLimit(req, "ollama-models", { limit: 120, windowMs: 60000 })
+  if (rateLimitResponse) return rateLimitResponse
+
   const OLLAMA_HOST = process.env.OLLAMA_HOST || "http://127.0.0.1:11434"
 
   try {
