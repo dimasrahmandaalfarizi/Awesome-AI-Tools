@@ -1,12 +1,17 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# Universal AI Agent Guidelines, Skills & Personas Suite
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+This repository is equipped with **2582 AI Skills**, **68 AI Subagents**, and **4 Composite Workflows**.
 
+## Multi-Agent Workflows:
+- `/review`: **Multi-Agent Code & Security Review** — Orchestrates a 2-stage fresh-context review: first audits security vulnerabilities with AgentShield, then verifies code logic, race conditions, and standards.
+- `/tdd`: **Autonomous TDD Cycle** — Strict Red-Green-Refactor cycle: writes failing unit tests first, implements the minimal passing code, and safely refactors with test coverage protection.
+- `/compact`: **Context Compaction & Token Garbage Collection** — Summarizes active conversation history, clears redundant tokens, and extracts key codebase instincts to prevent context degradation.
+- `/council`: **Multi-Model Council Deliberation** — Evaluates difficult architectural decisions across multiple reasoning perspectives before writing implementation code.
 
-## 🚫 Strict UI/UX Standards (Anti-AI-Slop & Zero-Emoji)
-1. **Zero-Emoji Rule**: NEVER use Unicode emojis (`🚀`, `✨`, `🤖`, `⚡`, `🛡️`, `💡`, etc.) in JSX/TSX user interfaces. Always use `lucide-react` vector icons.
-2. **Monochrome Zinc System**: Use Zinc-950/900 palette with 1px hairline borders. Never use saturated rainbow or purple/pink gradients.
-3. **Radius Standardization**: Buttons must be `rounded-lg`, Cards `rounded-xl` / `rounded-2xl`, Badges `rounded-md`.
-4. **Typography**: Always apply `tracking-tight` to headings and `font-mono` (JetBrains Mono) for technical commands and metadata.
+## Triggering Skills:
+- **Claude Code CLI / Continue**: Type `/<command>` (e.g. `/tdd`, `/review`, `/tdd-workflow`)
+- **Cursor IDE**: Mention `@<command>` in Chat
+- **Antigravity / Codex**: Auto-loaded from `.agents/skills/` and `.agents/subagents/`
+
+## Continuous Learning:
+Memory & rules are stored in `instincts.md`. Add new rules via `npx awesome-ai-tools learn "<rule>"`.

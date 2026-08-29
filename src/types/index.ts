@@ -78,3 +78,15 @@ export interface AiAgent {
   createdAt: string
 }
 
+export interface PublicApi {
+  id: string
+  name: string
+  slug: string
+  description: string
+  auth: string // "No" | "apiKey" | "OAuth" | "X-Mashape-Key" | "User-Agent"
+  https: boolean
+  cors: "yes" | "no" | "unknown"
+  link: string
+  category: string
+}
+
