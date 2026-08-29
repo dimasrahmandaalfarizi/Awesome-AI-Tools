@@ -22,6 +22,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:lib": "tsup",
+    "cli": "node dist/cli/index.js",
     "start": "next start",
     "lint": "eslint"
   },
