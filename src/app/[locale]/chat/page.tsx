@@ -35,6 +35,7 @@ import {
 } from "lucide-react"
 import { useLocale } from "next-intl"
 import { ChatMessageRenderer } from "@/components/features/ChatMessageRenderer"
+import { SlashCommandPalette } from "@/components/chat/SlashCommandPalette"
 import "katex/dist/katex.min.css"
 
 interface Message {
@@ -153,6 +154,35 @@ export default function ChatPage() {
   const fileInputRef = React.useRef<HTMLInputElement>(null)
   const messagesEndRef = React.useRef<HTMLDivElement>(null)
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
+
+  // Slash Commands & Skills Palette state
+  const [slashPaletteOpen, setSlashPaletteOpen] = React.useState(false)
+  const [slashQuery, setSlashQuery] = React.useState("")
+  const [slashSelectedIndex, setSlashSelectedIndex] = React.useState(0)
+
+  const handleInputChange = (val: string) => {
+    setInput(val)
+    const match = val.match(/(^|\s)\/([a-zA-Z0-9_-]*)$/)
+    if (match) {
+      setSlashQuery("/" + match[2])
+      setSlashPaletteOpen(true)
+      setSlashSelectedIndex(0)
+    } else {
+      setSlashPaletteOpen(false)
+    }
+  }
+
+  const handleSelectSlashCommand = (cmd: string) => {
+    const match = input.match(/(^|\s)\/([a-zA-Z0-9_-]*)$/)
+    const replaced = match
+      ? input.replace(/(^|\s)\/([a-zA-Z0-9_-]*)$/, `$1${cmd} `)
+      : `${cmd} `
+    setInput(replaced)
+    setSlashPaletteOpen(false)
+    setTimeout(() => {
+      inputRef.current?.focus()
+    }, 50)
+  }
 
   // Load sessions from localStorage
   React.useEffect(() => {
@@ -892,47 +922,106 @@ export default function ChatPage() {
                   </div>
                 )}
 
-                <div className="relative flex items-center gap-2 bg-[var(--background)] border border-[var(--border)] rounded-xl p-1.5 shadow-xs focus-within:border-[var(--foreground)]/40 transition-colors">
-                  
-                  {/* File attach button */}
-                  <input 
-                    type="file" 
-                    ref={fileInputRef} 
-                    onChange={handleFileUpload} 
-                    className="hidden" 
-                    accept=".txt,.md,.json,.ts,.js,.py"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    className="p-2 rounded-lg text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface)] transition-colors cursor-pointer shrink-0"
-                    title="Attach Code or File"
-                  >
-                    <Paperclip className="w-4 h-4" />
-                  </button>
-
-                  <textarea
-                    ref={inputRef}
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && !e.shiftKey) {
-                        e.preventDefault()
-                        handleSendMessage()
-                      }
-                    }}
-                    placeholder={isId ? "Tanyakan apapun seputar koding, security, atau arsitektur sistem... (Enter untuk kirim)" : "Ask anything about coding, security, or system architecture... (Enter to send)"}
-                    rows={1}
-                    className="flex-1 bg-transparent border-0 text-xs md:text-sm text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none resize-none py-2 px-1 max-h-32"
+                <div className="relative">
+                  {/* Slash Command & Skills Autocomplete Palette */}
+                  <SlashCommandPalette
+                    query={slashQuery}
+                    isOpen={slashPaletteOpen}
+                    onSelect={handleSelectSlashCommand}
+                    onClose={() => setSlashPaletteOpen(false)}
+                    selectedIndex={slashSelectedIndex}
+                    setSelectedIndex={setSlashSelectedIndex}
                   />
 
-                  <Button
-                    onClick={() => handleSendMessage()}
-                    disabled={isLoading || !input.trim()}
-                    className="h-8 w-8 rounded-lg bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--foreground)]/90 flex items-center justify-center shrink-0 cursor-pointer disabled:opacity-40"
-                  >
-                    <Send className="w-3.5 h-3.5" />
-                  </Button>
+                  <div className="flex items-center gap-2 bg-[var(--background)] border border-[var(--border)] rounded-xl p-1.5 shadow-xs focus-within:border-[var(--foreground)]/40 transition-colors">
+                    
+                    {/* File attach button */}
+                    <input 
+                      type="file" 
+                      ref={fileInputRef} 
+                      onChange={handleFileUpload} 
+                      className="hidden" 
+                      accept=".txt,.md,.json,.ts,.js,.py"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      className="p-2 rounded-lg text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface)] transition-colors cursor-pointer shrink-0"
+                      title="Attach Code or File"
+                    >
+                      <Paperclip className="w-4 h-4" />
+                    </button>
+
+                    {/* Quick Slash Commands / Skills Trigger Button */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const match = input.match(/(^|\s)\/([a-zA-Z0-9_-]*)$/)
+                        if (slashPaletteOpen) {
+                          setSlashPaletteOpen(false)
+                        } else {
+                          if (!match) {
+                            setInput(prev => prev ? (prev.endsWith(" ") ? prev + "/" : prev + " /") : "/")
+                          }
+                          setSlashQuery("/")
+                          setSlashPaletteOpen(true)
+                          setSlashSelectedIndex(0)
+                        }
+                        inputRef.current?.focus()
+                      }}
+                      className="px-2 py-1 rounded-lg text-xs font-mono text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface)] transition-colors cursor-pointer shrink-0 flex items-center gap-1 border border-transparent hover:border-[var(--border)]"
+                      title="Trigger Skills & Slash Commands (Ketik /)"
+                    >
+                      <Terminal className="w-3.5 h-3.5 text-amber-500" />
+                      <span className="font-semibold text-amber-500">/</span>
+                      <span className="hidden sm:inline font-medium">Skills</span>
+                    </button>
+
+                    <textarea
+                      ref={inputRef}
+                      value={input}
+                      onChange={(e) => handleInputChange(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (slashPaletteOpen) {
+                          if (e.key === "ArrowDown") {
+                            e.preventDefault()
+                            setSlashSelectedIndex(prev => prev + 1)
+                            return
+                          }
+                          if (e.key === "ArrowUp") {
+                            e.preventDefault()
+                            setSlashSelectedIndex(prev => Math.max(0, prev - 1))
+                            return
+                          }
+                          if (e.key === "Escape") {
+                            e.preventDefault()
+                            setSlashPaletteOpen(false)
+                            return
+                          }
+                          if (e.key === "Tab") {
+                            e.preventDefault()
+                            // If tab is pressed, trigger selection through click or keyboard
+                            return
+                          }
+                        }
+                        if (e.key === "Enter" && !e.shiftKey) {
+                          e.preventDefault()
+                          handleSendMessage()
+                        }
+                      }}
+                      placeholder={isId ? "Tanyakan apapun, atau ketik / untuk melihat semua skills & workflow... (Enter kirim)" : "Ask anything, or type / to browse all skills & workflows... (Enter to send)"}
+                      rows={1}
+                      className="flex-1 bg-transparent border-0 text-xs md:text-sm text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none resize-none py-2 px-1 max-h-32"
+                    />
+
+                    <Button
+                      onClick={() => handleSendMessage()}
+                      disabled={isLoading || !input.trim()}
+                      className="h-8 w-8 rounded-lg bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--foreground)]/90 flex items-center justify-center shrink-0 cursor-pointer disabled:opacity-40"
+                    >
+                      <Send className="w-3.5 h-3.5" />
+                    </Button>
+                  </div>
                 </div>
 
                 <div className="flex items-center justify-between text-[11px] text-[var(--muted)] px-1 font-mono">
