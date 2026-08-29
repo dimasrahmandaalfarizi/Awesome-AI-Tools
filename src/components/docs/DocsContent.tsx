@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { useLocale } from "next-intl"
-import { Copy, Check, Download, Terminal, Shield, Bot, Cpu, Sparkles, Layers, ArrowRight, ExternalLink, Zap } from "lucide-react"
-import { DocPage } from "@/data/docs"
+import { Copy, Check, Download, Terminal, Shield, Bot, Cpu, Sparkles, Layers, ArrowRight, ArrowLeft, ExternalLink, Zap, AlertTriangle, Info } from "lucide-react"
+import { DocPage, DOC_SECTIONS } from "@/data/docs"
 import { Link } from "@/i18n/routing"
 
 export interface DocsContentProps {
@@ -15,6 +15,13 @@ export function DocsContent({ doc }: DocsContentProps) {
   const isId = locale === "id"
   const [copiedPage, setCopiedPage] = React.useState(false)
   const [copiedCodeId, setCopiedCodeId] = React.useState<string | null>(null)
+
+  const allDocs = React.useMemo(() => {
+    return DOC_SECTIONS.flatMap(s => s.items)
+  }, [])
+  const currentIndex = allDocs.findIndex(d => d.slug === doc.slug)
+  const prevDoc = currentIndex > 0 ? allDocs[currentIndex - 1] : null
+  const nextDoc = currentIndex !== -1 && currentIndex < allDocs.length - 1 ? allDocs[currentIndex + 1] : null
 
   const handleCopyPage = () => {
     navigator.clipboard.writeText(window.location.href)
@@ -29,37 +36,72 @@ export function DocsContent({ doc }: DocsContentProps) {
   }
 
   const renderCodeBlock = (id: string, code: string, lang = "bash") => (
-    <div className="relative group rounded-xl border border-zinc-200 dark:border-zinc-800 bg-[#0d1117] text-gray-200 p-4 font-mono text-xs overflow-x-auto shadow-sm my-3">
-      <pre className="leading-relaxed">{code}</pre>
-      <button
-        type="button"
-        onClick={() => handleCopyCode(id, code)}
-        className="absolute right-3 top-3 p-1.5 rounded-lg bg-zinc-800/80 hover:bg-zinc-700 text-zinc-400 hover:text-white transition-colors cursor-pointer"
-        title="Copy code"
-      >
-        {copiedCodeId === id ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
-      </button>
+    <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-[#0d1117] text-zinc-100 overflow-hidden shadow-xs my-4 group">
+      {/* Window Chrome */}
+      <div className="flex items-center justify-between px-4 py-2 border-b border-zinc-800/80 bg-[#161b22]">
+        <div className="flex items-center gap-1.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]/90 border border-[#e0443e]/50" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]/90 border border-[#dea123]/50" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]/90 border border-[#1aab29]/50" />
+          <span className="ml-2 text-[10px] font-mono font-medium uppercase tracking-wider text-zinc-400">
+            {lang}
+          </span>
+        </div>
+        <button
+          type="button"
+          onClick={() => handleCopyCode(id, code)}
+          className="flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/80 transition-colors cursor-pointer"
+          title="Copy code"
+        >
+          {copiedCodeId === id ? (
+            <>
+              <Check className="w-3 h-3 text-emerald-400" />
+              <span className="text-emerald-400">{isId ? "Tersalin" : "Copied"}</span>
+            </>
+          ) : (
+            <>
+              <Copy className="w-3 h-3" />
+              <span>{isId ? "Salin" : "Copy"}</span>
+            </>
+          )}
+        </button>
+      </div>
+
+      {/* Code Text */}
+      <pre className="p-4 font-mono text-xs overflow-x-auto leading-relaxed text-zinc-200">
+        <code>{code}</code>
+      </pre>
     </div>
   )
 
   const renderCallout = (type: "tip" | "warning" | "note", title: string, content: string) => {
-    const borderColors = {
-      tip: "border-[var(--primary)]/30 bg-[var(--primary)]/5 text-[var(--foreground)]",
-      warning: "border-amber-500/30 bg-amber-500/5 text-[var(--foreground)]",
-      note: "border-zinc-500/30 bg-zinc-500/5 text-[var(--foreground)]",
+    const config = {
+      tip: {
+        border: "border-emerald-500/30 dark:border-emerald-500/20 bg-emerald-500/5",
+        text: "text-emerald-700 dark:text-emerald-400",
+        icon: Sparkles
+      },
+      warning: {
+        border: "border-amber-500/30 dark:border-amber-500/20 bg-amber-500/5",
+        text: "text-amber-700 dark:text-amber-400",
+        icon: AlertTriangle
+      },
+      note: {
+        border: "border-blue-500/30 dark:border-blue-500/20 bg-blue-500/5",
+        text: "text-blue-700 dark:text-blue-400",
+        icon: Info
+      }
     }
-    const iconColor = {
-      tip: "text-[var(--primary)]",
-      warning: "text-amber-500",
-      note: "text-zinc-500",
-    }
+    const current = config[type]
+    const Icon = current.icon
 
     return (
-      <div className={`p-4 rounded-xl border ${borderColors[type]} text-xs leading-relaxed space-y-1 my-4`}>
-        <div className={`font-semibold flex items-center gap-1.5 ${iconColor[type]}`}>
+      <div className={`p-4 rounded-xl border ${current.border} text-xs leading-relaxed space-y-1.5 my-5 shadow-2xs`}>
+        <div className={`font-semibold flex items-center gap-2 ${current.text}`}>
+          <Icon className="w-4 h-4 shrink-0" />
           <span>{title}</span>
         </div>
-        <p className="text-[var(--muted)]">{content}</p>
+        <p className="text-[var(--muted)] leading-normal pl-6">{content}</p>
       </div>
     )
   }
@@ -414,6 +456,65 @@ export function DocsContent({ doc }: DocsContentProps) {
           ))}
         </div>
       )}
+
+      {/* Interactive Helpful Feedback Rating */}
+      <div className="mt-14 pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--muted)]">
+        <div className="flex items-center gap-2">
+          <span>{isId ? "Apakah halaman ini membantu?" : "Was this page helpful?"}</span>
+          <button 
+            type="button"
+            className="px-2.5 py-1 rounded-md border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface-hover)] text-[var(--foreground)] transition-colors cursor-pointer shadow-2xs"
+          >
+            {isId ? "Ya" : "Yes"}
+          </button>
+          <button 
+            type="button"
+            className="px-2.5 py-1 rounded-md border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface-hover)] text-[var(--foreground)] transition-colors cursor-pointer shadow-2xs"
+          >
+            {isId ? "Tidak" : "No"}
+          </button>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Link href="/chat" className="flex items-center gap-1.5 hover:text-[var(--foreground)] transition-colors">
+            <Bot className="w-3.5 h-3.5 text-[var(--primary)]" />
+            <span>{isId ? "Tanya AI Copilot" : "Ask AI Copilot"}</span>
+          </Link>
+        </div>
+      </div>
+
+      {/* Pagination Footer: Previous & Next Page */}
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {prevDoc ? (
+          <Link
+            href={`/docs/${prevDoc.slug}`}
+            className="flex flex-col p-4 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--muted)] hover:shadow-xs transition-all text-left group"
+          >
+            <span className="text-[11px] font-medium text-[var(--muted)] flex items-center gap-1 group-hover:text-[var(--foreground)]">
+              <ArrowLeft className="w-3 h-3" />
+              <span>{isId ? "Sebelumnya" : "Previous"}</span>
+            </span>
+            <span className="text-sm font-semibold text-[var(--foreground)] mt-1 line-clamp-1 group-hover:text-[var(--primary)] transition-colors">
+              {isId ? prevDoc.title.id : prevDoc.title.en}
+            </span>
+          </Link>
+        ) : <div />}
+
+        {nextDoc && (
+          <Link
+            href={`/docs/${nextDoc.slug}`}
+            className="flex flex-col p-4 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--muted)] hover:shadow-xs transition-all text-right group"
+          >
+            <span className="text-[11px] font-medium text-[var(--muted)] flex items-center justify-end gap-1 group-hover:text-[var(--foreground)]">
+              <span>{isId ? "Selanjutnya" : "Next"}</span>
+              <ArrowRight className="w-3 h-3" />
+            </span>
+            <span className="text-sm font-semibold text-[var(--foreground)] mt-1 line-clamp-1 group-hover:text-[var(--primary)] transition-colors">
+              {isId ? nextDoc.title.id : nextDoc.title.en}
+            </span>
+          </Link>
+        )}
+      </div>
     </article>
   )
 }
