@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/Badge"
 import { Input } from "@/components/ui/Input"
 import { Button } from "@/components/ui/Button"
 import { useTranslations, useLocale } from "next-intl"
-import { Terminal, Download, Copy, Check, Search, Shield, Layers, Code2, Bot, Database, Zap, Cpu, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react"
+import { Terminal, Download, Copy, Check, Search, Shield, Layers, Code2, Bot, Database, Zap, Cpu, CheckCircle2, ChevronLeft, ChevronRight, X, Sparkles } from "lucide-react"
 import JSZip from "jszip"
 import type { AiSkill } from "@/types"
 
@@ -100,6 +100,17 @@ export function SkillsClient({ skills }: SkillsClientProps) {
   useEffect(() => {
     setCurrentPage(1)
   }, [searchQuery, selectedCluster, selectedToolTag])
+
+  // Dynamic cluster counts computation
+  const clusterCounts = useMemo(() => {
+    const counts: Record<string, number> = {}
+    DOMAIN_CLUSTERS.forEach(cluster => {
+      counts[cluster.id] = cluster.id === "all" 
+        ? skills.length 
+        : skills.filter(s => matchesCluster(s, cluster.id)).length
+    })
+    return counts
+  }, [skills])
 
   // Filter skills
   const filteredSkills = useMemo(() => {
@@ -317,7 +328,7 @@ AI Coding Agents MUST read and adhere to these rules.
               <button
                 key={cluster.id}
                 onClick={() => setSelectedCluster(cluster.id)}
-                className={`px-3.5 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-all flex items-center gap-2 cursor-pointer shrink-0 border ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all flex items-center gap-2 cursor-pointer shrink-0 border ${
                   isSelected
                     ? "bg-[var(--foreground)] text-[var(--background)] border-[var(--foreground)] shadow-xs font-bold"
                     : "bg-[var(--surface)] text-[var(--muted)] border-[var(--border)] hover:text-[var(--foreground)] hover:border-[var(--muted)]"
@@ -325,6 +336,13 @@ AI Coding Agents MUST read and adhere to these rules.
               >
                 <Icon className="w-3.5 h-3.5 shrink-0" />
                 <span>{label}</span>
+                <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded-md ${
+                  isSelected 
+                    ? "bg-[var(--background)] text-[var(--foreground)] font-semibold" 
+                    : "bg-[var(--background)] text-[var(--muted)] border border-[var(--border)]"
+                }`}>
+                  {clusterCounts[cluster.id]?.toLocaleString() || 0}
+                </span>
               </button>
             )
           })}
@@ -337,12 +355,21 @@ AI Coding Agents MUST read and adhere to these rules.
         <div className="relative w-full md:max-w-md">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--muted)]" />
           <Input 
-            type="search" 
+            type="text" 
             placeholder={isId ? "Cari nama skill, /slash-command, atau aturan..." : "Search skill name, /slash-command, or rule..."}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 h-10 text-xs md:text-sm bg-[var(--background)] border-[var(--border)] rounded-xl w-full"
+            className="pl-10 pr-9 h-10 text-xs md:text-sm bg-[var(--background)] border-[var(--border)] rounded-xl w-full"
           />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-md text-[var(--muted)] hover:text-[var(--foreground)] transition-colors cursor-pointer"
+              title="Clear search"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          )}
         </div>
 
         {/* Secondary Tool Tag Filter */}
