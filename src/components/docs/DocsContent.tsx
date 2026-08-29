@@ -5,6 +5,7 @@ import { useLocale } from "next-intl"
 import { Copy, Check, Download, Terminal, Shield, Bot, Cpu, Sparkles, Layers, ArrowRight, ArrowLeft, ExternalLink, Zap, AlertTriangle, Info } from "lucide-react"
 import { DocPage, DOC_SECTIONS } from "@/data/docs"
 import { Link } from "@/i18n/routing"
+import { InteractiveTerminalSandbox } from "@/components/features/InteractiveTerminalSandbox"
 
 export interface DocsContentProps {
   doc: DocPage
@@ -225,6 +226,18 @@ export function DocsContent({ doc }: DocsContentProps) {
       {/* 2. CLI TOOLS DOC */}
       {doc.slug === "cli-tools" && (
         <div className="space-y-10 text-sm leading-relaxed">
+          <section id="interactive-sandbox" className="space-y-4">
+            <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
+              {isId ? "Interactive Web Terminal Sandbox" : "Interactive Web Terminal Sandbox"}
+            </h2>
+            <p className="text-zinc-600 dark:text-zinc-400">
+              {isId
+                ? "Coba dan eksekusi perintah CLI Awesome AI Tools secara langsung di browser tanpa perlu membuka terminal lokal:"
+                : "Execute and test Awesome AI Tools CLI commands directly inside your browser without opening a local shell:"}
+            </p>
+            <InteractiveTerminalSandbox />
+          </section>
+
           <section id="installation" className="space-y-4">
             <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
               {isId ? "Menjalankan tanpa instalasi" : "Running without installation"}

@@ -13,7 +13,8 @@ import { Badge } from "@/components/ui/Badge"
 import { Button } from "@/components/ui/Button"
 import { ToolLogo } from "@/components/ui/ToolLogo"
 import { BookmarkButton } from "@/components/ui/BookmarkButton"
-import { Copy, Download, Trash2, Layers, ExternalLink, ArrowRight, Check, Code, FileText, Settings, Terminal, Sparkles, Bot, Shield, Cpu } from "lucide-react"
+import { Copy, Download, Trash2, Layers, ExternalLink, ArrowRight, Check, Code, FileText, Settings, Terminal, Sparkles, Bot, Shield, Cpu, FileCode2 } from "lucide-react"
+import { IdeConfigExportModal } from "@/components/features/IdeConfigExportModal"
 import JSZip from "jszip"
 
 export default function StackPage() {
@@ -25,6 +26,7 @@ export default function StackPage() {
   const [activeTab, setActiveTab] = React.useState<"cursor" | "claude" | "skills" | "mcp" | "markdown">("cursor")
   const [copied, setCopied] = React.useState(false)
   const [isDownloading, setIsDownloading] = React.useState(false)
+  const [ideExportOpen, setIdeExportOpen] = React.useState(false)
 
   const savedTools = TOOLS.filter(t => bookmarks.includes(t.id)).map(t => getLocalizedTool(t, locale))
 
@@ -266,27 +268,39 @@ ${savedTools.map(t => `- **${t.name}**: ${t.description} [${t.website}](${t.webs
               </p>
             </div>
 
-            {savedTools.length > 0 && (
-              <div className="flex items-center gap-2 flex-wrap">
-                <Button 
-                  onClick={handleDownloadFullStackZip}
-                  disabled={isDownloading}
-                  className="bg-[var(--primary)] text-[var(--background)] hover:bg-[var(--primary)]/90 text-xs font-semibold h-9 rounded-xl flex items-center gap-1.5 cursor-pointer"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>{isDownloading ? "Bundling ZIP..." : isId ? "Unduh Paket Stack Lengkap (.zip)" : "Download Full Stack Bundle (.zip)"}</span>
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={clearBookmarks}
-                  className="text-xs text-red-500 hover:text-red-600 hover:bg-red-500/10 border-red-500/20 h-9 rounded-xl cursor-pointer"
-                >
-                  <Trash2 className="w-3.5 h-3.5 mr-1" />
-                  {isId ? "Kosongkan" : "Clear All"}
-                </Button>
-              </div>
-            )}
+            <div className="flex items-center gap-2 flex-wrap">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setIdeExportOpen(true)}
+                className="h-9 rounded-xl text-xs font-mono border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface-hover)] text-[var(--foreground)] flex items-center gap-1.5 cursor-pointer"
+              >
+                <FileCode2 className="w-3.5 h-3.5 text-emerald-500" />
+                <span>{isId ? "Preset IDE (.cursorrules)" : "Export IDE Config"}</span>
+              </Button>
+
+              {savedTools.length > 0 && (
+                <>
+                  <Button 
+                    onClick={handleDownloadFullStackZip}
+                    disabled={isDownloading}
+                    className="bg-[var(--primary)] text-[var(--background)] hover:bg-[var(--primary)]/90 text-xs font-semibold h-9 rounded-xl flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    <span>{isDownloading ? "Bundling ZIP..." : isId ? "Unduh Paket Stack Lengkap (.zip)" : "Download Full Stack Bundle (.zip)"}</span>
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={clearBookmarks}
+                    className="text-xs text-red-500 hover:text-red-600 hover:bg-red-500/10 border-red-500/20 h-9 rounded-xl cursor-pointer"
+                  >
+                    <Trash2 className="w-3.5 h-3.5 mr-1" />
+                    {isId ? "Kosongkan" : "Clear All"}
+                  </Button>
+                </>
+              )}
+            </div>
           </div>
 
           
@@ -605,6 +619,7 @@ ${savedTools.map(t => `- **${t.name}**: ${t.description} [${t.website}](${t.webs
 
         </section>
       </main>
+      <IdeConfigExportModal isOpen={ideExportOpen} onClose={() => setIdeExportOpen(false)} />
       <Footer />
     </>
   )

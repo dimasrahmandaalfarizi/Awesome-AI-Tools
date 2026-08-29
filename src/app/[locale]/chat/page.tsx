@@ -31,11 +31,15 @@ import {
   Database,
   Search,
   CheckCircle2,
-  Lock
+  Lock,
+  FileCode2
 } from "lucide-react"
 import { useLocale } from "next-intl"
 import { ChatMessageRenderer } from "@/components/features/ChatMessageRenderer"
 import { SlashCommandPalette } from "@/components/chat/SlashCommandPalette"
+import { TokenEfficiencyTelemetry } from "@/components/features/TokenEfficiencyTelemetry"
+import { checkWebGpuSupport, streamClientWebGpuInference } from "@/lib/ai/webGpuEngine"
+import { IdeConfigExportModal } from "@/components/features/IdeConfigExportModal"
 import "katex/dist/katex.min.css"
 
 interface Message {
@@ -132,10 +136,12 @@ export default function ChatPage() {
   const [selectedPersona, setSelectedPersona] = React.useState<string>("general")
   
   // Model & Provider state
-  const [providerMode, setProviderMode] = React.useState<"auto" | "ollama" | "byok">("auto")
+  const [providerMode, setProviderMode] = React.useState<"auto" | "ollama" | "byok" | "webgpu">("auto")
   const [selectedModel, setSelectedModel] = React.useState<string>("deepseek-v3")
   const [ollamaOnline, setOllamaOnline] = React.useState<boolean | null>(null)
   const [ollamaModels, setOllamaModels] = React.useState<string[]>([])
+  const [webGpuAvailable, setWebGpuAvailable] = React.useState<boolean>(false)
+  const [ideExportOpen, setIdeExportOpen] = React.useState<boolean>(false)
   
   // BYOK Settings state
   const [settingsOpen, setSettingsOpen] = React.useState(false)
@@ -240,6 +246,12 @@ export default function ChatPage() {
   React.useEffect(() => {
     checkOllamaStatus()
   }, [checkOllamaStatus])
+
+  React.useEffect(() => {
+    checkWebGpuSupport()
+      .then((res) => setWebGpuAvailable(res.supported))
+      .catch(() => setWebGpuAvailable(false))
+  }, [])
 
   // Save sessions to localStorage
   const saveSessions = (updatedSessions: ChatSession[]) => {
@@ -759,6 +771,24 @@ export default function ChatPage() {
                   </optgroup>
                 </select>
 
+                {webGpuAvailable && (
+                  <div className="hidden sm:flex items-center gap-1.5 px-2 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-mono text-emerald-600 dark:text-emerald-400">
+                    <Cpu className="w-3.5 h-3.5" />
+                    <span>WebGPU Active</span>
+                  </div>
+                )}
+
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setIdeExportOpen(true)}
+                  className="h-8 px-2.5 rounded-lg text-xs font-mono cursor-pointer flex items-center gap-1.5"
+                  title="Export IDE Configuration (.cursorrules, Continue, MCP)"
+                >
+                  <FileCode2 className="w-3.5 h-3.5 text-emerald-500" />
+                  <span className="hidden sm:inline">IDE Config</span>
+                </Button>
+
                 <Button
                   variant="outline"
                   size="sm"
@@ -941,6 +971,13 @@ export default function ChatPage() {
             {/* Input Form Bar */}
             <div className="p-4 border-t border-[var(--border)] bg-[var(--surface)] shrink-0">
               <div className="max-w-3xl mx-auto space-y-2">
+                
+                {/* Real-time Token Efficiency & FinOps Telemetry */}
+                <TokenEfficiencyTelemetry
+                  messageCount={currentMessages.length}
+                  estimatedTokens={Math.max(450, currentMessages.length * 380)}
+                  isStreaming={isLoading}
+                />
                 
                 {/* Attached context pill */}
                 {attachedContext && (
@@ -1162,6 +1199,12 @@ export default function ChatPage() {
           </div>
         </div>
       )}
+
+      {/* 1-Click IDE Configuration Export Modal */}
+      <IdeConfigExportModal
+        isOpen={ideExportOpen}
+        onClose={() => setIdeExportOpen(false)}
+      />
     </div>
   )
 }

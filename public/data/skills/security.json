@@ -1,0 +1,1752 @@
+{
+  "category": "security",
+  "total": 349,
+  "updatedAt": "2026-08-29T08:21:10.099Z",
+  "skills": [
+    {
+      "slug": "007",
+      "name": "007",
+      "description": "Security audit, hardening, threat modeling (STRIDE/PASTA), Red/Blue Team, OWASP checks, code review, incident response, and infrastructure security for any project."
+    },
+    {
+      "slug": "10-andruia-skill-smith",
+      "name": "10 Andruia Skill Smith",
+      "description": "Ingeniero de Sistemas de Andru.ia. Diseña, redacta y despliega nuevas habilidades (skills) dentro del repositorio siguiendo el Estándar de Diamante."
+    },
+    {
+      "slug": "accessibility-compliance-accessibility-audit",
+      "name": "Accessibility Compliance Accessibility Audit",
+      "description": "You are an accessibility expert specializing in WCAG compliance, inclusive design, and assistive technology compatibility. Conduct audits, identify barriers, and provide remediation guidance."
+    },
+    {
+      "slug": "accesslint-audit",
+      "name": "Accesslint Audit",
+      "description": "Find and fix WCAG 2.2 accessibility issues. Two modes — report (sweep a codebase or page, produce a prioritized written report, no edits) and fix (audit→edit→verify loop on a target). Prefers direct-CDP live-DOM auditing; falls back to a browser-MCP composition or HTML-string audits."
+    },
+    {
+      "slug": "accesslint-scan",
+      "name": "Accesslint Scan",
+      "description": "Audit a live page for accessibility issues, locate each WCAG violation precisely, and return a selector-grounded fix worklist without editing."
+    },
+    {
+      "slug": "achieving-cmmc-level-2-compliance",
+      "name": "achieving-cmmc-level-2-compliance",
+      "description": "- Prepare a defense-contractor environment for CMMC Level 2 certification: scope CUI and FCI, implement the 110 NIST SP 800-171 Rev 2 security requirements across 14 families, compute the SPRS score with the DoD Assessment Methodology, manage a co..."
+    },
+    {
+      "slug": "addy-doubt-driven-development",
+      "name": "doubt-driven-development",
+      "description": "Subjects every non-trivial decision to a fresh-context adversarial review before it stands. Use when correctness matters more than speed, when working in unfamiliar code, when stakes are high (production, security-sensitive logic, irreversible operations), or any time a confident output would be cheaper to verify now than to debug later."
+    },
+    {
+      "slug": "addy-security-and-hardening",
+      "name": "security-and-hardening",
+      "description": "Hardens code against vulnerabilities. Use when handling user input, authentication, data storage, or external integrations. Use when building any feature that accepts untrusted data, manages user sessions, or interacts with third-party services. Use when personal data or privacy compliance (GDPR, CCPA) is involved."
+    },
+    {
+      "slug": "addy-source-driven-development",
+      "name": "source-driven-development",
+      "description": "Grounds every implementation decision in official documentation. Use when you want authoritative, source-cited code free from outdated patterns. Use when building with any framework or library where correctness matters."
+    },
+    {
+      "slug": "adhx",
+      "name": "Adhx",
+      "description": "Fetch any X/Twitter post as clean LLM-friendly JSON. Converts x.com, twitter.com, or adhx.com links into structured data with full article content, author info, and engagement metrics. No scraping or browser required."
+    },
+    {
+      "slug": "aegisops-ai",
+      "name": "Aegisops Ai",
+      "description": "Autonomous DevSecOps & FinOps Guardrails. Orchestrates Gemini 3 Flash to audit Linux Kernel patches, Terraform cost drifts, and K8s compliance."
+    },
+    {
+      "slug": "agent-architecture-audit",
+      "name": "Agent Architecture Audit",
+      "description": "Comprehensive audit of agent prompt configs, tool permissions, memory adapters, and safety boundaries."
+    },
+    {
+      "slug": "agent-qa-authoring",
+      "name": "Agent Qa Authoring",
+      "description": "Create, edit, validate, and run Agent QA tests, suites, and hooks through MCP or CLI while preserving canonical IDs and schema contracts."
+    },
+    {
+      "slug": "agent-self-evaluation",
+      "name": "Agent Self Evaluation",
+      "description": "Pre-delivery self-audit: checks output against acceptance criteria, verifies types, and tests for regressions."
+    },
+    {
+      "slug": "agentic-actions-auditor",
+      "name": "Agentic Actions Auditor",
+      "description": "Audits GitHub Actions workflows for security vulnerabilities in AI agent integrations  including Claude Code Action,  Gemini CLI, OpenAI Codex, and GitHub AI  Inference.  Detects attack vectors where attacker-controlled  input reaches. AI agents running in CI/CD pipelines."
+    },
+    {
+      "slug": "agentshield-security",
+      "name": "AgentShield Security",
+      "description": "AgentShield security scanner: protects agent configurations against prompt injection, hook tampering, and leaked credentials."
+    },
+    {
+      "slug": "agenttrace-session-audit",
+      "name": "Agenttrace Session Audit",
+      "description": "Audit local AI coding-agent sessions with agenttrace for cost, tool failures, latency, anomalies, health, diffs, and CI gates."
+    },
+    {
+      "slug": "ai-engineering-toolkit",
+      "name": "Ai Engineering Toolkit",
+      "description": "6 production-ready AI engineering workflows: prompt evaluation (8-dimension scoring), context budget planning, RAG pipeline design, agent security audit (65-point checklist), eval harness building, and product sense coaching."
+    },
+    {
+      "slug": "ai-prompt-injection-defense",
+      "name": "AI Agent Prompt Injection & Security Hardening",
+      "description": "Defensive security patterns to protect AI agents, RAG systems, and tool-calling models against indirect prompt injection and jailbreaks."
+    },
+    {
+      "slug": "akf-trust-metadata",
+      "name": "Akf Trust Metadata",
+      "description": "The AI native file format. EXIF for AI — stamps every file with trust scores, source provenance, and compliance metadata. Embeds into 20+ formats (DOCX, PDF, images, code). EU AI Act, SOX, HIPAA auditing."
+    },
+    {
+      "slug": "analytics",
+      "name": "Analytics",
+      "description": "When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions"
+    },
+    {
+      "slug": "analytics-tracking",
+      "name": "Analytics Tracking",
+      "description": "Design, audit, and improve analytics tracking systems that produce reliable, decision-ready data."
+    },
+    {
+      "slug": "analyzing-cloud-storage-access-patterns",
+      "name": "analyzing-cloud-storage-access-patterns",
+      "description": "Detect abnormal access in AWS S3, GCS, and Azure Blob Storage by analyzing CloudTrail Data Events, GCS audit logs, and Azure Storage Analytics for after-hours bulk downloads, new-IP access, and API-call spikes (e.g. GetObject) via statistical base..."
+    },
+    {
+      "slug": "analyzing-ethereum-smart-contract-vulnerabilities",
+      "name": "analyzing-ethereum-smart-contract-vulnerabilities",
+      "description": "Perform static and symbolic analysis of Solidity smart contracts using Slither and Mythril to detect reentrancy, integer overflow, access control, and other vulnerability classes before deployment to Ethereum mainnet."
+    },
+    {
+      "slug": "analyzing-kubernetes-audit-logs",
+      "name": "analyzing-kubernetes-audit-logs",
+      "description": "Parses Kubernetes API server audit logs (JSON lines) to detect exec-into-pod, secret access, RBAC modifications, privileged pod creation, and anonymous API access. Builds threat detection rules from audit event patterns. Use when investigating Kub..."
+    },
+    {
+      "slug": "analyzing-linux-audit-logs-for-intrusion",
+      "name": "analyzing-linux-audit-logs-for-intrusion",
+      "description": "Uses the Linux Audit framework (auditd) with ausearch and aureport utilities to detect intrusion attempts, unauthorized access, privilege escalation, and suspicious system activity. Covers audit rule configuration, log querying, timeline reconstru..."
+    },
+    {
+      "slug": "analyzing-linux-system-artifacts",
+      "name": "analyzing-linux-system-artifacts",
+      "description": "Examine Linux system artifacts (auth logs, cron/systemd persistence, shell history, SSH keys, and system configuration) to uncover evidence of compromise, detect rootkits or backdoors, and reconstruct user/attacker activity. Use when investigating..."
+    },
+    {
+      "slug": "analyzing-office365-audit-logs-for-compromise",
+      "name": "analyzing-office365-audit-logs-for-compromise",
+      "description": "Parse Office 365 Unified Audit Logs via Microsoft Graph API to detect email forwarding rule creation, inbox delegation, suspicious OAuth app grants, and other indicators of account compromise."
+    },
+    {
+      "slug": "analyzing-persistence-mechanisms-in-linux",
+      "name": "analyzing-persistence-mechanisms-in-linux",
+      "description": "Scan Linux systems for persistence mechanisms including crontab/systemd entries, LD_PRELOAD injection, shell profile modifications (.bashrc, .profile), and SSH authorized_keys backdoors, then correlate findings with auditd logs into an installatio..."
+    },
+    {
+      "slug": "analyzing-tls-certificate-transparency-logs",
+      "name": "analyzing-tls-certificate-transparency-logs",
+      "description": "Queries Certificate Transparency logs via crt.sh and pycrtsh to detect phishing domains, unauthorized certificate issuance, and shadow IT. Monitors newly issued certificates for typosquatting and brand impersonation using Levenshtein distance. Use..."
+    },
+    {
+      "slug": "anti-reversing-techniques",
+      "name": "Anti Reversing Techniques",
+      "description": "AUTHORIZED USE ONLY: This skill contains dual-use security techniques. Before proceeding with any bypass or analysis: > 1."
+    },
+    {
+      "slug": "antigravity-workflows",
+      "name": "Antigravity Workflows",
+      "description": "Orchestrate multiple Antigravity skills through guided workflows for SaaS MVP delivery, security audits, AI agent builds, and browser QA."
+    },
+    {
+      "slug": "api-analyzer",
+      "name": "Api Analyzer",
+      "description": "Validates whether an API request is correct based on provided inputs (method, URL, headers, body, auth, query params). Use this skill whenever a user wants to check, validate, debug, or verify an API call — including when they paste a curl command, show endpoint details, ask"
+    },
+    {
+      "slug": "api-endpoint-builder",
+      "name": "Api Endpoint Builder",
+      "description": "Builds production-ready REST API endpoints with validation, error handling, authentication, and documentation. Follows best practices for security and scalability."
+    },
+    {
+      "slug": "api-fuzzing-bug-bounty",
+      "name": "Api Fuzzing Bug Bounty",
+      "description": "Provide comprehensive techniques for testing REST, SOAP, and GraphQL APIs during bug bounty hunting and penetration testing engagements. Covers vulnerability discovery, authentication bypass, IDOR exploitation, and API-specific attack vectors."
+    },
+    {
+      "slug": "api-onboarding",
+      "name": "Api Onboarding",
+      "description": "Reduce time-to-first-API-call (TTFAC) by optimizing every step of the developer onboarding journey. This skill covers authentication simplification, sandbox environments, interactive documentation, and identifying and eliminating common failure points. Trigger phrases:"
+    },
+    {
+      "slug": "api-security-best-practices",
+      "name": "Api Security Best Practices",
+      "description": "Implement secure API design patterns including authentication, authorization, input validation, rate limiting, and protection against common API vulnerabilities"
+    },
+    {
+      "slug": "api-security-testing",
+      "name": "Api Security Testing",
+      "description": "API security testing workflow for REST and GraphQL APIs covering authentication, authorization, rate limiting, input validation, and security best practices."
+    },
+    {
+      "slug": "apify-influencer-discovery",
+      "name": "Apify Influencer Discovery",
+      "description": "Find and evaluate influencers for brand partnerships, verify authenticity, and track collaboration performance across Instagram, Facebook, YouTube, and TikTok."
+    },
+    {
+      "slug": "atlas-contract",
+      "name": "Atlas Contract",
+      "description": "Goal-integrity skill. Use for backend/API/persistence, preserve/do-not-change, tests/validation, mocks, rework, multi-part requests. Emits Goal Contracts, Deviation Notices, Phase Checks, Final Audits. Skip for Q&A or trivial edits."
+    },
+    {
+      "slug": "atlas-ledger",
+      "name": "Atlas Ledger",
+      "description": "Companion to atlas-contract. Auto-invoked by its Final Audit on caught drift; also use after Post Reviews or user requests to record a mistake. Distills drift into WHEN/DON"
+    },
+    {
+      "slug": "attack-tree-construction",
+      "name": "Attack Tree Construction",
+      "description": "Build comprehensive attack trees to visualize threat paths. Use when mapping attack scenarios, identifying defense gaps, or communicating security risks to stakeholders."
+    },
+    {
+      "slug": "attacking-oauth-with-device-code-phishing",
+      "name": "attacking-oauth-with-device-code-phishing",
+      "description": "Run OAuth 2.0 device-code and illicit-consent phishing attacks against Microsoft Entra ID, using TokenTactics-style tooling to steal access and refresh tokens, bypass MFA, and pivot across Microsoft 365 services. Use for authorized red-team engage..."
+    },
+    {
+      "slug": "audit-agent-run-evidence",
+      "name": "Audit Agent Run Evidence",
+      "description": "Use when an agent, harness, gateway, MCP workflow, or multi-step automation claims completion and the available traces, checkpoints, approvals, tool calls, or deployment records must be judged without trusting self-reported success."
+    },
+    {
+      "slug": "audit-context-building",
+      "name": "Audit Context Building",
+      "description": "Enables ultra-granular, line-by-line code analysis to build deep architectural context before vulnerability or bug finding."
+    },
+    {
+      "slug": "audit-skills",
+      "name": "Audit Skills",
+      "description": "Expert security auditor for AI Skills and Bundles. Performs non-intrusive static analysis to identify malicious patterns, data leaks, system stability risks, and obfuscated payloads across Windows, macOS, Linux/Unix, and Mobile (Android/iOS)."
+    },
+    {
+      "slug": "auditing-aws-s3-bucket-permissions",
+      "name": "auditing-aws-s3-bucket-permissions",
+      "description": "Systematically audit AWS S3 bucket permissions to identify publicly accessible buckets, overly permissive ACLs, misconfigured bucket policies, and missing encryption settings using AWS CLI, S3audit, and Prowler to enforce least-privilege data acce..."
+    },
+    {
+      "slug": "auditing-azure-active-directory-configuration",
+      "name": "auditing-azure-active-directory-configuration",
+      "description": "Auditing Microsoft Entra ID (Azure Active Directory) configuration to identify risky authentication policies, overly permissive role assignments, stale accounts, conditional access gaps, and guest user risks using AzureAD PowerShell, Microsoft Gra..."
+    },
+    {
+      "slug": "auditing-cloud-with-cis-benchmarks",
+      "name": "auditing-cloud-with-cis-benchmarks",
+      "description": "Audit AWS, Azure, and GCP environments against the CIS Foundations Benchmarks by running automated scans with tools like Prowler and ScoutSuite, interpreting failed controls, and tracking remediation for continuous compliance. Use when conducting ..."
+    },
+    {
+      "slug": "auditing-entra-id-with-aadinternals",
+      "name": "auditing-entra-id-with-aadinternals",
+      "description": "Drive the AADInternals PowerShell toolkit to perform Microsoft Entra ID tenant reconnaissance, access-token acquisition across Microsoft APIs, and federation/AD FS backdoor testing (Golden SAML, T1606.002) for defensive validation. Use during an a..."
+    },
+    {
+      "slug": "auditing-foundry-smart-contract-security",
+      "name": "auditing-foundry-smart-contract-security",
+      "description": "- Pre-deployment security audit of Solidity smart contracts in a Foundry project. Combines static analysis (Slither, Aderyn), symbolic execution (Mythril), and property-based testing (forge fuzz + invariant tests with handlers) to catch reentrancy..."
+    },
+    {
+      "slug": "auditing-gcp-iam-permissions",
+      "name": "auditing-gcp-iam-permissions",
+      "description": "Auditing Google Cloud Platform IAM permissions to identify overly permissive bindings, primitive role usage, service account key proliferation, and cross-project access risks using gcloud CLI, Policy Analyzer, and IAM Recommender."
+    },
+    {
+      "slug": "auditing-kubernetes-cluster-rbac",
+      "name": "auditing-kubernetes-cluster-rbac",
+      "description": "Auditing Kubernetes cluster RBAC configurations to identify overly permissive roles, wildcard permissions, dangerous ClusterRoleBindings, service account abuse, and privilege escalation paths using kubectl, rbac-tool, KubiScan, and Kubeaudit."
+    },
+    {
+      "slug": "auditing-kubernetes-rbac-privilege-escalation",
+      "name": "auditing-kubernetes-rbac-privilege-escalation",
+      "description": "Find over-permissive RBAC roles and service-account token abuse paths in Kubernetes using kubectl auth can-i, rbac-police, kubectl-who-can, and rakkess during authorized cluster security reviews."
+    },
+    {
+      "slug": "auditing-mcp-servers-for-tool-poisoning",
+      "name": "auditing-mcp-servers-for-tool-poisoning",
+      "description": "Audit MCP servers for tool poisoning, tool shadowing, rug pulls, SSRF, and unauthenticated exposure using Invariant Labs mcp-scan for static/runtime scanning plus manual SSRF/auth checks and description pinning. Use before adding a new MCP server ..."
+    },
+    {
+      "slug": "auditing-terraform-infrastructure-for-security",
+      "name": "auditing-terraform-infrastructure-for-security",
+      "description": "Auditing Terraform infrastructure-as-code for security misconfigurations using Checkov, tfsec, Terrascan, and OPA/Rego policies to detect overly permissive IAM policies, public resource exposure, missing encryption, and insecure defaults before cl..."
+    },
+    {
+      "slug": "auditing-tls-certificate-transparency-logs",
+      "name": "auditing-tls-certificate-transparency-logs",
+      "description": "Monitors Certificate Transparency (CT) logs to detect unauthorized certificate issuance, discover subdomains via CT data, and alert on suspicious certificate activity for owned domains. Uses the crt.sh API and direct CT log querying based on RFC 6..."
+    },
+    {
+      "slug": "auditing-uefi-firmware-with-chipsec",
+      "name": "auditing-uefi-firmware-with-chipsec",
+      "description": "Use Intel CHIPSEC to assess platform firmware configuration, SPI flash write protection, BIOS lock, SMM/SMRR, and Secure Boot variable state, dump SPI flash, and triage UEFI variables for firmware-level threats."
+    },
+    {
+      "slug": "auth-implementation-patterns",
+      "name": "Auth Implementation Patterns",
+      "description": "Build secure, scalable authentication and authorization systems using industry-standard patterns and modern best practices."
+    },
+    {
+      "slug": "automation-audit-ops",
+      "name": "Automation Audit Ops",
+      "description": "Audit and optimize CI/CD pipelines, cron jobs, and webhook automation for execution time, cost, and reliability."
+    },
+    {
+      "slug": "avoid-ai-writing",
+      "name": "Avoid Ai Writing",
+      "description": "Audit and rewrite content to remove 21 categories of AI writing patterns with a 43-entry replacement table"
+    },
+    {
+      "slug": "aws-cost-operations",
+      "name": "Aws Cost Operations",
+      "description": "AWS cost optimization, monitoring, and operational excellence expert. Use when analyzing AWS bills, estimating costs, setting up CloudWatch alarms, querying logs, auditing CloudTrail activity, or assessing security posture. Essential when user mentions AWS costs, spending, billing,..."
+    },
+    {
+      "slug": "aws-iam-best-practices",
+      "name": "Aws Iam Best Practices",
+      "description": "IAM policy review, hardening, and least privilege implementation"
+    },
+    {
+      "slug": "aws-penetration-testing",
+      "name": "Aws Penetration Testing",
+      "description": "Provide comprehensive techniques for penetration testing AWS cloud environments. Covers IAM enumeration, privilege escalation, SSRF to metadata endpoint, S3 bucket exploitation, Lambda code extraction, and persistence techniques for red team operations."
+    },
+    {
+      "slug": "aws-security-audit",
+      "name": "Aws Security Audit",
+      "description": "Comprehensive AWS security posture assessment using AWS CLI and security best practices"
+    },
+    {
+      "slug": "axiom",
+      "name": "Axiom",
+      "description": "First-principles assumption auditor. Classifies each hidden assumption (fact / convention / belief / interest-driven), ranks by fragility × impact, and rebuilds conclusions from verified premises. Bilingual: auto-detects Chinese or English."
+    },
+    {
+      "slug": "azure-communication-common-java",
+      "name": "Azure Communication Common Java",
+      "description": "Azure Communication Services common utilities for Java. Use when working with CommunicationTokenCredential, user identifiers, token refresh, or shared authentication across ACS services."
+    },
+    {
+      "slug": "azure-cosmos-db-py",
+      "name": "Azure Cosmos Db Py",
+      "description": "Build production-grade Azure Cosmos DB NoSQL services following clean code, security best practices, and TDD principles."
+    },
+    {
+      "slug": "azure-identity-dotnet",
+      "name": "Azure Identity Dotnet",
+      "description": "Azure Identity SDK for .NET. Authentication library for Azure SDK clients using Microsoft Entra ID. Use for DefaultAzureCredential, managed identity, service principals, and developer credentials."
+    },
+    {
+      "slug": "azure-identity-java",
+      "name": "Azure Identity Java",
+      "description": "Authenticate Java applications with Azure services using Microsoft Entra ID (Azure AD)."
+    },
+    {
+      "slug": "azure-identity-py",
+      "name": "Azure Identity Py",
+      "description": "Azure Identity SDK for Python authentication. Use for DefaultAzureCredential, managed identity, service principals, and token caching."
+    },
+    {
+      "slug": "azure-identity-rust",
+      "name": "Azure Identity Rust",
+      "description": "Azure Identity SDK for Rust authentication. Use for DeveloperToolsCredential, ManagedIdentityCredential, ClientSecretCredential, and token-based authentication."
+    },
+    {
+      "slug": "azure-identity-ts",
+      "name": "Azure Identity Ts",
+      "description": "Authenticate to Azure services with various credential types."
+    },
+    {
+      "slug": "azure-security-keyvault-keys-dotnet",
+      "name": "Azure Security Keyvault Keys Dotnet",
+      "description": "Azure Key Vault Keys SDK for .NET. Client library for managing cryptographic keys in Azure Key Vault and Managed HSM. Use for key creation, rotation, encryption, decryption, signing, and verification."
+    },
+    {
+      "slug": "azure-security-keyvault-keys-java",
+      "name": "Azure Security Keyvault Keys Java",
+      "description": "Azure Key Vault Keys Java SDK for cryptographic key management. Use when creating, managing, or using RSA/EC keys, performing encrypt/decrypt/sign/verify operations, or working with HSM-backed keys."
+    },
+    {
+      "slug": "azure-security-keyvault-secrets-java",
+      "name": "Azure Security Keyvault Secrets Java",
+      "description": "Azure Key Vault Secrets Java SDK for secret management. Use when storing, retrieving, or managing passwords, API keys, connection strings, or other sensitive configuration data."
+    },
+    {
+      "slug": "backend-security-coder",
+      "name": "Backend Security Coder",
+      "description": "Expert in secure backend coding practices specializing in input validation, authentication, and API security. Use PROACTIVELY for backend security implementations or security code reviews."
+    },
+    {
+      "slug": "benchmarking-kubernetes-with-kube-bench",
+      "name": "benchmarking-kubernetes-with-kube-bench",
+      "description": "Run kube-bench (Aqua Security) against a Kubernetes clusters control-plane, kubelet, and node configuration to check compliance with the CIS Kubernetes Benchmark and remediate PASS/FAIL/WARN findings. Use when establishing a security baseline for ..."
+    },
+    {
+      "slug": "broken-authentication",
+      "name": "Broken Authentication",
+      "description": "Identify and exploit authentication and session management vulnerabilities in web applications. Broken authentication consistently ranks in the OWASP Top 10 and can lead to account takeover, identity theft, and unauthorized access to sensitive systems."
+    },
+    {
+      "slug": "brooks-audit",
+      "name": "Brooks Audit",
+      "description": "Architecture audit that maps module dependencies, checks layering integrity, and flags structural decay across a codebase, drawing on twelve classic engineering books. Triggers when: user asks to audit architecture, review folder/module structure, check for circular imports, understand..."
+    },
+    {
+      "slug": "brooks-harness",
+      "name": "Brooks Harness",
+      "description": "Maintenance orchestrator for the brooks-lint plugin itself. Runs a sequential subagent pipeline — author → eval → QA → trigger-audit → release — to add or edit a skill, refresh the eval suite, keep the four manifests + README + CHANGELOG + AGENTS/GEMINI in sync, audit trigger..."
+    },
+    {
+      "slug": "browser-act",
+      "name": "Browser Act",
+      "description": "Use BrowserAct for authenticated browser automation, JS-rendered extraction, screenshots, parallel sessions, verification handling, and human handoff."
+    },
+    {
+      "slug": "browser-harness",
+      "name": "Browser Harness",
+      "description": "Drive an existing browser through CDP for authenticated, visual, or interactive web automation."
+    },
+    {
+      "slug": "bugs-are-annoying",
+      "name": "Bugs Are Annoying",
+      "description": "Adversarial code auditor that hunts down bugs, logic errors, and security flaws. Use for deep correctness passes, not style reviews."
+    },
+    {
+      "slug": "building-devsecops-pipeline-with-gitlab-ci",
+      "name": "building-devsecops-pipeline-with-gitlab-ci",
+      "description": "Configure a GitLab CI/CD pipeline that embeds SAST (Semgrep, SpotBugs, Gosec, Bandit, NodeJsScan), DAST, container scanning, dependency scanning, and secret detection via GitLabs managed security templates. Use when building a shift-left DevSecOps..."
+    },
+    {
+      "slug": "building-identity-federation-with-saml-azure-ad",
+      "name": "building-identity-federation-with-saml-azure-ad",
+      "description": "Configure SAML 2.0 identity federation between on-premises Active Directory (via AD FS or a third-party IdP) and Microsoft Entra ID, covering federation models (AD FS, password hash sync, pass-through auth, third-party IdP) and the SAML authentica..."
+    },
+    {
+      "slug": "building-threat-intelligence-enrichment-in-splunk",
+      "name": "building-threat-intelligence-enrichment-in-splunk",
+      "description": "Build automated IOC enrichment pipelines in Splunk Enterprise Security by ingesting threat feeds into KV Store collections and correlating them against security events via lookup tables, modular inputs, and the Threat Intelligence Framework. Use w..."
+    },
+    {
+      "slug": "building-threat-intelligence-feed-integration",
+      "name": "building-threat-intelligence-feed-integration",
+      "description": "Builds automated threat intelligence feed integration pipelines connecting STIX/TAXII feeds, open-source threat intel, and commercial TI platforms into SIEM and security tools for real-time IOC matching and alerting. Use when SOC teams need to ope..."
+    },
+    {
+      "slug": "building-vulnerability-aging-and-sla-tracking",
+      "name": "building-vulnerability-aging-and-sla-tracking",
+      "description": "Implement a vulnerability aging dashboard and SLA tracking system that measures time-to-remediation against severity-based deadlines (e.g. 14 days critical, 30 days high, 60 days medium, 90 days low), with automated escalations and compliance metr..."
+    },
+    {
+      "slug": "building-vulnerability-dashboard-with-defectdojo",
+      "name": "building-vulnerability-dashboard-with-defectdojo",
+      "description": "Deploy DefectDojo as a centralized vulnerability management dashboard that ingests findings from 200+ security scanners, deduplicates results, tracks remediation metrics, and integrates with CI/CD, Jira ticketing, and Slack notifications via its R..."
+    },
+    {
+      "slug": "building-vulnerability-exception-tracking-system",
+      "name": "building-vulnerability-exception-tracking-system",
+      "description": "Build a vulnerability exception and risk acceptance tracking system covering approval workflows, compensating controls documentation, and automatic expiration for vulnerabilities that miss SLA remediation timelines. Use when standing up a governan..."
+    },
+    {
+      "slug": "building-vulnerability-scanning-workflow",
+      "name": "building-vulnerability-scanning-workflow",
+      "description": "Builds a structured vulnerability scanning workflow using tools like Nessus, Qualys, and OpenVAS to discover, prioritize, and track remediation of security vulnerabilities across infrastructure. Use when SOC teams need to establish recurring vulne..."
+    },
+    {
+      "slug": "burp-suite-testing",
+      "name": "Burp Suite Testing",
+      "description": "Execute comprehensive web application security testing using Burp Suite"
+    },
+    {
+      "slug": "burpsuite-project-parser",
+      "name": "Burpsuite Project Parser",
+      "description": "Searches and explores Burp Suite project files (.burp) from the command line. Use when searching response headers or bodies with regex patterns, extracting security audit findings, dumping proxy history or site map data, or analyzing HTTP traffic captured in a Burp project."
+    },
+    {
+      "slug": "bypassing-authentication-with-forced-browsing",
+      "name": "bypassing-authentication-with-forced-browsing",
+      "description": "Discovering and accessing unprotected pages, APIs, and administrative interfaces by enumerating URLs and bypassing authentication controls during authorized security assessments."
+    },
+    {
+      "slug": "cc-skill-security-review",
+      "name": "Cc Skill Security Review",
+      "description": "This skill ensures all code follows security best practices and identifies potential vulnerabilities. Use when implementing authentication or authorization, handling user input or file uploads, or creating new API endpoints."
+    },
+    {
+      "slug": "cicd-automation-workflow-automate",
+      "name": "Cicd Automation Workflow Automate",
+      "description": "You are a workflow automation expert specializing in creating efficient CI/CD pipelines, GitHub Actions workflows, and automated development processes. Design and implement automation that reduces manual work, improves consistency, and accelerates delivery while maintaining quality and security."
+    },
+    {
+      "slug": "claude-settings-audit",
+      "name": "Claude Settings Audit",
+      "description": "Analyze a repository to generate recommended Claude Code settings.json permissions. Use when setting up a new project, auditing existing settings, or determining which read-only bash commands to allow. Detects tech stack, build tools, and monorepo structure."
+    },
+    {
+      "slug": "clerk-auth",
+      "name": "Clerk Auth",
+      "description": "Expert patterns for Clerk auth implementation, middleware, organizations, webhooks, and user sync"
+    },
+    {
+      "slug": "click-path-audit",
+      "name": "Click Path Audit",
+      "description": "Specialized engineering patterns, best practices, and automated workflow for Click Path Audit."
+    },
+    {
+      "slug": "cloud-penetration-testing",
+      "name": "Cloud Penetration Testing",
+      "description": "Conduct comprehensive security assessments of cloud infrastructure across Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform (GCP)."
+    },
+    {
+      "slug": "cloudflare-security-audit",
+      "name": "Cloudflare Security Audit",
+      "description": "Audit authorized codebases for exploitable vulnerabilities using scoped reconnaissance, adversarial review, validation, and structured reporting."
+    },
+    {
+      "slug": "code-review-checklist",
+      "name": "Code Review Checklist",
+      "description": "Comprehensive checklist for conducting thorough code reviews covering functionality, security, performance, and maintainability"
+    },
+    {
+      "slug": "code-review-fresh-context",
+      "name": "Code Review Fresh Context",
+      "description": "Review code from a completely fresh perspective with zero author assumptions. Catches logic bugs, security gaps, and maintainability issues."
+    },
+    {
+      "slug": "codebase-audit-pre-push",
+      "name": "Codebase Audit Pre Push",
+      "description": "Deep audit before GitHub push: removes junk files, dead code, security holes, and optimization issues. Checks every file line-by-line for production readiness."
+    },
+    {
+      "slug": "codebase-cleanup-deps-audit",
+      "name": "Codebase Cleanup Deps Audit",
+      "description": "You are a dependency security expert specializing in vulnerability scanning, license compliance, and supply chain security. Analyze project dependencies for known vulnerabilities, licensing issues, outdated packages, and provide actionable remediation strategies."
+    },
+    {
+      "slug": "coercing-authentication-with-coercer-petitpotam",
+      "name": "coercing-authentication-with-coercer-petitpotam",
+      "description": "Trigger machine account authentication with PetitPotam (MS-EFSR) and Coercer (MS-RPRN, MS-DFSNM, MS-FSRVP, MS-EVEN) via Coercers scan/coerce/fuzz modes, feeding the coerced NTLM auth into a relay against AD CS Web Enrollment (ESC8), LDAP (RBCD), o..."
+    },
+    {
+      "slug": "comfyui-gateway",
+      "name": "Comfyui Gateway",
+      "description": "REST API gateway for ComfyUI servers. Workflow management, job queuing, webhooks, caching, auth, rate limiting, and image delivery (URL + base64)."
+    },
+    {
+      "slug": "conducting-api-security-testing",
+      "name": "conducting-api-security-testing",
+      "description": "Conducts security testing of REST, GraphQL, and gRPC APIs to identify vulnerabilities in authentication, authorization, rate limiting, input validation, and business logic. The tester uses the OWASP API Security Top 10 as the testing framework, co..."
+    },
+    {
+      "slug": "conducting-cloud-incident-response",
+      "name": "conducting-cloud-incident-response",
+      "description": "Respond to security incidents in AWS, Azure, and GCP via identity-based containment, cloud-native log analysis (CloudTrail, Azure Activity Logs, GCP Audit Logs), resource isolation, and forensic evidence acquisition adapted for ephemeral cloud inf..."
+    },
+    {
+      "slug": "conducting-cloud-penetration-testing",
+      "name": "conducting-cloud-penetration-testing",
+      "description": "This skill outlines methodologies for performing authorized penetration testing against AWS, Azure, and GCP cloud environments. It covers understanding the shared responsibility model for testing scope, leveraging cloud-specific attack tools like ..."
+    },
+    {
+      "slug": "conducting-cyber-risk-assessment-with-nist-800-30",
+      "name": "conducting-cyber-risk-assessment-with-nist-800-30",
+      "description": "- Conduct a defensible cybersecurity risk assessment using the NIST SP 800-30 Rev 1 methodology: prepare scope and a risk model, identify threat sources and threat events, identify vulnerabilities and predisposing conditions, determine likelihood ..."
+    },
+    {
+      "slug": "configuring-aws-verified-access-for-ztna",
+      "name": "configuring-aws-verified-access-for-ztna",
+      "description": "Configure AWS Verified Access to provide VPN-less zero trust network access to internal apps, combining identity trust providers (IAM Identity Center, Okta/OIDC), device posture providers (CrowdStrike, Jamf), Cedar policy authoring, and Terraform ..."
+    },
+    {
+      "slug": "configuring-certificate-authority-with-openssl",
+      "name": "configuring-certificate-authority-with-openssl",
+      "description": "Build a two-tier PKI Certificate Authority hierarchy (offline Root CA plus issuing Intermediate CA) using OpenSSL and the Python cryptography library, covering certificate extensions, CRL distribution points, OCSP responder configuration, and cert..."
+    },
+    {
+      "slug": "configuring-ldap-security-hardening",
+      "name": "configuring-ldap-security-hardening",
+      "description": "Hardens LDAP directory services against credential harvesting, LDAP injection, anonymous binding, and channel-binding bypass by enforcing LDAPS, channel binding, and LDAP signing. Use when securing an LDAP or Active Directory environment against t..."
+    },
+    {
+      "slug": "configuring-multi-factor-authentication-with-duo",
+      "name": "configuring-multi-factor-authentication-with-duo",
+      "description": "Deploys Cisco Duo multi-factor authentication across enterprise applications, VPN, RDP, and SSH access points, covering Duo Authentication Proxy setup, adaptive authentication policies, device trust assessment, and phishing-resistant WebAuthn/FIDO..."
+    },
+    {
+      "slug": "configuring-oauth2-authorization-flow",
+      "name": "configuring-oauth2-authorization-flow",
+      "description": "Configures secure OAuth 2.0 authorization flows, including Authorization Code with PKCE, Client Credentials, and Device Authorization Grant, covering flow selection, PKCE implementation, token lifecycle management, and scope design per OAuth 2.1. ..."
+    },
+    {
+      "slug": "container-security-hardening",
+      "name": "Container Security Hardening",
+      "description": "Harden Docker/container images and runtime deployments with secure base images, non-root users, CVE scanning, SBOM/signing, seccomp/AppArmor, and Kubernetes pod security controls. Use for Dockerfile security reviews, container CVEs, image scanning, distroless images, or production hardening."
+    },
+    {
+      "slug": "content-strategy",
+      "name": "Content Strategy",
+      "description": "Plan a content strategy, topic clusters, editorial roadmap, and content mix for traffic, authority, and lead generation. Use when deciding what to publish, what topics to prioritize, or how to structure a content program."
+    },
+    {
+      "slug": "convex",
+      "name": "Convex",
+      "description": "Convex reactive backend expert: schema design, TypeScript functions, real-time subscriptions, auth, file storage, scheduling, and deployment."
+    },
+    {
+      "slug": "correlating-threat-campaigns",
+      "name": "correlating-threat-campaigns",
+      "description": "Correlates disparate security incidents, IOCs, and adversary behaviors across time and organizations to identify unified threat campaigns, attribute them to common threat actors, and extract shared indicators for improved detection. Use when multi..."
+    },
+    {
+      "slug": "cross-platform-contract-propagation-audit",
+      "name": "Cross Platform Contract Propagation Audit",
+      "description": "Use when auditing whether a field, enum, flag, or API contract propagates consistently across storage, services, clients, analytics, and tests."
+    },
+    {
+      "slug": "cyber-audit",
+      "name": "Cyber Audit",
+      "description": "Run read-only exposure checks for security advisories and write a structured local audit report."
+    },
+    {
+      "slug": "defi-amm-security",
+      "name": "Defi Amm Security",
+      "description": "Specialized engineering patterns, best practices, and automated workflow for Defi Amm Security."
+    },
+    {
+      "slug": "dependency-management-deps-audit",
+      "name": "Dependency Management Deps Audit",
+      "description": "You are a dependency security expert specializing in vulnerability scanning, license compliance, and supply chain security. Analyze project dependencies for known vulnerabilities, licensing issues, outdated packages, and provide actionable remediation strategies."
+    },
+    {
+      "slug": "deploying-cloud-deception-with-decoy-resources",
+      "name": "deploying-cloud-deception-with-decoy-resources",
+      "description": "- Deploy cloud-native deception across AWS, Azure, and GCP using decoy (honey) resources whose only purpose is to generate a high-fidelity alert the instant an attacker touches them: canary IAM access keys, permission-less decoy users/roles/servic..."
+    },
+    {
+      "slug": "design-ux",
+      "name": "Design Ux",
+      "description": "UX / usability audit — heuristic evaluation of INTERACTIVE UIs (not just visual polish). Load with design when a UI"
+    },
+    {
+      "slug": "detecting-anomalous-authentication-patterns",
+      "name": "detecting-anomalous-authentication-patterns",
+      "description": "Detects anomalous authentication patterns using UEBA analytics, statistical baselines, and machine learning models to identify impossible travel, credential stuffing, brute force, password spraying, and compromised account behaviors across authent..."
+    },
+    {
+      "slug": "detecting-aws-cloudtrail-anomalies",
+      "name": "detecting-aws-cloudtrail-anomalies",
+      "description": "Detect unusual API call patterns in AWS CloudTrail logs using boto3, statistical baselining, and behavioral analysis to identify credential compromise, privilege escalation, and unauthorized resource access."
+    },
+    {
+      "slug": "detecting-aws-credential-exposure-with-trufflehog",
+      "name": "detecting-aws-credential-exposure-with-trufflehog",
+      "description": "Scan source code repositories, CI/CD pipelines, and configuration files for exposed AWS credentials using TruffleHog, git-secrets, and AWS-native detection. Use when integrating secrets scanning into CI/CD, auditing repositories (including git his..."
+    },
+    {
+      "slug": "detecting-aws-guardduty-findings-automation",
+      "name": "detecting-aws-guardduty-findings-automation",
+      "description": "Build automated AWS GuardDuty finding response pipelines using EventBridge and Lambda to trigger real-time incident response, automatically quarantine compromised resources, and route security notifications. Use when designing automated remediatio..."
+    },
+    {
+      "slug": "detecting-aws-iam-privilege-escalation",
+      "name": "detecting-aws-iam-privilege-escalation",
+      "description": "Detect AWS IAM privilege escalation paths using boto3 and Cloudsplaining policy analysis to identify overly permissive policies, dangerous permission combinations, and least-privilege violations"
+    },
+    {
+      "slug": "detecting-azure-lateral-movement",
+      "name": "detecting-azure-lateral-movement",
+      "description": "Detect lateral movement in Azure AD/Entra ID environments using Microsoft Graph API audit logs, Azure Sentinel KQL hunting queries, and sign-in anomaly correlation to identify privilege escalation, token theft, and cross-tenant pivoting."
+    },
+    {
+      "slug": "detecting-azure-service-principal-abuse",
+      "name": "detecting-azure-service-principal-abuse",
+      "description": "Detect Azure service principal abuse in Microsoft Entra ID using KQL detection queries (Sentinel/Splunk) against Azure AD Audit and Sign-in Logs, covering added credentials, privileged role assignment, admin consent bypass, and service principal e..."
+    },
+    {
+      "slug": "detecting-azure-storage-account-misconfigurations",
+      "name": "detecting-azure-storage-account-misconfigurations",
+      "description": "Audit Azure Blob and ADLS storage accounts for public access exposure, weak or long-lived SAS tokens, missing encryption at rest, disabled HTTPS-only traffic, and outdated TLS versions, using the azure-mgmt-storage Python SDK to generate a risk-sc..."
+    },
+    {
+      "slug": "detecting-broken-object-property-level-authorization",
+      "name": "detecting-broken-object-property-level-authorization",
+      "description": "Detect and test for OWASP API3:2023 Broken Object Property Level Authorization (BOPLA), covering excessive data exposure in API responses and mass assignment via injected request-body properties. Use when reviewing API responses/requests for over-..."
+    },
+    {
+      "slug": "detecting-container-drift-at-runtime",
+      "name": "detecting-container-drift-at-runtime",
+      "description": "Detect unauthorized runtime drift in containers by monitoring binary execution, file system changes, and configuration deviations from the original immutable image, using tools like Falco and Microsoft Defender for Kubernetes/container workloads. ..."
+    },
+    {
+      "slug": "detecting-cryptomining-in-cloud",
+      "name": "detecting-cryptomining-in-cloud",
+      "description": "This skill teaches security teams how to detect and respond to unauthorized cryptocurrency mining operations in cloud environments. It covers identifying cryptomining indicators through compute usage anomalies, network traffic patterns to mining p..."
+    },
+    {
+      "slug": "detecting-misconfigured-azure-storage",
+      "name": "detecting-misconfigured-azure-storage",
+      "description": "Audit Azure Storage accounts for public blob containers, missing encryption, overly permissive SAS tokens, disabled logging, and network access violations using Azure CLI, PowerShell, and Microsoft Defender for Storage. Use for storage security au..."
+    },
+    {
+      "slug": "detecting-modbus-command-injection-attacks",
+      "name": "detecting-modbus-command-injection-attacks",
+      "description": "Detect command injection against Modbus TCP/RTU in ICS/SCADA environments by monitoring unauthorized writes, anomalous function codes, malformed frames, and deviations from communication baselines using ICS-aware IDS and deep packet inspection. Us..."
+    },
+    {
+      "slug": "detecting-oauth-token-theft",
+      "name": "detecting-oauth-token-theft",
+      "description": "Detect and respond to OAuth token theft and replay in Microsoft Entra ID (Azure AD), covering access token theft, refresh token replay, Primary Refresh Token (PRT) abuse, pass-the-cookie attacks, and Token Protection conditional access policies. U..."
+    },
+    {
+      "slug": "detecting-privilege-escalation-in-kubernetes-pods",
+      "name": "detecting-privilege-escalation-in-kubernetes-pods",
+      "description": "Detect and prevent privilege escalation in Kubernetes pods by combining admission control (OPA policies), runtime monitoring (Falco), and audit log analysis of security contexts, Linux capabilities, and syscall patterns. Use when hardening pod sec..."
+    },
+    {
+      "slug": "detecting-serverless-function-injection",
+      "name": "detecting-serverless-function-injection",
+      "description": "Detects and prevents code injection attacks targeting serverless functions (AWS Lambda, Azure Functions, Google Cloud Functions) through event source poisoning, malicious layer injection, runtime command execution, and IAM privilege escalation via..."
+    },
+    {
+      "slug": "detecting-shadow-it-cloud-usage",
+      "name": "detecting-shadow-it-cloud-usage",
+      "description": "Detect unauthorized SaaS and cloud service usage (shadow IT) by parsing proxy access logs, DNS query logs, and firewall/netflow data with Python pandas to aggregate traffic by domain, classify domains against known SaaS categories, and score risk ..."
+    },
+    {
+      "slug": "detecting-sql-injection-via-waf-logs",
+      "name": "detecting-sql-injection-via-waf-logs",
+      "description": "Analyze WAF (ModSecurity/AWS WAF/Cloudflare) logs to detect SQL injection attack campaigns. Parses ModSecurity audit logs and JSON WAF event logs to identify SQLi patterns (UNION SELECT, OR 1=1, SLEEP(), BENCHMARK()), tracks attack sources, correl..."
+    },
+    {
+      "slug": "detecting-suspicious-oauth-application-consent",
+      "name": "detecting-suspicious-oauth-application-consent",
+      "description": "Detect risky OAuth application consent grants in Azure AD / Microsoft Entra ID using Microsoft Graph API, audit logs, and permission analysis to identify illicit consent grant attacks."
+    },
+    {
+      "slug": "developer-signup-flow",
+      "name": "Developer Signup Flow",
+      "description": "Design frictionless signup experiences for developers including GitHub OAuth, API key generation, and onboarding personalization. Trigger phrases: developer signup, dev registration, OAuth flow, API key onboarding, reduce signup friction, developer authentication, signup conversion,..."
+    },
+    {
+      "slug": "differential-review",
+      "name": "Differential Review",
+      "description": "Security-focused code review for PRs, commits, and diffs."
+    },
+    {
+      "slug": "django-security",
+      "name": "Django Security",
+      "description": "Specialized engineering patterns, best practices, and automated workflow for Django Security."
+    },
+    {
+      "slug": "doc-coauthoring",
+      "name": "Doc Coauthoring",
+      "description": "This skill provides a structured workflow for guiding users through collaborative document creation. Act as an active guide, walking users through three stages: Context Gathering, Refinement & Structure, and Reader Testing."
+    },
+    {
+      "slug": "docker-expert",
+      "name": "Docker Expert",
+      "description": "You are an advanced Docker containerization expert with comprehensive, practical knowledge of container optimization, security hardening, multi-stage builds, orchestration patterns, and production deployment strategies based on current industry best practices."
+    },
+    {
+      "slug": "docker-github-actions-devops",
+      "name": "Docker & CI/CD GitHub Actions Workflow Master",
+      "description": "Production-ready multi-stage Docker builds, image caching, security vulnerability scanning, and automated GitHub Actions CI/CD pipelines."
+    },
+    {
+      "slug": "docker-patterns",
+      "name": "Docker Patterns",
+      "description": "Multi-stage Docker builds, Alpine/distroless minimal containers, rootless security, and layer caching."
+    },
+    {
+      "slug": "dotnet-backend",
+      "name": "Dotnet Backend",
+      "description": "Build ASP.NET Core 8+ backend services with EF Core, auth, background jobs, and production API patterns."
+    },
+    {
+      "slug": "doubt-driven-development",
+      "name": "Doubt Driven Development",
+      "description": "Subjects every non-trivial decision to a fresh-context adversarial review before it stands. Use when correctness matters more than speed, when working in unfamiliar code, when stakes are high (production, security-sensitive logic, irreversible operations), or any time a confident..."
+    },
+    {
+      "slug": "e2e-testing",
+      "name": "E2E Testing",
+      "description": "End-to-end browser automation with Playwright and Cypress: test isolation, realistic authentication mocks, and visual diff checks."
+    },
+    {
+      "slug": "ecc-tools-cost-audit",
+      "name": "Ecc Tools Cost Audit",
+      "description": "Specialized engineering patterns, best practices, and automated workflow for Ecc Tools Cost Audit."
+    },
+    {
+      "slug": "ecl-harness-engineer",
+      "name": "Ecl Harness Engineer",
+      "description": "Create or audit ECL Agent Harness infrastructure: AGENTS.md, change tracking, repository guidance, lint checks, CI gates, and agent handoff docs."
+    },
+    {
+      "slug": "effective-agent-skills",
+      "name": "Effective Agent Skills",
+      "description": "Author and review high-quality agent skills with triggers, progressive disclosure, and safety notes."
+    },
+    {
+      "slug": "escaping-containers-to-host",
+      "name": "escaping-containers-to-host",
+      "description": "Exploit privileged pods, host mounts, runC CVEs, and exposed Docker sockets to break out of a container and reach the underlying host during authorized container-security assessments."
+    },
+    {
+      "slug": "ethical-hacking-methodology",
+      "name": "Ethical Hacking Methodology",
+      "description": "Master the complete penetration testing lifecycle from reconnaissance through reporting. This skill covers the five stages of ethical hacking methodology, essential tools, attack techniques, and professional reporting for authorized security assessments."
+    },
+    {
+      "slug": "event-sourcing-architect",
+      "name": "Event Sourcing Architect",
+      "description": "Expert in event sourcing, CQRS, and event-driven architecture patterns. Masters event store design, projection building, saga orchestration, and eventual consistency patterns. Use PROACTIVELY for event-sourced systems, audit trail requirements, or complex domain modeling with temporal queries."
+    },
+    {
+      "slug": "executing-nist-rmf-authorization-to-operate",
+      "name": "executing-nist-rmf-authorization-to-operate",
+      "description": "- Drive a federal system through the NIST Risk Management Framework (SP 800-37 Rev 2) to an Authorization to Operate (ATO): Prepare, Categorize (FIPS 199), Select a control baseline (FIPS 200 / SP 800-53 Rev 5), Implement, Assess (SP 800-53A), Aut..."
+    },
+    {
+      "slug": "exploiting-aws-with-pacu",
+      "name": "exploiting-aws-with-pacu",
+      "description": "- Runs the Pacu AWS exploitation framework end-to-end — session and credential setup, IAM enumeration, automated privilege-escalation scanning via iam__privesc_scan, and persistence/backdooring modules like iam__backdoor_users_keys. Use for author..."
+    },
+    {
+      "slug": "exploiting-broken-function-level-authorization",
+      "name": "exploiting-broken-function-level-authorization",
+      "description": "- Tests APIs for Broken Function Level Authorization (OWASP API5:2023) by identifying admin and privileged endpoints, then reaching them with regular-user credentials via HTTP method switching, URL path manipulation, and parameter tampering. Use w..."
+    },
+    {
+      "slug": "exploiting-ms17-010-eternalblue-vulnerability",
+      "name": "exploiting-ms17-010-eternalblue-vulnerability",
+      "description": "- Detects and exploits MS17-010 (EternalBlue), a critical remote code execution flaw in Microsofts SMBv1 implementation, using Nmaps ms-17-010 NSE script for detection and Metasploits ms17_010_eternalblue/ms17_010_psexec modules for exploitation. ..."
+    },
+    {
+      "slug": "exploiting-nosql-injection-vulnerabilities",
+      "name": "exploiting-nosql-injection-vulnerabilities",
+      "description": "Detects and exploits NoSQL injection vulnerabilities in MongoDB, CouchDB, and similar databases to demonstrate authentication bypass, data extraction, and unauthorized access via crafted query operators. Use when pentesting APIs or web application..."
+    },
+    {
+      "slug": "exploiting-oauth-misconfiguration",
+      "name": "exploiting-oauth-misconfiguration",
+      "description": "Identifying and exploiting OAuth 2.0 and OpenID Connect misconfigurations including redirect URI manipulation, token leakage, and authorization code theft during security assessments."
+    },
+    {
+      "slug": "exploiting-sql-injection-vulnerabilities",
+      "name": "exploiting-sql-injection-vulnerabilities",
+      "description": "Identifies and exploits SQL injection vulnerabilities in web applications during authorized penetration tests using manual techniques and automated tools like sqlmap. The tester detects injection points through error-based, union-based, blind bool..."
+    },
+    {
+      "slug": "exploiting-sql-injection-with-sqlmap",
+      "name": "exploiting-sql-injection-with-sqlmap",
+      "description": "Detecting and exploiting SQL injection vulnerabilities using sqlmap to extract database contents during authorized penetration tests."
+    },
+    {
+      "slug": "exploiting-template-injection-vulnerabilities",
+      "name": "exploiting-template-injection-vulnerabilities",
+      "description": "Detects and exploits Server-Side Template Injection (SSTI) vulnerabilities across Jinja2, Twig, Freemarker, and other template engines to achieve remote code execution. Use when pentesting a web application that renders user input through a server..."
+    },
+    {
+      "slug": "exploiting-zerologon-vulnerability-cve-2020-1472",
+      "name": "exploiting-zerologon-vulnerability-cve-2020-1472",
+      "description": "Exploits the Zerologon vulnerability (CVE-2020-1472) in the Netlogon Remote Protocol using Impacket to reset a domain controllers machine account password to empty, then runs DCSync via secretsdump.py to dump domain credentials. Use when red-teami..."
+    },
+    {
+      "slug": "fastapi-router-py",
+      "name": "Fastapi Router Py",
+      "description": "Create FastAPI routers following established patterns with proper authentication, response models, and HTTP status codes."
+    },
+    {
+      "slug": "fda-food-safety-auditor",
+      "name": "Fda Food Safety Auditor",
+      "description": "Expert AI auditor for FDA Food Safety (FSMA), HACCP, and PCQI compliance. Reviews food facility records and preventive controls."
+    },
+    {
+      "slug": "fda-medtech-compliance-auditor",
+      "name": "Fda Medtech Compliance Auditor",
+      "description": "Expert AI auditor for Medical Device (SaMD) compliance, IEC 62304, and 21 CFR Part 820. Reviews DHFs, technical files, and software validation."
+    },
+    {
+      "slug": "ffuf-web-fuzzing",
+      "name": "Ffuf Web Fuzzing",
+      "description": "Expert guidance for ffuf web fuzzing during penetration testing, including authenticated fuzzing with raw requests, auto-calibration, and result analysis"
+    },
+    {
+      "slug": "find-bugs",
+      "name": "Find Bugs",
+      "description": "Find bugs, security vulnerabilities, and code quality issues in local branch changes. Use when asked to review changes, find bugs, security review, or audit code on the current branch."
+    },
+    {
+      "slug": "firebase",
+      "name": "Firebase",
+      "description": "Firebase gives you a complete backend in minutes - auth, database, storage, functions, hosting. But the ease of setup hides real complexity. Security rules are your last line of defense, and they"
+    },
+    {
+      "slug": "firmware-analyst",
+      "name": "Firmware Analyst",
+      "description": "Expert firmware analyst specializing in embedded systems, IoT security, and hardware reverse engineering."
+    },
+    {
+      "slug": "fix-review",
+      "name": "Fix Review",
+      "description": "Verify fix commits address audit findings without new bugs"
+    },
+    {
+      "slug": "fixing-accessibility",
+      "name": "Fixing Accessibility",
+      "description": "Audit and fix HTML accessibility issues including ARIA labels, keyboard navigation, focus management, color contrast, and form errors. Use when adding interactive controls, forms, dialogs, or reviewing WCAG compliance."
+    },
+    {
+      "slug": "fixing-metadata",
+      "name": "Fixing Metadata",
+      "description": "Audit and fix HTML metadata including page titles, meta descriptions, canonical URLs, Open Graph tags, Twitter cards, favicons, JSON-LD structured data, and robots directives. Use when adding SEO metadata, fixing social share previews, reviewing Open Graph tags, setting up canonical..."
+    },
+    {
+      "slug": "fixing-motion-performance",
+      "name": "Fixing Motion Performance",
+      "description": "Audit and fix animation performance issues including layout thrashing, compositor properties, scroll-linked motion, and blur effects. Use when animations stutter, transitions jank, or reviewing CSS/JS animation performance."
+    },
+    {
+      "slug": "flowhunt-skill",
+      "name": "Flowhunt Skill",
+      "description": "Automation discovery audit skill. Walks through a 5-question workflow intake, then audits Gmail/Calendar/Slack/task trackers to identify automation opportunities. Use when a user wants to discover what processes in their business can be automated."
+    },
+    {
+      "slug": "frontend-mobile-security-xss-scan",
+      "name": "Frontend Mobile Security Xss Scan",
+      "description": "You are a frontend security specialist focusing on Cross-Site Scripting (XSS) vulnerability detection and prevention. Analyze React, Vue, Angular, and vanilla JavaScript code to identify injection poi"
+    },
+    {
+      "slug": "frontend-security-coder",
+      "name": "Frontend Security Coder",
+      "description": "Expert in secure frontend coding practices specializing in XSS prevention, output sanitization, and client-side security patterns."
+    },
+    {
+      "slug": "fsi-compliance-checker",
+      "name": "Fsi Compliance Checker",
+      "description": "Maps code, architecture, and infrastructure changes to specific control IDs in PCI-DSS v4.0 and MAS TRM (Singapore financial regulator), producing an audit-traceable findings report with per-control remediation."
+    },
+    {
+      "slug": "gemini-live-api-dev",
+      "name": "Gemini Live Api Dev",
+      "description": "Use this skill when building real-time, bidirectional streaming applications with the Gemini Live API. Covers WebSocket-based audio/video/text streaming, voice activity detection (VAD), native audio features, function calling, session management, ephemeral tokens for client-side auth,..."
+    },
+    {
+      "slug": "generating-threat-intelligence-reports",
+      "name": "generating-threat-intelligence-reports",
+      "description": "Generates structured cyber threat intelligence reports at strategic, operational, and tactical levels tailored to specific audiences including executives, security operations teams, and technical analysts. Use when producing finished intelligence ..."
+    },
+    {
+      "slug": "gha-security-review",
+      "name": "Gha Security Review",
+      "description": "Find exploitable vulnerabilities in GitHub Actions workflows. Every finding MUST include a concrete exploitation scenario — if you can"
+    },
+    {
+      "slug": "github-actions-advanced",
+      "name": "Github Actions Advanced",
+      "description": "Design, debug, and harden GitHub Actions CI/CD workflows, including reusable workflows, matrix builds, self-hosted runners, OIDC authentication, caching, environments, secrets, and release automation."
+    },
+    {
+      "slug": "gmail-automation",
+      "name": "Gmail Automation",
+      "description": "Lightweight Gmail integration with standalone OAuth authentication. No MCP server required."
+    },
+    {
+      "slug": "google-calendar-automation",
+      "name": "Google Calendar Automation",
+      "description": "Lightweight Google Calendar integration with standalone OAuth authentication. No MCP server required."
+    },
+    {
+      "slug": "google-docs-automation",
+      "name": "Google Docs Automation",
+      "description": "Lightweight Google Docs integration with standalone OAuth authentication. No MCP server required."
+    },
+    {
+      "slug": "google-drive-automation",
+      "name": "Google Drive Automation",
+      "description": "Lightweight Google Drive integration with standalone OAuth authentication. No MCP server required. Full read/write access."
+    },
+    {
+      "slug": "google-sheets-automation",
+      "name": "Google Sheets Automation",
+      "description": "Lightweight Google Sheets integration with standalone OAuth authentication. No MCP server required. Full read/write access."
+    },
+    {
+      "slug": "google-slides-automation",
+      "name": "Google Slides Automation",
+      "description": "Lightweight Google Slides integration with standalone OAuth authentication. No MCP server required. Full read/write access."
+    },
+    {
+      "slug": "graphql-architect",
+      "name": "Graphql Architect",
+      "description": "Master modern GraphQL with federation, performance optimization, and enterprise security. Build scalable schemas, implement advanced caching, and design real-time systems."
+    },
+    {
+      "slug": "hardening-docker-containers-for-production",
+      "name": "hardening-docker-containers-for-production",
+      "description": "Harden Dockerfiles, images, and container runtime settings against the CIS Docker Benchmark v1.8.0: non-root users, dropped capabilities, read-only rootfs, seccomp/AppArmor, and minimal multi-stage images, validated with docker-bench-security, Had..."
+    },
+    {
+      "slug": "hardening-docker-daemon-configuration",
+      "name": "hardening-docker-daemon-configuration",
+      "description": "Harden the Docker daemon (dockerd) by configuring /etc/docker/daemon.json with user namespace remapping, TLS client authentication, seccomp profiles, and CIS Docker Benchmark controls such as icc, no-new-privileges, and live-restore. Use when secu..."
+    },
+    {
+      "slug": "hardening-linux-endpoint-with-cis-benchmark",
+      "name": "hardening-linux-endpoint-with-cis-benchmark",
+      "description": "Hardens Linux endpoints using CIS Benchmark recommendations for Ubuntu, RHEL, and CentOS to reduce attack surface, enforce security baselines, and meet compliance requirements. Use when deploying new Linux servers, remediating audit findings, or e..."
+    },
+    {
+      "slug": "hardening-windows-endpoint-with-cis-benchmark",
+      "name": "hardening-windows-endpoint-with-cis-benchmark",
+      "description": "Hardens Windows endpoints using CIS (Center for Internet Security) Benchmark recommendations to reduce attack surface, enforce security baselines, and meet compliance requirements. Use when deploying new Windows workstations or servers, remediatin..."
+    },
+    {
+      "slug": "html-injection-testing",
+      "name": "Html Injection Testing",
+      "description": "Identify and exploit HTML injection vulnerabilities that allow attackers to inject malicious HTML content into web applications. This vulnerability enables attackers to modify page appearance, create phishing pages, and steal user credentials through injected forms."
+    },
+    {
+      "slug": "hubspot-integration",
+      "name": "Hubspot Integration",
+      "description": "Expert patterns for HubSpot CRM integration including OAuth authentication, CRM objects, associations, batch operations, webhooks, and custom objects. Covers Node.js and Python SDKs."
+    },
+    {
+      "slug": "hugging-face-cli",
+      "name": "Hugging Face Cli",
+      "description": "Hugging Face Hub CLI (`hf`) for downloading, uploading, and managing models, datasets, spaces, buckets, repos, papers, jobs, and more on the Hugging Face Hub. Use when: handling authentication; managing local cache; managing Hugging Face Buckets; running or scheduling jobs on Hugging..."
+    },
+    {
+      "slug": "hugging-face-paper-publisher",
+      "name": "Hugging Face Paper Publisher",
+      "description": "Publish and manage research papers on Hugging Face Hub. Supports creating paper pages, linking papers to models/datasets, claiming authorship, and generating professional markdown-based research articles."
+    },
+    {
+      "slug": "hugging-face-papers",
+      "name": "Hugging Face Papers",
+      "description": "Look up and read Hugging Face paper pages in markdown, and use the papers API for structured metadata such as authors, linked models/datasets/spaces, Github repo and project page. Use when the user shares a Hugging Face paper page URL, an arXiv URL or ID, or asks to summarize, explain,..."
+    },
+    {
+      "slug": "hunting-for-dns-based-persistence",
+      "name": "hunting-for-dns-based-persistence",
+      "description": "Hunts for DNS-based persistence mechanisms such as DNS hijacking, dangling CNAME records enabling subdomain takeover, wildcard DNS abuse, and unauthorized zone or NS delegation changes, using passive DNS history (SecurityTrails API), Route53/Azure..."
+    },
+    {
+      "slug": "implementing-api-gateway-security-controls",
+      "name": "implementing-api-gateway-security-controls",
+      "description": "Configures API gateways such as Kong, AWS API Gateway, Azure APIM, or Apigee as a centralized security enforcement point, covering authentication enforcement, rate limiting and throttling, request validation, IP allowlisting, TLS termination, and ..."
+    },
+    {
+      "slug": "implementing-api-key-security-controls",
+      "name": "implementing-api-key-security-controls",
+      "description": "Implements secure API key generation with sufficient entropy, server-side hashing (SHA-256/bcrypt) instead of plaintext storage, per-key scoping to endpoints/IPs/rate limits, zero-downtime rotation, and automated leak monitoring across GitHub repo..."
+    },
+    {
+      "slug": "implementing-api-schema-validation-security",
+      "name": "implementing-api-schema-validation-security",
+      "description": "Implements API schema validation using OpenAPI Specification and JSON Schema documents, enforced both at the API gateway (runtime) and during development (shift-left), to lock down request/response contracts and reject unknown properties. Use when..."
+    },
+    {
+      "slug": "implementing-api-security-posture-management",
+      "name": "implementing-api-security-posture-management",
+      "description": "Implements API Security Posture Management (API-SPM) to continuously discover, classify, and risk-score APIs -- including internal, external, partner, and shadow endpoints -- while aggregating findings from DAST, SAST, SCA, and runtime monitoring ..."
+    },
+    {
+      "slug": "implementing-api-security-testing-with-42crunch",
+      "name": "implementing-api-security-testing-with-42crunch",
+      "description": "Implements API security testing on the 42Crunch platform, combining API Audit for static analysis of OpenAPI definitions, API Conformance Scan for dynamic vulnerability testing, and API Protect for runtime threat prevention, integrated into CI/CD ..."
+    },
+    {
+      "slug": "implementing-api-threat-protection-with-apigee",
+      "name": "implementing-api-threat-protection-with-apigee",
+      "description": "Implements API threat protection using Google Apigee reverse-proxy policies, including JSON/XML threat protection, OAuth 2.0 enforcement, SpikeArrest rate limiting, regex-based threat detection, and Advanced API Security for detecting malicious cl..."
+    },
+    {
+      "slug": "implementing-aqua-security-for-container-scanning",
+      "name": "implementing-aqua-security-for-container-scanning",
+      "description": "Deploy Aqua Securitys Trivy scanner to detect vulnerabilities, misconfigurations, secrets, and license issues in container images across CI/CD pipelines and registries."
+    },
+    {
+      "slug": "indexing-issue-auditor",
+      "name": "Indexing Issue Auditor",
+      "description": "High-level technical SEO and site architecture auditor. Invoke to scan local or live environments for indexing, crawl budget, and structural errors."
+    },
+    {
+      "slug": "k8s-security-policies",
+      "name": "K8s Security Policies",
+      "description": "Comprehensive guide for implementing NetworkPolicy, PodSecurityPolicy, RBAC, and Pod Security Standards in Kubernetes."
+    },
+    {
+      "slug": "laravel-expert",
+      "name": "Laravel Expert",
+      "description": "Senior Laravel Engineer role for production-grade, maintainable, and idiomatic Laravel solutions. Focuses on clean architecture, security, performance, and modern standards (Laravel 10/11+)."
+    },
+    {
+      "slug": "laravel-security",
+      "name": "Laravel Security",
+      "description": "Specialized engineering patterns, best practices, and automated workflow for Laravel Security."
+    },
+    {
+      "slug": "laravel-security-audit",
+      "name": "Laravel Security Audit",
+      "description": "Security auditor for Laravel applications. Analyzes code for vulnerabilities, misconfigurations, and insecure practices using OWASP standards and Laravel security best practices."
+    },
+    {
+      "slug": "leiloeiro-edital",
+      "name": "Leiloeiro Edital",
+      "description": "Analise e auditoria de editais de leilao judicial e extrajudicial. Riscos ocultos, clausulas perigosas, debitos, ocupante e classificacao da oportunidade."
+    },
+    {
+      "slug": "linkedin-profile-optimizer",
+      "name": "Linkedin Profile Optimizer",
+      "description": "High-intent expert for LinkedIn profile checks, authority building, and SEO optimization. Invoke to audit, rewrite, and enhance profiles for top 1% positioning."
+    },
+    {
+      "slug": "linkerd-patterns",
+      "name": "Linkerd Patterns",
+      "description": "Production patterns for Linkerd service mesh - the lightweight, security-first service mesh for Kubernetes."
+    },
+    {
+      "slug": "linux-privilege-escalation",
+      "name": "Linux Privilege Escalation",
+      "description": "Execute systematic privilege escalation assessments on Linux systems to identify and exploit misconfigurations, vulnerable services, and security weaknesses that allow elevation from low-privilege user access to root-level control."
+    },
+    {
+      "slug": "linux-shell-scripting",
+      "name": "Linux Shell Scripting",
+      "description": "Provide production-ready shell script templates for common Linux system administration tasks including backups, monitoring, user management, log analysis, and automation. These scripts serve as building blocks for security operations and penetration testing environments."
+    },
+    {
+      "slug": "llm-trading-agent-security",
+      "name": "Llm Trading Agent Security",
+      "description": "Specialized engineering patterns, best practices, and automated workflow for Llm Trading Agent Security."
+    },
+    {
+      "slug": "local-legal-seo-audit",
+      "name": "Local Legal Seo Audit",
+      "description": "Audit and improve local SEO for law firms, attorneys, forensic experts and legal/professional services sites with local presence, focusing on GBP, directories, E-E-A-T and practice/location pages."
+    },
+    {
+      "slug": "logic-fix-all",
+      "name": "Logic Fix All",
+      "description": "Autonomous repository-wide audit-and-fix pipeline: health → review → locate/explain → fix → diff-verify → iterate until clean. Starts with a mandatory consent prompt (token-intensive); after consent runs hands-free. Trigger when the user wants ALL logic issues found and fixed —"
+    },
+    {
+      "slug": "logic-lens",
+      "name": "Logic Lens",
+      "description": "AI-powered Claude Code skill that performs deep code review using formal logic and reasoning frameworks to detect bugs, anti-patterns, and security risks beyond what linters catch."
+    },
+    {
+      "slug": "longbridge-market-data",
+      "name": "Longbridge Market Data",
+      "description": "Real-time quotes, K-line charts, order book, trade ticks, intraday capital flow, market sentiment temperature, trading session schedule, security lists, exchange rates, and IPO calendar for HK/US/A-share/SG via Longbridge. Also covers ADR premium and FX carry frameworks. Triggers:..."
+    },
+    {
+      "slug": "loopy",
+      "name": "Loopy",
+      "description": "Discover, find, compare, audit, repair, adapt, craft, run, debrief, and prepare repeatable AI-agent loops for publication. Use when a user asks to analyze code or coding threads for recurring work, find a published loop, interview them to turn a goal into a bounded loop, review a loop..."
+    },
+    {
+      "slug": "lore",
+      "name": "Lore",
+      "description": "Markdown project memory for AI agents. Use for decisions, architecture, conventions, monorepo scopes, `.lore/`, or `lore` commands; not native `/init`/`/compact` or generic init/compress/audit/query."
+    },
+    {
+      "slug": "lovable-cleanup",
+      "name": "Lovable Cleanup",
+      "description": "Audits and strips Lovable scaffolding from Vite + React projects — removes lovable-tagger, swaps placeholder assets, prunes unused Radix deps, and cleans generated docs so the codebase ships as yours."
+    },
+    {
+      "slug": "luna",
+      "name": "Luna",
+      "description": "Reviews code for objective correctness, security, and reliability."
+    },
+    {
+      "slug": "m365-agents-dotnet",
+      "name": "M365 Agents Dotnet",
+      "description": "Microsoft 365 Agents SDK for .NET. Build multichannel agents for Teams/M365/Copilot Studio with ASP.NET Core hosting, AgentApplication routing, and MSAL-based auth."
+    },
+    {
+      "slug": "m365-agents-py",
+      "name": "M365 Agents Py",
+      "description": "Microsoft 365 Agents SDK for Python. Build multichannel agents for Teams/M365/Copilot Studio with aiohttp hosting, AgentApplication routing, streaming responses, and MSAL-based auth."
+    },
+    {
+      "slug": "markstream-migration",
+      "name": "Markstream Migration",
+      "description": "Audit and migrate an existing Markdown renderer to Markstream while preserving custom renderers, security policy, streaming behavior, and explicit parity gaps."
+    },
+    {
+      "slug": "metasploit-framework",
+      "name": "Metasploit Framework",
+      "description": "⚠️ AUTHORIZED USE ONLY > This skill is for educational purposes or authorized security assessments only. > You must have explicit, written permission from the system owner before using this tool. > Misuse of this tool is illegal and strictly prohibited."
+    },
+    {
+      "slug": "microsoft-azure-webjobs-extensions-authentication-events-dotnet",
+      "name": "Microsoft Azure Webjobs Extensions Authentication Events Dotnet",
+      "description": "Microsoft Entra Authentication Events SDK for .NET. Azure Functions triggers for custom authentication extensions."
+    },
+    {
+      "slug": "mobile-security-coder",
+      "name": "Mobile Security Coder",
+      "description": "Expert in secure mobile coding practices specializing in input validation, WebView security, and mobile-specific security patterns."
+    },
+    {
+      "slug": "mock-hunter",
+      "name": "Mock Hunter",
+      "description": "Audit a live web page in five phases (catalog, click, trace, classify, report) to identify mock data, hardcoded values, LLM-generated metrics, and broken endpoints. Outputs a markdown report with REAL/MOCK/LLM/HARDCODED/BROKEN/UNKNOWN verdicts per visible value."
+    },
+    {
+      "slug": "neon-postgres",
+      "name": "Neon Postgres",
+      "description": "Guides and best practices for working with Neon Serverless Postgres. Covers setup, connection methods, branching, autoscaling, scale-to-zero, read replicas, connection pooling, Neon Auth, and the Neon CLI, MCP server, REST API, TypeScript SDK, and Python SDK. Use when users ask about..."
+    },
+    {
+      "slug": "nestjs-expert",
+      "name": "Nestjs Expert",
+      "description": "You are an expert in Nest.js with deep knowledge of enterprise-grade Node.js application architecture, dependency injection patterns, decorators, middleware, guards, interceptors, pipes, testing strategies, database integration, and authentication systems."
+    },
+    {
+      "slug": "network-101",
+      "name": "Network 101",
+      "description": "Configure and test common network services (HTTP, HTTPS, SNMP, SMB) for penetration testing lab environments. Enable hands-on practice with service enumeration, log analysis, and security testing against properly configured target systems."
+    },
+    {
+      "slug": "network-engineer",
+      "name": "Network Engineer",
+      "description": "Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization."
+    },
+    {
+      "slug": "nextjs-seo-indexing",
+      "name": "Nextjs Seo Indexing",
+      "description": "Fix SEO indexing issues, crawl budget problems, and Search Console coverage errors for Next.js apps. Covers canonical tags, noindex audits, sitemap health, static rendering, and internal linking."
+    },
+    {
+      "slug": "nextjs-supabase-auth",
+      "name": "Nextjs Supabase Auth",
+      "description": "Expert integration of Supabase Auth with Next.js App Router"
+    },
+    {
+      "slug": "nodejs-best-practices",
+      "name": "Nodejs Best Practices",
+      "description": "Node.js development principles and decision-making. Framework selection, async patterns, security, and architecture. Teaches thinking, not copying."
+    },
+    {
+      "slug": "odoo-security-rules",
+      "name": "Odoo Security Rules",
+      "description": "Expert in Odoo access control: ir.model.access.csv, record rules (ir.rule), groups, and multi-company security patterns."
+    },
+    {
+      "slug": "open-source-marketing",
+      "name": "Open Source Marketing",
+      "description": "When the user wants to market an open source project authentically. Trigger phrases include"
+    },
+    {
+      "slug": "openclaw-github-repo-commander",
+      "name": "Openclaw Github Repo Commander",
+      "description": "7-stage super workflow for GitHub repo audit, cleanup, PR review, and competitor analysis"
+    },
+    {
+      "slug": "pagespeed-enhancer",
+      "name": "Pagespeed Enhancer",
+      "description": "Scan, audit, and fix web performance issues across all four Lighthouse/PageSpeed Insights pillars — Performance, Accessibility, Best Practices, and SEO — in structured batches."
+    },
+    {
+      "slug": "pci-compliance",
+      "name": "Pci Compliance",
+      "description": "Master PCI DSS (Payment Card Industry Data Security Standard) compliance for secure payment processing and handling of cardholder data."
+    },
+    {
+      "slug": "pentest-checklist",
+      "name": "Pentest Checklist",
+      "description": "Provide a comprehensive checklist for planning, executing, and following up on penetration tests. Ensure thorough preparation, proper scoping, and effective remediation of discovered vulnerabilities."
+    },
+    {
+      "slug": "pentest-commands",
+      "name": "Pentest Commands",
+      "description": "Provide a comprehensive command reference for penetration testing tools including network scanning, exploitation, password cracking, and web application testing. Enable quick command lookup during security assessments."
+    },
+    {
+      "slug": "perl-security",
+      "name": "Perl Security",
+      "description": "Specialized engineering patterns, best practices, and automated workflow for Perl Security."
+    },
+    {
+      "slug": "plaid-fintech",
+      "name": "Plaid Fintech",
+      "description": "Expert patterns for Plaid API integration including Link token flows, transactions sync, identity verification, Auth for ACH, balance checks, webhook handling, and fintech compliance best practices."
+    },
+    {
+      "slug": "production-audit",
+      "name": "Production Audit",
+      "description": "Specialized engineering patterns, best practices, and automated workflow for Production Audit."
+    },
+    {
+      "slug": "production-code-audit",
+      "name": "Production Code Audit",
+      "description": "Autonomously deep-scan entire codebase line-by-line, understand architecture and patterns, then systematically transform it to production-grade, corporate-level professional quality with optimizations"
+    },
+    {
+      "slug": "project-skill-audit",
+      "name": "Project Skill Audit",
+      "description": "Audit a project and recommend the highest-value skills to add or update."
+    },
+    {
+      "slug": "protect-mcp-governance",
+      "name": "Protect Mcp Governance",
+      "description": "Agent governance skill for MCP tool calls — Cedar policy authoring, shadow-to-enforce rollout, and Ed25519 receipt verification."
+    },
+    {
+      "slug": "protocol-reverse-engineering",
+      "name": "Protocol Reverse Engineering",
+      "description": "Comprehensive techniques for capturing, analyzing, and documenting network protocols for security research, interoperability, and debugging."
+    },
+    {
+      "slug": "python-fastapi-development",
+      "name": "Python Fastapi Development",
+      "description": "Python FastAPI backend development with async patterns, SQLAlchemy, Pydantic, authentication, and production API patterns."
+    },
+    {
+      "slug": "quarkus-security",
+      "name": "Quarkus Security",
+      "description": "Specialized engineering patterns, best practices, and automated workflow for Quarkus Security."
+    },
+    {
+      "slug": "red-team-tools",
+      "name": "Red Team Tools",
+      "description": "Implement proven methodologies and tool workflows from top security researchers for effective reconnaissance, vulnerability discovery, and bug bounty hunting. Automate common tasks while maintaining thorough coverage of attack surfaces."
+    },
+    {
+      "slug": "redesign-existing-projects",
+      "name": "Redesign Existing Projects",
+      "description": "Use when upgrading existing websites or apps by auditing generic UI patterns and applying premium design fixes without rewrites."
+    },
+    {
+      "slug": "repo-maintainer",
+      "name": "Repo Maintainer",
+      "description": "Audit and repair repository hygiene across artifacts, dependencies, CI, docs, Git state, and code-quality signals. Use for repository maintenance, cleanup, health checks, or pre-release hardening."
+    },
+    {
+      "slug": "review-swarm",
+      "name": "Review Swarm",
+      "description": "Parallel read-only multi-agent review of a current git diff or explicit file scope to find behavioral regressions, security or privacy risks, performance or reliability issues, and contract or test coverage gaps. Use when the user asks for a review swarm, parallel review, diff review,..."
+    },
+    {
+      "slug": "saas-multi-tenant",
+      "name": "Saas Multi Tenant",
+      "description": "Design and implement multi-tenant SaaS architectures with row-level security, tenant-scoped queries, shared-schema isolation, and safe cross-tenant admin patterns in PostgreSQL and TypeScript."
+    },
+    {
+      "slug": "saas-mvp-launcher",
+      "name": "Saas Mvp Launcher",
+      "description": "Use when planning or building a SaaS MVP from scratch. Provides a structured roadmap covering tech stack, architecture, auth, payments, and launch checklist."
+    },
+    {
+      "slug": "sast-configuration",
+      "name": "Sast Configuration",
+      "description": "Static Application Security Testing (SAST) tool setup, configuration, and custom rule creation for comprehensive security scanning across multiple programming languages."
+    },
+    {
+      "slug": "scanning-tools",
+      "name": "Scanning Tools",
+      "description": "Master essential security scanning tools for network discovery, vulnerability assessment, web application testing, wireless security, and compliance validation. This skill covers tool selection, configuration, and practical usage across different scanning categories."
+    },
+    {
+      "slug": "security-and-hardening",
+      "name": "Security And Hardening",
+      "description": "Hardens code against vulnerabilities. Use when handling user input, authentication, data storage, or external integrations. Use when building any feature that accepts untrusted data, manages user sessions, or interacts with third-party services."
+    },
+    {
+      "slug": "security-audit",
+      "name": "Security Audit",
+      "description": "Comprehensive security auditing workflow covering web application testing, API security, penetration testing, vulnerability scanning, and security hardening."
+    },
+    {
+      "slug": "security-auditor",
+      "name": "Security Auditor",
+      "description": "Instructs the agent to scan code for common vulnerabilities (OWASP Top 10) before committing."
+    },
+    {
+      "slug": "security-bluebook-builder",
+      "name": "Security Bluebook Builder",
+      "description": "Build a minimal but real security policy for sensitive apps. The output is a single, coherent Blue Book document using MUST/SHOULD/CAN language, with explicit assumptions, scope, and security gates."
+    },
+    {
+      "slug": "security-bounty-hunter",
+      "name": "Security Bounty Hunter",
+      "description": "Specialized engineering patterns, best practices, and automated workflow for Security Bounty Hunter."
+    },
+    {
+      "slug": "security-checklist",
+      "name": "Security Checklist",
+      "description": "Reference document for monopoly security-checklist."
+    },
+    {
+      "slug": "security-compliance-compliance-check",
+      "name": "Security Compliance Compliance Check",
+      "description": "You are a compliance expert specializing in regulatory requirements for software systems including GDPR, HIPAA, SOC2, PCI-DSS, and other industry standards. Perform comprehensive compliance audits and provide implementation guidance for achieving and maintaining compliance."
+    },
+    {
+      "slug": "security-requirement-extraction",
+      "name": "Security Requirement Extraction",
+      "description": "Derive security requirements from threat models and business context. Use when translating threats into actionable requirements, creating security user stories, or building security test cases."
+    },
+    {
+      "slug": "security-review",
+      "name": "Security Review",
+      "description": "Specialized engineering patterns, best practices, and automated workflow for Security Review."
+    },
+    {
+      "slug": "security-scan",
+      "name": "Security Scan",
+      "description": "AgentShield security audit: scan for prompt injections, secret leaks, vulnerable dependencies, and insecure MCP configs."
+    },
+    {
+      "slug": "security-scanning-security-dependencies",
+      "name": "Security Scanning Security Dependencies",
+      "description": "You are a security expert specializing in dependency vulnerability analysis, SBOM generation, and supply chain security. Scan project dependencies across multiple ecosystems to identify vulnerabilities, assess risks, and provide automated remediation strategies."
+    },
+    {
+      "slug": "security-scanning-security-hardening",
+      "name": "Security Scanning Security Hardening",
+      "description": "Coordinate multi-layer security scanning and hardening across application, infrastructure, and compliance controls."
+    },
+    {
+      "slug": "security-scanning-security-sast",
+      "name": "Security Scanning Security Sast",
+      "description": "Static Application Security Testing (SAST) for code vulnerability"
+    },
+    {
+      "slug": "security-vulnerability-scanner",
+      "name": "Security Vulnerability Scanner",
+      "description": "Configures the LLM to act as a strict AppSec auditor checking against OWASP Top 10."
+    },
+    {
+      "slug": "semgrep-rule-creator",
+      "name": "Semgrep Rule Creator",
+      "description": "Creates custom Semgrep rules for detecting security vulnerabilities, bug patterns, and code patterns. Use when writing Semgrep rules or building custom static analysis detections."
+    },
+    {
+      "slug": "seo-aeo-content-cluster",
+      "name": "Seo Aeo Content Cluster",
+      "description": "Builds a topical authority map with a pillar page, prioritised cluster articles, content types, internal link map, and content gap analysis. Activate when the user wants to build a content cluster, topic map, or content strategy."
+    },
+    {
+      "slug": "seo-aeo-content-quality-auditor",
+      "name": "Seo Aeo Content Quality Auditor",
+      "description": "Audits content for SEO and AEO performance with scored reports, severity-ranked fix lists, and projected scores after fixes. Activate when the user wants to audit, review, or score content for SEO or AEO compliance."
+    },
+    {
+      "slug": "seo-audit",
+      "name": "Seo Audit",
+      "description": "Diagnose and audit SEO issues affecting crawlability, indexation, rankings, and organic performance."
+    },
+    {
+      "slug": "seo-authority-builder",
+      "name": "Seo Authority Builder",
+      "description": "Analyzes content for E-E-A-T signals and suggests improvements to"
+    },
+    {
+      "slug": "seo-content-auditor",
+      "name": "Seo Content Auditor",
+      "description": "Analyzes provided content for quality, E-E-A-T signals, and SEO best practices. Scores content and provides improvement recommendations based on established guidelines."
+    },
+    {
+      "slug": "seo-hreflang",
+      "name": "Seo Hreflang",
+      "description": "Hreflang and international SEO audit, validation, and generation. Detects common mistakes, validates language/region codes, and generates correct hreflang implementations. Use when user says"
+    },
+    {
+      "slug": "seo-programmatic",
+      "name": "Seo Programmatic",
+      "description": "Plan and audit programmatic SEO pages generated at scale from structured data. Use when designing templates, URL systems, internal linking, quality gates, and index-bloat safeguards for pages at scale."
+    },
+    {
+      "slug": "seo-technical",
+      "name": "Seo Technical",
+      "description": "Audit technical SEO across crawlability, indexability, security, URLs, mobile, Core Web Vitals, structured data, JavaScript rendering, and related platform signals like robots.txt and AI crawler access."
+    },
+    {
+      "slug": "service-mesh-expert",
+      "name": "Service Mesh Expert",
+      "description": "Expert service mesh architect specializing in Istio, Linkerd, and cloud-native networking patterns. Masters traffic management, security policies, observability integration, and multi-cluster mesh con"
+    },
+    {
+      "slug": "site-architecture",
+      "name": "Site Architecture",
+      "description": "Plan or restructure website hierarchy, navigation, URL patterns, breadcrumbs, and internal linking. Use when mapping pages, sections, and site structure, but not for XML sitemap auditing or schema markup."
+    },
+    {
+      "slug": "skill-audit",
+      "name": "Skill Audit",
+      "description": "Pre-install security scanner for AI agent skills. 7.5% of 14,706 skills are malicious. Audit before you trust."
+    },
+    {
+      "slug": "skill-scanner",
+      "name": "Skill Scanner",
+      "description": "Scan agent skills for security issues before adoption. Detects prompt injection, malicious code, excessive permissions, secret exposure, and supply chain risks."
+    },
+    {
+      "slug": "skill-sentinel",
+      "name": "Skill Sentinel",
+      "description": "Auditoria e evolucao do ecossistema de skills. Qualidade de codigo, seguranca, custos, gaps, duplicacoes, dependencias e relatorios de saude."
+    },
+    {
+      "slug": "slack-bot-builder",
+      "name": "Slack Bot Builder",
+      "description": "Build Slack apps using the Bolt framework across Python, JavaScript, and Java. Covers Block Kit for rich UIs, interactive components, slash commands, event handling, OAuth installation flows, and Workflow Builder integration."
+    },
+    {
+      "slug": "smtp-penetration-testing",
+      "name": "Smtp Penetration Testing",
+      "description": "Conduct comprehensive security assessments of SMTP (Simple Mail Transfer Protocol) servers to identify vulnerabilities including open relays, user enumeration, weak authentication, and misconfiguration."
+    },
+    {
+      "slug": "snowflake-development",
+      "name": "Snowflake Development",
+      "description": "Comprehensive Snowflake development assistant covering SQL best practices, data pipeline design (Dynamic Tables, Streams, Tasks, Snowpipe), Cortex AI functions, Cortex Agents, Snowpark Python, dbt integration, performance tuning, and security hardening."
+    },
+    {
+      "slug": "solidity-security",
+      "name": "Solidity Security",
+      "description": "Master smart contract security best practices, vulnerability prevention, and secure Solidity development patterns."
+    },
+    {
+      "slug": "solidity-security-audit",
+      "name": "Solidity Smart Contract Security & Audit Specialist",
+      "description": "Smart contract development, reentrancy guards, ERC standards (ERC-20, ERC-721, ERC-1155), Foundry testing, and Slither static analysis."
+    },
+    {
+      "slug": "solidity-smart-contract-auditor",
+      "name": "Solidity Smart Contract Auditor",
+      "description": "Instructs the agent to prioritize gas optimization and common exploit prevention in EVM contracts."
+    },
+    {
+      "slug": "source-driven-development",
+      "name": "Source Driven Development",
+      "description": "Grounds every implementation decision in official documentation. Use when you want authoritative, source-cited code free from outdated patterns. Use when building with any framework or library where correctness matters."
+    },
+    {
+      "slug": "spec-to-code-compliance",
+      "name": "Spec To Code Compliance",
+      "description": "Verifies code implements exactly what documentation specifies for blockchain audits. Use when comparing code against whitepapers, finding gaps between specs and implementation, or performing compliance checks for protocol implementations."
+    },
+    {
+      "slug": "springboot-security",
+      "name": "Springboot Security",
+      "description": "Specialized engineering patterns, best practices, and automated workflow for Springboot Security."
+    },
+    {
+      "slug": "sql-injection-testing",
+      "name": "Sql Injection Testing",
+      "description": "Execute comprehensive SQL injection vulnerability assessments on web applications to identify database security flaws, demonstrate exploitation techniques, and validate input sanitization mechanisms."
+    },
+    {
+      "slug": "sql-sentinel",
+      "name": "Sql Sentinel",
+      "description": "Audit SQL for the cost & performance anti-patterns that burn warehouse credits. Scores warehouse health 0-100 and outputs a prioritized cost-reduction plan for BigQuery, Snowflake, Redshift, and Postgres."
+    },
+    {
+      "slug": "sqlmap-database-pentesting",
+      "name": "Sqlmap Database Pentesting",
+      "description": "Provide systematic methodologies for automated SQL injection detection and exploitation using SQLMap."
+    },
+    {
+      "slug": "ssh-penetration-testing",
+      "name": "Ssh Penetration Testing",
+      "description": "Conduct comprehensive SSH security assessments including enumeration, credential attacks, vulnerability exploitation, tunneling techniques, and post-exploitation activities. This skill covers the complete methodology for testing SSH service security."
+    },
+    {
+      "slug": "stride-analysis-patterns",
+      "name": "Stride Analysis Patterns",
+      "description": "Apply STRIDE methodology to systematically identify threats. Use when analyzing system security, conducting threat modeling sessions, or creating security documentation."
+    },
+    {
+      "slug": "supabase",
+      "name": "Supabase",
+      "description": "Use when doing ANY task involving Supabase. Triggers: Supabase products (Database, Auth, Edge Functions, Realtime, Storage, Vectors, Cron, Queues); client libraries and SSR integrations (supabase-js, @supabase/ssr) in Next.js, React, SvelteKit, Astro, Remix; auth issues (login, logout,..."
+    },
+    {
+      "slug": "supply-chain-risk-auditor",
+      "name": "Supply Chain Risk Auditor",
+      "description": "Identifies dependencies at heightened risk of exploitation or takeover. Use when assessing supply chain attack surface, evaluating dependency health, or scoping security engagements."
+    },
+    {
+      "slug": "swiftui-performance-audit",
+      "name": "Swiftui Performance Audit",
+      "description": "Audit SwiftUI performance issues from code review and profiling evidence."
+    },
+    {
+      "slug": "synthwave",
+      "name": "Synthwave",
+      "description": "Web and App implementation guide for Synthwave. Trigger when user wants 80s-inspired neon, dark backgrounds, outrun grids, and Miami Vice aesthetics."
+    },
+    {
+      "slug": "telegram-mini-app",
+      "name": "Telegram Mini App",
+      "description": "Expert in building Telegram Mini Apps (TWA) - web apps that run inside Telegram with native-like experience. Covers the TON ecosystem, Telegram Web App API, payments, user authentication, and building viral mini apps that monetize."
+    },
+    {
+      "slug": "threat-mitigation-mapping",
+      "name": "Threat Mitigation Mapping",
+      "description": "Map identified threats to appropriate security controls and mitigations. Use when prioritizing security investments, creating remediation plans, or validating control effectiveness."
+    },
+    {
+      "slug": "threat-modeling-expert",
+      "name": "Threat Modeling Expert",
+      "description": "Expert in threat modeling methodologies, security architecture review, and risk assessment. Masters STRIDE, PASTA, attack trees, and security requirement extraction. Use PROACTIVELY for security architecture reviews, threat identification, or building secure-by-design systems."
+    },
+    {
+      "slug": "top-web-vulnerabilities",
+      "name": "Top Web Vulnerabilities",
+      "description": "Provide a comprehensive, structured reference for the 100 most critical web application vulnerabilities organized by category. This skill enables systematic vulnerability identification, impact assessment, and remediation guidance across the full spectrum of web security threats."
+    },
+    {
+      "slug": "tree-ring-memory",
+      "name": "Tree Ring Memory",
+      "description": "Use Tree Ring Memory for local-first AI-agent memory lifecycle work: recall, evidence, audit, forgetting, and consolidation without transcript dumping."
+    },
+    {
+      "slug": "twilio-communications",
+      "name": "Twilio Communications",
+      "description": "Build communication features with Twilio: SMS messaging, voice calls, WhatsApp Business API, and user verification (2FA). Covers the full spectrum from simple notifications to complex IVR systems and multi-channel authentication."
+    },
+    {
+      "slug": "ui-a11y",
+      "name": "Ui A11y",
+      "description": "Audit a component or page for accessibility issues and fix them"
+    },
+    {
+      "slug": "unified-ai-gateway",
+      "name": "Unified Ai Gateway",
+      "description": "Operate and evaluate Unified AI System through nine governed MCP tools, including provider-free prompt enhancement, while preserving fake-provider, authorization, and evidence boundaries."
+    },
+    {
+      "slug": "ux-audit",
+      "name": "Ux Audit",
+      "description": "Audit screens for UX issues using Nielsen"
+    },
+    {
+      "slug": "variant-analysis",
+      "name": "Variant Analysis",
+      "description": "Find similar vulnerabilities and bugs across codebases using pattern-based analysis. Use when hunting bug variants, building CodeQL/Semgrep queries, analyzing security vulnerabilities, or performing systematic code audits after finding an initial issue."
+    },
+    {
+      "slug": "vercel-cli-with-tokens",
+      "name": "cli-with-tokens",
+      "description": "Deploy and manage projects on Vercel using token-based authentication. Use when working with Vercel CLI using access tokens rather than interactive login — e.g."
+    },
+    {
+      "slug": "vibe-code-auditor",
+      "name": "Vibe Code Auditor",
+      "description": "Audit rapidly generated or AI-produced code for structural flaws, fragility, and production risks."
+    },
+    {
+      "slug": "vibecode-production-qa-validator",
+      "name": "Vibecode Production Qa Validator",
+      "description": "13-phase production QA for fullstack Next.js apps: build verification, SEO tags, OG images, favicon, route regression, API auth, page speed, lazy load, vulnerability scan, UI/UX cards, error boundaries, database, secure rendering, and cleanup."
+    },
+    {
+      "slug": "vibers-code-review",
+      "name": "Vibers Code Review",
+      "description": "Human review workflow for AI-generated GitHub projects with spec-based feedback, security review, and follow-up PRs from the Vibers service."
+    },
+    {
+      "slug": "vps-server-management",
+      "name": "Vps Server Management",
+      "description": "Manage authorized VPS hosts and server-side agents through cautious SSH and operations workflows."
+    },
+    {
+      "slug": "vulnerability-scanner",
+      "name": "Vulnerability Scanner",
+      "description": "Advanced vulnerability analysis principles. OWASP 2025, Supply Chain Security, attack surface mapping, risk prioritization."
+    },
+    {
+      "slug": "vulnerability-scanning",
+      "name": "Vulnerability Scanning",
+      "description": "Automated vulnerability detection with Semgrep, Snyk, Trivy, and npm audit integrated into CI pipelines."
+    },
+    {
+      "slug": "wcag-audit-patterns",
+      "name": "Wcag Audit Patterns",
+      "description": "Comprehensive guide to auditing web content against WCAG 2.2 guidelines with actionable remediation strategies."
+    },
+    {
+      "slug": "web-security-testing",
+      "name": "Web Security Testing",
+      "description": "Web application security testing workflow for OWASP Top 10 vulnerabilities including injection, XSS, authentication flaws, and access control issues."
+    },
+    {
+      "slug": "wireshark-analysis",
+      "name": "Wireshark Analysis",
+      "description": "Execute comprehensive network traffic analysis using Wireshark to capture, filter, and examine network packets for security investigations, performance optimization, and troubleshooting."
+    },
+    {
+      "slug": "wjttc-tester",
+      "name": "Wjttc Tester",
+      "description": "F1-inspired test EXECUTOR + reporter. Runs a test plan, finds and reproduces bugs, audits suite signal integrity, then files a WJTTC report (Brake/Engine/Aero/Tyre/Pit) with a tier verdict. Use when you need to test code, validate functionality, reproduce a failure, or produce a test..."
+    },
+    {
+      "slug": "wordpress",
+      "name": "Wordpress",
+      "description": "Complete WordPress development workflow covering theme development, plugin creation, WooCommerce integration, performance optimization, and security hardening. Includes WordPress 7.0 features: Real-Time Collaboration, AI Connectors, Abilities API, DataViews, and PHP-only blocks."
+    },
+    {
+      "slug": "wordpress-plugin-development",
+      "name": "Wordpress Plugin Development",
+      "description": "WordPress plugin development workflow covering plugin architecture, hooks, admin interfaces, REST API, security best practices, and WordPress 7.0 features: Real-Time Collaboration, AI Connectors, Abilities API, DataViews, and PHP-only blocks."
+    },
+    {
+      "slug": "workspace-surface-audit",
+      "name": "Workspace Surface Audit",
+      "description": "Specialized engineering patterns, best practices, and automated workflow for Workspace Surface Audit."
+    },
+    {
+      "slug": "wp-guard",
+      "name": "Wp Guard",
+      "description": "Review generated or changed WordPress plugins, themes, and blocks for security, internationalization, performance, and API correctness."
+    },
+    {
+      "slug": "wp-site-health-auditor",
+      "name": "Wp Site Health Auditor",
+      "description": "Turns a WordPress Site Health report into a risk-tiered, backup-first fix plan with exact WP-CLI/PHP snippets. Use for site health, recommended improvements, or critical issue reports."
+    },
+    {
+      "slug": "x-api",
+      "name": "X API Integration",
+      "description": "Twitter/X API v2 integration: OAuth 2.0 PKCE, programmatic posting, media uploads, and rate limit management."
+    },
+    {
+      "slug": "xss-html-injection",
+      "name": "Xss Html Injection",
+      "description": "Execute comprehensive client-side injection vulnerability assessments on web applications to identify XSS and HTML injection flaws, demonstrate exploitation techniques for session hijacking and credential theft, and validate input sanitization and output encoding mechanisms."
+    },
+    {
+      "slug": "youtube-seo-optimizer",
+      "name": "Youtube Seo Optimizer",
+      "description": "Generate complete YouTube & podcast SEO packages with live-researched keywords — titles, descriptions, tags, hashtags, chapters, and audit fixes. Use for new or underperforming content."
+    },
+    {
+      "slug": "zero-trust-security",
+      "name": "Zero Trust Security",
+      "description": "Zero Trust architecture: mTLS service-to-service authentication, least-privilege IAM, and continuous session verification."
+    },
+    {
+      "slug": "zeroize-audit",
+      "name": "Zeroize Audit",
+      "description": "Detects missing zeroization of sensitive data in source code and identifies zeroization removed by compiler optimizations, with assembly-level analysis, and control-flow verification. Use for auditing C/C++/Rust code handling secrets, keys, passwords, or other sensitive data."
+    }
+  ]
+}

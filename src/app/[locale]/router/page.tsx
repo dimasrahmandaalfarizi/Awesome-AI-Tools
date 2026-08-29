@@ -7,9 +7,12 @@ import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Card } from "@/components/ui/Card"
 import { Badge } from "@/components/ui/Badge"
-import { Copy, Server, Key, Save, CheckCircle, Cpu, Zap, Globe, Sparkles, Terminal, Laptop } from "lucide-react"
+import { Copy, Server, Key, Save, CheckCircle, Cpu, Zap, Globe, Sparkles, Terminal, Laptop, FileCode2 } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { AIProvider } from "@/lib/proxy/config"
+import { WorkflowGraphVisualizer } from "@/components/features/WorkflowGraphVisualizer"
+import { TokenEfficiencyTelemetry } from "@/components/features/TokenEfficiencyTelemetry"
+import { IdeConfigExportModal } from "@/components/features/IdeConfigExportModal"
 
 interface ProviderMeta {
   id: AIProvider
@@ -87,6 +90,7 @@ export default function RouterDashboard() {
   const [isSaving, setIsSaving] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
   const [saveStatus, setSaveStatus] = useState<"idle" | "success" | "error">("idle")
+  const [ideModalOpen, setIdeModalOpen] = useState(false)
 
   useEffect(() => {
     fetch("/api/router/config")
@@ -302,13 +306,34 @@ export default function RouterDashboard() {
                     <span className="font-semibold text-[var(--foreground)] block">{t("proTipTitle")}</span>
                     <span>{t("proTipDesc")}</span>
                   </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setIdeModalOpen(true)}
+                    className="w-full mt-3 py-2 px-3 rounded-lg bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--foreground)]/90 text-xs font-mono font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                  >
+                    <FileCode2 className="w-3.5 h-3.5" />
+                    <span>1-Click IDE Config (.cursorrules)</span>
+                  </button>
                 </div>
               </Card>
             </div>
 
           </div>
+
+          {/* Real-time Token Efficiency & FinOps Telemetry */}
+          <div className="mt-8">
+            <TokenEfficiencyTelemetry messageCount={12} estimatedTokens={3480} isStreaming={false} />
+          </div>
+
+          {/* Visual Multi-Agent Swarm Workflow Graph */}
+          <div className="mt-8">
+            <WorkflowGraphVisualizer />
+          </div>
         </section>
       </main>
+
+      <IdeConfigExportModal isOpen={ideModalOpen} onClose={() => setIdeModalOpen(false)} />
       <Footer />
     </>
   )

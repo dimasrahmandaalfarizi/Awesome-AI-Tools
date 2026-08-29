@@ -313,4 +313,46 @@ Memory & rules are stored in \`instincts.md\`. Add new rules via \`npx awesome-a
     console.log(`\n[+] \x1b[32mSetup Complete!\x1b[0m Total ${totalGenerated} configuration files generated.\n`);
   });
 
+program
+  .command("pull [category]")
+  .description("Selectively pull domain skills bundle (security, frontend, backend, architecture, devops, all)")
+  .action((category = "all") => {
+    const cwd = process.cwd();
+    const cat = category.toLowerCase();
+    const bundlePath = path.join(__dirname, "..", "public", "data", "skills", `${cat}.json`);
+    const fallbackPath = path.resolve("public", "data", "skills", `${cat}.json`);
+
+    const bundleFile = fs.existsSync(bundlePath) ? bundlePath : (fs.existsSync(fallbackPath) ? fallbackPath : null);
+
+    if (!bundleFile) {
+      console.log(`\x1b[31m[!] Unknown category: '${category}'. Available categories:\x1b[0m`);
+      console.log("  - security (349 skills)");
+      console.log("  - frontend (882 skills)");
+      console.log("  - backend (625 skills)");
+      console.log("  - architecture (857 skills)");
+      console.log("  - devops (933 skills)");
+      console.log("  - all (2,582 skills)");
+      return;
+    }
+
+    const data = JSON.parse(fs.readFileSync(bundleFile, "utf8"));
+    console.log(`\n[*] Pulling \x1b[36m${data.skills.length} skills\x1b[0m in category: \x1b[1m${cat}\x1b[0m...`);
+
+    const skillsDir = path.join(cwd, ".agents", "skills");
+    if (!fs.existsSync(skillsDir)) fs.mkdirSync(skillsDir, { recursive: true });
+
+    let count = 0;
+    data.skills.forEach((s: any) => {
+      const dir = path.join(skillsDir, s.slug);
+      if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+      const mdPath = path.join(dir, "SKILL.md");
+      if (!fs.existsSync(mdPath)) {
+        fs.writeFileSync(mdPath, `---\nname: ${s.name}\ndescription: ${s.description}\n---\n\n# ${s.name}\n\n${s.description}\n`, "utf8");
+        count++;
+      }
+    });
+
+    console.log(`\x1b[32m[+] Successfully synchronized ${data.skills.length} skills (${count} newly extracted) into .agents/skills/\x1b[0m\n`);
+  });
+
 program.parse();
