@@ -36,7 +36,7 @@ export default async function CategoriesPage({ params }: { params: Promise<{ loc
                   <Card className="flex flex-col h-full hover:border-[var(--primary)] hover:shadow-lg transition-all group bg-[var(--surface)] border-[var(--border)]">
                     <CardHeader>
                       <div className="flex justify-between items-start mb-2">
-                        <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-colors">
+                        <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-colors tracking-tight">
                           {category.name}
                         </CardTitle>
                         <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[var(--background)] border border-[var(--border)] text-[var(--muted)]">

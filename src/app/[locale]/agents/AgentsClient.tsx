@@ -261,7 +261,7 @@ ${agent.systemPrompt}
       {filteredAgents.length === 0 ? (
         <div className="text-center py-16 bg-[var(--surface)] rounded-2xl border border-[var(--border)]">
           <Bot className="w-12 h-12 text-[var(--muted)] mx-auto mb-3 opacity-40" />
-          <h3 className="text-lg font-bold text-[var(--foreground)]">{isId ? "Tidak ada subagen yang cocok" : "No AI agents found"}</h3>
+          <h3 className="text-lg font-bold text-[var(--foreground)] tracking-tight">{isId ? "Tidak ada subagen yang cocok" : "No AI agents found"}</h3>
           <p className="text-sm text-[var(--muted)] mt-1">{isId ? "Coba ubah kata kunci pencarian atau kategori filter." : "Try adjusting your search query or cluster filter."}</p>
         </div>
       ) : (
@@ -278,7 +278,7 @@ ${agent.systemPrompt}
                       <Bot className="w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="text-base font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors">
+                      <h3 className="text-base font-bold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors tracking-tight">
                         <Link href={`/agents/${agent.slug}`}>{agent.name}</Link>
                       </h3>
                       <p className="text-xs font-medium text-[var(--muted)]">{agent.role}</p>

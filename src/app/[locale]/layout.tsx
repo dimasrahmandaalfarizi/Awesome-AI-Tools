@@ -10,9 +10,53 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://awesome-ai-tools.dev";
+
 export const metadata: Metadata = {
-  title: "Awesome AI Dev Tools",
-  description: "The largest curated collection of AI tools, frameworks, MCP servers, agents, prompts, and resources for developers.",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Awesome AI Tools — 2,582 Skills & 68 Subagents Suite",
+    template: "%s | Awesome AI Tools",
+  },
+  description: "The premier open-source suite of 2,582 AI Skills, 68 Specialist Subagents, and Multi-Agent Workflows for Claude Code, Cursor, and Google Antigravity.",
+  keywords: [
+    "AI skills",
+    "subagents",
+    "Claude Code skills",
+    "Cursor rules",
+    "Google Antigravity",
+    "multi-agent workflows",
+    "AI developer tools",
+    "TDD cycle",
+    "AgentShield",
+  ],
+  authors: [{ name: "Dimas Rahmanda Alfarizi" }],
+  creator: "Dimas Rahmanda Alfarizi",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    alternateLocale: "id_ID",
+    url: BASE_URL,
+    title: "Awesome AI Tools — 2,582 Skills & 68 Subagents Suite",
+    description: "The premier open-source suite of 2,582 AI Skills, 68 Specialist Subagents, and Multi-Agent Workflows.",
+    siteName: "Awesome AI Tools",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Awesome AI Tools — 2,582 Skills & 68 Subagents Suite",
+    description: "The premier open-source suite of 2,582 AI Skills, 68 Specialist Subagents, and Multi-Agent Workflows.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: BASE_URL,
+    languages: {
+      en: "/en",
+      id: "/id",
+    },
+  },
 };
 
 export function generateStaticParams() {

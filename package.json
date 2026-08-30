@@ -1,27 +1,61 @@
 {
   "name": "awesome-ai-tools",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "The premier open-source suite of 2,582 AI Skills, 68 Specialist Subagents, and Multi-Agent Workflows for Claude Code, Cursor, Windsurf, and Google Antigravity.",
   "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "dist/lib/index.js",
+  "module": "dist/lib/index.mjs",
+  "types": "dist/lib/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "types": "./dist/lib/index.d.ts",
+      "import": "./dist/lib/index.mjs",
+      "require": "./dist/lib/index.js"
     }
   },
   "bin": {
     "awesome-ai-tools": "./dist/cli/index.js"
   },
   "files": [
-    "dist"
+    "dist/cli/index.js",
+    "dist/lib/index.js",
+    "dist/lib/index.mjs",
+    "dist/lib/index.d.ts",
+    "dist/lib/index.d.mts",
+    "README.md",
+    "LICENSE"
   ],
+  "keywords": [
+    "ai",
+    "ai-tools",
+    "ai-skills",
+    "claude",
+    "cursor",
+    "windsurf",
+    "subagents",
+    "agents",
+    "cli",
+    "copilot",
+    "llm",
+    "workflow",
+    "tdd",
+    "code-review"
+  ],
+  "author": "Dimas Rahmat Daalfarizi",
+  "license": "MIT",
+  "homepage": "https://awesome-ai-tools.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dimasrahmandaalfarizi/Awesome-AI-Tools"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "build:lib": "tsup",
+    "cli": "node dist/cli/index.js",
     "start": "next start",
     "lint": "eslint"
   },

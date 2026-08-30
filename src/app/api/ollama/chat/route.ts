@@ -1,51 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
-import { TOOLS, CATEGORIES, AI_SKILLS } from "@/data/mock"
-import { checkRateLimit } from "@/lib/security"
-
-/**
- * Intelligent context search to find relevant tools and skills based on user input
- */
-function retrieveRelevantContext(queryText: string) {
-  const query = queryText.toLowerCase()
-  const words = query.split(/\s+/).filter(w => w.length > 2)
-
-  // 1. Search matching tools
-  const scoredTools = TOOLS.map(tool => {
-    let score = 0
-    const nameLower = tool.name.toLowerCase()
-    const descLower = tool.description.toLowerCase()
-    const tagsLower = tool.tags.map(t => t.toLowerCase()).join(" ")
-
-    if (query.includes(nameLower)) score += 10
-    if (words.some(w => nameLower.includes(w))) score += 5
-    if (words.some(w => descLower.includes(w))) score += 3
-    if (words.some(w => tagsLower.includes(w))) score += 2
-
-    return { tool, score }
-  })
-  .filter(item => item.score > 0)
-  .sort((a, b) => b.score - a.score)
-  .slice(0, 6)
-  .map(item => item.tool)
-
-  // 2. Search matching agent skills
-  const scoredSkills = AI_SKILLS.map(skill => {
-    let score = 0
-    const nameLower = skill.name.toLowerCase()
-    const descLower = skill.description.toLowerCase()
-
-    if (words.some(w => nameLower.includes(w))) score += 5
-    if (words.some(w => descLower.includes(w))) score += 3
-
-    return { skill, score }
-  })
-  .filter(item => item.score > 0)
-  .sort((a, b) => b.score - a.score)
-  .slice(0, 4)
-  .map(item => item.skill)
-
-  return { tools: scoredTools, skills: scoredSkills }
-}
+import { checkRateLimit, sanitizeSearchQuery } from "@/lib/security"
+import { retrieveEnrichedContext } from "@/lib/ai/copilotContext"
 
 export async function POST(req: NextRequest) {
   // Rate Limiting Protection (120 req/min for local chat)
@@ -87,34 +42,14 @@ export async function POST(req: NextRequest) {
 
     // Extract user conversation query to retrieve relevant contextual knowledge
     const lastUserMessage = [...messages].reverse().find(m => m.role === "user")?.content || ""
-    const { tools: relevantTools, skills: relevantSkills } = retrieveRelevantContext(lastUserMessage)
-
-    // Build dynamic knowledge snippet
-    let dynamicKnowledge = ""
-    if (relevantTools.length > 0) {
-      dynamicKnowledge += "\n\nRELEVAN DARI KATALOG WEBSITE (Gunakan data ini jika user bertanya seputar tools terkait):\n"
-      relevantTools.forEach(t => {
-        const cat = CATEGORIES.find(c => c.id === t.categoryId)?.name || "General"
-        dynamicKnowledge += `- ${t.name} (Kategori: ${cat} | Harga: ${t.pricing} | Open-Source: ${t.isOpenSource ? "Ya" : "Tidak"} | Website: ${t.website})\n  Deskripsi: ${t.description}\n  Tags: ${t.tags.join(", ")}\n`
-        if (t.problem) dynamicKnowledge += `  Problem: ${t.problem}\n`
-        if (t.solution) dynamicKnowledge += `  Solution: ${t.solution}\n`
-        if (t.keyFeatures && t.keyFeatures.length > 0) dynamicKnowledge += `  Features: ${t.keyFeatures.join(", ")}\n`
-      })
-    }
-
-    if (relevantSkills.length > 0) {
-      dynamicKnowledge += "\nRELEVAN DARI AGENT SKILLS / PROMPTS:\n"
-      relevantSkills.forEach(s => {
-        dynamicKnowledge += `- ${s.name} (${s.frameworks.join(", ")}): ${s.description}\n`
-      })
-    }
+    const enriched = retrieveEnrichedContext(lastUserMessage, "general")
 
     // Web Search injection
     let webSearchContext = ""
     if (webSearch && lastUserMessage) {
       try {
         const searchUrl = new URL("/api/search", req.url)
-        searchUrl.searchParams.set("q", lastUserMessage)
+        searchUrl.searchParams.set("q", sanitizeSearchQuery(lastUserMessage, 200))
         const searchRes = await fetch(searchUrl.toString(), { signal: AbortSignal.timeout(5000) })
         if (searchRes.ok) {
           const searchData = await searchRes.json()
@@ -146,9 +81,8 @@ COGNITIVE & BEHAVIORAL PRINCIPLES:
    - When writing code: write production-ready, clean, well-commented code in the requested programming language or framework (TypeScript, React, Next.js, Python, Rust, Go, SQL, etc.).
    - When answering general or complex questions: think step-by-step, explain the reasoning clearly, and provide actionable takeaways.
 
-3. CATALOG & DOMAIN AWARENESS:
-   - You have native knowledge of the Awesome AI Tools directory (IDEs, coding assistants, LLMs, MCP servers, agent frameworks, prompts, Ollama setup, API proxy router).
-   - Whenever asked for tool recommendations or comparisons, provide authoritative, objective, and well-justified comparisons.${dynamicKnowledge}${webSearchContext}
+3. REPOSITORY & ECOSYSTEM GROUNDING (Verified Live Data):
+${enriched.contextPromptSnippet}${webSearchContext}
 
 4. LANGUAGE & TONE:
    - Naturally reply in the exact language used by the user (Bahasa Indonesia or English).

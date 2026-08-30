@@ -72,6 +72,17 @@ interface AiAgent {
     author?: string;
     createdAt: string;
 }
+interface PublicApi {
+    id: string;
+    name: string;
+    slug: string;
+    description: string;
+    auth: string;
+    https: boolean;
+    cors: "yes" | "no" | "unknown";
+    link: string;
+    category: string;
+}
 
 declare const AI_AGENTS: AiAgent[];
 
@@ -80,6 +91,14 @@ declare const TAGS: Tag[];
 declare const TOOLS: Tool[];
 declare const COLLECTIONS: Collection[];
 declare const AI_SKILLS: AiSkill[];
+
+interface PublicApiCategory {
+    name: string;
+    slug: string;
+    count: number;
+}
+declare const PUBLIC_API_CATEGORIES: PublicApiCategory[];
+declare const PUBLIC_APIS: PublicApi[];
 
 interface CompositeWorkflow {
     name: string;
@@ -128,6 +147,23 @@ interface ScanReport {
 }
 declare function scanWorkspace(targetDir?: string): ScanReport;
 
+interface EnrichedContext {
+    matchedTools: Tool[];
+    matchedSkills: AiSkill[];
+    matchedAgents: AiAgent[];
+    matchedApis: PublicApi[];
+    matchedWorkflows: CompositeWorkflow[];
+    cliCommands: string[];
+    detectedIntents: string[];
+    contextPromptSnippet: string;
+}
+declare const SYSTEM_PERSONAS: Record<string, string>;
+declare function retrieveEnrichedContext(queryText: string, persona?: string): EnrichedContext;
+declare function generateDeepContextualAnswer(query: string, persona: string): string;
+
+declare function getAllPublicApis(): PublicApi[];
+declare function getPublicApiBySlug(slug: string): PublicApi | undefined;
+declare function getAllPublicApiCategories(): PublicApiCategory[];
 declare function getAllAgents(): AiAgent[];
 declare function getAgentBySlug(slug: string): AiAgent | undefined;
 declare function getAllSkills(): AiSkill[];
@@ -136,4 +172,4 @@ declare function getAllTools(): Tool[];
 declare function getToolBySlug(slug: string): Tool | undefined;
 declare function getAllCategories(): Category[];
 
-export { AI_AGENTS, AI_SKILLS, type AiAgent, type AiSkill, CATEGORIES, COLLECTIONS, COMPOSITE_WORKFLOWS, type Category, type Collection, HOOK_SCRIPTS, INSTINCTS_TEMPLATE, TAGS, TOOLS, type Tag, type Tool, getAgentBySlug, getAllAgents, getAllCategories, getAllSkills, getAllTools, getSkillBySlug, getToolBySlug, scanWorkspace };
+export { AI_AGENTS, AI_SKILLS, type AiAgent, type AiSkill, CATEGORIES, COLLECTIONS, COMPOSITE_WORKFLOWS, type Category, type Collection, HOOK_SCRIPTS, INSTINCTS_TEMPLATE, PUBLIC_APIS, PUBLIC_API_CATEGORIES, type PublicApi, type PublicApiCategory, SYSTEM_PERSONAS, TAGS, TOOLS, type Tag, type Tool, generateDeepContextualAnswer, getAgentBySlug, getAllAgents, getAllCategories, getAllPublicApiCategories, getAllPublicApis, getAllSkills, getAllTools, getPublicApiBySlug, getSkillBySlug, getToolBySlug, retrieveEnrichedContext, scanWorkspace };

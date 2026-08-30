@@ -28,7 +28,7 @@ export default async function CollectionsPage({ params }: { params: Promise<{ lo
                 <Link key={collection.id} href={`/collections/${collection.slug}`}>
                   <Card className="flex flex-col h-full hover:border-[var(--muted)] hover:shadow-md transition-all group">
                     <CardHeader>
-                      <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-all">
+                      <CardTitle className="text-xl group-hover:text-[var(--primary)] transition-all tracking-tight">
                         {collection.title}
                       </CardTitle>
                       <CardDescription className="mt-2">

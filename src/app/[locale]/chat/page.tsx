@@ -31,10 +31,15 @@ import {
   Database,
   Search,
   CheckCircle2,
-  Lock
+  Lock,
+  FileCode2
 } from "lucide-react"
 import { useLocale } from "next-intl"
 import { ChatMessageRenderer } from "@/components/features/ChatMessageRenderer"
+import { SlashCommandPalette } from "@/components/chat/SlashCommandPalette"
+import { TokenEfficiencyTelemetry } from "@/components/features/TokenEfficiencyTelemetry"
+import { checkWebGpuSupport, streamClientWebGpuInference } from "@/lib/ai/webGpuEngine"
+import { IdeConfigExportModal } from "@/components/features/IdeConfigExportModal"
 import "katex/dist/katex.min.css"
 
 interface Message {
@@ -131,10 +136,12 @@ export default function ChatPage() {
   const [selectedPersona, setSelectedPersona] = React.useState<string>("general")
   
   // Model & Provider state
-  const [providerMode, setProviderMode] = React.useState<"auto" | "ollama" | "byok">("auto")
+  const [providerMode, setProviderMode] = React.useState<"auto" | "ollama" | "byok" | "webgpu">("auto")
   const [selectedModel, setSelectedModel] = React.useState<string>("deepseek-v3")
   const [ollamaOnline, setOllamaOnline] = React.useState<boolean | null>(null)
   const [ollamaModels, setOllamaModels] = React.useState<string[]>([])
+  const [webGpuAvailable, setWebGpuAvailable] = React.useState<boolean>(false)
+  const [ideExportOpen, setIdeExportOpen] = React.useState<boolean>(false)
   
   // BYOK Settings state
   const [settingsOpen, setSettingsOpen] = React.useState(false)
@@ -154,30 +161,54 @@ export default function ChatPage() {
   const messagesEndRef = React.useRef<HTMLDivElement>(null)
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
 
+  // Slash Commands & Skills Palette state
+  const [slashPaletteOpen, setSlashPaletteOpen] = React.useState(false)
+  const [slashQuery, setSlashQuery] = React.useState("")
+  const [slashSelectedIndex, setSlashSelectedIndex] = React.useState(0)
+
+  const handleInputChange = (val: string) => {
+    setInput(val)
+    const match = val.match(/(^|\s)\/([a-zA-Z0-9_-]*)$/)
+    if (match) {
+      setSlashQuery("/" + match[2])
+      setSlashPaletteOpen(true)
+      setSlashSelectedIndex(0)
+    } else {
+      setSlashPaletteOpen(false)
+    }
+  }
+
+  const handleSelectSlashCommand = (cmd: string) => {
+    const match = input.match(/(^|\s)\/([a-zA-Z0-9_-]*)$/)
+    const replaced = match
+      ? input.replace(/(^|\s)\/([a-zA-Z0-9_-]*)$/, `$1${cmd} `)
+      : `${cmd} `
+    setInput(replaced)
+    setSlashPaletteOpen(false)
+    setTimeout(() => {
+      inputRef.current?.focus()
+    }, 50)
+  }
+
   // Load sessions from localStorage
   React.useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY)
       if (saved) {
         const parsed = JSON.parse(saved)
-        if (Array.isArray(parsed) && parsed.length > 0) {
+        if (Array.isArray(parsed)) {
           setSessions(parsed)
-          setActiveSessionId(parsed[0].id)
-          setSelectedPersona(parsed[0].persona || "general")
+          if (parsed.length > 0) {
+            setActiveSessionId(parsed[0].id)
+            setSelectedPersona(parsed[0].persona || "general")
+          } else {
+            setActiveSessionId("")
+          }
           return
         }
       }
-      // Initialize default session
-      const defaultId = Date.now().toString()
-      const newSession: ChatSession = {
-        id: defaultId,
-        title: isId ? "Percakapan Baru" : "New Chat",
-        createdAt: Date.now(),
-        messages: [],
-        persona: "general"
-      }
-      setSessions([newSession])
-      setActiveSessionId(defaultId)
+      setSessions([])
+      setActiveSessionId("")
     } catch (e) {
       console.error("Error loading chat sessions:", e)
     }
@@ -216,6 +247,12 @@ export default function ChatPage() {
     checkOllamaStatus()
   }, [checkOllamaStatus])
 
+  React.useEffect(() => {
+    checkWebGpuSupport()
+      .then((res) => setWebGpuAvailable(res.supported))
+      .catch(() => setWebGpuAvailable(false))
+  }, [])
+
   // Save sessions to localStorage
   const saveSessions = (updatedSessions: ChatSession[]) => {
     setSessions(updatedSessions)
@@ -225,7 +262,7 @@ export default function ChatPage() {
   }
 
   // Get active session
-  const currentSession = sessions.find(s => s.id === activeSessionId) || sessions[0]
+  const currentSession = sessions.find(s => s.id === activeSessionId) || (sessions.length > 0 ? sessions[0] : null)
   const currentMessages = currentSession?.messages || []
 
   // Scroll to bottom on new messages
@@ -235,6 +272,12 @@ export default function ChatPage() {
 
   // New Chat Handler
   const handleNewChat = () => {
+    const existingActive = sessions.find(s => s.id === activeSessionId)
+    if (existingActive && existingActive.messages.length === 0) {
+      setActiveArtifact(null)
+      return
+    }
+
     const newId = Date.now().toString()
     const newSession: ChatSession = {
       id: newId,
@@ -243,7 +286,8 @@ export default function ChatPage() {
       messages: [],
       persona: selectedPersona
     }
-    const updated = [newSession, ...sessions]
+    const filtered = sessions.filter(s => s.messages.length > 0)
+    const updated = [newSession, ...filtered]
     saveSessions(updated)
     setActiveSessionId(newId)
     setActiveArtifact(null)
@@ -253,13 +297,15 @@ export default function ChatPage() {
   const handleDeleteSession = (e: React.MouseEvent, idToDelete: string) => {
     e.stopPropagation()
     const remaining = sessions.filter(s => s.id !== idToDelete)
-    if (remaining.length === 0) {
-      handleNewChat()
-    } else {
-      saveSessions(remaining)
-      if (activeSessionId === idToDelete) {
+    saveSessions(remaining)
+    if (activeSessionId === idToDelete) {
+      if (remaining.length > 0) {
         setActiveSessionId(remaining[0].id)
+        setSelectedPersona(remaining[0].persona || "general")
+      } else {
+        setActiveSessionId("")
       }
+      setActiveArtifact(null)
     }
   }
 
@@ -330,17 +376,35 @@ export default function ChatPage() {
       sessionTitle = query.slice(0, 32) + (query.length > 32 ? "..." : "")
     }
 
-    const updatedSessions = sessions.map(s => {
-      if (s.id === activeSessionId) {
-        return {
-          ...s,
-          title: sessionTitle,
-          messages: updatedMessages,
-          persona: activeP
-        }
+    const targetSessionId = activeSessionId || Date.now().toString()
+    if (!activeSessionId) {
+      setActiveSessionId(targetSessionId)
+    }
+
+    const sessionExists = sessions.some(s => s.id === targetSessionId)
+    let updatedSessions: ChatSession[]
+    if (!sessionExists) {
+      const newSession: ChatSession = {
+        id: targetSessionId,
+        title: sessionTitle,
+        createdAt: Date.now(),
+        messages: updatedMessages,
+        persona: activeP
       }
-      return s
-    })
+      updatedSessions = [newSession, ...sessions]
+    } else {
+      updatedSessions = sessions.map(s => {
+        if (s.id === targetSessionId) {
+          return {
+            ...s,
+            title: sessionTitle,
+            messages: updatedMessages,
+            persona: activeP
+          }
+        }
+        return s
+      })
+    }
 
     saveSessions(updatedSessions)
     setIsLoading(true)
@@ -406,7 +470,7 @@ export default function ChatPage() {
               if (delta) {
                 fullContent += delta
                 setSessions(prev => prev.map(s => {
-                  if (s.id === activeSessionId) {
+                  if (s.id === targetSessionId) {
                     return {
                       ...s,
                       messages: s.messages.map(m =>
@@ -425,7 +489,7 @@ export default function ChatPage() {
       // Persist final message using functional update to avoid stale sessions closure
       setSessions(prev => {
         const persisted = prev.map(s => {
-          if (s.id === activeSessionId) {
+          if (s.id === targetSessionId) {
             return {
               ...s,
               messages: s.messages.map(m =>
@@ -456,7 +520,7 @@ export default function ChatPage() {
         : "Failed to process message. Please try again or check connection."
       setSessions(prev => {
         const updated = prev.map(s => {
-          if (s.id === activeSessionId) {
+          if (s.id === targetSessionId) {
             return {
               ...s,
               messages: s.messages.map(m => m.id === assistantMsgId
@@ -560,37 +624,45 @@ export default function ChatPage() {
                 {isId ? "Riwayat Percakapan" : "Chat History"} ({sessions.length})
               </div>
               
-              {sessions.map((session) => {
-                const isActive = session.id === activeSessionId
-                return (
-                  <div
-                    key={session.id}
-                    onClick={() => {
-                      setActiveSessionId(session.id)
-                      setSelectedPersona(session.persona || "general")
-                      setActiveArtifact(null)
-                    }}
-                    className={`group flex items-center justify-between p-2.5 rounded-lg text-xs transition-all cursor-pointer border ${
-                      isActive
-                        ? "bg-[var(--background)] border-[var(--border)] text-[var(--foreground)] font-semibold shadow-xs"
-                        : "border-transparent text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)]"
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 truncate pr-2">
-                      <MessageSquare className="w-3.5 h-3.5 shrink-0 opacity-60" />
-                      <span className="truncate">{session.title}</span>
-                    </div>
-
-                    <button
-                      onClick={(e) => handleDeleteSession(e, session.id)}
-                      className="opacity-0 group-hover:opacity-100 p-1 hover:text-red-400 transition-opacity"
-                      title="Delete chat"
+              {sessions.length === 0 ? (
+                <div className="py-8 px-3 text-center text-xs text-[var(--muted)]">
+                  <MessageSquare className="w-5 h-5 mx-auto mb-2 opacity-30" />
+                  <p>{isId ? "Belum ada riwayat chat" : "No chat history yet"}</p>
+                </div>
+              ) : (
+                sessions.map((session) => {
+                  const isActive = session.id === activeSessionId
+                  return (
+                    <div
+                      key={session.id}
+                      onClick={() => {
+                        setActiveSessionId(session.id)
+                        setSelectedPersona(session.persona || "general")
+                        setActiveArtifact(null)
+                      }}
+                      className={`group flex items-center justify-between p-2.5 rounded-lg text-xs transition-all cursor-pointer border ${
+                        isActive
+                          ? "bg-[var(--background)] border-[var(--border)] text-[var(--foreground)] font-semibold shadow-xs"
+                          : "border-transparent text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-hover)]"
+                      }`}
                     >
-                      <Trash2 className="w-3 h-3" />
-                    </button>
-                  </div>
-                )
-              })}
+                      <div className="flex items-center gap-2 truncate pr-2 min-w-0">
+                        <MessageSquare className="w-3.5 h-3.5 shrink-0 opacity-60" />
+                        <span className="truncate">{session.title}</span>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={(e) => handleDeleteSession(e, session.id)}
+                        className="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-[var(--surface)] hover:text-rose-500 text-[var(--muted)] transition-all shrink-0 cursor-pointer"
+                        title={isId ? "Hapus riwayat chat (X)" : "Delete chat (X)"}
+                      >
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  )
+                })
+              )}
             </div>
 
             {/* Sidebar Bottom Actions */}
@@ -698,6 +770,24 @@ export default function ChatPage() {
                     ))}
                   </optgroup>
                 </select>
+
+                {webGpuAvailable && (
+                  <div className="hidden sm:flex items-center gap-1.5 px-2 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-mono text-emerald-600 dark:text-emerald-400">
+                    <Cpu className="w-3.5 h-3.5" />
+                    <span>WebGPU Active</span>
+                  </div>
+                )}
+
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setIdeExportOpen(true)}
+                  className="h-8 px-2.5 rounded-lg text-xs font-mono cursor-pointer flex items-center gap-1.5"
+                  title="Export IDE Configuration (.cursorrules, Continue, MCP)"
+                >
+                  <FileCode2 className="w-3.5 h-3.5 text-emerald-500" />
+                  <span className="hidden sm:inline">IDE Config</span>
+                </Button>
 
                 <Button
                   variant="outline"
@@ -882,6 +972,13 @@ export default function ChatPage() {
             <div className="p-4 border-t border-[var(--border)] bg-[var(--surface)] shrink-0">
               <div className="max-w-3xl mx-auto space-y-2">
                 
+                {/* Real-time Token Efficiency & FinOps Telemetry */}
+                <TokenEfficiencyTelemetry
+                  messageCount={currentMessages.length}
+                  estimatedTokens={Math.max(450, currentMessages.length * 380)}
+                  isStreaming={isLoading}
+                />
+                
                 {/* Attached context pill */}
                 {attachedContext && (
                   <div className="flex items-center justify-between px-3 py-1.5 rounded-lg bg-[var(--background)] border border-[var(--border)] text-xs font-mono text-[var(--muted)]">
@@ -892,47 +989,106 @@ export default function ChatPage() {
                   </div>
                 )}
 
-                <div className="relative flex items-center gap-2 bg-[var(--background)] border border-[var(--border)] rounded-xl p-1.5 shadow-xs focus-within:border-[var(--foreground)]/40 transition-colors">
-                  
-                  {/* File attach button */}
-                  <input 
-                    type="file" 
-                    ref={fileInputRef} 
-                    onChange={handleFileUpload} 
-                    className="hidden" 
-                    accept=".txt,.md,.json,.ts,.js,.py"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    className="p-2 rounded-lg text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface)] transition-colors cursor-pointer shrink-0"
-                    title="Attach Code or File"
-                  >
-                    <Paperclip className="w-4 h-4" />
-                  </button>
-
-                  <textarea
-                    ref={inputRef}
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && !e.shiftKey) {
-                        e.preventDefault()
-                        handleSendMessage()
-                      }
-                    }}
-                    placeholder={isId ? "Tanyakan apapun seputar koding, security, atau arsitektur sistem... (Enter untuk kirim)" : "Ask anything about coding, security, or system architecture... (Enter to send)"}
-                    rows={1}
-                    className="flex-1 bg-transparent border-0 text-xs md:text-sm text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none resize-none py-2 px-1 max-h-32"
+                <div className="relative">
+                  {/* Slash Command & Skills Autocomplete Palette */}
+                  <SlashCommandPalette
+                    query={slashQuery}
+                    isOpen={slashPaletteOpen}
+                    onSelect={handleSelectSlashCommand}
+                    onClose={() => setSlashPaletteOpen(false)}
+                    selectedIndex={slashSelectedIndex}
+                    setSelectedIndex={setSlashSelectedIndex}
                   />
 
-                  <Button
-                    onClick={() => handleSendMessage()}
-                    disabled={isLoading || !input.trim()}
-                    className="h-8 w-8 rounded-lg bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--foreground)]/90 flex items-center justify-center shrink-0 cursor-pointer disabled:opacity-40"
-                  >
-                    <Send className="w-3.5 h-3.5" />
-                  </Button>
+                  <div className="flex items-center gap-2 bg-[var(--background)] border border-[var(--border)] rounded-xl p-1.5 shadow-xs focus-within:border-[var(--foreground)]/40 transition-colors">
+                    
+                    {/* File attach button */}
+                    <input 
+                      type="file" 
+                      ref={fileInputRef} 
+                      onChange={handleFileUpload} 
+                      className="hidden" 
+                      accept=".txt,.md,.json,.ts,.js,.py"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      className="p-2 rounded-lg text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface)] transition-colors cursor-pointer shrink-0"
+                      title="Attach Code or File"
+                    >
+                      <Paperclip className="w-4 h-4" />
+                    </button>
+
+                    {/* Quick Slash Commands / Skills Trigger Button */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const match = input.match(/(^|\s)\/([a-zA-Z0-9_-]*)$/)
+                        if (slashPaletteOpen) {
+                          setSlashPaletteOpen(false)
+                        } else {
+                          if (!match) {
+                            setInput(prev => prev ? (prev.endsWith(" ") ? prev + "/" : prev + " /") : "/")
+                          }
+                          setSlashQuery("/")
+                          setSlashPaletteOpen(true)
+                          setSlashSelectedIndex(0)
+                        }
+                        inputRef.current?.focus()
+                      }}
+                      className="px-2 py-1 rounded-lg text-xs font-mono text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface)] transition-colors cursor-pointer shrink-0 flex items-center gap-1 border border-transparent hover:border-[var(--border)]"
+                      title="Trigger Skills & Slash Commands (Ketik /)"
+                    >
+                      <Terminal className="w-3.5 h-3.5 text-amber-500" />
+                      <span className="font-semibold text-amber-500">/</span>
+                      <span className="hidden sm:inline font-medium">Skills</span>
+                    </button>
+
+                    <textarea
+                      ref={inputRef}
+                      value={input}
+                      onChange={(e) => handleInputChange(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (slashPaletteOpen) {
+                          if (e.key === "ArrowDown") {
+                            e.preventDefault()
+                            setSlashSelectedIndex(prev => prev + 1)
+                            return
+                          }
+                          if (e.key === "ArrowUp") {
+                            e.preventDefault()
+                            setSlashSelectedIndex(prev => Math.max(0, prev - 1))
+                            return
+                          }
+                          if (e.key === "Escape") {
+                            e.preventDefault()
+                            setSlashPaletteOpen(false)
+                            return
+                          }
+                          if (e.key === "Tab") {
+                            e.preventDefault()
+                            // If tab is pressed, trigger selection through click or keyboard
+                            return
+                          }
+                        }
+                        if (e.key === "Enter" && !e.shiftKey) {
+                          e.preventDefault()
+                          handleSendMessage()
+                        }
+                      }}
+                      placeholder={isId ? "Tanyakan apapun, atau ketik / untuk melihat semua skills & workflow... (Enter kirim)" : "Ask anything, or type / to browse all skills & workflows... (Enter to send)"}
+                      rows={1}
+                      className="flex-1 bg-transparent border-0 text-xs md:text-sm text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none resize-none py-2 px-1 max-h-32"
+                    />
+
+                    <Button
+                      onClick={() => handleSendMessage()}
+                      disabled={isLoading || !input.trim()}
+                      className="h-8 w-8 rounded-lg bg-[var(--foreground)] text-[var(--background)] hover:bg-[var(--foreground)]/90 flex items-center justify-center shrink-0 cursor-pointer disabled:opacity-40"
+                    >
+                      <Send className="w-3.5 h-3.5" />
+                    </Button>
+                  </div>
                 </div>
 
                 <div className="flex items-center justify-between text-[11px] text-[var(--muted)] px-1 font-mono">
@@ -993,7 +1149,7 @@ export default function ChatPage() {
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
               <div className="flex items-center gap-2">
                 <Settings className="w-4 h-4 text-[var(--foreground)]" />
-                <h3 className="text-base font-bold text-[var(--foreground)] font-heading">
+                <h3 className="text-base font-bold text-[var(--foreground)] font-heading tracking-tight">
                   {isId ? "Pengaturan API Key Pribadi (Opsional)" : "Custom API Key Settings (Optional)"}
                 </h3>
               </div>
@@ -1043,6 +1199,12 @@ export default function ChatPage() {
           </div>
         </div>
       )}
+
+      {/* 1-Click IDE Configuration Export Modal */}
+      <IdeConfigExportModal
+        isOpen={ideExportOpen}
+        onClose={() => setIdeExportOpen(false)}
+      />
     </div>
   )
 }

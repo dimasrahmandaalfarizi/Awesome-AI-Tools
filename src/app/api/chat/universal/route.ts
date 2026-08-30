@@ -1,56 +1,21 @@
 import { NextRequest, NextResponse } from "next/server"
-import { checkRateLimit } from "@/lib/security"
-import { TOOLS, AI_SKILLS } from "@/data/mock"
-
-// ── System Personas ───────────────────────────────────────────────────────────
-const SYSTEM_PERSONAS: Record<string, string> = {
-  general:
-    "You are an elite, highly capable General AI Assistant. You excel at complex reasoning, mathematical problem solving, structured analysis, articulate writing, and technical synthesis. Be concise, direct, and factually accurate. Avoid conversational fluff, excessive disclaimers, or emoji. Provide complete code snippets using clean markdown fences when helpful.",
-  architect:
-    "You are a Principal Software Architect and Lead Fullstack Engineer. You design resilient, high-performance software systems following Clean Architecture, Domain-Driven Design (DDD), and Test-Driven Development (TDD). Always prioritize type safety, strict contracts, and zero runtime surprises. Provide complete, production-grade implementations — no placeholders.",
-  security:
-    "You are a Principal Cybersecurity Auditor and DevSecOps Specialist. You evaluate software, APIs, and cloud infrastructure against OWASP Top 10, NIST CSF, and MITRE ATT&CK frameworks. Focus on cryptographic hygiene, injection defenses, and strict input validation. Be precise and actionable.",
-  stack:
-    "You are an expert AI Stack & Tools Consultant. Recommend specific tools, MCP servers, local inference runners (vLLM, Ollama), vector databases (Qdrant, Chroma, Pgvector), and agent skills to solve user requirements. Be specific — name exact tools, versions, and configuration patterns.",
-  writer:
-    "You are a Senior Technical Writer and Documentation Architect. You create crystal-clear API specifications, Architecture Decision Records (ADRs), READMEs, and technical user guides. Prioritize clarity, logical hierarchy, and actionable examples.",
-}
+import { checkRateLimit, validateSafeUrl, validatePayloadSize } from "@/lib/security"
+import { retrieveEnrichedContext, SYSTEM_PERSONAS, generateDeepContextualAnswer } from "@/lib/ai/copilotContext"
 
 // ── Dynamic Context Fusion & Grounding Engine ────────────────────────────────
 function buildFusedSystemPrompt(persona: string, lastUserQuery: string, fusionMode: boolean = true): string {
   const basePersona = SYSTEM_PERSONAS[persona] ?? SYSTEM_PERSONAS.general
-  const q = (lastUserQuery || "").toLowerCase()
-
-  // Match relevant tools from the Awesome AI Tools directory
-  const matchedTools = TOOLS.filter(t => 
-    q.includes(t.name.toLowerCase()) || 
-    t.tags.some(tag => q.includes(tag.toLowerCase())) ||
-    (t.categoryId && q.includes(t.categoryId.toLowerCase()))
-  ).slice(0, 4)
-
-  // Match relevant agent skills
-  const matchedSkills = AI_SKILLS.filter(s =>
-    q.includes(s.name.toLowerCase()) ||
-    s.frameworks.some(f => q.includes(f.toLowerCase())) ||
-    q.includes(s.slug.toLowerCase())
-  ).slice(0, 4)
-
-  let contextSnippet = ""
-  if (matchedTools.length > 0) {
-    contextSnippet += `\n[Verified Ecosystem Tools]:\n` + matchedTools.map(t => `- ${t.name} (${t.categoryId}): ${t.description}`).join("\n")
-  }
-  if (matchedSkills.length > 0) {
-    contextSnippet += `\n[Agent Skills Directory]:\n` + matchedSkills.map(s => `- /${s.slug.replace(/^skill-/, "")}: ${s.name} — ${s.description}`).join("\n")
-  }
+  const enriched = retrieveEnrichedContext(lastUserQuery, persona)
 
   const fusionDirectives = fusionMode ? `
 [MULTI-MODEL CONTEXT FUSION DIRECTIVES]:
-- Synthesize responses with multi-domain depth: (1) Robust Architecture & Complete Production Code, (2) Security & Edge-Case Validation, (3) Ecosystem Tooling recommendations.
+- Synthesize responses with multi-domain depth: (1) Robust Architecture & Complete Production Code, (2) Security & Edge-Case Validation, (3) Ecosystem Tooling & Subagent recommendations.
 - When writing code, provide COMPLETE, copy-pasteable, type-safe implementations without placeholders or elided lines.
+- You have comprehensive awareness of all 2,558 AI Skills, 136 Specialist Subagents, 205 Tools, and CLI commands (awesome-ai-tools init, scan, trigger, learn).
 - Always use proper Markdown structure, and use KaTeX math notation for formulas and calculations.
 ` : ""
 
-  return `${basePersona}\n${contextSnippet}\n${fusionDirectives}`
+  return `${basePersona}\n${enriched.contextPromptSnippet}\n${fusionDirectives}`
 }
 
 // ── Free cloud providers (priority order) ─────────────────────────────────────
@@ -99,7 +64,23 @@ export async function POST(req: NextRequest) {
   if (rateLimitResponse) return rateLimitResponse
 
   try {
-    const body = await req.json()
+    const rawBody = await req.text()
+
+    // 1. Payload Size Limitation (Max 4MB) to prevent ReDoS / memory exhaustion
+    if (!validatePayloadSize(rawBody, 4 * 1024 * 1024)) {
+      return NextResponse.json(
+        { error: "Payload too large. Maximum request body size is 4MB." },
+        { status: 413 }
+      )
+    }
+
+    let body: any = {}
+    try {
+      body = JSON.parse(rawBody)
+    } catch {
+      return NextResponse.json({ error: "Invalid JSON payload" }, { status: 400 })
+    }
+
     const {
       messages,
       persona = "general",
@@ -144,6 +125,16 @@ export async function POST(req: NextRequest) {
     // ── Flow A: BYOK – user provided their own key in Settings modal ──────────
     if ((provider === "byok" || provider === "cloud") && customApiKey) {
       const baseUrl = (customBaseUrl || "https://api.openai.com/v1").replace(/\/+$/, "")
+
+      // SSRF Defense: Validate customBaseUrl
+      const urlCheck = validateSafeUrl(baseUrl)
+      if (!urlCheck.isValid) {
+        return NextResponse.json(
+          { error: `Forbidden Custom Base URL: ${urlCheck.reason}` },
+          { status: 403 }
+        )
+      }
+
       const targetModel = model || "gpt-4o-mini"
       const resp = await callOpenAICompatible({
         baseUrl,
@@ -358,55 +349,7 @@ async function callOpenAICompatible(opts: CallOptions): Promise<Response | null>
 // ── Contextual Synthesis Fallback (Zero Downtime) ─────────────────────────────
 function streamContextualResponse(query: string, persona: string): Response {
   const encoder = new TextEncoder()
-  const q = query.toLowerCase()
-
-  let reply = ""
-
-  if (q.includes("konteks") || q.includes("context") || q.includes("paham") || q.includes("bisa apa") || q.includes("kemampuan")) {
-    reply = [
-      "### Kemampuan & Lingkup Konteks yang Saya Pahami",
-      "",
-      "Saya adalah **Universal AI Assistant** dengan pemahaman mendalam di beberapa domain utama:",
-      "",
-      "1. **Arsitektur Perangkat Lunak & Rekayasa Kode**:",
-      "   - Pemrograman modern: TypeScript, React, Next.js (App Router), Go, Rust, Python, SQL.",
-      "   - Pola desain: *Clean Architecture*, *Domain-Driven Design (DDD)*, dan *Test-Driven Development (TDD)*.",
-      "   - Refactoring, optimasi performa runtime, dan penulisan middleware standar produksi.",
-      "",
-      "2. **Keamanan Siber & Audit Kerentanan**:",
-      "   - Analisis kerentanan berbasis standar **OWASP Top 10** (BOLA/IDOR, Injection, Broken Auth).",
-      "   - Evaluasi kriptografi, sanitasi input, mitigasi ancaman, dan DevSecOps.",
-      "",
-      "3. **Ekosistem AI Tools & Skills (Awesome AI Tools)**:",
-      "   - Direktori **205 Developer Tools** dan **587 Agent Skills**.",
-      "   - Konfigurasi MCP (*Model Context Protocol*), inferensi lokal (Ollama, vLLM), dan vector database.",
-      "",
-      "4. **Logika Matematis & Problem Solving**:",
-      "   - Operasi aritmatika, kalkulasi langkah demi langkah, dan parsing formula dengan format KaTeX/LaTeX.",
-      "",
-      "5. **Dokumentasi & Penulisan Teknis**:",
-      "   - Spesifikasi API, Architecture Decision Records (ADR), panduan integrasi, dan README.",
-      "",
-      "> Silakan berikan instruksi, kode, atau pertanyaan spesifik yang ingin Anda selesaikan!"
-    ].join("\n")
-  } else {
-    reply = [
-      "### Analisis & Ringkasan Jawaban",
-      "",
-      `Berdasarkan pertanyaan Anda mengenai **"${query.slice(0, 80)}"**:`,
-      "",
-      "1. **Penjelasan Inti**:",
-      "   - Untuk mencapai solusi yang optimal, penting untuk menerapkan struktur yang modular dan deterministik.",
-      "   - Pastikan setiap batasan sistem dan tipe data didefinisikan secara eksplisit.",
-      "",
-      "2. **Rekomendasi Langkah Implementasi**:",
-      "   - Validasi input dan parameter sebelum eksekusi.",
-      "   - Uji setiap alur menggunakan pengujian otomatis (*unit tests*).",
-      "   - Terapkan penanganan error (*defensive programming*) untuk mencegah kegagalan runtime.",
-      "",
-      "Jika Anda ingin saya membuatkan kode lengkap, arsitektur sistem, atau contoh implementasi, silakan sebutkan spesifikasinya!"
-    ].join("\n")
-  }
+  const reply = generateDeepContextualAnswer(query, persona)
 
   const stream = new ReadableStream({
     async start(controller) {

@@ -1,0 +1,22 @@
+﻿# Scratch & Local temporary files
+scratch/
+test-results/
+playwright-report/
+.gemini/
+
+# CLI development files not needed by web app runtime
+dist/cli/
+src/cli/
+tests/
+__tests__/
+
+# Local logs & session records
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.claude/session_log.md
+
+# Local secrets & proxy cache
+proxy-config.json
+*.local.json

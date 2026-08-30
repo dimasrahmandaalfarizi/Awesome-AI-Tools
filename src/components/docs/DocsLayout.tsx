@@ -16,18 +16,18 @@ export function DocsLayout({ doc }: DocsLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = React.useState(false)
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-zinc-100 flex flex-col font-sans selection:bg-zinc-200 dark:selection:bg-zinc-800">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col font-sans selection:bg-[var(--surface-hover)]">
       {/* Mobile Topbar */}
-      <div className="lg:hidden flex h-14 items-center justify-between px-4 border-b border-zinc-200 dark:border-zinc-800/80 bg-white/90 dark:bg-black/90 sticky top-0 z-50 backdrop-blur-md">
+      <div className="lg:hidden flex h-14 items-center justify-between px-4 border-b border-[var(--border)] bg-[var(--background)]/90 sticky top-0 z-50 backdrop-blur-md">
         <button
           type="button"
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="p-2 -ml-2 rounded-lg text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+          className="p-2 -ml-2 rounded-lg text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface)]"
           aria-label="Toggle Navigation"
         >
           {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
-        <span className="font-semibold text-sm">Documentation</span>
+        <span className="font-semibold text-sm font-heading">Documentation</span>
         <div className="w-8" />
       </div>
 

@@ -110,7 +110,7 @@ export function ChatMessageRenderer({ content, isStreaming }: ChatMessageRendere
             </h3>
           ),
           h4: ({ children }) => (
-            <h4 className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 mt-2 mb-1">{children}</h4>
+            <h4 className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 mt-2 mb-1 tracking-tight">{children}</h4>
           ),
 
           // ── Paragraphs ────────────────────────────────────────────────────

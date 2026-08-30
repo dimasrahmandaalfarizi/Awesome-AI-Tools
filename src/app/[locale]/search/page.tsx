@@ -9,10 +9,11 @@ import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/comp
 import { Badge } from "@/components/ui/Badge"
 import { Button } from "@/components/ui/Button"
 import { BookmarkButton } from "@/components/ui/BookmarkButton"
-import { Search as SearchIcon, ExternalLink, SlidersHorizontal, Sparkles, Loader2, ArrowRight, Code, Bot, Wrench, Layers } from "lucide-react"
+import { Search as SearchIcon, ExternalLink, SlidersHorizontal, Sparkles, Loader2, ArrowRight, Code, Bot, Wrench, Layers, Globe } from "lucide-react"
 import { Link } from "@/i18n/routing"
 import { useTranslations, useLocale } from "next-intl"
 import { TOOLS, CATEGORIES, AI_SKILLS, AI_AGENTS } from "@/data/mock"
+import { PUBLIC_APIS } from "@/data/apis"
 import { getLocalizedCategory, getLocalizedTool } from "@/lib/localizeData"
 import { ToolLogo } from "@/components/ui/ToolLogo"
 import { Tool } from "@/types"
@@ -34,7 +35,7 @@ function SearchContent() {
 
   const [query, setQuery] = useState(initialQuery)
   const [searchMode, setSearchMode] = useState<"standard" | "semantic">("standard")
-  const [activeTypeTab, setActiveTypeTab] = useState<"all" | "tools" | "skills" | "agents">("all")
+  const [activeTypeTab, setActiveTypeTab] = useState<"all" | "tools" | "skills" | "agents" | "apis">("all")
   const [selectedCategory, setSelectedCategory] = useState<string>("all")
   const [pricingFilter, setPricingFilter] = useState<string>("all")
   const [showFilters, setShowFilters] = useState(false)
@@ -116,8 +117,23 @@ function SearchContent() {
     )
   }, [query])
 
+  // Instant In-Memory Filter for Public APIs
+  const filteredApis = useMemo(() => {
+    const q = query.toLowerCase().trim()
+    if (!q) return PUBLIC_APIS.slice(0, 9)
+    return PUBLIC_APIS.filter(api =>
+      api.name.toLowerCase().includes(q) ||
+      api.description.toLowerCase().includes(q) ||
+      api.category.toLowerCase().includes(q) ||
+      api.auth.toLowerCase().includes(q)
+    )
+  }, [query])
+
   const isSemantic = searchMode === "semantic"
-  const totalCount = filteredTools.length + (activeTypeTab === "all" || activeTypeTab === "skills" ? filteredSkills.length : 0) + (activeTypeTab === "all" || activeTypeTab === "agents" ? filteredAgents.length : 0)
+  const totalCount = filteredTools.length + 
+    (activeTypeTab === "all" || activeTypeTab === "skills" ? filteredSkills.length : 0) + 
+    (activeTypeTab === "all" || activeTypeTab === "agents" ? filteredAgents.length : 0) +
+    (activeTypeTab === "all" || activeTypeTab === "apis" ? filteredApis.length : 0)
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-6xl space-y-8">
@@ -127,8 +143,8 @@ function SearchContent() {
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight font-heading text-[var(--foreground)]">{t("title")}</h1>
         <p className="text-[var(--muted)] text-sm md:text-base leading-relaxed">
           {isId 
-            ? "Cari di seluruh 200+ alat developer, 437 AI skills, dan 68 subagents secara instan."
-            : "Search across 200+ curated developer tools, 437 AI skills, and 68 subagents in real-time."}
+            ? `Cari di seluruh ${TOOLS.length} alat developer, ${AI_SKILLS.length.toLocaleString()} AI skills, ${AI_AGENTS.length} subagents, dan ${PUBLIC_APIS.length.toLocaleString()} public APIs secara instan.`
+            : `Search across ${TOOLS.length} developer tools, ${AI_SKILLS.length.toLocaleString()} AI skills, ${AI_AGENTS.length} subagents, and ${PUBLIC_APIS.length.toLocaleString()} public APIs in real-time.`}
         </p>
       </div>
 
@@ -163,6 +179,13 @@ function SearchContent() {
           >
             <Bot className="w-3.5 h-3.5" />
             <span>Agents ({filteredAgents.length})</span>
+          </button>
+          <button
+            onClick={() => setActiveTypeTab("apis")}
+            className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${activeTypeTab === "apis" ? "bg-[var(--background)] text-[var(--foreground)] font-bold shadow-xs" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+          >
+            <Globe className="w-3.5 h-3.5 text-emerald-400" />
+            <span>APIs ({filteredApis.length})</span>
           </button>
         </div>
 
@@ -261,7 +284,7 @@ function SearchContent() {
         {(activeTypeTab === "all" || activeTypeTab === "tools") && (
           <div className="space-y-4">
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-2">
-              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2 tracking-tight">
                 <Wrench className="w-4 h-4 text-[var(--primary)]" />
                 <span>Developer Tools ({filteredTools.length})</span>
               </h2>
@@ -282,7 +305,7 @@ function SearchContent() {
                       <div className="flex items-center gap-2.5 mt-1">
                         <ToolLogo name={tool.name} website={tool.website} logo={tool.logo} size="sm" />
                         <Link href={`/tools/${tool.slug}`} className="hover:text-[var(--primary)] transition-colors">
-                          <CardTitle className="text-sm font-bold">{tool.name}</CardTitle>
+                          <CardTitle className="text-sm font-bold tracking-tight">{tool.name}</CardTitle>
                         </Link>
                       </div>
                       <CardDescription className="text-xs line-clamp-2">
@@ -317,12 +340,12 @@ function SearchContent() {
         {(activeTypeTab === "all" || activeTypeTab === "skills") && (
           <div className="space-y-4 pt-4">
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-2">
-              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2 tracking-tight">
                 <Code className="w-4 h-4 text-emerald-500" />
                 <span>AI Agent Skills ({filteredSkills.length})</span>
               </h2>
               <Link href="/skills" className="text-xs text-[var(--primary)] hover:underline flex items-center gap-1">
-                <span>{isId ? "Lihat Semua 437 Skills" : "View all 437 Skills"}</span>
+                <span>{isId ? `Lihat Semua ${AI_SKILLS.length.toLocaleString()} Skills` : `View all ${AI_SKILLS.length.toLocaleString()} Skills`}</span>
                 <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
@@ -334,7 +357,7 @@ function SearchContent() {
                       <span className="text-xs font-mono font-bold text-[var(--foreground)]">/{skill.slug}</span>
                       <span className="text-[10px] text-[var(--muted)]">{skill.author || "Community"}</span>
                     </div>
-                    <h3 className="text-sm font-bold text-[var(--foreground)]">{skill.name}</h3>
+                    <h3 className="text-sm font-bold text-[var(--foreground)] tracking-tight">{skill.name}</h3>
                     <p className="text-xs text-[var(--muted)] line-clamp-2 leading-relaxed">{skill.description}</p>
                   </div>
                   <div className="flex items-center justify-between pt-2 border-t border-[var(--border)]/40 text-[11px]">
@@ -354,12 +377,12 @@ function SearchContent() {
         {(activeTypeTab === "all" || activeTypeTab === "agents") && (
           <div className="space-y-4 pt-4">
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-2">
-              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2 tracking-tight">
                 <Bot className="w-4 h-4 text-indigo-500" />
                 <span>Specialized AI Subagents ({filteredAgents.length})</span>
               </h2>
               <Link href="/agents" className="text-xs text-[var(--primary)] hover:underline flex items-center gap-1">
-                <span>{isId ? "Lihat Semua 68 Subagents" : "View all 68 Subagents"}</span>
+                <span>{isId ? `Lihat Semua ${AI_AGENTS.length} Subagents` : `View all ${AI_AGENTS.length} Subagents`}</span>
                 <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
@@ -373,7 +396,7 @@ function SearchContent() {
                       </span>
                       <span className="text-[10px] text-[var(--muted)]">{agent.recommendedModel}</span>
                     </div>
-                    <h3 className="text-sm font-bold text-[var(--foreground)]">{agent.name}</h3>
+                    <h3 className="text-sm font-bold text-[var(--foreground)] tracking-tight">{agent.name}</h3>
                     <p className="text-xs text-[var(--muted)] line-clamp-2 leading-relaxed">{agent.description}</p>
                   </div>
                   <div className="flex items-center justify-between pt-2 border-t border-[var(--border)]/40 text-[11px]">
@@ -382,6 +405,47 @@ function SearchContent() {
                       <span>Inspect Agent</span>
                       <ArrowRight className="w-3 h-3" />
                     </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Public APIs Results */}
+        {(activeTypeTab === "all" || activeTypeTab === "apis") && (
+          <div className="space-y-4 pt-4">
+            <div className="flex items-center justify-between border-b border-[var(--border)] pb-2">
+              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2 tracking-tight">
+                <Globe className="w-4 h-4 text-emerald-400" />
+                <span>Public APIs ({filteredApis.length})</span>
+              </h2>
+              <Link href="/apis" className="text-xs text-[var(--primary)] hover:underline flex items-center gap-1">
+                <span>{isId ? `Lihat Semua ${PUBLIC_APIS.length.toLocaleString()} APIs` : `View all ${PUBLIC_APIS.length.toLocaleString()} APIs`}</span>
+                <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredApis.slice(0, 9).map((api) => (
+                <div key={api.id} className="p-4 rounded-xl border border-[var(--border)] bg-[var(--surface)] flex flex-col justify-between space-y-3">
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[var(--background)] text-[var(--muted)] border border-[var(--border)]">
+                        {api.category}
+                      </span>
+                      <span className="text-[10px] font-mono text-emerald-400 font-medium">
+                        {api.auth === "No" || api.auth === "None" ? "Free / No Auth" : api.auth}
+                      </span>
+                    </div>
+                    <h3 className="text-sm font-bold text-[var(--foreground)] tracking-tight">{api.name}</h3>
+                    <p className="text-xs text-[var(--muted)] line-clamp-2 leading-relaxed">{api.description}</p>
+                  </div>
+                  <div className="flex items-center justify-between pt-2 border-t border-[var(--border)]/40 text-[11px]">
+                    <span className="text-[var(--muted)] font-mono text-[10px]">HTTPS: {api.https ? "Yes" : "No"} | CORS: {api.cors}</span>
+                    <a href={api.link} target="_blank" rel="noreferrer" className="text-[var(--primary)] font-semibold hover:underline flex items-center gap-1">
+                      <span>Docs</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
                   </div>
                 </div>
               ))}

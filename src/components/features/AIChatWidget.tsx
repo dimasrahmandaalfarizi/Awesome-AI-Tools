@@ -1,9 +1,10 @@
 "use client"
 
 import * as React from "react"
-import { X, Send, RefreshCw, Check, Copy, Trash2, Globe } from "lucide-react"
+import { X, Send, RefreshCw, Check, Copy, Trash2, Globe, Terminal } from "lucide-react"
 import { useLocale } from "next-intl"
 import { Link } from "@/i18n/routing"
+import { SlashCommandPalette } from "@/components/chat/SlashCommandPalette"
 
 interface Message {
   id: string
@@ -30,6 +31,11 @@ export function AIChatWidget() {
   const [copiedCode, setCopiedCode] = React.useState<string | null>(null)
   const [webSearchEnabled, setWebSearchEnabled] = React.useState(false)
   const [isSearching, setIsSearching] = React.useState(false)
+
+  // Slash Commands & Skills Palette state
+  const [slashPaletteOpen, setSlashPaletteOpen] = React.useState(false)
+  const [slashQuery, setSlashQuery] = React.useState("")
+  const [slashSelectedIndex, setSlashSelectedIndex] = React.useState(0)
 
   const messagesEndRef = React.useRef<HTMLDivElement>(null)
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
@@ -154,7 +160,48 @@ export function AIChatWidget() {
     }
   }
 
+  const handleInputChange = (val: string) => {
+    setInput(val)
+    const match = val.match(/(^|\s)\/([a-zA-Z0-9_-]*)$/)
+    if (match) {
+      setSlashQuery("/" + match[2])
+      setSlashPaletteOpen(true)
+      setSlashSelectedIndex(0)
+    } else {
+      setSlashPaletteOpen(false)
+    }
+  }
+
+  const handleSelectSlashCommand = (cmd: string) => {
+    const match = input.match(/(^|\s)\/([a-zA-Z0-9_-]*)$/)
+    const replaced = match
+      ? input.replace(/(^|\s)\/([a-zA-Z0-9_-]*)$/, `$1${cmd} `)
+      : `${cmd} `
+    setInput(replaced)
+    setSlashPaletteOpen(false)
+    setTimeout(() => {
+      inputRef.current?.focus()
+    }, 50)
+  }
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (slashPaletteOpen) {
+      if (e.key === "ArrowDown") {
+        e.preventDefault()
+        setSlashSelectedIndex(prev => prev + 1)
+        return
+      }
+      if (e.key === "ArrowUp") {
+        e.preventDefault()
+        setSlashSelectedIndex(prev => Math.max(0, prev - 1))
+        return
+      }
+      if (e.key === "Escape") {
+        e.preventDefault()
+        setSlashPaletteOpen(false)
+        return
+      }
+    }
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault()
       handleSendMessage()
@@ -188,14 +235,14 @@ export function AIChatWidget() {
     const tokens = text.split(/(`[^`]+`|\*\*[^*]+\*\*|\*[^*]+\*|\[[^\]]+\]\([^)]+\))/g)
     return tokens.map((tok, i) => {
       if (tok.startsWith("**") && tok.endsWith("**"))
-        return <strong key={i} className="font-semibold text-zinc-100 dark:text-zinc-100">{tok.slice(2, -2)}</strong>
+        return <strong key={i} className="font-semibold text-zinc-900 dark:text-zinc-100">{tok.slice(2, -2)}</strong>
       if (tok.startsWith("*") && tok.endsWith("*"))
-        return <em key={i} className="italic text-zinc-300">{tok.slice(1, -1)}</em>
+        return <em key={i} className="italic text-zinc-700 dark:text-zinc-300">{tok.slice(1, -1)}</em>
       if (tok.startsWith("`") && tok.endsWith("`"))
-        return <code key={i} className="px-1 py-0.5 rounded bg-zinc-800 text-pink-300 font-mono text-[11px]">{tok.slice(1, -1)}</code>
+        return <code key={i} className="px-1 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-pink-600 dark:text-pink-300 font-mono text-[11px] border border-zinc-200 dark:border-zinc-700">{tok.slice(1, -1)}</code>
       const linkMatch = tok.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
       if (linkMatch)
-        return <a key={i} href={linkMatch[2]} target="_blank" rel="noreferrer" className="text-blue-400 underline hover:text-blue-300">{linkMatch[1]}</a>
+        return <a key={i} href={linkMatch[2]} target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 underline hover:opacity-80">{linkMatch[1]}</a>
       return <React.Fragment key={i}>{tok}</React.Fragment>
     })
   }
@@ -213,16 +260,16 @@ export function AIChatWidget() {
         const code = firstNl !== -1 ? inner.slice(firstNl + 1) : inner
         const codeId = `code-${idx}`
         return (
-          <div key={idx} className="my-2.5 rounded-lg overflow-hidden border border-zinc-700 bg-zinc-950 font-mono text-xs">
-            <div className="flex items-center justify-between px-3 py-1.5 bg-zinc-900 border-b border-zinc-700 text-[11px] text-zinc-400">
+          <div key={idx} className="my-2.5 rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-700 bg-zinc-950 font-mono text-xs shadow-xs">
+            <div className="flex items-center justify-between px-3 py-1.5 bg-zinc-900 border-b border-zinc-800 text-[11px] text-zinc-400">
               <span>{lang || "code"}</span>
-              <button onClick={() => copyToClipboard(code, codeId)} className="flex items-center gap-1 hover:text-white transition-colors">
+              <button onClick={() => copyToClipboard(code, codeId)} className="flex items-center gap-1 hover:text-white transition-colors cursor-pointer">
                 {copiedCode === codeId
                   ? <><Check className="w-3 h-3 text-emerald-400" /><span className="text-emerald-400">Copied</span></>
                   : <><Copy className="w-3 h-3" /><span>Copy</span></>}
               </button>
             </div>
-            <pre className="p-3 text-zinc-200 overflow-x-auto leading-relaxed"><code>{code}</code></pre>
+            <pre className="p-3 text-zinc-100 overflow-x-auto leading-relaxed"><code>{code}</code></pre>
           </div>
         )
       }
@@ -240,22 +287,22 @@ export function AIChatWidget() {
 
         // ## Heading 2
         if (trimmed.startsWith("## ")) {
-          nodes.push(<p key={`${idx}-${i}`} className="font-bold text-[13px] text-zinc-100 mt-3 mb-1">{renderInline(trimmed.slice(3))}</p>)
+          nodes.push(<p key={`${idx}-${i}`} className="font-bold text-[13px] text-zinc-900 dark:text-zinc-100 mt-3 mb-1">{renderInline(trimmed.slice(3))}</p>)
           i++; continue
         }
         // ### Heading 3
         if (trimmed.startsWith("### ")) {
-          nodes.push(<p key={`${idx}-${i}`} className="font-semibold text-[12px] text-zinc-200 mt-2 mb-0.5">{renderInline(trimmed.slice(4))}</p>)
+          nodes.push(<p key={`${idx}-${i}`} className="font-semibold text-[12px] text-zinc-800 dark:text-zinc-200 mt-2 mb-0.5">{renderInline(trimmed.slice(4))}</p>)
           i++; continue
         }
         // # Heading 1
         if (trimmed.startsWith("# ")) {
-          nodes.push(<p key={`${idx}-${i}`} className="font-bold text-[14px] text-zinc-50 mt-3 mb-1.5">{renderInline(trimmed.slice(2))}</p>)
+          nodes.push(<p key={`${idx}-${i}`} className="font-bold text-[14px] text-zinc-950 dark:text-zinc-50 mt-3 mb-1.5">{renderInline(trimmed.slice(2))}</p>)
           i++; continue
         }
         // Horizontal rule
         if (trimmed === "---" || trimmed === "***") {
-          nodes.push(<hr key={`${idx}-${i}`} className="border-zinc-700 my-2" />)
+          nodes.push(<hr key={`${idx}-${i}`} className="border-zinc-200 dark:border-zinc-700 my-2" />)
           i++; continue
         }
         // Bullet list (- or *)
@@ -268,8 +315,8 @@ export function AIChatWidget() {
           nodes.push(
             <ul key={`${idx}-${i}`} className="my-1 space-y-0.5 pl-3">
               {items.map((it, k) => (
-                <li key={k} className="flex gap-1.5 text-xs text-zinc-300">
-                  <span className="text-zinc-500 mt-0.5 shrink-0">•</span>
+                <li key={k} className="flex gap-1.5 text-xs text-zinc-700 dark:text-zinc-300">
+                  <span className="text-zinc-400 dark:text-zinc-500 mt-0.5 shrink-0">•</span>
                   <span>{renderInline(it)}</span>
                 </li>
               ))}
@@ -288,8 +335,8 @@ export function AIChatWidget() {
           nodes.push(
             <ol key={`${idx}-${i}`} className="my-1 space-y-0.5 pl-3">
               {items.map((it, k) => (
-                <li key={k} className="flex gap-1.5 text-xs text-zinc-300">
-                  <span className="text-zinc-500 shrink-0 font-mono">{k + 1}.</span>
+                <li key={k} className="flex gap-1.5 text-xs text-zinc-700 dark:text-zinc-300">
+                  <span className="text-zinc-400 dark:text-zinc-500 shrink-0 font-mono">{k + 1}.</span>
                   <span>{renderInline(it)}</span>
                 </li>
               ))}
@@ -300,14 +347,14 @@ export function AIChatWidget() {
         // Blockquote
         if (trimmed.startsWith("> ")) {
           nodes.push(
-            <blockquote key={`${idx}-${i}`} className="border-l-2 border-zinc-600 pl-2.5 my-1 text-xs text-zinc-400 italic">
+            <blockquote key={`${idx}-${i}`} className="border-l-2 border-zinc-400 dark:border-zinc-600 pl-2.5 my-1 text-xs text-zinc-600 dark:text-zinc-400 italic">
               {renderInline(trimmed.slice(2))}
             </blockquote>
           )
           i++; continue
         }
         // Normal paragraph
-        nodes.push(<p key={`${idx}-${i}`} className="text-xs text-zinc-300 leading-relaxed my-0.5">{renderInline(trimmed)}</p>)
+        nodes.push(<p key={`${idx}-${i}`} className="text-xs text-zinc-800 dark:text-zinc-300 leading-relaxed my-0.5">{renderInline(trimmed)}</p>)
         i++
       }
       return <div key={idx}>{nodes}</div>
@@ -498,43 +545,81 @@ export function AIChatWidget() {
 
           {/* Chat Input Footer */}
           <div className="border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
-            {/* Web Search Toggle Bar */}
-            <div className="flex items-center gap-2 px-3 pt-2">
-              <button
-                type="button"
-                onClick={() => setWebSearchEnabled(v => !v)}
-                title={webSearchEnabled ? (isId ? "Matikan Web Search" : "Disable Web Search") : (isId ? "Aktifkan Web Search" : "Enable Web Search")}
-                className={`flex items-center gap-1.5 px-2 py-1 rounded-md text-[11px] font-medium border transition-all ${
-                  webSearchEnabled
-                    ? "bg-blue-500/10 border-blue-500/40 text-blue-400"
-                    : "bg-zinc-100 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
-                }`}
-              >
-                <Globe className={`w-3 h-3 ${isSearching ? "animate-spin" : ""}`} />
-                <span>{isId ? "Web Search" : "Web Search"}</span>
-                {webSearchEnabled && <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />}
-              </button>
+            {/* Toggle Bar: Web Search + Skills Palette Trigger */}
+            <div className="flex items-center justify-between px-3 pt-2">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setWebSearchEnabled(v => !v)}
+                  title={webSearchEnabled ? (isId ? "Matikan Web Search" : "Disable Web Search") : (isId ? "Aktifkan Web Search" : "Enable Web Search")}
+                  className={`flex items-center gap-1.5 px-2 py-1 rounded-md text-[11px] font-medium border transition-all cursor-pointer ${
+                    webSearchEnabled
+                      ? "bg-blue-500/10 border-blue-500/40 text-blue-400"
+                      : "bg-zinc-100 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
+                  }`}
+                >
+                  <Globe className={`w-3 h-3 ${isSearching ? "animate-spin" : ""}`} />
+                  <span>Web Search</span>
+                  {webSearchEnabled && <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    const match = input.match(/(^|\s)\/([a-zA-Z0-9_-]*)$/)
+                    if (slashPaletteOpen) {
+                      setSlashPaletteOpen(false)
+                    } else {
+                      if (!match) {
+                        setInput(prev => prev ? (prev.endsWith(" ") ? prev + "/" : prev + " /") : "/")
+                      }
+                      setSlashQuery("/")
+                      setSlashPaletteOpen(true)
+                      setSlashSelectedIndex(0)
+                    }
+                    inputRef.current?.focus()
+                  }}
+                  className="flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-mono font-medium border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 transition-all cursor-pointer"
+                  title="Trigger Skills & Workflows (Ketik /)"
+                >
+                  <Terminal className="w-3 h-3 text-amber-500" />
+                  <span className="font-bold text-amber-500">/</span>
+                  <span>Skills</span>
+                </button>
+              </div>
+
               {webSearchEnabled && (
                 <span className="text-[10px] text-zinc-400">
-                  {isId ? "AI akan menyertakan hasil web" : "AI will include web results"}
+                  {isId ? "Hasil live web aktif" : "Web grounding on"}
                 </span>
               )}
             </div>
+
             <div className="relative flex items-center p-2.5 pt-2">
+              {/* Slash Command Palette in Widget */}
+              <SlashCommandPalette
+                query={slashQuery}
+                isOpen={slashPaletteOpen}
+                onSelect={handleSelectSlashCommand}
+                onClose={() => setSlashPaletteOpen(false)}
+                selectedIndex={slashSelectedIndex}
+                setSelectedIndex={setSlashSelectedIndex}
+              />
+
               <textarea
                 ref={inputRef}
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(e) => handleInputChange(e.target.value)}
                 onKeyDown={handleKeyDown}
                 rows={1}
-                placeholder={isId ? "Tulis pertanyaan..." : "Type a message..."}
+                placeholder={isId ? "Tulis pertanyaan, atau ketik / untuk pilih skill..." : "Type a message, or / for skills..."}
                 className="w-full pl-3 pr-8 py-2 text-xs rounded-md border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:outline-hidden focus:border-zinc-400 dark:focus:border-zinc-600 resize-none max-h-20"
               />
               <button
                 type="button"
                 onClick={() => handleSendMessage()}
                 disabled={!input.trim() || isLoading}
-                className="absolute right-4 p-1 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                className="absolute right-4 p-1 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
               >
                 <Send className="w-3.5 h-3.5" />
               </button>

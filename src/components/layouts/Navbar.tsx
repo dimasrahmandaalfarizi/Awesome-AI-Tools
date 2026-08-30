@@ -53,6 +53,12 @@ export function Navbar() {
               {t("agents")}
             </Link>
             <Link 
+              href="/apis" 
+              className={`transition-colors ${pathname.startsWith("/apis") ? "text-[var(--primary)] font-semibold" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+            >
+              {t("apis")}
+            </Link>
+            <Link 
               href="/router" 
               className={`transition-colors ${pathname.startsWith("/router") ? "text-[var(--primary)] font-semibold" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
             >
@@ -167,6 +173,13 @@ export function Navbar() {
               className="hover:text-[var(--primary)] transition-colors font-semibold text-[var(--foreground)] py-3 border-b border-[var(--border)]/30"
             >
               {t("agents")}
+            </Link>
+            <Link
+              href="/apis"
+              onClick={() => setIsOpen(false)}
+              className="hover:text-[var(--primary)] transition-colors py-3 border-b border-[var(--border)]/30"
+            >
+              {t("apis")}
             </Link>
             <Link
               href="/router"
