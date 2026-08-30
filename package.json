@@ -17,7 +17,11 @@
     "awesome-ai-tools": "./dist/cli/index.js"
   },
   "files": [
-    "dist",
+    "dist/cli/index.js",
+    "dist/lib/index.js",
+    "dist/lib/index.mjs",
+    "dist/lib/index.d.ts",
+    "dist/lib/index.d.mts",
     "README.md",
     "LICENSE"
   ],
