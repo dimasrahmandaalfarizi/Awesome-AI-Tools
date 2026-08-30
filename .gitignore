@@ -51,3 +51,5 @@ proxy-config.json
 
 # Generated skill bundle JSONs (run scripts/bundle-skills.mjs locally to regenerate)
 public/data/skills/
+
+.vercel
