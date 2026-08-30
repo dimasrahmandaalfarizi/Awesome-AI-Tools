@@ -62,3 +62,19 @@ export interface AiSkill {
   author?: string
   createdAt: string
 }
+
+export interface AiAgent {
+  id: string
+  name: string
+  slug: string
+  role: string
+  description: string
+  capabilities: string[]
+  systemPrompt: string
+  recommendedModel?: string
+  tools: string[]
+  tags: string[]
+  author?: string
+  createdAt: string
+}
+

@@ -1,7 +1,12 @@
 import { getProxyConfig } from "@/lib/proxy/config"
+import { checkRateLimit, validatePayloadSize, validateSafeUrl } from "@/lib/security"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
+  // 1. Rate Limiting Protection (100 req/min)
+  const rateLimitResponse = checkRateLimit(req, "proxy-chat", { limit: 100, windowMs: 60000 })
+  if (rateLimitResponse) return rateLimitResponse
+
   try {
     const config = getProxyConfig()
     const { activeProvider, keys, customBaseUrl, defaultTargetModel, modelMapping } = config
@@ -32,7 +37,7 @@ export async function POST(req: NextRequest) {
         break
       case "ollama":
         baseUrl = customBaseUrl || "http://localhost:11434/v1/chat/completions"
-        apiKey = "ollama" // Local ollama doesn't require real key
+        apiKey = "ollama"
         break
       case "custom":
         baseUrl = customBaseUrl || ""
@@ -43,13 +48,6 @@ export async function POST(req: NextRequest) {
         apiKey = keys.deepseek || ""
     }
 
-    if (!apiKey && activeProvider !== "ollama") {
-      return NextResponse.json(
-        { error: `API key for ${activeProvider} is not configured. Please configure it in the AI Proxy Router dashboard (/router).` },
-        { status: 401 }
-      )
-    }
-
     if (!baseUrl) {
       return NextResponse.json(
         { error: `Base URL for ${activeProvider} is not configured.` },
@@ -57,7 +55,32 @@ export async function POST(req: NextRequest) {
       )
     }
 
+    // 2. SSRF Protection: Validate target baseUrl
+    const urlValidation = validateSafeUrl(baseUrl)
+    if (!urlValidation.isValid) {
+      return NextResponse.json(
+        { error: `Forbidden Target URL: ${urlValidation.reason}` },
+        { status: 403 }
+      )
+    }
+
+    if (!apiKey && activeProvider !== "ollama") {
+      return NextResponse.json(
+        { error: `API key for ${activeProvider} is not configured. Please configure it in the AI Proxy Router dashboard (/router).` },
+        { status: 401 }
+      )
+    }
+
     const rawBody = await req.text()
+
+    // 3. Payload Size Limitation (Max 4MB)
+    if (!validatePayloadSize(rawBody, 4 * 1024 * 1024)) {
+      return NextResponse.json(
+        { error: "Payload too large. Maximum request body size is 4MB." },
+        { status: 413 }
+      )
+    }
+
     let parsedBody: any = {}
     try {
       parsedBody = JSON.parse(rawBody)

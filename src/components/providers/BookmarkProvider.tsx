@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import * as React from "react"
 
@@ -7,6 +7,7 @@ interface BookmarkContextType {
   isBookmarked: (toolId: string) => boolean
   toggleBookmark: (toolId: string) => void
   removeBookmark: (toolId: string) => void
+  setBookmarkList: (toolIds: string[]) => void
   clearBookmarks: () => void
   count: number
 }
@@ -60,6 +61,11 @@ export function BookmarkProvider({ children }: { children: React.ReactNode }) {
     })
   }, [])
 
+  const setBookmarkList = React.useCallback((toolIds: string[]) => {
+    setBookmarks(toolIds)
+    saveToStorage(toolIds)
+  }, [])
+
   const clearBookmarks = React.useCallback(() => {
     setBookmarks([])
     saveToStorage([])
@@ -74,9 +80,10 @@ export function BookmarkProvider({ children }: { children: React.ReactNode }) {
     isBookmarked,
     toggleBookmark,
     removeBookmark,
+    setBookmarkList,
     clearBookmarks,
     count: mounted ? bookmarks.length : 0
-  }), [bookmarks, isBookmarked, toggleBookmark, removeBookmark, clearBookmarks, mounted])
+  }), [bookmarks, isBookmarked, toggleBookmark, removeBookmark, setBookmarkList, clearBookmarks, mounted])
 
   return (
     <BookmarkContext.Provider value={value}>
@@ -93,6 +100,7 @@ export function useBookmarks() {
       isBookmarked: () => false,
       toggleBookmark: () => {},
       removeBookmark: () => {},
+      setBookmarkList: () => {},
       clearBookmarks: () => {},
       count: 0
     }

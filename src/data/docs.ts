@@ -1,4 +1,4 @@
-﻿export interface DocTocItem {
+export interface DocTocItem {
   id: string
   title: {
     en: string
@@ -36,196 +36,246 @@ export interface DocSection {
 
 export const DOC_SECTIONS: DocSection[] = [
   {
-    title: { en: "Get started", id: "Mulai Cepat" },
+    title: { en: "Get Started", id: "Mulai Cepat" },
     tab: "guide",
     items: [
       {
         slug: "quickstart",
-        section: { en: "Get started", id: "Mulai Cepat" },
+        section: { en: "Get Started", id: "Mulai Cepat" },
         tab: "guide",
-        title: { en: "Quickstart", id: "Panduan Cepat (Quickstart)" },
+        title: { en: "5-Minute Quickstart", id: "Panduan Cepat 5 Menit" },
         lead: {
-          en: "Install Ollama, run local AI models, and connect them to your development workflow.",
-          id: "Pasang Ollama, jalankan model AI lokal di komputer, dan hubungkan ke alur kerja coding Anda."
+          en: "Set up the full Awesome AI Tools suite: scaffold 413 skills, 68 subagents, and run local AI models in under 5 minutes.",
+          id: "Siapkan ekosistem Awesome AI Tools: pasang 413 skills, 68 subagents, dan jalankan model AI lokal dalam 5 menit."
         },
         toc: [
-          { id: "1-download-ollama", title: { en: "1. Download Ollama", id: "1. Unduh & Pasang Ollama" } },
-          { id: "2-open-the-menu", title: { en: "2. Open the terminal", id: "2. Buka Terminal" } },
-          { id: "3-start-a-chat", title: { en: "3. Run your first AI model", id: "3. Jalankan Model AI Pertama" } },
-          { id: "4-connect-to-project", title: { en: "4. Connect to Awesome AI Proxy Router", id: "4. Hubungkan ke AI Proxy Router" } },
+          { id: "1-install-cli", title: { en: "1. Install CLI & Skills Suite", id: "1. Pasang CLI & Suite Skills" } },
+          { id: "2-run-local-llm", title: { en: "2. Run Local LLM with Ollama", id: "2. Jalankan LLM Lokal dengan Ollama" } },
+          { id: "3-connect-router", title: { en: "3. Connect to AI Proxy Router", id: "3. Hubungkan ke AI Proxy Router" } },
+          { id: "4-trigger-skills", title: { en: "4. Trigger Skills in your IDE", id: "4. Jalankan Skills di IDE Anda" } },
           { id: "next-steps", title: { en: "Next steps", id: "Langkah Selanjutnya" } }
         ]
       },
       {
         slug: "welcome",
-        section: { en: "Get started", id: "Mulai Cepat" },
+        section: { en: "Get Started", id: "Mulai Cepat" },
         tab: "guide",
-        title: { en: "Welcome to Awesome AI Tools", id: "Selamat Datang di Awesome AI Tools" },
+        title: { en: "Welcome & Ecosystem Overview", id: "Selamat Datang & Gambaran Ekosistem" },
         lead: {
-          en: "The all-in-one ecosystem for AI-first developers: prompt skills, local proxy routers, and curated tools.",
-          id: "Ekosistem terpadu untuk developer era AI: prompt skills, proxy router lokal, dan kurasi alat terbaik."
+          en: "The unified developer platform combining 1,000+ AI Tools catalog, 413 AI Skills, 68 Subagents, and AgentShield security.",
+          id: "Platform pengembang terpadu yang menggabungkan 1.000+ Alat AI, 413 AI Skills, 68 Subagents, dan keamanan AgentShield."
         },
         toc: [
-          { id: "overview", title: { en: "Ecosystem Overview", id: "Gambaran Ekosistem" } },
-          { id: "key-modules", title: { en: "Key Modules", id: "Modul Utama" } },
-          { id: "architecture", title: { en: "Architecture & Privacy", id: "Arsitektur & Privasi" } }
+          { id: "overview", title: { en: "Ecosystem Architecture", id: "Arsitektur Ekosistem" } },
+          { id: "core-pillars", title: { en: "The 4 Core Pillars", id: "4 Pilar Utama" } },
+          { id: "privacy-security", title: { en: "Zero-Data Retention & Privacy", id: "Privasi & Zero-Data Retention" } }
+        ]
+      },
+      {
+        slug: "cli-tools",
+        section: { en: "Get Started", id: "Mulai Cepat" },
+        tab: "guide",
+        title: { en: "Awesome AI Tools CLI", id: "Panduan CLI Awesome AI Tools" },
+        lead: {
+          en: "Everything you need to know about 'npx awesome-ai-tools' commands: init, scan, add, and list.",
+          id: "Panduan lengkap perintah 'npx awesome-ai-tools': init, scan, add, dan list."
+        },
+        toc: [
+          { id: "installation", title: { en: "Running without installation", id: "Menjalankan tanpa instalasi" } },
+          { id: "cmd-init", title: { en: "npx awesome-ai-tools init", id: "Perintah init" } },
+          { id: "cmd-scan", title: { en: "npx awesome-ai-tools scan (AgentShield)", id: "Perintah scan (AgentShield)" } },
+          { id: "cmd-add", title: { en: "npx awesome-ai-tools add <slug>", id: "Perintah add <slug>" } },
+          { id: "cmd-list", title: { en: "npx awesome-ai-tools list", id: "Perintah list" } }
         ]
       },
       {
         slug: "ollama-setup",
-        section: { en: "Get started", id: "Mulai Cepat" },
+        section: { en: "Get Started", id: "Mulai Cepat" },
         tab: "guide",
-        title: { en: "Ollama Local Setup", id: "Panduan Lengkap Ollama Lokal" },
+        title: { en: "Local Ollama Setup", id: "Panduan Setup Ollama Lokal" },
         lead: {
-          en: "Step-by-step guide to installing, configuring, and managing local LLMs on Windows, macOS, and Linux.",
-          id: "Panduan lengkap instalasi, konfigurasi, dan manajemen LLM lokal di Windows, macOS, dan Linux."
+          en: "Step-by-step guide to installing, configuring, and managing local LLMs for free, private coding.",
+          id: "Panduan instalasi, konfigurasi, dan manajemen LLM lokal untuk koding gratis dan privat."
         },
         toc: [
           { id: "installation", title: { en: "Installation Guide", id: "Panduan Instalasi" } },
           { id: "recommended-models", title: { en: "Recommended Coding Models", id: "Rekomendasi Model Coding" } },
-          { id: "hardware-requirements", title: { en: "Hardware & GPU Requirements", id: "Kebutuhan Hardware & GPU" } },
-          { id: "troubleshooting", title: { en: "Troubleshooting & Port 11434", id: "Troubleshooting & Port 11434" } }
+          { id: "gpu-acceleration", title: { en: "GPU Acceleration (CUDA / Metal)", id: "Akselerasi GPU (CUDA / Metal)" } },
+          { id: "troubleshooting", title: { en: "Troubleshooting Port 11434", id: "Troubleshooting Port 11434" } }
         ]
       }
     ]
   },
   {
-    title: { en: "Capabilities", id: "Kemampuan & Fitur" },
+    title: { en: "AI Skills & Agents", id: "AI Skills & Agents" },
     tab: "guide",
     items: [
       {
-        slug: "streaming",
-        section: { en: "Capabilities", id: "Kemampuan & Fitur" },
+        slug: "skills-guide",
+        section: { en: "AI Skills & Agents", id: "AI Skills & Agents" },
         tab: "guide",
-        title: { en: "Streaming Responses", id: "Streaming Respons Real-time" },
+        title: { en: "Using 413+ AI Skills", id: "Panduan Menggunakan 413+ AI Skills" },
         lead: {
-          en: "Real-time token streaming with Server-Sent Events (SSE) for low latency interactions.",
-          id: "Aliran token respons secara instan dengan Server-Sent Events (SSE) untuk latensi minimal."
+          en: "How modular skill rules enforce TDD, clean architecture, security guardrails, and framework-specific patterns.",
+          id: "Cara aturan modular skill menegakkan TDD, clean architecture, guardrail keamanan, dan pola framework."
         },
         toc: [
-          { id: "sse-overview", title: { en: "Server-Sent Events Overview", id: "Mengenal Server-Sent Events" } },
-          { id: "curl-example", title: { en: "cURL & Terminal Streaming", id: "Contoh cURL & Terminal" } },
-          { id: "editor-support", title: { en: "Editor Support", id: "Dukungan Editor" } }
+          { id: "how-skills-work", title: { en: "How Skills Work", id: "Cara Kerja Skills" } },
+          { id: "slash-commands", title: { en: "Slash Commands in Claude & Continue", id: "Slash Commands di Claude & Continue" } },
+          { id: "cursor-at-rules", title: { en: "@rules in Cursor IDE", id: "Aturan @rules di Cursor IDE" } },
+          { id: "top-essential-skills", title: { en: "Top 10 Essential Skills", id: "10 Skills Paling Esensial" } }
         ]
       },
       {
-        slug: "thinking",
-        section: { en: "Capabilities", id: "Kemampuan & Fitur" },
+        slug: "subagents-guide",
+        section: { en: "AI Skills & Agents", id: "AI Skills & Agents" },
         tab: "guide",
-        title: { en: "Thinking & Reasoning Models", id: "Model Penalaran (DeepSeek R1 / o1)" },
+        title: { en: "Specialist AI Subagents", id: "Panduan AI Subagents Spesialis" },
         lead: {
-          en: "Leverage Chain-of-Thought (CoT) reasoning models to solve complex coding architecture challenges.",
-          id: "Manfaatkan model penalaran berbasis Chain-of-Thought untuk memecahkan masalah arsitektur kode rumit."
+          en: "Deploy 68+ specialized personas (Architect, TDD Driver, Security Auditor, DBA) with isolated tool boundaries.",
+          id: "Gunakan 68+ persona spesialis (Architect, TDD Driver, Security Auditor, DBA) dengan batasan tool terisolasi."
         },
         toc: [
-          { id: "what-is-reasoning", title: { en: "What are Reasoning Models?", id: "Apa itu Model Penalaran?" } },
-          { id: "deepseek-r1", title: { en: "Using DeepSeek-R1 locally", id: "Menggunakan DeepSeek-R1 Lokal" } },
-          { id: "prompting-tips", title: { en: "Prompting Best Practices", id: "Praktik Prompting Terbaik" } }
+          { id: "subagents-overview", title: { en: "Why Specialized Subagents?", id: "Mengapa Subagents Spesialis?" } },
+          { id: "antigravity-integration", title: { en: "Google Antigravity & Codex Integration", id: "Integrasi Antigravity & Codex" } },
+          { id: "model-recommendations", title: { en: "Multi-Model Cost Routing", id: "Rekomendasi Pemilihan Model" } },
+          { id: "directory-structure", title: { en: "Subagent File Format (.md)", id: "Format Berkas Subagent (.md)" } }
         ]
       },
       {
-        slug: "structured-outputs",
-        section: { en: "Capabilities", id: "Kemampuan & Fitur" },
+        slug: "agentshield-security",
+        section: { en: "AI Skills & Agents", id: "AI Skills & Agents" },
         tab: "guide",
-        title: { en: "Structured Outputs (JSON Mode)", id: "Output Terstruktur (Mode JSON)" },
+        title: { en: "AgentShield Security Scanner", id: "AgentShield Security Scanner" },
         lead: {
-          en: "Enforce strict JSON schema responses from your local or routed LLMs.",
-          id: "Hasilkan data JSON valid dengan skema ketat dari model lokal maupun cloud."
+          en: "Protect your repository from leaked API keys, prompt injection attacks, and dangerous hook execution.",
+          id: "Lindungi repository Anda dari kebocoran API key, serangan prompt injection, dan eksekusi hook berbahaya."
         },
         toc: [
-          { id: "json-mode", title: { en: "Enabling JSON Mode", id: "Mengaktifkan Mode JSON" } },
-          { id: "schema-validation", title: { en: "Schema Validation with Zod", id: "Validasi Skema dengan Zod" } }
+          { id: "4-layer-security", title: { en: "4-Layer Security Engine", id: "Engine Keamanan 4 Lapisan" } },
+          { id: "secret-leak-detection", title: { en: "Secret & Key Leak Detection", id: "Deteksi Kebocoran Kunci Rahasia" } },
+          { id: "prompt-injection-defense", title: { en: "Prompt Injection Defense", id: "Pertahanan Prompt Injection" } },
+          { id: "ci-cd-automation", title: { en: "Running in CI/CD Pipelines", id: "Menjalankan di CI/CD Pipeline" } }
         ]
       }
     ]
   },
   {
-    title: { en: "Integrations", id: "Integrasi Editor" },
+    title: { en: "IDE Integrations", id: "Integrasi Editor & IDE" },
     tab: "integrations",
     items: [
       {
         slug: "cursor",
-        section: { en: "Integrations", id: "Integrasi Editor" },
+        section: { en: "IDE Integrations", id: "Integrasi Editor & IDE" },
         tab: "integrations",
-        title: { en: "Cursor AI Editor", id: "Integrasi Cursor AI" },
+        title: { en: "Cursor AI IDE Setup", id: "Setup Cursor AI IDE" },
         lead: {
-          en: "Connect Cursor to your local AI Proxy Router for unlimited, zero-cost coding with local models.",
-          id: "Hubungkan Cursor ke AI Proxy Router lokal untuk pair programming tanpa batas biaya."
+          en: "Configure Cursor with multi-file .cursor/rules/*.mdc, custom proxy base URLs, and zero-cost local LLMs.",
+          id: "Konfigurasi Cursor dengan aturan .cursor/rules/*.mdc, proxy base URL lokal, dan LLM gratis."
         },
         toc: [
-          { id: "cursor-setup", title: { en: "Configure Base URL in Cursor", id: "Pengaturan Base URL di Cursor" } },
-          { id: "cursor-rules", title: { en: "Using .cursor/rules MDC Files", id: "Menggunakan Aturan .cursor/rules" } },
-          { id: "composer-integration", title: { en: "Cursor Composer Pairing", id: "Pairing Cursor Composer" } }
+          { id: "mdc-rules-setup", title: { en: "1. MDC Rules Scaffolding", id: "1. Pasang MDC Rules" } },
+          { id: "cursor-proxy", title: { en: "2. Pointing Cursor to Local Proxy", id: "2. Arahkan Cursor ke Proxy Lokal" } },
+          { id: "composer-workflow", title: { en: "3. Best Practices in Composer", id: "3. Praktik Terbaik di Composer" } }
         ]
       },
       {
-        slug: "cline-roo-code",
-        section: { en: "Integrations", id: "Integrasi Editor" },
+        slug: "antigravity",
+        section: { en: "IDE Integrations", id: "Integrasi Editor & IDE" },
         tab: "integrations",
-        title: { en: "Cline & Roo Code", id: "Integrasi Cline & Roo Code" },
+        title: { en: "Google Antigravity & Codex", id: "Integrasi Google Antigravity & Codex" },
         lead: {
-          en: "Autonomous coding agent extensions in VS Code with direct local proxy routing.",
-          id: "Ekstensi autonomous coding agent di VS Code dengan integrasi proxy router lokal."
+          en: "Scaffold native .agents/skills/ and .agents/subagents/ for DeepMind Antigravity and OpenAI Codex.",
+          id: "Pasang struktur .agents/skills/ dan .agents/subagents/ untuk DeepMind Antigravity dan OpenAI Codex."
         },
         toc: [
-          { id: "cline-setup", title: { en: "OpenAI-Compatible Setup", id: "Setup Kompatibel OpenAI" } },
-          { id: "clinerules", title: { en: "Exporting .clinerules", id: "Ekspor File .clinerules" } }
+          { id: "antigravity-layout", title: { en: "Native .agents/ Structure", id: "Struktur Asli .agents/" } },
+          { id: "agent-delegation", title: { en: "Subagent Delegation Workflow", id: "Alur Delegasi Subagent" } },
+          { id: "skill-invocation", title: { en: "Autonomous Skill Loading", id: "Pemuatan Skill Otomatis" } }
         ]
       },
       {
         slug: "claude-code",
-        section: { en: "Integrations", id: "Integrasi Editor" },
+        section: { en: "IDE Integrations", id: "Integrasi Editor & IDE" },
         tab: "integrations",
         title: { en: "Claude Code CLI", id: "Integrasi Claude Code CLI" },
         lead: {
-          en: "Anthropic's terminal agent with custom instructions via CLAUDE.md files.",
-          id: "Agen terminal dari Anthropic dengan instruksi terstruktur via CLAUDE.md."
+          en: "Equip Anthropic's Claude Code terminal agent with 413 custom slash commands and CLAUDE.md index.",
+          id: "Lengkapi agen terminal Claude Code dari Anthropic dengan 413 slash commands dan indeks CLAUDE.md."
         },
         toc: [
-          { id: "claude-md", title: { en: "CLAUDE.md Rules Injection", id: "Injeksi Aturan CLAUDE.md" } },
-          { id: "cli-commands", title: { en: "Running Agent Workflows", id: "Menjalankan Alur Kerja Agen" } }
+          { id: "commands-folder", title: { en: ".claude/commands/ Architecture", id: "Arsitektur .claude/commands/" } },
+          { id: "running-slash-commands", title: { en: "Triggering /command in Terminal", id: "Menjalankan /command di Terminal" } },
+          { id: "claude-md-guidelines", title: { en: "Master CLAUDE.md Guidelines", id: "Panduan Master CLAUDE.md" } }
+        ]
+      },
+      {
+        slug: "continue-copilot",
+        section: { en: "IDE Integrations", id: "Integrasi Editor & IDE" },
+        tab: "integrations",
+        title: { en: "Continue.dev & GitHub Copilot", id: "Integrasi Continue.dev & GitHub Copilot" },
+        lead: {
+          en: "Use custom slash commands and prompt files in VS Code via Continue.dev and GitHub Copilot Chat.",
+          id: "Gunakan slash commands dan prompt files di VS Code via Continue.dev dan GitHub Copilot Chat."
+        },
+        toc: [
+          { id: "continue-setup", title: { en: "Continue.dev .continue/prompts/", id: "Setup Continue.dev .continue/prompts/" } },
+          { id: "copilot-setup", title: { en: "GitHub Copilot .github/prompts/", id: "Setup GitHub Copilot .github/prompts/" } }
+        ]
+      },
+      {
+        slug: "windsurf-cline",
+        section: { en: "IDE Integrations", id: "Integrasi Editor & IDE" },
+        tab: "integrations",
+        title: { en: "Windsurf & Cline", id: "Integrasi Windsurf & Cline" },
+        lead: {
+          en: "Configure Codeium Windsurf Cascade workflows and Cline / Roo Code autonomous task rules.",
+          id: "Konfigurasi workflow Codeium Windsurf Cascade dan aturan tugas otonom Cline / Roo Code."
+        },
+        toc: [
+          { id: "windsurf-workflows", title: { en: "Windsurf .windsurf/workflows/", id: "Workflow Windsurf .windsurf/workflows/" } },
+          { id: "clinerules-setup", title: { en: "Cline .clinerules Setup", id: "Setup .clinerules untuk Cline" } }
         ]
       }
     ]
   },
   {
-    title: { en: "API Reference", id: "Referensi API" },
+    title: { en: "API & Router Reference", id: "Referensi API & Router" },
     tab: "api-reference",
     items: [
       {
         slug: "chat-completions",
-        section: { en: "API Reference", id: "Referensi API" },
+        section: { en: "API & Router Reference", id: "Referensi API & Router" },
         tab: "api-reference",
         title: { en: "POST /api/v1/chat/completions", id: "POST /api/v1/chat/completions" },
         lead: {
-          en: "OpenAI-compatible chat completion proxy endpoint with dynamic model remapping.",
-          id: "Endpoint proxy chat completions kompatibel OpenAI dengan pemetaan model otomatis."
+          en: "OpenAI-compatible chat completion proxy endpoint with real-time SSE token streaming and model remapping.",
+          id: "Endpoint proxy chat completions kompatibel OpenAI dengan streaming token SSE dan pemetaan model otomatis."
         },
         toc: [
-          { id: "endpoint", title: { en: "Endpoint URL", id: "URL Endpoint" } },
-          { id: "request-headers", title: { en: "Request Headers", id: "Request Headers" } },
-          { id: "request-body", title: { en: "Request Body", id: "Request Body" } },
-          { id: "streaming-response", title: { en: "Response Format", id: "Format Respons" } },
-          { id: "example-curl", title: { en: "cURL Example", id: "Contoh cURL" } }
+          { id: "endpoint-url", title: { en: "Endpoint URL & Headers", id: "URL Endpoint & Headers" } },
+          { id: "request-schema", title: { en: "Request JSON Schema", id: "Skema JSON Request" } },
+          { id: "sse-streaming", title: { en: "Streaming Response Format", id: "Format Respons Streaming" } },
+          { id: "curl-example", title: { en: "cURL & TypeScript Examples", id: "Contoh cURL & TypeScript" } }
         ]
       },
       {
         slug: "models-routing",
-        section: { en: "API Reference", id: "Referensi API" },
+        section: { en: "API & Router Reference", id: "Referensi API & Router" },
         tab: "api-reference",
-        title: { en: "Model Remapping Engine", id: "Mesin Pemetaan Model AI" },
+        title: { en: "Model Remapping & Router Engine", id: "Mesin Pemetaan Model & Router" },
         lead: {
-          en: "How incoming model parameters (gpt-4o, claude-3-7) are intelligently remapped to Ollama or target providers.",
-          id: "Cara parameter model (gpt-4o, claude-3-7) dipetakan otomatis ke Ollama atau provider aktif."
+          en: "Intelligent remapping of high-cost cloud model identifiers (gpt-4o, claude-3-7) to local Ollama or target providers.",
+          id: "Pemetaan cerdas parameter model mahal (gpt-4o, claude-3-7) ke model Ollama lokal atau provider target."
         },
         toc: [
-          { id: "how-remapping-works", title: { en: "How Remapping Works", id: "Cara Kerja Pemetaan" } },
-          { id: "default-overrides", title: { en: "Default Target Override", id: "Override Target Default" } }
+          { id: "remapping-rules", title: { en: "Dynamic Model Remapping", id: "Pemetaan Model Dinamis" } },
+          { id: "provider-failover", title: { en: "Provider Failover & Fallbacks", id: "Fallback & Failover Provider" } }
         ]
       }
     ]
   }
-]
+];
 
 export function getAllDocs(): DocPage[] {
   return DOC_SECTIONS.flatMap(s => s.items)

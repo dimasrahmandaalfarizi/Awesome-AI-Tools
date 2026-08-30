@@ -1,5 +1,6 @@
 import fs from "fs"
 import path from "path"
+import { encryptSecret, decryptSecret, logSecurityEvent } from "@/lib/security"
 
 const CONFIG_PATH = path.join(process.cwd(), "proxy-config.json")
 
@@ -38,12 +39,36 @@ export function getProxyConfig(): ProxyConfig {
     if (fs.existsSync(CONFIG_PATH)) {
       const data = fs.readFileSync(CONFIG_PATH, "utf8")
       const parsed = JSON.parse(data) as ProxyConfig
-      return {
+
+      // Decrypt stored keys from disk into in-memory representation
+      const decryptedKeys: Record<string, string> = {}
+      let needsReEncryption = false
+
+      if (parsed.keys) {
+        for (const [provider, keyVal] of Object.entries(parsed.keys)) {
+          if (keyVal && typeof keyVal === "string") {
+            if (!keyVal.startsWith("enc:v1:")) {
+              needsReEncryption = true
+            }
+            decryptedKeys[provider] = decryptSecret(keyVal)
+          }
+        }
+      }
+
+      const mergedConfig: ProxyConfig = {
         ...DEFAULT_CONFIG,
         ...parsed,
-        keys: { ...DEFAULT_CONFIG.keys, ...parsed.keys },
+        keys: { ...DEFAULT_CONFIG.keys, ...decryptedKeys },
         modelMapping: { ...DEFAULT_CONFIG.modelMapping, ...parsed.modelMapping }
       }
+
+      // Automatically migrate legacy plaintext keys to AES-256-GCM encrypted format
+      if (needsReEncryption) {
+        saveProxyConfig(mergedConfig)
+        logSecurityEvent('CONFIG_ENCRYPTED', 'low', 'Auto-migrated plaintext proxy keys to AES-256-GCM on disk', '127.0.0.1', '/proxy')
+      }
+
+      return mergedConfig
     }
   } catch (error) {
     console.error("Failed to read proxy config, returning default.", error)
@@ -53,7 +78,23 @@ export function getProxyConfig(): ProxyConfig {
 
 export function saveProxyConfig(config: ProxyConfig): boolean {
   try {
-    fs.writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2), "utf8")
+    // Encrypt all keys before writing to disk
+    const encryptedKeys: Record<string, string> = {}
+    if (config.keys) {
+      for (const [provider, keyVal] of Object.entries(config.keys)) {
+        if (keyVal && typeof keyVal === "string") {
+          encryptedKeys[provider] = encryptSecret(keyVal)
+        }
+      }
+    }
+
+    const diskPayload = {
+      ...config,
+      keys: encryptedKeys
+    }
+
+    fs.writeFileSync(CONFIG_PATH, JSON.stringify(diskPayload, null, 2), "utf8")
+    logSecurityEvent('CONFIG_UPDATED', 'low', `Proxy configuration updated. Active provider: ${config.activeProvider}`, '127.0.0.1', '/api/router/config')
     return true
   } catch (error) {
     console.error("Failed to save proxy config.", error)

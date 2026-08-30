@@ -1,6 +1,6 @@
-﻿"use client"
+"use client"
 
-import { useState, useEffect, Suspense } from "react"
+import { useState, useEffect, useMemo, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { Navbar } from "@/components/layouts/Navbar"
 import { Footer } from "@/components/layouts/Footer"
@@ -9,10 +9,10 @@ import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "@/comp
 import { Badge } from "@/components/ui/Badge"
 import { Button } from "@/components/ui/Button"
 import { BookmarkButton } from "@/components/ui/BookmarkButton"
-import { Search as SearchIcon, ExternalLink, SlidersHorizontal, Sparkles, Loader2, ArrowRight } from "lucide-react"
+import { Search as SearchIcon, ExternalLink, SlidersHorizontal, Sparkles, Loader2, ArrowRight, Code, Bot, Wrench, Layers } from "lucide-react"
 import { Link } from "@/i18n/routing"
 import { useTranslations, useLocale } from "next-intl"
-import { TOOLS, CATEGORIES } from "@/data/mock"
+import { TOOLS, CATEGORIES, AI_SKILLS, AI_AGENTS } from "@/data/mock"
 import { getLocalizedCategory, getLocalizedTool } from "@/lib/localizeData"
 import { ToolLogo } from "@/components/ui/ToolLogo"
 import { Tool } from "@/types"
@@ -34,6 +34,7 @@ function SearchContent() {
 
   const [query, setQuery] = useState(initialQuery)
   const [searchMode, setSearchMode] = useState<"standard" | "semantic">("standard")
+  const [activeTypeTab, setActiveTypeTab] = useState<"all" | "tools" | "skills" | "agents">("all")
   const [selectedCategory, setSelectedCategory] = useState<string>("all")
   const [pricingFilter, setPricingFilter] = useState<string>("all")
   const [showFilters, setShowFilters] = useState(false)
@@ -71,329 +72,324 @@ function SearchContent() {
     return () => clearTimeout(timer)
   }, [query, searchMode, locale])
 
-  // Standard filtering logic
-  const localizedTools = TOOLS.map(t => getLocalizedTool(t, locale))
-  const standardFilteredTools = localizedTools.filter(tool => {
-    const matchesSearch = tool.name.toLowerCase().includes(query.toLowerCase()) || 
-                          tool.description.toLowerCase().includes(query.toLowerCase()) ||
-                          tool.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
-    
-    const matchesCategory = selectedCategory === "all" || tool.categoryId === selectedCategory
-    const matchesPricing = pricingFilter === "all" || 
-                           (pricingFilter === "open-source" && tool.isOpenSource) ||
-                           (pricingFilter === "free" && ((tool.pricing as string) === "Free" || (tool.pricing as string) === "Freemium" || (tool.pricing as string) === "Gratis"))
-
-    return matchesSearch && matchesCategory && matchesPricing
-  })
-
-  // Semantic filtered tools
-  const semanticFilteredTools = semanticResults
-    .map(item => ({
-      ...item,
-      tool: getLocalizedTool(item.tool, locale)
-    }))
-    .filter(({ tool }) => {
+  // Instant In-Memory Filter for Tools
+  const localizedTools = useMemo(() => TOOLS.map(t => getLocalizedTool(t, locale)), [locale])
+  
+  const filteredTools = useMemo(() => {
+    const q = query.toLowerCase().trim()
+    return localizedTools.filter(tool => {
+      const matchesSearch = !q || 
+        tool.name.toLowerCase().includes(q) || 
+        tool.description.toLowerCase().includes(q) ||
+        tool.tags.some(tag => tag.toLowerCase().includes(q))
+      
       const matchesCategory = selectedCategory === "all" || tool.categoryId === selectedCategory
       const matchesPricing = pricingFilter === "all" || 
                              (pricingFilter === "open-source" && tool.isOpenSource) ||
                              (pricingFilter === "free" && ((tool.pricing as string) === "Free" || (tool.pricing as string) === "Freemium" || (tool.pricing as string) === "Gratis"))
-      return matchesCategory && matchesPricing
+
+      return matchesSearch && matchesCategory && matchesPricing
     })
+  }, [localizedTools, query, selectedCategory, pricingFilter])
+
+  // Instant In-Memory Filter for AI Skills
+  const filteredSkills = useMemo(() => {
+    const q = query.toLowerCase().trim()
+    if (!q) return AI_SKILLS.slice(0, 8)
+    return AI_SKILLS.filter(s => 
+      s.name.toLowerCase().includes(q) ||
+      s.description.toLowerCase().includes(q) ||
+      s.slug.toLowerCase().includes(q) ||
+      s.frameworks.some(f => f.toLowerCase().includes(q))
+    )
+  }, [query])
+
+  // Instant In-Memory Filter for AI Agents
+  const filteredAgents = useMemo(() => {
+    const q = query.toLowerCase().trim()
+    if (!q) return AI_AGENTS.slice(0, 6)
+    return AI_AGENTS.filter(a => 
+      a.name.toLowerCase().includes(q) ||
+      a.role.toLowerCase().includes(q) ||
+      a.description.toLowerCase().includes(q) ||
+      a.tags.some(t => t.toLowerCase().includes(q))
+    )
+  }, [query])
 
   const isSemantic = searchMode === "semantic"
-  const activeCount = isSemantic ? (query.trim() ? semanticFilteredTools.length : 0) : standardFilteredTools.length
+  const totalCount = filteredTools.length + (activeTypeTab === "all" || activeTypeTab === "skills" ? filteredSkills.length : 0) + (activeTypeTab === "all" || activeTypeTab === "agents" ? filteredAgents.length : 0)
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="max-w-4xl mx-auto space-y-8">
-        
-        {/* Header */}
-        <div className="text-center space-y-3 mb-8">
-          <h1 className="text-4xl font-bold tracking-tight">{t("title")}</h1>
-          <p className="text-[var(--muted)] text-base max-w-xl mx-auto">{t("description")}</p>
+    <div className="container mx-auto px-4 py-12 max-w-6xl space-y-8">
+      
+      {/* Header */}
+      <div className="text-center space-y-3 max-w-2xl mx-auto">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight font-heading text-[var(--foreground)]">{t("title")}</h1>
+        <p className="text-[var(--muted)] text-sm md:text-base leading-relaxed">
+          {isId 
+            ? "Cari di seluruh 200+ alat developer, 437 AI skills, dan 68 subagents secara instan."
+            : "Search across 200+ curated developer tools, 437 AI skills, and 68 subagents in real-time."}
+        </p>
+      </div>
+
+      {/* Mode & Entity Filter Tabs */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+        {/* Entity Tabs */}
+        <div className="inline-flex p-1 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs font-medium w-full sm:w-auto overflow-x-auto">
+          <button
+            onClick={() => setActiveTypeTab("all")}
+            className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${activeTypeTab === "all" ? "bg-[var(--background)] text-[var(--foreground)] font-bold shadow-xs" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+          >
+            <Layers className="w-3.5 h-3.5" />
+            <span>{isId ? "Semua" : "All Ecosystem"}</span>
+          </button>
+          <button
+            onClick={() => setActiveTypeTab("tools")}
+            className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${activeTypeTab === "tools" ? "bg-[var(--background)] text-[var(--foreground)] font-bold shadow-xs" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+          >
+            <Wrench className="w-3.5 h-3.5" />
+            <span>Tools ({filteredTools.length})</span>
+          </button>
+          <button
+            onClick={() => setActiveTypeTab("skills")}
+            className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${activeTypeTab === "skills" ? "bg-[var(--background)] text-[var(--foreground)] font-bold shadow-xs" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+          >
+            <Code className="w-3.5 h-3.5" />
+            <span>Skills ({filteredSkills.length})</span>
+          </button>
+          <button
+            onClick={() => setActiveTypeTab("agents")}
+            className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${activeTypeTab === "agents" ? "bg-[var(--background)] text-[var(--foreground)] font-bold shadow-xs" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+          >
+            <Bot className="w-3.5 h-3.5" />
+            <span>Agents ({filteredAgents.length})</span>
+          </button>
         </div>
 
         {/* Search Mode Toggle */}
-        <div className="flex items-center justify-center">
-          <div className="inline-flex p-1 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs font-medium">
-            <button
-              onClick={() => setSearchMode("standard")}
-              className={`px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
-                !isSemantic
-                  ? "bg-[var(--background)] text-[var(--foreground)] shadow-xs font-semibold"
-                  : "text-[var(--muted)] hover:text-[var(--foreground)]"
-              }`}
-            >
-              <SearchIcon className="w-3.5 h-3.5" />
-              <span>{isId ? "Pencarian Standar" : "Standard Search"}</span>
-            </button>
-            <button
-              onClick={() => setSearchMode("semantic")}
-              className={`px-4 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
-                isSemantic
-                  ? "bg-[var(--background)] text-[var(--foreground)] shadow-xs font-semibold"
-                  : "text-[var(--muted)] hover:text-[var(--foreground)]"
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
-              <span>{isId ? "AI Semantic Search" : "AI Semantic Search"}</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Search Bar & Filter Toggle */}
-        <div className="flex flex-col md:flex-row gap-3">
-          <div className="relative flex-1 group">
-            <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[var(--muted)] group-focus-within:text-[var(--primary)] transition-colors" />
-            <Input
-              type="text"
-              placeholder={
-                isSemantic
-                  ? (isId ? "Cari dengan bahasa alami (contoh: 'bantu saya buat landing page tanpa koding')..." : "Search with natural language (e.g. 'help me build landing page without coding')...")
-                  : t("placeholder")
-              }
-              className="h-13 pl-12 pr-10 text-sm md:text-base rounded-xl shadow-xs border-[var(--border)] focus-visible:ring-1 focus-visible:ring-[var(--primary)] bg-[var(--surface)]"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            {isSearchingSemantic && (
-              <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--primary)] animate-spin" />
-            )}
-          </div>
-          <Button 
-            variant="outline" 
-            className="h-13 px-5 rounded-xl text-sm"
-            onClick={() => setShowFilters(!showFilters)}
+        <div className="inline-flex p-1 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs font-medium">
+          <button
+            onClick={() => setSearchMode("standard")}
+            className={`px-3.5 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${!isSemantic ? "bg-[var(--background)] text-[var(--foreground)] shadow-xs font-semibold" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
           >
-            <SlidersHorizontal className="mr-2 h-4 w-4" /> {t("filters")}
-          </Button>
+            <SearchIcon className="w-3.5 h-3.5" />
+            <span>{isId ? "Standar" : "Standard"}</span>
+          </button>
+          <button
+            onClick={() => setSearchMode("semantic")}
+            className={`px-3.5 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${isSemantic ? "bg-[var(--background)] text-[var(--foreground)] shadow-xs font-semibold" : "text-[var(--muted)] hover:text-[var(--foreground)]"}`}
+          >
+            <Sparkles className="w-3.5 h-3.5 text-[var(--primary)]" />
+            <span>AI Semantic</span>
+          </button>
         </div>
+      </div>
 
-        {/* Semantic Search Hint Pill */}
-        {isSemantic && (
-          <div className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[var(--surface)] border border-[var(--border)] text-xs text-[var(--muted)]">
-            <span className="font-semibold text-[var(--foreground)]">AI Semantic Mode:</span>
-            <span>{isId ? "Mencari berdasarkan niat masalah, fitur, dan relasi topik secara cerdas." : "Searches based on semantic intent, problem solved, and topic relevance."}</span>
+      {/* Search Input Bar */}
+      <div className="flex flex-col md:flex-row gap-3">
+        <div className="relative flex-1 group">
+          <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[var(--muted)] group-focus-within:text-[var(--primary)] transition-colors" />
+          <Input
+            type="text"
+            placeholder={
+              isSemantic
+                ? (isId ? "Cari dengan bahasa alami (contoh: 'bantu saya buat landing page')..." : "Search with natural language (e.g. 'help me build landing page')...")
+                : (isId ? "Ketik nama alat, skill prompt, MCP server, atau teknologi..." : "Type tool name, skill prompt, MCP server, or stack...")
+            }
+            className="h-12 pl-12 pr-10 text-sm md:text-base rounded-xl shadow-xs border-[var(--border)] focus-visible:ring-1 focus-visible:ring-[var(--primary)] bg-[var(--surface)]"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          {isSearchingSemantic && (
+            <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--primary)] animate-spin" />
+          )}
+        </div>
+        <Button 
+          variant="outline" 
+          className="h-12 px-5 rounded-xl text-sm cursor-pointer"
+          onClick={() => setShowFilters(!showFilters)}
+        >
+          <SlidersHorizontal className="mr-2 h-4 w-4" /> {t("filters")}
+        </Button>
+      </div>
+
+      {/* Expandable Filters */}
+      <AnimatePresence>
+        {showFilters && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--surface)] space-y-4">
+              <div>
+                <label className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wider mb-2 block">
+                  {t("categories")}
+                </label>
+                <div className="flex flex-wrap gap-1.5">
+                  <Badge 
+                    variant={selectedCategory === "all" ? "default" : "outline"}
+                    className="cursor-pointer text-xs"
+                    onClick={() => setSelectedCategory("all")}
+                  >
+                    {t("all")}
+                  </Badge>
+                  {CATEGORIES.slice(0, 12).map((cat) => {
+                    const locCat = getLocalizedCategory(cat, locale)
+                    return (
+                      <Badge
+                        key={cat.id}
+                        variant={selectedCategory === cat.id ? "default" : "outline"}
+                        className="cursor-pointer text-xs"
+                        onClick={() => setSelectedCategory(cat.id)}
+                      >
+                        {locCat.name}
+                      </Badge>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Results Section */}
+      <div className="space-y-8">
+        {/* Tools Results */}
+        {(activeTypeTab === "all" || activeTypeTab === "tools") && (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between border-b border-[var(--border)] pb-2">
+              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+                <Wrench className="w-4 h-4 text-[var(--primary)]" />
+                <span>Developer Tools ({filteredTools.length})</span>
+              </h2>
+            </div>
+            {filteredTools.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {filteredTools.slice(0, 18).map((tool) => (
+                  <Card key={tool.id} className="flex flex-col justify-between h-full bg-[var(--surface)] border-[var(--border)] hover:border-[var(--muted)] transition-all">
+                    <CardHeader className="p-4 space-y-2">
+                      <div className="flex justify-between items-start">
+                        <Badge variant={tool.isOpenSource ? "accent" : "secondary"} className="text-[10px]">
+                          {tool.isOpenSource ? t("openSource") : tool.pricing}
+                        </Badge>
+                        <span className="text-[10px] text-[var(--muted)] font-mono">
+                          {CATEGORIES.find(c => c.id === tool.categoryId)?.name || "General"}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2.5 mt-1">
+                        <ToolLogo name={tool.name} website={tool.website} logo={tool.logo} size="sm" />
+                        <Link href={`/tools/${tool.slug}`} className="hover:text-[var(--primary)] transition-colors">
+                          <CardTitle className="text-sm font-bold">{tool.name}</CardTitle>
+                        </Link>
+                      </div>
+                      <CardDescription className="text-xs line-clamp-2">
+                        {tool.description}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardFooter className="p-4 pt-0 flex justify-between items-center border-t border-[var(--border)]/30 mt-2">
+                      <div className="flex gap-1 flex-wrap">
+                        {tool.tags.slice(0, 2).map(tag => (
+                          <span key={tag} className="text-[10px] text-[var(--muted)]">#{tag}</span>
+                        ))}
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <BookmarkButton toolId={tool.id} toolName={tool.name} size="sm" />
+                        <a href={tool.website} target="_blank" rel="noreferrer" className="text-[var(--muted)] hover:text-[var(--primary)]">
+                          <ExternalLink className="h-3.5 w-3.5" />
+                        </a>
+                      </div>
+                    </CardFooter>
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              <div className="p-6 text-center text-xs text-[var(--muted)] bg-[var(--surface)]/30 rounded-xl border border-[var(--border)]">
+                {isId ? "Tidak ada alat yang cocok dengan filter." : "No tools matched your search."}
+              </div>
+            )}
           </div>
         )}
 
-        {/* Expandable Filters */}
-        <AnimatePresence>
-          {showFilters && (
-            <motion.div 
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="overflow-hidden"
-            >
-              <div className="p-5 rounded-xl border border-[var(--border)] bg-[var(--surface)]/50 space-y-5">
-                {/* Category Filters */}
-                <div>
-                  <label className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wider mb-2.5 block">
-                    {t("categories")}
-                  </label>
-                  <div className="flex flex-wrap gap-1.5">
-                    <Badge 
-                      variant={selectedCategory === "all" ? "default" : "outline"}
-                      className="cursor-pointer text-xs"
-                      onClick={() => setSelectedCategory("all")}
-                    >
-                      {t("all")}
-                    </Badge>
-                    {CATEGORIES.map((cat) => {
-                      const locCat = getLocalizedCategory(cat, locale)
-                      return (
-                        <Badge
-                          key={cat.id}
-                          variant={selectedCategory === cat.id ? "default" : "outline"}
-                          className="cursor-pointer text-xs"
-                          onClick={() => setSelectedCategory(cat.id)}
-                        >
-                          {locCat.name}
-                        </Badge>
-                      )
-                    })}
+        {/* AI Skills Results */}
+        {(activeTypeTab === "all" || activeTypeTab === "skills") && (
+          <div className="space-y-4 pt-4">
+            <div className="flex items-center justify-between border-b border-[var(--border)] pb-2">
+              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+                <Code className="w-4 h-4 text-emerald-500" />
+                <span>AI Agent Skills ({filteredSkills.length})</span>
+              </h2>
+              <Link href="/skills" className="text-xs text-[var(--primary)] hover:underline flex items-center gap-1">
+                <span>{isId ? "Lihat Semua 437 Skills" : "View all 437 Skills"}</span>
+                <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredSkills.slice(0, 9).map((skill) => (
+                <div key={skill.id} className="p-4 rounded-xl border border-[var(--border)] bg-[var(--surface)] flex flex-col justify-between space-y-3">
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-mono font-bold text-[var(--foreground)]">/{skill.slug}</span>
+                      <span className="text-[10px] text-[var(--muted)]">{skill.author || "Community"}</span>
+                    </div>
+                    <h3 className="text-sm font-bold text-[var(--foreground)]">{skill.name}</h3>
+                    <p className="text-xs text-[var(--muted)] line-clamp-2 leading-relaxed">{skill.description}</p>
+                  </div>
+                  <div className="flex items-center justify-between pt-2 border-t border-[var(--border)]/40 text-[11px]">
+                    <span className="text-[var(--muted)]">{skill.frameworks.slice(0, 2).join(", ")}</span>
+                    <Link href={`/skills/${skill.slug}`} className="text-[var(--primary)] font-semibold hover:underline flex items-center gap-1">
+                      <span>View</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
                   </div>
                 </div>
-
-                {/* Pricing Filters */}
-                <div>
-                  <label className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wider mb-2.5 block">
-                    {t("pricing")}
-                  </label>
-                  <div className="flex flex-wrap gap-1.5">
-                    <Badge 
-                      variant={pricingFilter === "all" ? "default" : "outline"}
-                      className="cursor-pointer text-xs"
-                      onClick={() => setPricingFilter("all")}
-                    >
-                      {t("all")}
-                    </Badge>
-                    <Badge 
-                      variant={pricingFilter === "free" ? "default" : "outline"}
-                      className="cursor-pointer text-xs"
-                      onClick={() => setPricingFilter("free")}
-                    >
-                      {isId ? "Gratis & Freemium" : "Free & Freemium"}
-                    </Badge>
-                    <Badge 
-                      variant={pricingFilter === "open-source" ? "default" : "outline"}
-                      className="cursor-pointer text-xs"
-                      onClick={() => setPricingFilter("open-source")}
-                    >
-                      {tHome("openSource")}
-                    </Badge>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Results Header */}
-        <div>
-          <div className="mb-5 flex justify-between items-end">
-            <h2 className="text-lg font-semibold">
-              {t("results")} ({activeCount})
-            </h2>
+              ))}
+            </div>
           </div>
+        )}
 
-          {/* Semantic Results Flow */}
-          {isSemantic ? (
-            query.trim() === "" ? (
-              <div className="text-center py-16 text-[var(--muted)] bg-[var(--surface)]/30 rounded-xl border border-[var(--border)]">
-                <Sparkles className="h-8 w-8 mx-auto mb-3 opacity-40 text-indigo-500" />
-                <p className="text-sm font-medium">{isId ? "Ketik kebutuhan Anda untuk pencarian semantik" : "Type your requirement for semantic search"}</p>
-                <p className="text-xs mt-1 max-w-sm mx-auto text-[var(--muted)]">
-                  {isId ? "Contoh: 'bantu scraping web', 'transkripsi audio lokal', atau 'framework multi-agent'" : "Examples: 'web scraping tool', 'local audio transcription', or 'multi-agent framework'"}
-                </p>
-              </div>
-            ) : semanticFilteredTools.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {semanticFilteredTools.map(({ tool, score, matchReason }) => (
-                  <Card key={tool.id} className="flex flex-col h-full hover:border-[var(--muted)] hover:shadow-sm transition-all group">
-                    <CardHeader>
-                      <div className="flex justify-between items-start mb-2 gap-2">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <Badge variant={tool.isOpenSource ? "accent" : "secondary"}>
-                            {tool.isOpenSource ? t("openSource") : tool.pricing}
-                          </Badge>
-                          <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 font-bold">
-                            {score}% Match
-                          </span>
-                        </div>
-                        <div className="text-[11px] text-[var(--muted)] bg-[var(--background)] px-2 py-0.5 rounded-full border border-[var(--border)] shrink-0">
-                          {(() => {
-                            const cat = CATEGORIES.find(c => c.id === tool.categoryId)
-                            return cat ? getLocalizedCategory(cat, locale).name : ""
-                          })()}
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-3 mt-1">
-                        <ToolLogo name={tool.name} website={tool.website} logo={tool.logo} size="md" />
-                        <Link href={`/tools/${tool.slug}`} className="hover:underline">
-                          <CardTitle className="text-lg group-hover:text-[var(--primary)] transition-all">
-                            {tool.name}
-                          </CardTitle>
-                        </Link>
-                      </div>
-
-                      <CardDescription className="line-clamp-2 mt-2 text-xs">
-                        {tool.description}
-                      </CardDescription>
-
-                      {/* Match Reason Pill */}
-                      <div className="mt-3 p-2 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[11px] text-[var(--muted)]">
-                        <span className="font-semibold text-[var(--foreground)]">Alasan: </span>
-                        {matchReason}
-                      </div>
-                    </CardHeader>
-
-                    <CardFooter className="mt-auto pt-4 flex justify-between items-center border-t border-[var(--border)]/50">
-                      <div className="flex gap-1.5 flex-wrap">
-                        {tool.tags.slice(0, 3).map(tag => (
-                          <span key={tag} className="text-[11px] text-[var(--muted)]">#{tag}</span>
-                        ))}
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <BookmarkButton toolId={tool.id} toolName={tool.name} size="sm" />
-                        <a href={tool.website} target="_blank" rel="noreferrer" className="text-[var(--muted)] hover:text-[var(--primary)] transition-colors">
-                          <ExternalLink className="h-4 w-4" />
-                        </a>
-                      </div>
-                    </CardFooter>
-                  </Card>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-16 text-[var(--muted)] bg-[var(--surface)]/30 rounded-xl border border-[var(--border)]">
-                <SearchIcon className="h-8 w-8 mx-auto mb-3 opacity-40" />
-                <p className="text-base font-medium">{t("noResults")}</p>
-                <Button variant="link" onClick={() => { setQuery(""); setSelectedCategory("all"); setPricingFilter("all") }} className="text-xs mt-1">
-                  {t("clearFilters")}
-                </Button>
-              </div>
-            )
-          ) : (
-            /* Standard Results Flow */
-            standardFilteredTools.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {standardFilteredTools.map((tool) => (
-                  <Card key={tool.id} className="flex flex-col h-full hover:border-[var(--muted)] hover:shadow-sm transition-all group">
-                    <CardHeader>
-                      <div className="flex justify-between items-start mb-2">
-                        <Badge variant={tool.isOpenSource ? "accent" : "secondary"}>
-                          {tool.isOpenSource ? t("openSource") : tool.pricing}
-                        </Badge>
-                        <div className="text-[11px] text-[var(--muted)] bg-[var(--background)] px-2 py-0.5 rounded-full border border-[var(--border)]">
-                          {(() => {
-                            const cat = CATEGORIES.find(c => c.id === tool.categoryId)
-                            return cat ? getLocalizedCategory(cat, locale).name : ""
-                          })()}
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3 mt-1">
-                        <ToolLogo name={tool.name} website={tool.website} logo={tool.logo} size="md" />
-                        <Link href={`/tools/${tool.slug}`} className="hover:underline">
-                          <CardTitle className="text-lg group-hover:text-[var(--primary)] transition-all">
-                            {tool.name}
-                          </CardTitle>
-                        </Link>
-                      </div>
-                      <CardDescription className="line-clamp-2 mt-2 text-xs">
-                        {tool.description}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardFooter className="mt-auto pt-4 flex justify-between items-center border-t border-[var(--border)]/50">
-                      <div className="flex gap-1.5 flex-wrap">
-                        {tool.tags.map(tag => (
-                          <span key={tag} className="text-[11px] text-[var(--muted)]">#{tag}</span>
-                        ))}
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <BookmarkButton toolId={tool.id} toolName={tool.name} size="sm" />
-                        <a href={tool.website} target="_blank" rel="noreferrer" className="text-[var(--muted)] hover:text-[var(--primary)] transition-colors">
-                          <ExternalLink className="h-4 w-4" />
-                        </a>
-                      </div>
-                    </CardFooter>
-                  </Card>
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-16 text-[var(--muted)] bg-[var(--surface)]/30 rounded-xl border border-[var(--border)]">
-                <SearchIcon className="h-8 w-8 mx-auto mb-3 opacity-40" />
-                <p className="text-base font-medium">{t("noResults")}</p>
-                <Button variant="link" onClick={() => { setQuery(""); setSelectedCategory("all"); setPricingFilter("all") }} className="text-xs mt-1">
-                  {t("clearFilters")}
-                </Button>
-              </div>
-            )
-          )}
-
-        </div>
+        {/* AI Agents Results */}
+        {(activeTypeTab === "all" || activeTypeTab === "agents") && (
+          <div className="space-y-4 pt-4">
+            <div className="flex items-center justify-between border-b border-[var(--border)] pb-2">
+              <h2 className="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+                <Bot className="w-4 h-4 text-indigo-500" />
+                <span>Specialized AI Subagents ({filteredAgents.length})</span>
+              </h2>
+              <Link href="/agents" className="text-xs text-[var(--primary)] hover:underline flex items-center gap-1">
+                <span>{isId ? "Lihat Semua 68 Subagents" : "View all 68 Subagents"}</span>
+                <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredAgents.slice(0, 6).map((agent) => (
+                <div key={agent.id} className="p-4 rounded-xl border border-[var(--border)] bg-[var(--surface)] flex flex-col justify-between space-y-3">
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-500 font-bold">
+                        {agent.role}
+                      </span>
+                      <span className="text-[10px] text-[var(--muted)]">{agent.recommendedModel}</span>
+                    </div>
+                    <h3 className="text-sm font-bold text-[var(--foreground)]">{agent.name}</h3>
+                    <p className="text-xs text-[var(--muted)] line-clamp-2 leading-relaxed">{agent.description}</p>
+                  </div>
+                  <div className="flex items-center justify-between pt-2 border-t border-[var(--border)]/40 text-[11px]">
+                    <span className="text-[var(--muted)]">{agent.tags.slice(0, 2).join(", ")}</span>
+                    <Link href={`/agents/${agent.slug}`} className="text-[var(--primary)] font-semibold hover:underline flex items-center gap-1">
+                      <span>Inspect Agent</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
+
     </div>
   )
 }

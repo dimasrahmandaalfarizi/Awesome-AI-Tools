@@ -58,6 +58,22 @@ interface AiSkill {
     author?: string;
     createdAt: string;
 }
+interface AiAgent {
+    id: string;
+    name: string;
+    slug: string;
+    role: string;
+    description: string;
+    capabilities: string[];
+    systemPrompt: string;
+    recommendedModel?: string;
+    tools: string[];
+    tags: string[];
+    author?: string;
+    createdAt: string;
+}
+
+declare const AI_AGENTS: AiAgent[];
 
 declare const CATEGORIES: Category[];
 declare const TAGS: Tag[];
@@ -65,10 +81,59 @@ declare const TOOLS: Tool[];
 declare const COLLECTIONS: Collection[];
 declare const AI_SKILLS: AiSkill[];
 
+interface CompositeWorkflow {
+    name: string;
+    slug: string;
+    command: string;
+    description: string;
+    steps: {
+        step: number;
+        subagent: string;
+        action: string;
+        instructions: string;
+    }[];
+    content: string;
+}
+declare const COMPOSITE_WORKFLOWS: CompositeWorkflow[];
+
+declare const HOOK_SCRIPTS: {
+    preToolCall: string;
+    postToolCall: string;
+    onSessionEnd: string;
+};
+declare const INSTINCTS_TEMPLATE: string;
+
+interface SecurityFinding {
+    type: 'secret' | 'injection' | 'hook' | 'permission';
+    severity: 'critical' | 'high' | 'medium' | 'low';
+    title: string;
+    description: string;
+    file: string;
+    line?: number;
+    snippet?: string;
+    remediation: string;
+}
+interface ScanReport {
+    score: number;
+    grade: 'A+' | 'A' | 'B' | 'C' | 'F';
+    totalFilesScanned: number;
+    findings: SecurityFinding[];
+    timestamp: string;
+    summary: {
+        critical: number;
+        high: number;
+        medium: number;
+        low: number;
+    };
+}
+declare function scanWorkspace(targetDir?: string): ScanReport;
+
+declare function getAllAgents(): AiAgent[];
+declare function getAgentBySlug(slug: string): AiAgent | undefined;
 declare function getAllSkills(): AiSkill[];
 declare function getSkillBySlug(slug: string): AiSkill | undefined;
 declare function getAllTools(): Tool[];
 declare function getToolBySlug(slug: string): Tool | undefined;
 declare function getAllCategories(): Category[];
 
-export { AI_SKILLS, type AiSkill, CATEGORIES, COLLECTIONS, type Category, type Collection, TAGS, TOOLS, type Tag, type Tool, getAllCategories, getAllSkills, getAllTools, getSkillBySlug, getToolBySlug };
+export { AI_AGENTS, AI_SKILLS, type AiAgent, type AiSkill, CATEGORIES, COLLECTIONS, COMPOSITE_WORKFLOWS, type Category, type Collection, HOOK_SCRIPTS, INSTINCTS_TEMPLATE, TAGS, TOOLS, type Tag, type Tool, getAgentBySlug, getAllAgents, getAllCategories, getAllSkills, getAllTools, getSkillBySlug, getToolBySlug, scanWorkspace };

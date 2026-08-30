@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { TOOLS, CATEGORIES, AI_SKILLS } from "@/data/mock"
+import { checkRateLimit } from "@/lib/security"
 
 /**
  * Intelligent context search to find relevant tools and skills based on user input
@@ -47,6 +48,10 @@ function retrieveRelevantContext(queryText: string) {
 }
 
 export async function POST(req: NextRequest) {
+  // Rate Limiting Protection (120 req/min for local chat)
+  const rateLimitResponse = checkRateLimit(req, "ollama-chat", { limit: 120, windowMs: 60000 })
+  if (rateLimitResponse) return rateLimitResponse
+
   const OLLAMA_HOST = process.env.OLLAMA_HOST || "http://127.0.0.1:11434"
 
   try {

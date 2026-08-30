@@ -1,7 +1,8 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { getProxyConfig, saveProxyConfig, ProxyConfig, AIProvider } from "@/lib/proxy/config"
+import { checkRateLimit, validateSafeUrl } from "@/lib/security"
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   const config = getProxyConfig()
   // Mask keys for security in the frontend
   const maskKey = (key?: string) => {
@@ -24,10 +25,22 @@ export async function GET() {
   return NextResponse.json(safeConfig)
 }
 
-export async function POST(request: Request) {
+export async function POST(req: NextRequest) {
+  // Rate Limiting Protection (30 config updates / min)
+  const rateLimitResponse = checkRateLimit(req, "router-config", { limit: 30, windowMs: 60000 })
+  if (rateLimitResponse) return rateLimitResponse
+
   try {
-    const body = await request.json()
+    const body = await req.json()
     const currentConfig = getProxyConfig()
+
+    // Validate customBaseUrl if provided
+    if (body.customBaseUrl) {
+      const urlCheck = validateSafeUrl(body.customBaseUrl)
+      if (!urlCheck.isValid) {
+        return NextResponse.json({ error: `Invalid Custom Base URL: ${urlCheck.reason}` }, { status: 400 })
+      }
+    }
 
     const resolveKey = (newKey?: string, oldKey?: string) => {
       if (!newKey) return oldKey || ""
@@ -45,7 +58,7 @@ export async function POST(request: Request) {
         groq: resolveKey(body.keys?.groq, currentConfig.keys.groq),
         custom: resolveKey(body.keys?.custom, currentConfig.keys.custom),
       },
-      customBaseUrl: body.customBaseUrl || currentConfig.customBaseUrl,
+      customBaseUrl: body.customBaseUrl !== undefined ? body.customBaseUrl : currentConfig.customBaseUrl,
       defaultTargetModel: body.defaultTargetModel !== undefined ? body.defaultTargetModel : currentConfig.defaultTargetModel,
       modelMapping: body.modelMapping || currentConfig.modelMapping,
     }
