@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { CommandPalette } from "@/components/features/CommandPalette";
-import { AIChatWidget } from "@/components/features/AIChatWidget";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { BookmarkProvider } from "@/components/providers/BookmarkProvider";
@@ -95,7 +94,6 @@ export default async function RootLayout({
             <BookmarkProvider>
               {children}
               <CommandPalette />
-              <AIChatWidget />
               <Toaster theme="dark" position="bottom-right" />
             </BookmarkProvider>
           </ThemeProvider>
