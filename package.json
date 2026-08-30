@@ -14,7 +14,7 @@
     }
   },
   "bin": {
-    "awesome-ai-tools": "./dist/cli/index.js"
+    "awesome-ai-tools": "dist/cli/index.js"
   },
   "files": [
     "dist/cli/index.js",
@@ -46,7 +46,7 @@
   "homepage": "https://awesome-ai-tools.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dimasrahmandaalfarizi/Awesome-AI-Tools"
+    "url": "git+https://github.com/dimasrahmandaalfarizi/Awesome-AI-Tools.git"
   },
   "engines": {
     "node": ">=18.0.0"
