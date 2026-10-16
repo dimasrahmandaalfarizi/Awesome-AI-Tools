@@ -230,6 +230,29 @@ export const TAGS: Tag[] = [
 ]
 
 export const TOOLS: Tool[] = [
+  {
+    "id": "tool-mangatranslate",
+    "name": "AI 만화 번역기",
+    "slug": "mangatranslate-ai-manga-translator",
+    "description": "Ficory LLC의 AI 만화 번역기는 기업급 만화 리더를 제공합니다. 개인은 만화 페이지를 일괄 번역하고 번역 내용을 맞춤 조정합니다. 스튜디오는 완전한 온라인 Photoshop 스타일 편집기에서 페이지를 편집합니다. 사용자는 API를 개인 작업 흐름에 연결합니다. 제품이 지원하는 모든 번역 언어를 이용할 수 있습니다. 무료 이용과 유료 기능을 함께 제공하는 Freemium 서비스입니다.",
+    "website": "https://www.mangatranslate.com/ko/ai-manga-translator/",
+    "pricing": "Freemium",
+    "isOpenSource": false,
+    "platform": [
+      "Web"
+    ],
+    "categoryId": "cat-6",
+    "tags": [
+      "manga",
+      "translation",
+      "image-editing",
+      "api"
+    ],
+    "lastUpdated": "2026-10-16",
+    "featured": false,
+    "createdAt": "2026-10-16T03:52:26Z"
+  },
+
 
   {
     "id": "tool-gen-b2-1787385356481-0",
